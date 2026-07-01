@@ -6,23 +6,33 @@
 \label{chap:implementasi}
 
 \section{Lingkungan Implementasi}
-Bagian ini menjelaskan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam tahap implementasi penelitian.
+Bagian ini menjelaskan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam tahap implementasi penelitian. Implementasi dilakukan pada platform \textit{cloud-based notebook}, yaitu Kaggle Notebook dan Google Colaboratory (Google Colab), sehingga spesifikasi perangkat keras yang digunakan bersifat dinamis dan disediakan secara otomatis oleh masing-masing penyedia layanan.
 
 \subsection{Lingkungan Perangkat Keras}
-Implementasi sistem ini dilakukan menggunakan perangkat keras dengan spesifikasi sebagai berikut:
+Spesifikasi sumber daya komputasi yang digunakan pada masing-masing platform selama penelitian ini berlangsung adalah sebagai berikut:
 \begin{enumerate}
-	\item Prosesor: AMD Ryzen 5 6600H with Radeon Graphics (6 Core, 12 Thread)
-	\item Memori (RAM): 16 GB
-	\item Penyimpanan: SSD 1 TB
+	\item Kaggle Notebook
+	\begin{enumerate}
+		\item Prosesor: 4 \textit{vCPU}
+		\item Memori (RAM): hingga 29 GB
+		\item GPU: NVIDIA Tesla T4 x2 (2 x 16 GB VRAM)
+	\end{enumerate}
+	\item Google Colaboratory
+	\begin{enumerate}
+		\item Prosesor: 2 \textit{vCPU}
+		\item Memori (RAM): 12--13 GB
+		\item GPU: NVIDIA Tesla T4 (16 GB VRAM), digunakan jika tersedia. Saat tidak tersedia, \textit{runtime} dijalankan menggunakan CPU.
+	\end{enumerate}
 \end{enumerate}
 
 \subsection{Lingkungan Perangkat Lunak}
 Perangkat lunak yang digunakan untuk mendukung proses pengembangan adalah:
 \begin{enumerate}
-	\item Sistem Operasi: Windows 11
-	\item Bahasa Pemrograman: Python 3.10+
-	\item \textit{Library} Utama:
-	\item \textit{Driver}: 
+	\item Sistem Operasi: Linux (\textit{runtime environment} berbasis Ubuntu yang disediakan oleh Kaggle Notebook dan Google Colab)
+	\item Bahasa Pemrograman: Python 3.10+ 
+	\item \textit{Platform Notebook}: Kaggle Notebook dan Google Colaboratory (Google Colab)
+	\item \textit{Library} Utama: % isi sesuai library yang dipakai
+	\item \textit{Driver}: CUDA Toolkit dan cuDNN (terpasang otomatis pada \textit{runtime} GPU Kaggle/Colab)
 \end{enumerate}
 
 \section{Pengumpulan Data}
@@ -40,20 +50,64 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 
 Gambar-gambar dari kedua sumber tersimpan dalam tiga format file berbeda, yaitu PNG (239 gambar, 42,9\%), JPG (221 gambar, 39,7\%), dan JPEG (97 gambar, 17,4\%), dengan resolusi yang bervariasi mulai dari $205 \times 255$ hingga $1.365 \times 1.365$ piksel. Setelah dilakukan penggabungan dari kedua sumber, dataset dibagi ke dalam tiga subset, yaitu data latih (\textit{train}) sebanyak 386 gambar (69,3\%), data uji (\textit{test}) sebanyak 99 gambar (17,8\%), dan data validasi (\textit{val}) sebanyak 72 gambar (12,9\%). Pembagian dataset ke dalam tiga subset tersebut dilakukan secara stratifikasi berdasarkan kelas, sehingga proporsi setiap kelas (\textit{no tumor}, glioma, dan meningioma) terjaga secara merata di seluruh subset \textit{train}, \textit{val}, dan \textit{test}.
 
-Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik yang berbeda dibandingkan sumber pertama, penelitian ini merancang tiga skenario eksperimen penempatan data sumber kedua untuk mengevaluasi dampaknya terhadap generalisasi model. Ketiga skenario tersebut adalah sebagai berikut:
+Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik yang berbeda dibandingkan sumber pertama, penelitian ini merancang tiga skenario eksperimen \textit{splitting} data Mendeley Data untuk mengevaluasi dampaknya terhadap generalisasi model. Ketiga skenario tersebut adalah sebagai berikut:
 \begin{enumerate}
-	\item Skenario 1
-	Data sumber kedua pada subset \textit{test} saja: Seluruh gambar dari sumber kedua ditempatkan eksklusif pada subset \textit{test}. Skenario ini bertujuan untuk mengukur kemampuan generalisasi model yang dilatih sepenuhnya pada data sumber pertama ketika diuji pada distribusi data yang berbeda.
+	\item uji \\
+	Data sumber kedua pada subset \textit{test} saja: Seluruh gambar dari sumber kedua ditempatkan pada subset \textit{test}. Skenario ini bertujuan untuk mengukur kemampuan generalisasi model yang dilatih sepenuhnya pada data sumber pertama ketika diuji pada distribusi data yang berbeda.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			\textbf{Kategori}            & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
+			\hline
+			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
+			Validation (Validasi) & 75  & 49  & 124 & 22.26 \\
+			Test (Uji)          & 145 & 42  & 187 & 33.57 \\
+			Total               & 393 & 164 & 557 & 100 \\
+			\hline
+		\end{tabular}
+		\caption{Pembagian Data Skenario 1}
+		\label{tab:dataset_test}
+	\end{table}
 	
-	\item Skenario 2
+	\item validasi dan uji \\
 	Data sumber kedua pada subset \textit{val} dan \textit{test}: Gambar dari sumber kedua didistribusikan ke dalam subset \textit{val} dan \textit{test}, sementara subset \textit{train} tetap hanya berisi data dari sumber pertama. Skenario ini memungkinkan proses validasi dan pengujian dilakukan pada distribusi yang lebih beragam, sekaligus menjaga proses pelatihan tetap bersih dari data sumber kedua.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			Kategori            & Tumor & Tanpa Tumor & Total & Persentase (\%) \\
+			\hline
+			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
+			Validation (Validasi) & 114 & 49  & 163 & 29.26 \\
+			Test (Uji)          & 106 & 42  & 148 & 26.57 \\
+			Total               & 393 & 164 & 557 & 100 \\
+			\hline
+		\end{tabular}
+		\caption{Pembagian Data Skenario 2}
+		\label{tab:dataset_val_test}
+	\end{table}
 	
-	\item Skenario 3
+	\item validasi, uji, dan latih \\
 	Data sumber kedua pada seluruh subset (\textit{train}, \textit{val}, dan \textit{test}): Gambar dari sumber kedua didistribusikan secara proporsional ke seluruh subset \textit{train}, \textit{val}, dan \textit{test}. Skenario ini mencerminkan kondisi pelatihan yang memanfaatkan keseluruhan data yang tersedia dari kedua sumber secara terpadu.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			\textbf{Kategori}   & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
+			\hline
+			Train      & 224 & 73  & 297 & 53.32 \\
+			Validation & 90  & 49  & 139 & 24.96 \\
+			Test       & 79  & 42  & 121 & 21.72 \\
+			Total      & 393 & 164 & 557 & 100 \\
+			\hline
+		\end{tabular}
+		\caption{Pembagian Data Skenario }
+		\label{tab:dataset_all}
+	\end{table}
+	
 \end{enumerate}
-Ketiga skenario ini dirancang untuk mengkaji sejauh mana asal-usul dan penempatan data sumber kedua memengaruhi kinerja model klasifikasi, khususnya dalam konteks perbedaan distribusi (\textit{domain shift}) antara kedua sumber data.
-
-Kondisi dataset mentah yang heterogen ini menjadi dasar dilakukannya proses \textit{preprocessing}.
+Ketiga skenario ini dirancang untuk mengkaji sejauh mana asal-usul dan penempatan data sumber kedua memengaruhi kinerja model klasifikasi, khususnya dalam konteks perbedaan distribusi (\textit{domain shift}) antara kedua sumber data. Kondisi dataset mentah yang heterogen ini menjadi dasar dilakukannya proses \textit{preprocessing}.
 
 \section{Pemrosesan Data}
 
@@ -61,12 +115,6 @@ Kondisi dataset mentah yang heterogen ini menjadi dasar dilakukannya proses \tex
 Proses \textit{preprocessing} dilakukan untuk menyeragamkan seluruh gambar agar memenuhi standar \textit{input} model jaringan saraf tiruan yang digunakan. Terdapat tiga tahap \textit{preprocessing} yang diterapkan pada keseluruhan 557 gambar dataset:
 
 \begin{enumerate}
-	\item Konversi Mode Warna ke RGB\\
-	Seluruh gambar yang tidak berformat RGB dikonversi menjadi mode warna RGB. Proses ini menyasar 263 gambar yang sebelumnya berformat L (\textit{grayscale}), RGBA, dan P. Setelah \textit{preprocessing}, 100\% gambar (557 gambar) telah berformat RGB secara seragam, sehingga kompatibel dengan arsitektur model yang mengharapkan \textit{input} tiga kanal warna.
-	
-	\item Standardisasi Resolusi ke $224 \times 224$ Piksel\\
-	Seluruh gambar diubah ukurannya (\textit{resize}) menjadi $224 \times 224$ piksel, sesuai dengan ukuran \textit{input} standar pada model berbasis arsitektur seperti VGG, ResNet, dan EfficientNet. Sebelum \textit{preprocessing}, tidak ada satu pun gambar yang memiliki resolusi target tersebut. Setelah \textit{preprocessing}, seluruh 557 gambar telah memiliki resolusi yang seragam $224 \times 224$ piksel.
-	
 	\item Konversi Format ke PNG\\
 	Seluruh gambar dikonversi ke format PNG untuk memastikan konsistensi format file. Sebelum \textit{preprocessing}, terdapat 318 gambar (57,1\%) yang bukan berekstensi PNG. Setelah \textit{preprocessing}, keseluruhan 557 gambar tersimpan dalam format PNG.
 \end{enumerate}
@@ -81,7 +129,7 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 	\label{tab:preprocessing}
 	\begin{tabular}{|l|l|l|}
 		\hline
-		Aspek & Sebelum & Setelah \\ \hline
+		\textbf{Aspek} & \textbf{Sebelum} & \textbf{Setelah} \\ \hline
 		Mode warna & RGB, L, RGBA, P (4 varian) & RGB \\ \hline
 		Resolusi & 15 varian berbeda & $224 \times 224$ \\ \hline
 		Format file & PNG, JPG, JPEG & PNG \\ \hline

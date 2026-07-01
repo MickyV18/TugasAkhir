@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  25 JUN 2026 11:01
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  1 JUL 2026 23:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1318,7 +1318,35 @@ Package biblatex Warning: The following entry could not be found
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
-(biblatex)                Jha2024CTtoMRI
+(biblatex)                NamaPenulisTahun
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                Putra2025
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                carey2019impact
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                ghasemi2025hybrid
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                islam2024deepfusion
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
@@ -1486,11 +1514,35 @@ Package geometry Warning: `a4paper': not available in `\newgeometry'; skipped.
 
 
 ] (TA.toc
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (2.63689pt too wide) in paragraph at lines 204--204
+ [][] [][][]\TU/TimesNewRoman(0)/m/it/12 Explainable CNN for brain tumor detect
+ion and clas- 
+ []
+
+
+Underfull \vbox (badness 1178) has occurred while \output is active []
 
 
 
 [13]
+Overfull \hbox (7.76979pt too wide) in paragraph at lines 215--215
+ [][] [][][]\TU/TimesNewRoman(0)/m/it/12 An XAI-Enhanced EfficientNetB0 Framewo
+rk for Pre- 
+ []
+
+
+Overfull \hbox (3.05681pt too wide) in paragraph at lines 220--220
+ \TU/TimesNewRoman(0)/m/it/12 Classification through XAI Based Key Features Ide
+n- 
+ []
+
+
+Overfull \hbox (4.98338pt too wide) in paragraph at lines 324--324
+ [][] [][][]\TU/TimesNewRoman(0)/b/n/12 PERANCANGAN MODEL PENDETEKSIAN TUMOR OT
+AK BER- 
+ []
+
+
 
 [14])
 \tf@toc=\write5
@@ -1503,7 +1555,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [16
 
 ] (TA.lof
-Overfull \hbox (13.67876pt too wide) in paragraph at lines 12--12
+Overfull \hbox (13.67876pt too wide) in paragraph at lines 14--14
  [][] [][][]\TU/TimesNewRoman(0)/m/n/12 Visualisasi mekanisme \TU/TimesNewRoman
 (0)/m/it/12 Correlation Learning Mechanism \TU/TimesNewRoman(0)/m/n/12 (CLM) ([
 ][]Woź- 
@@ -1625,7 +1677,7 @@ Bab II.
 File: images/gambartumor.png Graphic file (type bmp)
 <images/gambartumor.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -1633,70 +1685,68 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [10]
-File: images/CT-Scan.jpeg Graphic file (type bmp)
-<images/CT-Scan.jpeg>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: images/ctvsmri.png Graphic file (type bmp)
 <images/ctvsmri.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [11]
 
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 55.
+
+
+
 [12]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 79.
-
-
-Underfull \vbox (badness 1436) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
 
 
 
 [13]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[14]
 File: images/HierarkiXAI.png Graphic file (type bmp)
 <images/HierarkiXAI.png>
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 111.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 95.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 115.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 99.
 
 
-Underfull \vbox (badness 1648) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 102.
+
+
+
+[14]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 117.
+
+
+Underfull \vbox (badness 3460) has occurred while \output is active []
 
 
 
 [15]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 133.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 143.
 
 
-Underfull \vbox (badness 1527) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [16]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 146.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 162.
 
+File: images/TaksonomiXAI.png Graphic file (type bmp)
+<images/TaksonomiXAI.png>
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 168.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1704,27 +1754,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 173.
 
 
-
-[18]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 191.
-
-File: images/TaksonomiXAI.png Graphic file (type bmp)
-<images/TaksonomiXAI.png>
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 197.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 197.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 202.
-
-
-Overfull \hbox (5.6858pt too wide) in paragraph at lines 201--203
+Overfull \hbox (5.6858pt too wide) in paragraph at lines 172--174
 \TU/TimesNewRoman(0)/m/n/12 Taksonomi berbasis metodologi evaluasi mengklasifik
 asikan teknik-teknik eva-
  []
@@ -1732,27 +1766,50 @@ asikan teknik-teknik eva-
 File: images/TaksonomiXAI2.png Graphic file (type bmp)
 <images/TaksonomiXAI2.png>
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 208.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 179.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 179.
+
+
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [19]
+Overfull \hbox (0.23163pt too wide) in paragraph at lines 215--217
+\TU/TimesNewRoman(0)/m/n/12 Penggunaan XAlign memungkinkan evaluasi yang tidak 
+hanya mengukur aku-
+ []
+
+
+LaTeX Warning: Citation 'ghasemi2025hybrid' on page 20 undefined on input line 
+226.
+
+
+LaTeX Warning: Citation '' on page 20 undefined on input line 226.
+
+
+Overfull \hbox (10.28046pt too wide) in paragraph at lines 226--227
+[][][] \TU/TimesNewRoman(0)/m/n/12 mengajukan model hibrid yang menggabungk-
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 236--238
-
- []
-
-
-Overfull \hbox (0.23163pt too wide) in paragraph at lines 244--246
-\TU/TimesNewRoman(0)/m/n/12 Penggunaan XAlign memungkinkan evaluasi yang tidak 
-hanya mengukur aku-
+Overfull \hbox (5.24149pt too wide) in paragraph at lines 234--234
+\TU/TimesNewRoman(0)/b/it/12 gularization for Scalable Multi-Class Brain Tumor 
+Classification in MRI| 
  []
 
 
@@ -1761,281 +1818,337 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [21]
-Overfull \hbox (0.60182pt too wide) in paragraph at lines 258--258
-|[]\TU/TimesNewRoman(0)/b/it/12 Enhanced Classification of Brain MRI Images for
- Tumor Detection Using
+Overfull \hbox (3.4778pt too wide) in paragraph at lines 241--242
+[][][][][][]\TU/TimesNewRoman(0)/m/n/12 Mahesh dkk. ([][]2024[][])[] []menginte
+grasikan teknik \TU/TimesNewRoman(0)/m/it/12 Explainable AI \TU/TimesNewRoman(0
+)/m/n/12 (XAI) berupa \TU/TimesNewRoman(0)/m/it/12 Gradient-
  []
 
 
-Underfull \vbox (badness 4779) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [22]
-Underfull \vbox (badness 4779) has occurred while \output is active []
+
+LaTeX Warning: Citation 'ghasemi2025hybrid' on page 23 undefined on input line 
+252.
 
 
-
-[23]
-
-LaTeX Warning: Citation 'Jha2024CTtoMRI' on page 24 undefined on input line 275
-.
+LaTeX Warning: Citation '' on page 23 undefined on input line 252.
 
 
-LaTeX Warning: Citation '' on page 24 undefined on input line 275.
-
-
-Overfull \hbox (112.69264pt too wide) in paragraph at lines 275--276
-[]\TU/TimesNewRoman(0)/m/n/12 Dalam upaya menjembatani keterbatasan modalitas p
-encitraan medis, [][]
+Overfull \hbox (67.58313pt too wide) in paragraph at lines 252--253
+\TU/TimesNewRoman(0)/m/n/12 nyulitkan interpretasi klinis. Kondisi serupa dijum
+pai pada [][]
  []
 
 
-Underfull \vbox (badness 4779) has occurred while \output is active []
+Overfull \hbox (0.11328pt too wide) in paragraph at lines 252--253
+\TU/TimesNewRoman(0)/m/n/12 komponen fitur—LBP, HOG, ResNet50, maupun AlexNet—t
+erhadap keputusan kla-
+ []
 
 
+
+[23]) (Bab III - Analisis.tex
 
 [24]
+Bab III.
 
-LaTeX Warning: Citation 'Jha2024CTtoMRI' on page 25 undefined on input line 281
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 16.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 20.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 23.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 26.
+
+
+
+[25
+
+
+]
+
+LaTeX Warning: Citation 'carey2019impact' on page 26 undefined on input line 29
 .
 
 
-LaTeX Warning: Citation '' on page 25 undefined on input line 281.
+LaTeX Warning: Citation '' on page 26 undefined on input line 29.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 32.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 35.
+
+
+LaTeX Warning: Citation 'carey2019impact' on page 26 undefined on input line 38
+.
+
+
+LaTeX Warning: Citation '' on page 26 undefined on input line 38.
+
+
+LaTeX Warning: Citation 'novak2025' on page 26 undefined on input line 42.
+
+
+
+[26]
+
+LaTeX Warning: Citation 'novak2025' on page 27 undefined on input line 44.
+
+
+LaTeX Warning: Citation 'novak2025' on page 27 undefined on input line 44.
+
+
+LaTeX Warning: Citation 'novak2025' on page 27 undefined on input line 44.
+
+
+
+[27]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 55.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 57.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 58.
 
 
 Underfull \vbox (badness 1412) has occurred while \output is active []
 
 
 
-[25]
-
-[26])
-
-[27] (Bab III - Analisis.tex
-
 [28]
-Bab III.
-File: images/Architecture.png Graphic file (type bmp)
-<images/Architecture.png>
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 18.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 67.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 18.
+LaTeX Warning: Citation 'carey2019impact' on page 29 undefined on input line 67
+.
+
+
+LaTeX Warning: Citation '' on page 29 undefined on input line 67.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[29
-
-
-]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 29.
+[29]
+Overfull \hbox (1.38477pt too wide) in paragraph at lines 76--77
+[]\TU/TimesNewRoman(0)/m/n/12 Dengan mempertimbangkan keempat permasalahan ters
+ebut, dapat disimpulkan bah-
+ []
 
 
 
 [30]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 49.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 55.
-
-
-Overfull \hbox (3.49539pt too wide) in paragraph at lines 61--62
-\TU/TimesNewRoman(0)/m/n/12 tangan dan arahan masa depan \TU/TimesNewRoman(0)/m
-/it/12 Artificial Intelligence \TU/TimesNewRoman(0)/m/n/12 di layanan kesehatan
- oleh [][][][][]Ennab
- []
-
-
-Underfull \vbox (badness 3460) has occurred while \output is active []
-
-
-
-[31]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 71.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 74.
-
-
-
-[32]
-Overfull \hbox (0.22186pt too wide) in paragraph at lines 91--92
+Overfull \hbox (0.22186pt too wide) in paragraph at lines 92--93
 []\TU/TimesNewRoman(0)/m/n/12 Sistem harus menampilkan tingkat kepercayaan dari
  hasil prediksi untuk mem-
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[31]
+
+[32]
 
 [33]
-
-[34]
-
-[35]
-
-[36]
-Overfull \hbox (16.19518pt too wide) in paragraph at lines 171--172
+Overfull \hbox (16.19518pt too wide) in paragraph at lines 170--171
 []\TU/TimesNewRoman(0)/m/n/12 A2: \TU/TimesNewRoman(0)/m/it/12 Vision Transform
 er \TU/TimesNewRoman(0)/m/n/12 (ViT) + \TU/TimesNewRoman(0)/m/it/12 Attention M
 ap \TU/TimesNewRoman(0)/m/n/12 (Mewakili Transformer-
  []
 
 
-
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
-
- []
-
-
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
-
- []
-
-
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 301--302
-
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+[34]
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
 
-[41]) (Bab IV - Perancangan.tex
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
-[42]
-Bab IV.
+ []
 
 
-[43
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
+ []
+
+
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[38]) (Bab IV - Perancangan.tex
+
+[39]
+
+[40
 
 ]
+Bab IV.
+File: images/Flow Arsitektur.png Graphic file (type bmp)
+<images/Flow Arsitektur.png>
+
+
+[41
+
+]
+File: images/normal brain radio.png Graphic file (type bmp)
+<images/normal brain radio.png>
+
+
+[42]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \vbox (badness 3460) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[43]
+
+LaTeX Warning: Citation 'islam2024deepfusion' on page 44 undefined on input lin
+e 96.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [44]
 
-LaTeX Warning: Citation 'islam2024deepfusion' on page 45 undefined on input lin
-e 80.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 145.
 
 
 
 [45]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 129.
-
-
-
-[46]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 152.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 208.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[47]
+[46]
 File: images/ArchitectureSesudah.png Graphic file (type bmp)
 <images/ArchitectureSesudah.png>
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 220.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 220.
+
+
+
+[47]
+Underfull \vbox (badness 3460) has occurred while \output is active []
+
 
 
 [48]
 
 [49]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [50]
 
-[51]
-
-[52]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 312.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 326.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 322.
-
-
-Overfull \hbox (6.43512pt too wide) in paragraph at lines 322--323
-[]\TU/TimesNewRoman(0)/m/n/12 Sebagai kriteria keberhasilan, penelitian ini men
-gacu pada performa Grad-
+Overfull \hbox (12.48454pt too wide) in paragraph at lines 326--327
+\TU/TimesNewRoman(0)/m/n/12 CAM yang dilaporkan dalam studi literatur pada \TU/
+TimesNewRoman(0)/m/it/12 dataset \TU/TimesNewRoman(0)/m/n/12 neuro-onkologi (TC
+GA-
  []
 
 ) (Bab V - Implementasi.tex
 
-[53]
+[51]
 
-[54
+[52
 
 ]
 Bab V.
 
 
-[55
+[53
 
 ]
 
-LaTeX Warning: Citation 'NamaPenulisTahun' on page 56 undefined on input line 3
+LaTeX Warning: Citation 'NamaPenulisTahun' on page 54 undefined on input line 4
 7.
+
+
+Underfull \vbox (badness 7030) has occurred while \output is active []
+
+
+
+[54]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[55]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [56]
-
-[57]
-Overfull \hbox (2.94269pt too wide) in paragraph at lines 101--111
+Overfull \hbox (2.94269pt too wide) in paragraph at lines 149--159
  [][] 
  []
 
 
-LaTeX Warning: Citation 'Putra2025' on page 58 undefined on input line 113.
+LaTeX Warning: Citation 'Putra2025' on page 57 undefined on input line 161.
 
 ) (Bab VI - Evaluasi.tex
 
-[58]
+[57]
 
-[59]
-
-[60
+[58
 
 ]
 Bab VI.
 
-LaTeX Warning: Citation 'BPBI' on page 61 undefined on input line 18.
+LaTeX Warning: Citation 'BPBI' on page 59 undefined on input line 18.
 
 
 Overfull \hbox (20.82396pt too wide) in paragraph at lines 23--29
@@ -2044,33 +2157,33 @@ Overfull \hbox (20.82396pt too wide) in paragraph at lines 23--29
 
 
 
-[61
+[59
 
 ]
 
-[62]) (Bab VII - Penutup.tex
+[60]) (Bab VII - Penutup.tex
 
-[63]
+[61]
 
-[64
+[62
 
 ]
 Bab VII.
 )
 
+[63
+
+]
+
+[64
+
+]
+
 [65
 
 ]
 
-[66
-
-]
-
-[67
-
-]
-
-[68]
+[66]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 410--410
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
@@ -2078,7 +2191,7 @@ etection and classification through
 
 
 
-[69]
+[67]
 Overfull \hbox (13.76628pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Al-Kadi, Omar, Israa Almallahi, Alaa Abu-Srhan,
  Mohammad Abushariah, dan Waleed
@@ -2091,54 +2204,56 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
  []
 
 
+Overfull \hbox (33.26854pt too wide) in paragraph at lines 410--410
+\TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
+Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
+0:110227.
+ []
 
-[70]
+
+
+[68]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
  []
 
 
-
-[71]
 Overfull \hbox (1.24242pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Republik Indonesia, Kementerian Kesehatan. 2025
 . \TU/TimesNewRoman(0)/m/it/12 Update Tatalaksana Tumor Otak
  []
 
 
+
+[69]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
  []
 
+(Lampiran-A.tex
 
-
-[72] (Lampiran-A.tex
-
-[73]
-
-[74
-
-]
+[70]
 Lampiran A.
 ) (Lampiran-B.tex
 
-[75
+[71
+
 
 ]
 
-[76
+[72
 
 ]
 Lampiran B.
 )
 
-[77
+[73
 
 ]
 
-[78
+[74
 
 ]
 
@@ -2159,7 +2274,7 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `TA.out' has not changed.
-(rerunfilecheck)             Checksum: C48D08FCC98C95241DBE1B63091D38EA;20270.
+(rerunfilecheck)             Checksum: 96B523A51B2EF12EF23CB1783F2B8ACD;20892.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                TA
@@ -2170,12 +2285,12 @@ Package logreq Info: Writing requests to 'TA.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34782 strings out of 403197
- 680986 string characters out of 5455938
- 2120492 words of memory out of 5000000
- 62827 multiletter control sequences out of 15000+600000
+ 34763 strings out of 403197
+ 680342 string characters out of 5455938
+ 2121022 words of memory out of 5000000
+ 62809 multiletter control sequences out of 15000+600000
  632942 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,14n,100p,1489b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,14n,100p,1976b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TA.pdf (110 pages).
+Output written on TA.pdf (106 pages).

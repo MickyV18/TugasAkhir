@@ -9,57 +9,41 @@
 \label{chap:analisis-masalah}
 
 \section{Analisis Kondisi Saat Ini}
-Penelitian oleh \textcite{wozniak2021deep} mengusulkan sebuah pendekatan hibrida yang dinamakan \textit{Correlation Learning Mechanism} (CLM). Model ini mengintegrasikan \textit{Convolutional Neural Network} (CNN) dengan \textit{Artificial Neural Network} (ANN) klasik dalam satu arsitektur terpadu untuk mendeteksi tumor otak dari citra \textit{CT Scan}.
 
-\begin{figure}[h]
-	\centering
-	\captionsetup{justification=centering}
-	\includegraphics[width=0.7\textwidth]{images/Architecture.png}
-	\caption{Visualisasi mekanisme \textit{Correlation Learning Mechanism} (CLM) \cite{wozniak2021deep}}
-	\label{gambar:kondisisaatini}
-\end{figure}
+Penelitian oleh \textcite{zienius2019direct} menganalisis jalur diagnosis tumor otak melalui pemindaian \textit{Direct Access Computed Tomography} (DACT) di layanan primer. Studi berbasis populasi ini dilakukan selama lima tahun di wilayah Lothian, Skotlandia, dengan mengevaluasi 2.938 rujukan dari dokter umum yang mencurigai adanya patologi intrakranial. Selain menilai keandalan CT kepala sebagai modalitas diagnostik, studi ini secara kritis mengevaluasi efektivitas dua pedoman rujukan utama, yaitu pedoman Kernick dan NICE 2005, dalam mengidentifikasi pasien yang berisiko mengidap tumor otak.
 
-\subsection{Desain Sistem dan Mekanisme Kerja}
-Sistem yang dikembangkan bekerja secara siklis dan iteratif dengan memanfaatkan pemrosesan paralel (\textit{multi-threading}). Berdasarkan Gambar \ref{gambar:kondisisaatini}, alur kerja sistem saat ini adalah sebagai berikut:
-\begin{enumerate}
-	\item Segmentasi \textit{Input}\\
-	Citra \textit{CT Scan} otak dimasukkan ke dalam sistem dan disegmentasi menjadi 64 fragmen persegi. Jumlah fragmen ini dipilih secara spesifik untuk menyesuaikan dengan arsitektur CPU yang digunakan dalam penelitian tersebut guna menjaga keseimbangan antara kecepatan pembelajaran dan diversitas filter \cite{wozniak2021deep}.
-	
-	\item Mekanisme Palet Filter\\
-	Fitur unik dari desain ini adalah penggunaan "palet filter" pada CNN. Palet ini merupakan konfigurasi dinamis yang menentukan lapisan, jenis filter, dan operasi (seperti \textit{pooling} dan ReLU). Pada iterasi awal, filter dipilih secara acak dari \textit{pool} filter yang tersedia, namun pada iterasi selanjutnya, pemilihan filter diatur oleh mekanisme CLM berdasarkan umpan balik akurasi \cite{wozniak2021deep}.
-	
-	\item Integrasi CNN-ANN\\
-	CNN memproses fragmen gambar menggunakan palet yang terpilih. \textit{Output} dari CNN tidak hanya berupa \textit{feature maps}, tetapi juga dikonversi menjadi vektor deskripsi statistik numerik yang mencakup nilai minimum, maksimum, rata-rata aritmetika, jumlah, median, dan standar deviasi.
-	
-	\item Evaluasi dan Umpan Balik\\
-	ANN bertindak sebagai evaluator. Data statistik dan fitur dari CNN menjadi \textit{input} bagi ANN untuk menghasilkan keputusan biner (tumor/sehat). Jika efisiensi ANN rendah, sistem melakukan pengacakan ulang (\textit{reshuffling}) pada palet filter CNN untuk iterasi berikutnya. Palet yang menghasilkan \textit{loss} terendah dan akurasi tertinggi disimpan dalam arsip basis data untuk digunakan kembali.
-\end{enumerate}
-
-\subsection{Peran Model}
-Dalam arsitektur hibrida ini, masing-masing model memiliki peran spesifik yang saling bergantung:
+\subsection{Alur Diagnosis Tumor Otak}
+Saat ini, diagnosis tumor otak di layanan primer dilakukan melalui serangkaian tahapan berikut \cite{zienius2019direct}:
 
 \begin{enumerate}
-	\item \textit{Convolutional Neural Network} (CNN)\\
-	CNN berperan sebagai ekstraktor fitur yang adaptif. CNN tidak memiliki bobot filter yang statis seperti pada CNN konvensional, melainkan belajar untuk memilih kombinasi filter yang paling relevan untuk menonjolkan fitur tumor berdasarkan instruksi dari mekanisme korelasi. CNN juga bertugas menyederhanakan informasi visual kompleks menjadi deskripsi statistik yang lebih ringkas untuk diproses oleh ANN.
-	\item \textit{Artificial Neural Network} (ANN)\\
-	ANN berperan sebagai \textit{classifier} dan pengendali optimasi. ANN tidak hanya mengklasifikasikan keberadaan tumor, tetapi juga berfungsi sebagai mekanisme umpan balik bagi CNN. Performa ANN menjadi penentu apakah konfigurasi filter CNN saat ini harus dipertahankan atau diganti. Struktur ANN yang digunakan adalah \textit{fully connected layers} dengan arsitektur yang dipilih untuk melakukan kompresi data akhir.
+	\item Pasien Merasakan Gejala dan Memeriksakan Diri ke Dokter Umum\\
+	Gejala tumor otak bersifat tidak khas dan mudah dikira penyakit lain, sehingga pasien rata rata harus mengunjungi dokter umum sebanyak tiga kali atau lebih sebelum akhirnya mendapat rujukan \cite{zienius2019direct}.
+	
+	\item Dokter Umum Membuat Rujukan \textit{Direct Access CT} (DACT)\\
+	Dokter umum dapat merujuk pasien langsung untuk pemindaian CT kepala tanpa melalui spesialis terlebih dahulu. Namun, pedoman rujukan yang tersedia yaitu pedoman Kernick dan NICE 2005 terbukti tidak akurat dalam memilah pasien, dengan nilai prediksi positif hanya sebesar 3\% dan tingkat kesepakatan antar pedoman yang rendah (\textit{weighted kappa} = 0,33) \cite{zienius2019direct}.
+	
+	\item Pasien Menunggu Jadwal Pemindaian\\
+	Setelah rujukan dibuat, pasien tidak langsung menjalani pemindaian. Rata rata waktu tunggu dalam studi ini adalah 17,3 hari untuk seluruh pasien, dan 14,6 hari untuk pasien yang akhirnya terdiagnosis tumor signifikan \cite{zienius2019direct}. Karena DACT bukan jalur darurat, keterlambatan ini dianggap wajar secara prosedural, namun dalam konteks tumor otak, setiap hari penundaan tetap memiliki implikasi klinis yang nyata.
+	
+	\item Pemindaian Dilakukan dan Dianalisis oleh Konsultan Neuroradiologi\\
+	Seluruh pemindaian CT kepala dilakukan di satu pusat neurosains terpusat dan dilaporkan oleh konsultan neuroradiologi. CT kepala terbukti cukup andal sebagai alat skrining karena tidak ditemukan satu pun hasil negatif palsu (\textit{false negative}) dalam studi ini. Namun, \textit{diagnostic yield} untuk tumor signifikan hanya sebesar 1,43\% \cite{zienius2019direct}, yang berarti sebagian besar pemindaian tidak menemukan tumor. Pelaksanaan neuroimaging sejak awal turut mempersingkat waktu yang dibutuhkan hingga hasil analisis tersedia bagi klinisi. Hal ini tercermin dalam temuan \textcite{carey2019impact}, yang melaporkan bahwa median waktu menuju diagnosis tumor otak ganas pada kelompok yang menjalani neuroimaging awal hanya sebesar 8 hari sejak kunjungan pertama terkait keluhan sakit kepala ($p < 0{,}001$).
+	
+	\item Laporan Dikembalikan ke Dokter Umum untuk Menentukan Tindak Lanjut\\
+	Dari 559 pasien dengan temuan abnormal nontumor, sebanyak 34,2\% tetap perlu dirujuk untuk pencitraan lanjutan atau penilaian spesialis \cite{zienius2019direct}. Ketiadaan standar pelaporan yang baku mempersulit interpretasi dokter umum, khususnya terhadap temuan insidental.
+	
+	\item Pasien Dirujuk ke Spesialis dan Dikonfirmasi melalui Histopatologi\\
+	Apabila hasil pemindaian mencurigakan, pasien dirujuk ke spesialis untuk konfirmasi melalui histopatologi. Dari 42 tumor signifikan yang ditemukan, jenis terbanyak adalah metastasis (40\%), diikuti tumor hipofisis (19\%), meningioma (17\%), \textit{glioblastoma multiforme} (12\%), glioma non GBM (10\%), dan limfoma SSP (2\%) \cite{zienius2019direct}.
 \end{enumerate}
 
-\subsection{Kelemahan dan Keterbatasan Sistem}
-Model CLM yang diusulkan mampu mencapai akurasi tinggi hingga 96\% tetapi terdapat beberapa kelemahan dan keterbatasan yang menjadi celah pengembangan sebagai berikut \cite{wozniak2021deep}.
+Secara keseluruhan, alur DACT berfungsi dengan baik secara teknis dan mampu mendukung diagnosis tumor otak yang lebih cepat melalui neuroimaging awal, sebagaimana ditunjukkan oleh \textcite{carey2019impact} dengan median waktu diagnosis sebesar 8 hari sejak kunjungan pertama. Namun, \textcite{zienius2019direct} menegaskan bahwa sistem ini masih lemah pada tahap seleksi pasien dan interpretasi hasil, sehingga efektivitas dan efisiensi alur secara keseluruhan belum optimal dan masih membutuhkan peningkatan lebih lanjut.
 
-\begin{enumerate}
-	\item Keterbatasan Kontrol Bobot Filter\\
-	Dalam bagian \textit{future works}, peneliti mengakui bahwa sistem saat ini belum menerapkan pembobotan khusus (\textit{special weights}) pada filter di lapisan CNN. Hal ini membatasi kemampuan sistem untuk mengontrol proses penyaringan secara lebih halus agar \textit{feature maps} dapat menonjolkan objek kunci dengan lebih detail.
-	\item Ketergantungan pada Iterasi Tetap\\
-	Proses optimasi dan pelatihan dilakukan dalam jumlah iterasi yang tetap, seperti 120.000 iterasi atau seratus iterasi per \textit{batch} dalam algoritma \textit{multi threading}) sehingga prosesnya tidak dinamis seperti fungsi \textit{fitness}. Hal ini berpotensi menyebabkan inefisiensi waktu komputasi atau konvergensi yang belum optimal \cite{wozniak2021deep}.
-	\item Kurangnya Aspek \textit{Explainability} (XAI)\\
-	Pada sistem ini, hanya terdapat kotak merah yang tidak menandai otak secara keseluruhan yang memiliki tumor otak. Selain hal tersebut, sistem ini belum menerapkan metode \textit{Explainable AI} (XAI) yang mendalam untuk menjelaskan mengapa keputusan tersebut diambil. Interaksi antara statistik numerik dari CNN dan keputusan ANN masih bersifat \textit{black-box}, tanpa visualisasi kontribusi fitur yang mendetail, seperti \textit{heatmap} atau nilai SHAP untuk mendukung diagnosis klinis yang transparan. 
-\end{enumerate}
+\subsection{Penggunaan AI dalam CT Scan Otak}
+
+Meskipun teknologi AI telah dikembangkan untuk membantu interpretasi \textit{non contrast CT head} (NCCTH), penggunaannya saat ini masih berada pada tahap evaluasi berbasis data nyata dan belum memasuki tahap implementasi klinis. Studi AI REACT \cite{novak2025} merupakan contoh konkret dari tahap ini: sebuah studi \textit{multireader multicase} yang menguji alat AI bernama \textit{qER EU 2.0} pada 150 pemindaian nyata dari pasien gawat darurat, melibatkan 30 pembaca dari empat rumah sakit NHS di Inggris.
+
+Hasil evaluasi menunjukkan bahwa bantuan AI meningkatkan sensitivitas pembaca secara bermakna dalam mendeteksi abnormalitas kritis, namun disertai penurunan spesifisitas yang signifikan \cite{novak2025}. Lebih lanjut, performa algoritma terbukti tidak merata, yakni deteksi \textit{mass effect}, yang merupakan salah satu tanda adanya lesi desak ruang seperti tumor, hanya menghasilkan AUC sebesar 0,604, jauh di bawah subkelompok patologi lainnya \cite{novak2025}. Para penulis secara eksplisit menyatakan bahwa hasil studi retrospektif ini tidak dapat langsung diterapkan dalam praktik klinis, dan menegaskan perlunya studi prospektif lanjutan sebelum teknologi ini dapat diimplementasikan secara bertanggung jawab \cite{novak2025}.
 
 \section{Analisis Kebutuhan}
-Berdasarkan referensi studi literatur mengenai tinjauan komprehensif tentang tantangan dan arahan masa depan \textit{Artificial Intelligence} di layanan kesehatan oleh \textcite{ennab2024enhancing} dan tinjauan mengenai permasalahan \textit{black-box} berdasarkan prinsip etika ``\textit{do no harm}'' oleh \textcite{xu2023medical}, terdapat permasalahan yang ada di sistem \textit{deep learning} oleh \textcite{wozniak2021deep}, yaitu ketiadaan keterangan atau penjelasan mengenai \textit{black-box} dari \textit{deep learning} untuk mengetahui bagian mana yang terdeteksi tumor otak.
-
 \subsection{Identifikasi Masalah Pengguna}
 Terdapat dua kelompok pengguna utama yang menghadapi masalah terkait penerapan AI dalam medis, yaitu profesional medis (dokter dan radiolog) serta pasien.
 Bagi profesional medis, tantangan utamanya tidak hanya terletak pada adopsi teknologi baru, tetapi juga pada keterbatasan manusiawi dan beban kerja yang ekstrem dalam praktik klinis. Berdasarkan \textcite{zhang2023diagnostic}, tingkat kesalahan diagnostik dalam radiologi berkisar antara 10-26\% dengan 60-80\% kesalahan  diklasifikasikan sebagai kesalahan perseptual atau kegagalan dalam mendeteksi adanya lesi. Faktor kelelahan turut berperan signifikan dengan survei mencatat 47\% radiolog mengalami \textit{burnout} dan 58\% mengalami gejala fisik seperti kelelahan mata yang dapat mengganggu akurasi interpretasi.
@@ -73,37 +57,52 @@ Riset eksperimental terbaru yang dilakukan oleh \textcite{chen2025impact} member
 Penurunan kepercayaan ini bukan tanpa alasan. Skeptisisme pasien berakar pada beberapa kekhawatiran fundamental. Pertama, risiko halusinasi AI, seperti model generatif dapat memproduksi informasi medis yang terdengar masuk akal dan meyakinkan tetapi secara faktual salah atau dibuat-buat. Ketakutan akan diagnosis yang keliru akibat kesalahan algoritma ini menjadi penghalang psikologis utama. Kedua, masalah transparansi dan akuntabilitas. Pasien sering kali memandang AI sebagai \textit{black-box} yang proses pengambilan keputusannya tidak dapat dijelaskan secara intuitif, memicu keraguan apakah keputusan medis tersebut didasarkan pada kondisi unik pasien atau sekadar pola statistik semata \autocite{chen2025impact}.
 Selain itu, terdapat korelasi negatif antara persepsi profesionalisme dan penggunaan AI. Pasien cenderung mempertanyakan kompetensi dan penilaian klinis dokter yang terlalu bergantung pada alat bantu AI, terutama jika alat tersebut bersifat umum dan tidak dirancang khusus untuk medis. Penggunaan alat semacam ini dianggap mengaburkan batas tanggung jawab profesional dan menurunkan standar interaksi manusiawi yang menjadi inti dari layanan kesehatan \autocite{chen2025impact}. Temuan ini menegaskan bahwa diperlukan transparansi, validasi klinis yang ketat, dan jaminan pengawasan manusia untuk mengatasi ketidakpercayaan pasien.
 
-Untuk mengatasi masalah tersebut, perlu didefinisikan kebutuhan fungsional dan nonfungsional sistem. Rincian kebutuhan ini akan dijabarkan pada subbab berikutnya.
+Berdasarkan analisis dari studi literatur yang dijelaskan pada subbab ..............., analisis kondisi saat ini, dan analisis permasalahan pengguna, diidentifikasikan 4 permasalahan utama, yaitu:
+
+\begin{enumerate}
+	\item Seleksi Pasien yang Lh dan Tidak Akurat \\
+	Pedoman rujukan yang digunakan dokter umum, yaitu pedoman Kernick dan NICE 2005, terbukti memiliki nilai prediksi positif yang sangat rendah, hanya sebesar 3\%, dengan tingkat kesepakatan antar pedoman yang buruk (\textit{weighted kappa} = 0,33). Artinya, kedua pedoman ini hampir tidak lebih baik dari tebakan acak dalam memilah pasien yang benar-benar berisiko tumor. Implikasinya, sebagian besar pemindaian yang dilakukan tidak menemukan tumor (\textit{diagnostic yield} hanya 1,43\%), sehingga sumber daya radiologi terbuang untuk kasus yang tidak relevan, sementara pasien berisiko tinggi bisa saja terlambat tersaring \cite{zienius2019direct}.
+	
+	\item Keterlambatan Diagnosis \\
+	Rata-rata pasien harus mengunjungi dokter umum tiga kali atau lebih sebelum mendapat rujukan, ditambah waktu tunggu pemindaian rata-rata sebesar 17,3 hari \cite{zienius2019direct}. Meskipun prosedur ini dianggap wajar secara administratif, dalam konteks tumor otak setiap hari penundaan berdampak signifikan terhadap prognosis. Studi \textcite{carey2019impact} membuktikan bahwa neuroimaging awal mampu mempersingkat waktu diagnosis hingga median 8 hari sejak kunjungan pertama, namun sayangnya akses ke jalur cepat ini masih bergantung pada keputusan dokter umum yang disaring dengan pedoman yang tidak akurat.
+	
+	\item Ketimpangan Sumber Daya Radiologi \\
+	Rasio 1,2 radiolog per 100.000 penduduk di Indonesia merupakan angka yang jauh dari memadai untuk menopang sistem diagnosis berbasis pencitraan \autocite{insights102023indonesia}. Beban kerja yang berlebihan ini tidak hanya menciptakan risiko \textit{burnout}---dengan 47\% radiolog mengalaminya secara global---tetapi juga mendegradasi akurasi interpretasi secara sistemik, mengingat 60--80\% kesalahan diagnostik dalam radiologi bersifat perseptual, yakni radiolog gagal mendeteksi lesi yang sebenarnya ada \cite{zhang2023diagnostic}. Kondisi ini menjadikan keterlibatan AI bukan sekadar pilihan, melainkan kebutuhan yang mendesak.
+	
+	\item Kurangnya Kepercayaan dari Klinisi dan Pasien
+	Ini adalah isu paradoksikal yang paling kritis. Di satu sisi, profesional medis meragukan AI karena kurangnya edukasi dan minimnya keterlibatan mereka dalam proses pengembangannya \autocite{syaftahan2025transformasi}. Di sisi lain, pasien justru memberikan kepercayaan tertinggi kepada dokter yang secara eksplisit \textit{tidak} menggunakan AI (skor rata-rata 0,63), dibandingkan dokter yang menggunakannya secara ekstensif (skor 0,30) \autocite{chen2025impact}. Paradoks ini menunjukkan bahwa masalah adopsi AI dalam medis bukan semata-mata soal kapabilitas teknis, melainkan soal legitimasi sosial dan kepercayaan institusional yang belum terbangun. Tanpa menyelesaikan krisis kepercayaan ini, sistem AI yang secara teknis canggih sekalipun akan menghadapi resistensi besar dari seluruh ekosistem layanan kesehatan.
+\end{enumerate}
+
+Dengan mempertimbangkan keempat permasalahan tersebut, dapat disimpulkan bahwa meskipun alur diagnosis tumor otak melalui jalur \textit{Direct Access CT} telah berfungsi secara teknis, sistem ini masih memiliki berbagai kelemahan yang signifikan dari sisi klinis maupun struktural. Seleksi pasien yang tidak akurat, keterlambatan diagnosis yang berdampak klinis nyata, ketimpangan sumber daya radiologi yang ekstrem, khususnya di Indonesia, serta defisit kepercayaan terhadap AI dari sisi klinisi maupun pasien. Oleh karena itu, penelitian ini bertujuan untuk mengembangkan model AI yang dilengkapi dengan modul \textit{Explainable AI} berupa visualisasi untuk deteksi tumor otak melalui citra CT scan kepala. Model ini diharapkan dapat membuka peluang dalam pembuatan sistem yang memperketat seleksi pasien sejak tahap awal, mempersingkat waktu menuju diagnosis, serta membantu radiolog dalam menganalisis citra secara lebih efisien untuk mengatasi keterbatasan sumber daya manusia. Dengan menyediakan visualisasi penjelas terhadap setiap hasil prediksi, model ini diharapkan dapat menjembatani kesenjangan antara akurasi teknis dan kepercayaan klinis, sekaligus memperluas peluang integrasi dalam pengembangan sistem pendukung keputusan medis yang lebih terbuka, transparan, dan bertanggung jawab. Pengembangan model ini diharapkan memiliki peluang sebagai berikut.
+
+\begin{enumerate}
+	\item Pengembangan model AI dengan modul Explainable AI berupa visualisasi heatmap untuk mengidentifikasi area mencurigakan pada CT scan, menggantikan pedoman seleksi pasien yang tidak akurat
+	\item Standardisasi hasil pemindaian melalui model AI yang konsisten antar waktu pemeriksaan, mengurangi kesalahan perseptual radiolog akibat kelelahan/beban kerja berlebihan
+	\item Sistem pendukung keputusan awal yang mempersingkat waktu dari kunjungan pertama hingga diagnosis, mengurangi keterlambatan yang berdampak klinis pada pasien tumor otak
+	\item Implementasi Explainable AI sebagai fitur interpretabilitas yang menjelaskan dasar prediksi kepada klinisi dan pasien, menjembatani kesenjangan kepercayaan terhadap AI
+\end{enumerate}
 
 \subsection{Kebutuhan Fungsional}
-Berdasarkan analisis kebutuhan, kebutuhan fungsional sistem yang diinginkan adalah sebagai berikut.
+Untuk dapat memenuhi kebutuhan peluang tersebut, diperlukan kebutuhan fungsional model sebagai berikut.
+
 \begin{enumerate}
-	\item Sistem harus dapat menerima \textit{input} data berupa citra digital \textit{CT Scan} otak dengan format umum medis berupa DICOM.
-	
-	\item Sistem harus mampu melakukan segmentasi citra menjadi fragmen-fragmen untuk persiapan ekstraksi fitur.
-	
-	\item Sistem harus mampu mengklasifikasikan citra \textit{input} ke dalam dua kelas keputusan, yaitu tumor atau sehat.
-	
-	\item Sistem harus memiliki modul yang menampilkan matriks performa model yang telah tervalidasi untuk menilai performa kuantitatif dari sistem.
-	
-	\item Sistem harus menghasilkan visualisasi interpretasi keputusan model menggunakan metode \textit{Explainable AI} (XAI) untuk menyoroti area fitur pada citra yang dianggap indikatif terhadap tumor.
-	
+	\item Model harus dapat menerima \textit{input} data berupa citra digital \textit{CT Scan} otak
+	\item Model harus mampu mengklasifikasikan citra \textit{input} ke dalam dua kelas keputusan, yaitu tumor atau sehat (tidak ada tumor).
+	\item Model harus menghasilkan visualisasi interpretasi keputusan model menggunakan metode \textit{Explainable AI} visualisasi untuk menyoroti area fitur pada citra yang membuat model mengklasifikasikan gambar citra tersebut ke dalam kelas tumor.
 	\item Sistem harus menampilkan tingkat kepercayaan dari hasil prediksi untuk membantu tenaga medis dalam menilai validitas keputusan sistem dan membangun kepercayaan pengguna.
-	
 \end{enumerate}
 
 \subsection{Kebutuhan Nonfungsional}
-Kebutuhan nonfungsional sistem adalah sebagai berikut.
-
+Kebutuhan nonfungsional model adalah sebagai berikut.
 \begin{enumerate}
 	\item \textit{Interpretability}\\
-	Sistem harus mampu menyediakan transparansi atas keputusan yang diambil. Berbeda dengan sistem sebelumnya yang bersifat \textit{black-box}, sistem yang diusulkan harus memvisualisasikan area fokus, seperti penggunaan \textit{heatmap} yang menjadi dasar prediksi tumor. Hal ini bertujuan untuk menjawab keraguan pasien akan validitas diagnosis AI dan membantu profesional medis memverifikasi hasil tanpa harus mempercayai algoritma secara buta.
+	Model harus mampu menyediakan transparansi atas keputusan yang diambil. Berbeda dengan model sebelumnya yang bersifat \textit{black-box}, model yang diusulkan harus memvisualisasikan area fokus, seperti penggunaan \textit{heatmap} yang menjadi dasar model memprediksi. Hal ini bertujuan untuk menjawab keraguan pasien akan validitas diagnosis AI dan membantu profesional medis memverifikasi hasil tanpa harus mempercayai algoritma secara buta.
 	
 	\item \textit{Reliability}\\
-	Sistem harus memiliki tingkat konsistensi yang tinggi dalam memberikan hasil prediksi. Mengingat risiko kesalahan diagnostik radiologi berkisar antara 10-26\%, sistem diharapkan dapat mempertahankan atau melampaui akurasi model referensi (96\%).
+	Model harus memiliki tingkat konsistensi yang tinggi dalam memberikan hasil prediksi. Model diharapkan dapat mempertahankan atau melampaui akurasi model referensi.
 	
-	\item \textit{Efficiency}\\
-	Waktu komputasi untuk memproses satu citra \textit{input} hingga menghasilkan diagnosis dan visualisasi harus memiliki waktu yang singkat agar tidak menghambat alur kerja klinis.
+	\item \textit{Complexity}\\
+	Model harus memiliki tingkat \textit{space complexity} yang rendah dan terukur pada tahap inferensi. Hal ini penting agar model dapat diimplementasikan secara optimal pada infrastruktur komputasi yang umum tersedia di fasilitas kesehatan, tanpa mengorbankan kecepatan maupun akurasi proses klasifikasi dan visualisasi.
 \end{enumerate}
 
 \section{Analisis Pemilihan Solusi}

@@ -2,8 +2,18 @@
 % BAB IV PERANCANGAN
 % ==========================================
 \cleardoublepage
-\chapter{PERANCANGAN}
+\chapter{PERANCANGAN MODEL PENDETEKSIAN TUMOR OTAK BERBASIS CNN YANG TERINTEGRASI XAI}
 \label{chap:perancangan}
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.7\textwidth]{images/Flow Arsitektur.png}
+	\caption{Perancangan Alur Implementasi}
+	\label{gambar:arsitekturperancangan}
+\end{figure}
+
+Secara umum, alur implementasi pada penelitian ini terbagi menjadi empat tahap utama. Pertama, \textit{data understanding} yang mencakup pengumpulan data dari tiga sumber, yaitu citra otak tanpa tumor (\textit{No Tumor Scrape}), citra otak dengan tumor (\textit{Tumor Scrape}), dan citra otak dengan \textit{mask} tumor (\textit{Tumor with Mask}), yang kemudian dibagi menjadi subset \textit{train}, \textit{validation}, dan \textit{test}. Kedua, \textit{data preparation} yang meliputi konversi format, standardisasi saluran RGB, pemilihan \textit{preprocessing} eksperimen (Gaussian+CLAHE atau Wavelet+Normalisasi Intensitas atau tanpa kedua preprocessing tersebut), seleksi \textit{Region of Interest} (ROI), dan augmentasi data. Ketiga, \textit{modelling} yang menguji tiga arsitektur model, yaitu CLM (CNN + ANN), \textit{Explainable} CNN (CNN + Grad-CAM \textit{Pruning}), dan EfficientNetB0, masing-masing dengan \textit{hyperparameter tuning}. Keempat, evaluasi yang mencakup pemilihan model terbaik per arsitektur, dilanjutkan dengan implementasi XAI menggunakan Grad-CAM yang disertai evaluasi XAI menggunakan metrik XAlign.
 
 \section{\textit{Data Understanding}}
 Selain modifikasi arsitektur, penyesuaian juga dilakukan pada \textit{dataset} yang digunakan. \textit{Dataset} yang digunakan dalam tugas akhir ini merupakan gabungan dari dua sumber data yang berbeda untuk menciptakan kumpulan data yang dapat digunakan untuk klasifikasi tumor otak serta segmentasi tumor otak.
@@ -12,6 +22,14 @@ Selain modifikasi arsitektur, penyesuaian juga dilakukan pada \textit{dataset} y
 	\item \textit{Dataset} Otak CT \textit{Scan} tanpa \textit{Mask} Tumor
 	
 	Untuk melatih dan memvalidasi model, Tugas Akhir ini mengumpulkan datast melalui website Radiopaedia. Radiopaedia merupakan repositori kasus pencitraan medis yang mencakup berbagai modalitas, seperti CT-scan dan MRI. Meskipun terbuka dari komunitas medis, seluruh draf artikel dan kasus klinis yang diunggah dapat dilakukan \textit{peer-review} dan harus melewati proses divalidasi oleh para ahli radiologi profesional yang bekerja sama dengan Radiopaedia. Proses verifikasi ini memastikan bahwa setiap data gambar yang tersedia memiliki diagnosis patologi yang akurat dan anotasi klinis yang dapat dipertanggungjawabkan.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.7\textwidth]{images/normal brain radio.png}
+		\caption{Website Radiopaedia}
+		\label{gambar:websiteradiopaedia}
+	\end{figure}
 	
 	Dalam pengumpulan data, dilakukan pencarian secara manual dengan beberapa kata kunci yang dibagi menjadi dua, yaitu normal dan kelas penyakit (glioma dan meningioma). Pada pencarian tersebut, terdapat \textit{filter} modalitas pencitraan berupa CT \textit{scan}) dan dengan bidang \textit{Axial} \textit{non-contrast}. Setelah dilakukan pencarian, dilakukan pengunduhan secara manual dengan melihat letak tumor dari gambar lain, seperti MRI atau anotasi pada gambar yang lain. Dalam pengunduhan, dilakukan pemisahan folder untuk tempat setiap kelas yang akan dijadikan bahan untuk pelatihan dan tes model.
 	
@@ -28,8 +46,6 @@ Selain modifikasi arsitektur, penyesuaian juga dilakukan pada \textit{dataset} y
 		\item Ketebalan \textit{Slice}: 7,0 mm.
 		\item Jumlah Sampel: 89 citra CT bidang aksial.
 	\end{enumerate}
-	
-	\item \textit{Dataset} Otak MRI
 
 \end{enumerate}
 
@@ -194,17 +210,17 @@ terdapat artefak hitam yang dapat mengganggu fitur medis.
 
 \section{Modelling}
 
+\subsection{Explainable CNN}
 Penelitian yang dilakukan oleh \textcite{wozniak2021deep} mengusulkan sebuah \textit{Correlation Learning Mechanism} (CLM) yang mengombinasikan \textit{Convolutional Neural Network} (CNN) dengan \textit{Artificial Neural Network} (ANN).
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.7\textwidth]{images/ArchitectureSesudah.png}
-	\caption{Arsitektur Model CNN + ANN}
-	\label{gambar:kondisisesudah}
+	\caption{Visualisasi mekanisme \textit{Correlation Learning Mechanism} (CLM) \cite{wozniak2021deep}}
+	\label{gambar:afterclm}
 \end{figure}
 
-\subsection{Explainable CNN}
 Pada penelitian ini, arsitektur model dirancang melalui beberapa tahapan utama yang mencakup ekstraksi fitur menggunakan lapisan konvolusi, normalisasi, klasifikasi, hingga tahap optimasi komponen jaringan menggunakan metode pemangkasan berbasis \textit{Explainable AI} (XAI).
 
 \begin{enumerate}
@@ -224,28 +240,25 @@ Pada penelitian ini, arsitektur model dirancang melalui beberapa tahapan utama y
 	Sebagai langkah optimasi utama, model yang telah dilatih kemudian dianalisis menggunakan metode \textit{Explainable AI} (XAI) berbasis \textit{Gradient-weighted Class Activation Mapping} (Grad-CAM) untuk mengevaluasi tingkat kepentingan setiap lapisannya. Lapisan-lapisan yang memiliki nilai rata-rata kepentingan di bawah ambang batas (\textit{threshold}) dan dianggap kurang berkontribusi akan dihapus dari arsitektur secara sistematis. Setelah lapisan yang tidak penting dihilangkan, model dilatih kembali (\textit{retraining}) untuk menghasilkan arsitektur akhir yang tidak terlalu kompleks, lebih efisien, dan sangat terfokus pada fitur tumor yang relevan.
 \end{enumerate}
 
-\subsection{Hybrid model}
-Pada bagian ini, diuraikan arsitektur model yang menggabungkan fitur \textit{deep learning} dan fitur buatan tangan (\textit{hand-crafted}) untuk proses klasifikasi citra medis.
+\subsection{Explainable CNN}
 
-\begin{enumerate}
-	\item Lapisan Ekstraksi Fitur \textit{Deep Learning}:
-	Lapisan ekstraksi fitur pertama menggunakan dua arsitektur \textit{Convolutional Neural Network} (CNN) yang sudah dilatih sebelumnya (\textit{pre-trained}), yaitu ResNet50 dan AlexNet. Kedua model ini beroperasi sebagai ekstraktor fitur tetap untuk menangkap pola semantik tingkat tinggi dari gambar CT \textit{scan}. ResNet50 digunakan untuk mengekstraksi 2.048 dimensi fitur, sedangkan AlexNet mengekstraksi 9.216 dimensi fitur.
-	
-	\item Lapisan Ekstraksi Fitur Buatan Tangan (\textit{Hand-crafted}):
-	Bersamaan dengan fitur \textit{deep learning}, model ini menggunakan lapisan ekstraksi fitur klasik yang berfokus pada detail tekstur dan bentuk lokal. Teknik \textit{Local Binary Pattern} (LBP) digunakan untuk menghasilkan 65.536 fitur, sementara \textit{Histogram of Oriented Gradients} (HOG) menghasilkan 72.900 fitur. Kedua teknik ini kemudian dilengkapi dengan fitur intensitas median (\textit{median intensity}) untuk meningkatkan ketahanan model terhadap \textit{noise} atau gangguan visual pada gambar.
-	
-	\item Lapisan Seleksi dan Fusi Fitur:
-	Karena jumlah fitur awal sangat besar, fitur-fitur LBP dan HOG dilewatkan pada lapisan seleksi menggunakan algoritma \textit{SelectKBest}. Algoritma ini menyeleksi 10.000 fitur klasik terbaik untuk mencegah beban komputasi dan \textit{overfitting}. Ke-10.000 fitur terpilih ini kemudian digabungkan (dikonkatenasi) secara langsung dengan fitur intensitas median serta \textit{output} dari ResNet50 dan AlexNet, menghasilkan satu vektor fitur hibrida komprehensif berdimensi 21.265.
-	
-	\item Lapisan Tersembunyi (\textit{Hidden Layers}) MLP:
-	Vektor fitur gabungan berdimensi 21.265 tersebut kemudian dimasukkan ke dalam jaringan saraf tiruan \textit{Multilayer Perceptron} (MLP) untuk tahap klasifikasi. MLP ini dirancang dengan lima lapisan \textit{Dense} (lapisan tersembunyi) yang ukurannya semakin mengecil. Secara berurutan, lapisan-lapisan ini terdiri dari 1.024 neuron, 512 neuron, 256 neuron, 64 neuron, dan terakhir 4 neuron.
-	
-	\item Lapisan Aktivasi dan Regularisasi:
-	Pada setiap lapisan tersembunyi MLP, fungsi aktivasi \textit{Rectified Linear Unit} (ReLU) diterapkan agar model mampu mempelajari pola data \textit{non-linear} yang sangat rumit. Untuk menjaga stabilitas model selama masa pelatihan, disematkan 4 lapisan \textit{Batch Normalization}. Model ini juga menggunakan lapisan \textit{Dropout} dengan rasio 0,3 yang secara acak menonaktifkan sebagian neuron guna memastikan model tidak menghafal data (\textit{overfitting}).
-	
-	\item Lapisan \textit{Output} (Klasifikasi Akhir):
-	Lapisan paling ujung dari keseluruhan arsitektur ini adalah lapisan \textit{output} yang terdiri dari 4 neuron. Lapisan ini menggunakan fungsi aktivasi \textit{Softmax} untuk mengubah hasil perhitungan matematis menjadi distribusi probabilitas. Berdasarkan probabilitas tertinggi tersebut, model akan mengklasifikasikan gambar CT \textit{scan} ke dalam salah satu dari empat kelas: \textit{Glioma}, \textit{Meningioma}, tumor \textit{Pituitary}, atau jaringan otak \textit{Normal}.
-\end{enumerate}
+%\begin{figure}[h]
+%	\centering
+%	\captionsetup{justification=centering}
+%	\includegraphics[width=0.7\textwidth]{images/before_exp_cnn.png}
+%	\caption{Arsitektur Model CNN + ANN}
+%	\label{gambar:beforeexpcnn}
+%\end{figure}
+
+\subsection{EfficientNetB0}
+
+%\begin{figure}[h]
+%	\centering
+%	\captionsetup{justification=centering}
+%	\includegraphics[width=0.7\textwidth]{images/before_exp_cnn.png}
+%	\caption{Arsitektur Model CNN + ANN}
+%	\label{gambar:beforetransferlearning}
+%\end{figure}
 
 \subsection{hyperparameter \textit{tuning}}
 Pemilihan hyperparameter tidak memiliki standar universal yang menjamin hasil optimal untuk setiap tugas klasifikasi. Berdasarkan penelitian Wojciuk dkk. (2024), meskipun learning rate dan ukuran gambar input secara umum memberikan dampak terbesar pada performa model, tingkat signifikansi dari hyperparameter sangat bervariasi bergantung pada karakteristik dataset yang digunakan. hyperparameter \textit{tuning} yang dilakukan adalah sebagai berikut.
@@ -300,28 +313,18 @@ Untuk menilai kinerja klasifikasi model, penelitian ini menggunakan evaluasi yan
 \end{enumerate}
 
 \subsection{Evaluasi XAI}
-Evaluasi terhadap \textit{Explainable Artificial Intelligence} (XAI) bertujuan untuk memastikan bahwa model tidak hanya akurat, tetapi juga transparan, dapat diinterpretasikan, dan dapat dipercaya untuk adopsi di dunia nyata.
-
-Dalam proyek ini, metode \textit{saliency} berbasis aktivasi, yaitu Grad-CAM (\textit{Gradient-weighted Class Activation Mapping}), akan digunakan untuk menghasilkan penjelasan (\textit{local explanation}). Evaluasi kualitas dari penjelasan Grad-CAM ini akan dilakukan dengan mengacu pada taksonomi evaluasi \autocite{kadir2023evaluation} sebagai berikut:
+Evaluasi terhadap \textit{Explainable Artificial Intelligence} (XAI) bertujuan untuk memastikan bahwa model tidak hanya akurat, tetapi juga transparan, dapat diinterpretasikan, dan dapat dipercaya untuk adopsi di dunia nyata. Evaluasi kualitas dari penjelasan XAI ini akan dilakukan sebagai berikut:
 
 \begin{enumerate}
-	\item Konsep yang Diuji (Berdasarkan Aplikasi):\\
-	Konsep yang diuji adalah \textit{local explanation} dan turunannya, yaitu \textit{attribution} atau \textit{saliency} untuk mengukur sejauh mana masukan memengaruhi keluaran. Tujuannya adalah memastikan bahwa \textit{heatmap} yang dihasilkan secara valid menunjuk pada area tumor yang sebenarnya di citra.
+	\item \textit{Ground Truth Comparison}\\
+	Penelitian ini menerapkan metrik XAlign yang diusulkan oleh \textcite{muhammad2025heatmap} dengan penjelasan yang dapat dilihat pada Bab \ref{chap:studi-literatur}. Skor XAlign akan dihitung untuk setiap hasil prediksi Grad-CAM menggunakan persamaan:
+	\begin{equation}
+		XAlign = \alpha \cdot WRO + \beta \cdot BAS - \gamma \cdot DP
+	\end{equation}
+	Nilai bobot akan diatur mengikuti konfigurasi standar berdasarkan penelitian tersebut, yaitu $\alpha=0,5$, $\beta=0,4$, dan $\gamma=0,1$. Skor XAlign yang mendekati 1,0 akan mengindikasikan bahwa Grad-CAM berhasil menghasilkan penjelasan yang sangat selaras dengan diagnosis klinis.
 	
-	\item Metodologi Evaluasi (Berdasarkan Teknik):\\
-	Untuk menilai kualitas \textit{local explanation} dari Grad-CAM, penelitian ini akan berfokus pada pendekatan \textit{ground truth comparison} yang dilakukan secara kuantitatif menggunakan metrik khusus XAI \autocite{kadir2023evaluation}.
+	Sebagai kriteria keberhasilan, penelitian ini mengacu pada performa Grad-CAM yang dilaporkan dalam studi literatur pada \textit{dataset} neuro-onkologi (TCGA-LGG). Metode yang digunakan mencatat skor rata-rata XAlign sebesar $64,1\%$ \autocite{muhammad2025heatmap}. Oleh karena itu, tugas akhir ini menargetkan capaian skor XAlign $\geq 0,641$ sebagai batas minimal validitas penjelasan yang dihasilkan model.
 	
-	\begin{enumerate}
-		\item \textit{Ground Truth Comparison}\\
-		Penelitian ini menerapkan metrik XAlign yang diusulkan oleh \textcite{muhammad2025heatmap} dengan penjelasan yang dapat dilihat pada Bab \ref{chap:studi-literatur}. Skor XAlign akan dihitung untuk setiap hasil prediksi Grad-CAM menggunakan persamaan:
-		\begin{equation}
-			XAlign = \alpha \cdot WRO + \beta \cdot BAS - \gamma \cdot DP
-		\end{equation}
-		Nilai bobot akan diatur mengikuti konfigurasi standar berdasarkan penelitian tersebut, yaitu $\alpha=0,5$, $\beta=0,4$, dan $\gamma=0,1$. Skor XAlign yang mendekati 1,0 akan mengindikasikan bahwa Grad-CAM berhasil menghasilkan penjelasan yang sangat selaras dengan diagnosis klinis.
-		
-		Sebagai kriteria keberhasilan, penelitian ini mengacu pada performa Grad-CAM yang dilaporkan dalam studi literatur pada \textit{dataset} neuro-onkologi (TCGA-LGG). Metode yang digunakan mencatat skor rata-rata XAlign sebesar $64,1\%$ \autocite{muhammad2025heatmap}. Oleh karena itu, tugas akhir ini menargetkan capaian skor XAlign $\geq 0,641$ sebagai batas minimal validitas penjelasan yang dihasilkan model.
-		
-		\item \textit{Visual Validation} (Evaluasi Kualitatif)\\
-		Sebagai pelengkap data kuantitatif XAlign, perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis kasus per kasus, khususnya pada prediksi \textit{false positive}.
-	\end{enumerate}
+	\item \textit{Visual Validation} (Evaluasi Kualitatif)\\
+	Sebagai pelengkap data kuantitatif XAlign, perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis kasus per kasus, khususnya pada prediksi \textit{false positive}.
 \end{enumerate}
