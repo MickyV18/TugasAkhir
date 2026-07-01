@@ -1,0 +1,327 @@
+% ==========================================
+% BAB IV PERANCANGAN
+% ==========================================
+\cleardoublepage
+\chapter{PERANCANGAN}
+\label{chap:perancangan}
+
+\section{\textit{Data Understanding}}
+Selain modifikasi arsitektur, penyesuaian juga dilakukan pada \textit{dataset} yang digunakan. \textit{Dataset} yang digunakan dalam tugas akhir ini merupakan gabungan dari dua sumber data yang berbeda untuk menciptakan kumpulan data yang dapat digunakan untuk klasifikasi tumor otak serta segmentasi tumor otak.
+
+\begin{enumerate}
+	\item \textit{Dataset} Otak CT \textit{Scan} tanpa \textit{Mask} Tumor
+	
+	Untuk melatih dan memvalidasi model, Tugas Akhir ini mengumpulkan datast melalui website Radiopaedia. Radiopaedia merupakan repositori kasus pencitraan medis yang mencakup berbagai modalitas, seperti CT-scan dan MRI. Meskipun terbuka dari komunitas medis, seluruh draf artikel dan kasus klinis yang diunggah dapat dilakukan \textit{peer-review} dan harus melewati proses divalidasi oleh para ahli radiologi profesional yang bekerja sama dengan Radiopaedia. Proses verifikasi ini memastikan bahwa setiap data gambar yang tersedia memiliki diagnosis patologi yang akurat dan anotasi klinis yang dapat dipertanggungjawabkan.
+	
+	Dalam pengumpulan data, dilakukan pencarian secara manual dengan beberapa kata kunci yang dibagi menjadi dua, yaitu normal dan kelas penyakit (glioma dan meningioma). Pada pencarian tersebut, terdapat \textit{filter} modalitas pencitraan berupa CT \textit{scan}) dan dengan bidang \textit{Axial} \textit{non-contrast}. Setelah dilakukan pencarian, dilakukan pengunduhan secara manual dengan melihat letak tumor dari gambar lain, seperti MRI atau anotasi pada gambar yang lain. Dalam pengunduhan, dilakukan pemisahan folder untuk tempat setiap kelas yang akan dijadikan bahan untuk pelatihan dan tes model.
+	
+	\item \textit{Dataset} Otak CT \textit{Scan} dengan Tumor dan \textit{Mask} Tumor
+	
+	Untuk \textit{Dataset} Otak dengan Tumor dan \textit{Mask} Tumor, tugas akhir ini menggunakan \textit{dataset} \textit{Unpaired MR-CT Brain Dataset for Unsupervised Image Translation} \cite{AlKadi2022Unpaired}. \textit{Dataset} ini digunakan sebagai \textit{ground truth} untuk kebutuhan validasi XAI. Spesifikasi dari \textit{dataset} yang digunakan adalah:
+	
+	\begin{enumerate}
+		\item Sumber: Jordan University Hospital (via Mendeley Data).
+		\item Kondisi Medis: Patologis (tumor otak).
+		\item Format Data: Citra 2D (DICOM).
+		\item Resolusi Citra: 256 $\times$ 256 piksel.
+		\item Representasi Piksel: 8-\textit{bit} (0-255) yang telah diterapkan filter \textit{smooth} dan \textit{sharp}.
+		\item Ketebalan \textit{Slice}: 7,0 mm.
+		\item Jumlah Sampel: 89 citra CT bidang aksial.
+	\end{enumerate}
+	
+	\item \textit{Dataset} Otak MRI
+
+\end{enumerate}
+
+\section{\textit{Data} \textit{Preparation}}
+Dalam melakukan preprarasi pada semua dataset, terdapat \textit{preprocessing} yang dilakukan agar data menjadi seragam dan  \textit{preprocessing} tambahan yang dilakukan untuk eksperimen agar model bisa mendeteksi tumor lebih baik. 
+
+\subsection{\textit{Preprocessing} Umum}
+Pada penelitian ini, tahap \textit{preprocessing} umum diterapkan pada seluruh citra masukan 
+untuk memastikan kompatibilitas format dasar dengan arsitektur model yang akan digunakan.
+\begin{enumerate}
+	\item Standardisasi Format dan Saluran:
+	Citra masukan yang didapatkan dari berbagai sumber memiliki format yang bervariasi 
+	(misalnya \textit{grayscale} atau RGB). Seluruh citra diseragamkan menjadi format 
+	\textit{Red-Green-Blue} (RGB) dengan 3 saluran (\textit{channels}). Penyesuaian ini 
+	diwajibkan karena sebagian besar arsitektur CNN menerima dimensi masukan awal dengan 
+	3 saluran warna.
+	
+	\item Penyesuaian Dimensi dan \textit{Padding}:
+	Seluruh citra diubah dimensinya menjadi ukuran yang seragam (sebagai contoh $224 \times 224$ 
+	atau $256 \times 256$ piksel). Untuk mencegah distorsi rasio aspek anatomis jaringan otak 
+	akibat pemampatan (\textit{squishing}), teknik \textit{padding} digunakan. Piksel bernilai 
+	nol (hitam) ditambahkan pada sisi citra yang lebih pendek sehingga citra menjadi berbentuk 
+	persegi secara proporsional sebelum dilakukan penyesuaian ukuran. Hasil akhir disimpan 
+	sebagai file PNG dalam format \textit{unsigned integer} 8-bit (uint8) dengan rentang nilai 
+	piksel $[0, 255]$.
+	
+	\item Normalisasi Intensitas:
+	Normalisasi intensitas \textbf{tidak} dilakukan pada tahap penyimpanan \textit{file} 
+	ini. Citra disimpan dalam format uint8 RGB $[0, 255]$ murni guna menjaga informasi 
+	kecerahan absolut antarcitra. Sebagai gantinya, statistik normalisasi global berupa 
+	nilai \textit{mean} dan \textit{standard deviation} ($\sigma$) per kanal dihitung 
+	secara \textit{streaming} dari seluruh \textit{train set} dan disimpan ke dalam berkas 
+	\texttt{norm\_stats.json}. Statistik ini dihitung \textbf{hanya} dari \textit{train set} 
+	untuk mencegah \textit{data leakage} dari data validasi maupun pengujian. Normalisasi 
+	kemudian diterapkan oleh \textit{dataloader} pada \textit{notebook} berikutnya 
+	menggunakan metode standardisasi (\textit{Z-score normalization}) dengan persamaan 
+	matematis berikut:
+	\begin{equation}
+		X_{norm} = \frac{X / 255{,}0 - \mu}{\sigma}
+	\end{equation}
+	di mana $\mu$ adalah \textit{mean} dan $\sigma$ adalah \textit{standard deviation} 
+	per kanal dari \textit{train set}. Proses ini memastikan normalisasi yang konsisten 
+	antara fase pelatihan (\textit{training}) dan inferensi (\textit{inference}), sekaligus 
+	menstabilkan pembaruan bobot (\textit{weight updates}) saat proses pelatihan model CNN.
+	
+	\item Seleksi \textit{Region of Interest} (ROI):
+	Citra MRI umumnya mengandung latar belakang gelap yang tidak berkontribusi 
+	pada proses klasifikasi. Mengacu pada metodologi Islam et al. \cite{islam2024deepfusion}, 
+	seleksi ROI dilakukan melalui dua tahap. Pertama, citra dikonversi ke 
+	\textit{grayscale} menggunakan persamaan:
+	\begin{equation}
+		I_g = 0{,}299 \cdot I_R + 0{,}587 \cdot I_G + 0{,}114 \cdot I_B
+	\end{equation}
+	Kedua, \textit{thresholding} Otsu diterapkan pada citra \textit{grayscale} 
+	untuk memisahkan \textit{foreground} dari \textit{background} secara otomatis 
+	dengan meminimalkan varian intra-kelas. \textit{Bounding box} terkecil yang 
+	mencakup seluruh kontur \textit{foreground} yang valid kemudian dihitung, 
+	dan area tersebut di-\textit{crop} dari citra RGB asli sebagai ROI. 
+	Pada kasus di mana tidak ditemukan kontur yang valid (ukuran crop $< 32 \times 32$ 
+	piksel), citra penuh digunakan sebagai \textit{fallback}.
+\end{enumerate}
+
+\subsection{\textit{Preprocessing} Eksperimen}
+Preprocessing tambahan dilakukan sesuai dengan beberapa artikel yang tersedia, yaitu sebagai berikut.
+
+\begin{enumerate}
+	\item clahe + Gaussian \textit{denoise} (\textcite{putra2025enhanced})
+	
+	Pemfilteran Gaussian (Gaussian \textit{filtering}) diterapkan pada tahap \textit{denoising} dengan tujuan utama untuk menekan derau frekuensi tinggi (\textit{high-frequency noise}) pada citra MRI. Penerapan filter ini secara langsung dapat meningkatkan rasio sinyal terhadap derau (\textit{signal-to-noise ratio}) pada tekstur gambar. Melalui pengurangan derau ini, representasi visual dari margin (tepi) tumor menjadi lebih jelas dan tingkat kecerahan di seluruh irisan gambar menjadi lebih seragam, sehingga model \textit{Convolutional Neural Network} (CNN) mampu mengekstraksi fitur-fitur tekstur dengan jauh lebih efektif.
+	
+	Contrast Limited Adaptive Histogram Equalization (CLAHE) diterapkan pada tahap prapemrosesan (\textit{preprocessing}) untuk meningkatkan kontras lokal pada citra. Teknik algoritma ini berfungsi untuk menonjolkan batas-batas tumor secara efektif tanpa ikut mengamplifikasi derau (\textit{noise}) di sekitarnya. Dengan mengoptimalkan kontras secara lokal, penggunaan CLAHE yang digabungkan dengan normalisasi dan reduksi derau memungkinkan jaringan model \textit{deep learning} untuk menangkap fitur-fitur tekstur tumor yang sangat halus (\textit{fine-grained}) dengan lebih akurat.
+		
+	\item clahe + Wavelet \textit{denoise} (\textcite{flower2025performance})
+	Filter Wavelet merupakan sebuah teknik untuk reduksi derau yang bekerja dengan cara mendekomposisi gambar ke dalam berbagai pita frekuensi menggunakan transformasi wavelet. Mekanisme ini memungkinkan dilakukannya analisis lokal pada komponen waktu maupun frekuensi secara bersamaan, sehingga sangat berguna untuk menangkap fitur transien dan mengurangi derau. Metode ini sangat disukai dalam pemrosesan citra karena kemampuannya yang unggul dalam mempertahankan tepi (\textit{edges}) dan struktur penting pada anatomi sekaligus secara efektif menghilangkan derau yang tidak diinginka.
+	
+	CLAHE adalah versi tingkat lanjut dari teknik ekualisasi histogram yang berfungsi untuk meningkatkan kualitas visual dan interpretasi citra. Metode ini beroperasi secara lokal dengan cara membagi citra menjadi wilayah-wilayah yang lebih kecil, yang disebut sebagai \textit{tiles}, lalu menerapkan ekualisasi histogram secara spesifik di dalam setiap \textit{tile} tersebut. Mekanisme pembagian wilayah ini membantu mencegah terjadinya amplifikasi derau yang berlebihan (\textit{over-amplification of noise}) dan mampu meningkatkan detail lokal tanpa memunculkan artefak visual. Teknik ini dinilai sangat bermanfaat ketika memproses pemindaian MRI yang memiliki wilayah heterogen, contohnya pada area yang memiliki struktur gelap dan terang secara bersamaan.
+\end{enumerate}
+
+\subsection{Augmentasi}
+Berdasarkan \autocite{goceri2023medical}, menggabungkan beberapa proses augmentasi 
+secara berurutan terbukti memberikan performa klasifikasi yang lebih tinggi dibandingkan 
+dengan augmentasi tunggal. Pada penelitian ini, diterapkan lima metode augmentasi 
+geometris yang dijalankan hanya pada data \textit{training}, dengan setiap gambar asli 
+menghasilkan 10 salinan (2 salinan per metode), sehingga total dataset \textit{training} 
+menjadi 11 kali lipat data asli. Seluruh piksel yang keluar \textit{frame} akibat 
+transformasi diisi menggunakan refleksi tepi (\texttt{BORDER\_REFLECT\_101}) agar tidak 
+terdapat artefak hitam yang dapat mengganggu fitur medis. 
+
+\begin{enumerate}
+	\item \textit{Shearing} Tunggal
+	
+	Pada metode ini, citra mengalami distorsi sudut pada sumbu $x$ dan $y$ secara independen 
+	dengan sudut yang dipilih secara acak dari rentang $-15^\circ$ hingga $15^\circ$. Pusat 
+	transformasi ditetapkan di tengah citra agar lesi tidak bergeser jauh dari posisi aslinya. 
+	Metode ini merupakan augmentasi tunggal yang paling tidak efisien apabila diaplikasikan 
+	secara tersendiri tanpa dikombinasikan dengan transformasi lain 
+	\autocite{goceri2023medical}.
+	
+	\item Rotasi Tunggal
+	
+	Citra dirotasi searah atau berlawanan arah jarum jam dengan sudut acak dari rentang 
+	$-25^\circ$ hingga $25^\circ$, berpusat di tengah citra. Rotasi umumnya aman diterapkan 
+	pada citra medis karena lesi dapat muncul pada berbagai orientasi, sehingga model 
+	jaringan dapat belajar mengenali fitur yang tidak bergantung pada orientasi tertentu.
+	
+	\item Rotasi $\to$ Translasi
+	
+	Metode ini menerapkan dua transformasi secara berurutan:
+	\begin{itemize}
+		\item Rotasi: Citra dirotasi terlebih dahulu dengan sudut acak dari rentang 
+		$-25^\circ$ hingga $25^\circ$ untuk mensimulasikan variasi sudut akuisisi pencitraan.
+		
+		\item Translasi (Pergeseran): Hasil rotasi kemudian digeser pada sumbu $x$ 
+		dan $y$ dengan nilai acak dari rentang $-15$ hingga $15$ piksel untuk mensimulasikan 
+		variasi posisi pasien saat pencitraan.
+	\end{itemize}
+	
+	\item Translasi $\to$ \textit{Shearing}
+	
+	Berdasarkan \autocite{goceri2023medical}, kombinasi translasi dan \textit{shearing} 
+	merupakan pendekatan yang terbukti memberikan performa tertinggi dalam klasifikasi citra 
+	\textit{CT scan} paru. Kombinasi ini bekerja dengan menerapkan dua transformasi geometris 
+	secara berurutan:
+	\begin{itemize}
+		\item Translasi (Pergeseran): Citra digeser pada sumbu $x$ dan $y$ 
+		menggunakan nilai yang diambil secara acak dari rentang $-15$ hingga $15$ piksel. 
+		Langkah ini berguna untuk mencegah \textit{bias} posisional, sehingga model tidak 
+		terpaku pada properti di satu lokasi spasial tunggal.
+		
+		\item \textit{Shearing} (Distorsi Sudut): Setelah ditranslasi, citra 
+		kemudian diberikan efek distorsi pada sumbu $x$ dan $y$ dengan sudut yang dipilih 
+		secara acak antara $-15^\circ$ hingga $15^\circ$ untuk mensimulasikan variasi 
+		proyeksional.
+	\end{itemize}
+	Berdasarkan pengujian kuantitatif dalam artikel tersebut, metode ini berhasil menghasilkan 
+	tingkat akurasi sebesar 85.74\%, sensitivitas 86.16\%, dan spesifisitas 97.65\% pada 
+	klasifikasi citra \textit{CT scan} paru.
+	
+	\item Translasi $\to$ \textit{Shearing} $\to$ Rotasi
+	
+	Metode ini merupakan kombinasi tiga transformasi geometris yang diterapkan secara 
+	berurutan, menjadikannya metode augmentasi paling komprehensif dalam penelitian ini:
+	\begin{itemize}
+		\item Translasi: Citra digeser secara acak dalam rentang $-15$ hingga $15$ 
+		piksel pada kedua sumbu untuk mensimulasikan variasi posisi.
+		
+		\item \textit{Shearing}: Citra yang telah digeser kemudian didistorsi 
+		dengan sudut acak antara $-15^\circ$ hingga $15^\circ$ untuk mensimulasikan variasi 
+		proyeksional.
+		
+		\item Rotasi: Terakhir, citra dirotasi dengan sudut acak dari rentang 
+		$-25^\circ$ hingga $25^\circ$ untuk mensimulasikan variasi orientasi akuisisi 
+		pemindaian.
+		
+	\end{itemize}
+	
+	Kombinasi ketiga transformasi ini terbukti menjadi pendekatan paling tepat untuk 
+	augmentasi citra \textit{MR} otak dalam meningkatkan klasifikasi kasus HGG dan LGG, 
+	dengan akurasi sebesar 88.24\%, sensitivitas 90.48\%, dan spesifisitas 97.13\% 
+	\autocite{goceri2023medical}.
+\end{enumerate}
+
+\section{Modelling}
+
+Penelitian yang dilakukan oleh \textcite{wozniak2021deep} mengusulkan sebuah \textit{Correlation Learning Mechanism} (CLM) yang mengombinasikan \textit{Convolutional Neural Network} (CNN) dengan \textit{Artificial Neural Network} (ANN).
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.7\textwidth]{images/ArchitectureSesudah.png}
+	\caption{Arsitektur Model CNN + ANN}
+	\label{gambar:kondisisesudah}
+\end{figure}
+
+\subsection{Explainable CNN}
+Pada penelitian ini, arsitektur model dirancang melalui beberapa tahapan utama yang mencakup ekstraksi fitur menggunakan lapisan konvolusi, normalisasi, klasifikasi, hingga tahap optimasi komponen jaringan menggunakan metode pemangkasan berbasis \textit{Explainable AI} (XAI).
+
+\begin{enumerate}
+	\item Lapisan Masukan (\textit{Input Layer}):
+	Model ini menerima masukan berupa citra medis \textit{Magnetic Resonance Imaging} (MRI) otak dalam format warna \textit{Red-Green-Blue} (RGB) yang dimensinya telah diseragamkan terlebih dahulu menjadi ukuran $224 \times 224 \times 3$ piksel. Penyeragaman dimensi ini ditujukan untuk memastikan keselarasan seluruh data masukan sebelum memasuki tahapan ekstraksi fitur.
+	
+	\item Lapisan Konvolusi dan \textit{Max Pooling}:
+	Tahap ekstraksi fitur menggunakan serangkaian lapisan konvolusi dengan jumlah filter yang meningkat secara bertahap, yaitu 8, 16, 32, 64, 128, dan 256 filter. Seluruh lapisan konvolusi ini menerapkan ukuran kernel $3 \times 3$, \textit{padding} 'same' untuk menjaga dimensi spasial, dan fungsi aktivasi \textit{Rectified Linear Unit} (ReLU) untuk menangkap pola gambar yang kompleks. Setelah setiap lapisan konvolusi, terdapat lapisan \textit{Max Pooling} yang berfungsi untuk memperkecil ukuran peta fitur (\textit{down-sampling}) sebesar faktor 2 guna mengurangi beban komputasi model.
+	
+	\item Lapisan Normalisasi dan \textit{Average Pooling}:
+	Setelah melewati keseluruhan rangkaian konvolusi dan \textit{max pooling}, arsitektur menambahkan lapisan \textit{Batch Normalization} yang berfungsi untuk menormalkan hasil aktivasi dari fitur yang diekstrak. Kemudian, peta fitur tersebut diturunkan kembali dimensinya dengan dilewatkan pada lapisan \textit{Average Pooling}.
+	
+	\item Lapisan \textit{Fully Connected} (Klasifikasi):
+	Peta fitur yang masih berupa multi-dimensi diratakan menjadi vektor satu dimensi (1D) oleh lapisan \textit{Flatten}. Vektor ini kemudian diteruskan ke dalam dua lapisan \textit{Dense} secara berurutan, di mana masing-masing lapisan memiliki 512 neuron dan menggunakan fungsi aktivasi \textit{ReLU}. Pada tahap paling akhir, sebuah lapisan \textit{Dense} dengan fungsi aktivasi \textit{Softmax} digunakan untuk mengeluarkan distribusi probabilitas yang mengklasifikasikan citra ke dalam empat kelas: \textit{Meningioma}, \textit{Glioma}, \textit{Pituitary}, dan \textit{NoTumor}.
+	
+	\item Pemangkasan Arsitektur Berbasis XAI:
+	Sebagai langkah optimasi utama, model yang telah dilatih kemudian dianalisis menggunakan metode \textit{Explainable AI} (XAI) berbasis \textit{Gradient-weighted Class Activation Mapping} (Grad-CAM) untuk mengevaluasi tingkat kepentingan setiap lapisannya. Lapisan-lapisan yang memiliki nilai rata-rata kepentingan di bawah ambang batas (\textit{threshold}) dan dianggap kurang berkontribusi akan dihapus dari arsitektur secara sistematis. Setelah lapisan yang tidak penting dihilangkan, model dilatih kembali (\textit{retraining}) untuk menghasilkan arsitektur akhir yang tidak terlalu kompleks, lebih efisien, dan sangat terfokus pada fitur tumor yang relevan.
+\end{enumerate}
+
+\subsection{Hybrid model}
+Pada bagian ini, diuraikan arsitektur model yang menggabungkan fitur \textit{deep learning} dan fitur buatan tangan (\textit{hand-crafted}) untuk proses klasifikasi citra medis.
+
+\begin{enumerate}
+	\item Lapisan Ekstraksi Fitur \textit{Deep Learning}:
+	Lapisan ekstraksi fitur pertama menggunakan dua arsitektur \textit{Convolutional Neural Network} (CNN) yang sudah dilatih sebelumnya (\textit{pre-trained}), yaitu ResNet50 dan AlexNet. Kedua model ini beroperasi sebagai ekstraktor fitur tetap untuk menangkap pola semantik tingkat tinggi dari gambar CT \textit{scan}. ResNet50 digunakan untuk mengekstraksi 2.048 dimensi fitur, sedangkan AlexNet mengekstraksi 9.216 dimensi fitur.
+	
+	\item Lapisan Ekstraksi Fitur Buatan Tangan (\textit{Hand-crafted}):
+	Bersamaan dengan fitur \textit{deep learning}, model ini menggunakan lapisan ekstraksi fitur klasik yang berfokus pada detail tekstur dan bentuk lokal. Teknik \textit{Local Binary Pattern} (LBP) digunakan untuk menghasilkan 65.536 fitur, sementara \textit{Histogram of Oriented Gradients} (HOG) menghasilkan 72.900 fitur. Kedua teknik ini kemudian dilengkapi dengan fitur intensitas median (\textit{median intensity}) untuk meningkatkan ketahanan model terhadap \textit{noise} atau gangguan visual pada gambar.
+	
+	\item Lapisan Seleksi dan Fusi Fitur:
+	Karena jumlah fitur awal sangat besar, fitur-fitur LBP dan HOG dilewatkan pada lapisan seleksi menggunakan algoritma \textit{SelectKBest}. Algoritma ini menyeleksi 10.000 fitur klasik terbaik untuk mencegah beban komputasi dan \textit{overfitting}. Ke-10.000 fitur terpilih ini kemudian digabungkan (dikonkatenasi) secara langsung dengan fitur intensitas median serta \textit{output} dari ResNet50 dan AlexNet, menghasilkan satu vektor fitur hibrida komprehensif berdimensi 21.265.
+	
+	\item Lapisan Tersembunyi (\textit{Hidden Layers}) MLP:
+	Vektor fitur gabungan berdimensi 21.265 tersebut kemudian dimasukkan ke dalam jaringan saraf tiruan \textit{Multilayer Perceptron} (MLP) untuk tahap klasifikasi. MLP ini dirancang dengan lima lapisan \textit{Dense} (lapisan tersembunyi) yang ukurannya semakin mengecil. Secara berurutan, lapisan-lapisan ini terdiri dari 1.024 neuron, 512 neuron, 256 neuron, 64 neuron, dan terakhir 4 neuron.
+	
+	\item Lapisan Aktivasi dan Regularisasi:
+	Pada setiap lapisan tersembunyi MLP, fungsi aktivasi \textit{Rectified Linear Unit} (ReLU) diterapkan agar model mampu mempelajari pola data \textit{non-linear} yang sangat rumit. Untuk menjaga stabilitas model selama masa pelatihan, disematkan 4 lapisan \textit{Batch Normalization}. Model ini juga menggunakan lapisan \textit{Dropout} dengan rasio 0,3 yang secara acak menonaktifkan sebagian neuron guna memastikan model tidak menghafal data (\textit{overfitting}).
+	
+	\item Lapisan \textit{Output} (Klasifikasi Akhir):
+	Lapisan paling ujung dari keseluruhan arsitektur ini adalah lapisan \textit{output} yang terdiri dari 4 neuron. Lapisan ini menggunakan fungsi aktivasi \textit{Softmax} untuk mengubah hasil perhitungan matematis menjadi distribusi probabilitas. Berdasarkan probabilitas tertinggi tersebut, model akan mengklasifikasikan gambar CT \textit{scan} ke dalam salah satu dari empat kelas: \textit{Glioma}, \textit{Meningioma}, tumor \textit{Pituitary}, atau jaringan otak \textit{Normal}.
+\end{enumerate}
+
+\subsection{hyperparameter \textit{tuning}}
+Pemilihan hyperparameter tidak memiliki standar universal yang menjamin hasil optimal untuk setiap tugas klasifikasi. Berdasarkan penelitian Wojciuk dkk. (2024), meskipun learning rate dan ukuran gambar input secara umum memberikan dampak terbesar pada performa model, tingkat signifikansi dari hyperparameter sangat bervariasi bergantung pada karakteristik dataset yang digunakan. hyperparameter \textit{tuning} yang dilakukan adalah sebagai berikut.
+\begin{enumerate}
+	\item \textit{Learning Rate} (0.0001, 0.001, 0.01):
+	Pada penelitian Wojciuk dkk. (2024), \textit{learning rate} yang diuji memiliki nilai antara 0.0001 hingga 0.03. Artikel tersebut mencatat bahwa \textit{learning rate} dengan nilai yang lebih rendah umumnya berkorelasi dengan performa model yang lebih tinggi.
+	
+	\item \textit{Batch Size} (16, 32, 64):
+	Berdasarkan penelitian Wojciuk dkk. (2024), \textit{batch size} yang dicoba memiliki nilai 16, 32, dan 64. Walaupun artikel menemukan bahwa \textit{batch size} memiliki dampak yang sangat minim pada akurasi, artikel tersebut juga menjelaskan bahwa signifikansi parameter terhadap model bergantung kepada dataset yang digunakan sehingga dapat dilakukan eksperimen terhadap parameter-parameter lain.
+	
+	\item \textit{Dropout Rate} (0.1, 0.2, 0.3):
+	Di sinilah terdapat perbedaan yang patut dicatat. Artikel Wojciuk dkk. menguji rentang 0.01 hingga 0.4 dan menemukan bahwa performa terbaik biasanya berada di rentang 0.1 hingga 0.3. Namun, nilai yang Anda pilih (terutama 0.5) sebenarnya merupakan standar yang sangat umum digunakan untuk arsitektur klasifikasi citra medis. Untuk tugas dengan kompleksitas fitur yang tinggi seperti deteksi tumor otak pada CT-\textit{Scan}, \textit{dropout} yang lebih besar sering kali diperlukan agar model tidak \textit{overfitting} terhadap pola spesifik dari data latih. 
+\end{enumerate}
+
+\subsection{Explainable AI}
+
+Pada tugas akhir ini, terdapat modifikasi arsitektur terutama dalam \textit{palettes generator}. \textit{Palettes generator} yang terdapat pada sistem saat ini diganti menggunakan XAI yang akan memberikan penjelasan yang lebih baik. Terdapat penambahan arsitektur yang akan dilakukan, yaitu \cite{Cea2017GradCAM}:
+
+\begin{enumerate}
+	\item Pengambilan \textit{feature maps} (A\^k) dan \textit{output} skor (y\^c). 
+	\item Penghitungan Gradien\\
+	Bagian ini menghitung gradien dari \textit{output} skor terhadap \textit{feature maps}. Tujuan dihitungnya gradien adalah untuk menentukan seberapa penting setiap piksel di \textit{feature map} untuk menghasilkan skor kelas tersebut.
+	\item \textit{Global Average Pool Gradient Maps}\\
+	Gradien tersebut kemudian dirata-ratakan secara global untuk membuat bobot kepentingan, yaitu bobot yang menandakan seberapa penting fitur tersebut mengenali kelas yang dipilih.
+	\item \textit{Weighted Combination}\\
+	Bobot kepentingan kemudian dikalikan dengan \textit{feature maps} yang dihasilkan CNN untuk memperkuat atau melemahkan \textit{feature maps} berdasarkan seberapa penting \textit{feature maps} tersebut. Setelah itu, dilakukan penjumlahan semua \textit{feature maps} yang sudah dibobot tersebut agar menjadi satu peta tunggal.
+	\item ReLU\\
+	Setelah memiliki satu peta tunggal, aktivasi ReLU diterapkan untuk mempertahankan bagian-bagian yang berpengaruh positif terhadap kelas target. Ini membuat peta Grad-CAM hanya fokus pada fitur yang mendukung kelas tersebut.
+	\item Grad-CAM \textit{Heatmap}\\
+	Peta tunggal tersebut akan diubah ukurannya ke ukuran spasial yang sama dengan \textit{input} sehingga dapat dilapisi di atas \textit{input}. Peta Grad-CAM akan melapisi gambar asli menggunakan \textit{heatmap}. Hasil peta Grad-CAM akan menyoroti area di dalam gambar yang signifikan untuk prediksi CNN terhadap kelas yang dipilih dan memberikan wawasan tentang apa yang dilihat oleh jaringan sebagai hal penting untuk pengambilan keputusannya.
+\end{enumerate}
+
+\section{Rancangan Evaluasi}
+\subsection{Evaluasi Model}
+Untuk menilai kinerja klasifikasi model, penelitian ini menggunakan evaluasi yang sama dengan evaluasi model yang dilakukan oleh penelitian x dan penelitian y, yaitu:
+
+\begin{enumerate}
+	\item Akurasi (\textit{Accuracy}):
+	Mengukur rasio prediksi benar secara keseluruhan dengan membandingkan prediksi positif dan negatif yang benar (\textit{True Positives} dan \textit{True Negatives}) terhadap total seluruh data.
+	
+	\item Presisi (\textit{Precision}):
+	Mengukur ketepatan prediksi positif yang dihasilkan oleh model.
+	
+	\item \textit{Recall}:
+	Mengukur kemampuan model dalam menemukan semua sampel positif yang sebenarnya.
+	
+	\item Spesifisitas (\textit{Specificity}):
+	Mengukur kemampuan model dalam mengidentifikasi hasil negatif dengan benar (tercantum dalam hasil evaluasi di Tabel 5 dan visualisasi metrik).
+	
+	\item \textit{F1-Score}:
+	Mengukur keseimbangan model menggunakan rata-rata harmonik dari Presisi dan \textit{Recall}.
+\end{enumerate}
+
+\subsection{Evaluasi XAI}
+Evaluasi terhadap \textit{Explainable Artificial Intelligence} (XAI) bertujuan untuk memastikan bahwa model tidak hanya akurat, tetapi juga transparan, dapat diinterpretasikan, dan dapat dipercaya untuk adopsi di dunia nyata.
+
+Dalam proyek ini, metode \textit{saliency} berbasis aktivasi, yaitu Grad-CAM (\textit{Gradient-weighted Class Activation Mapping}), akan digunakan untuk menghasilkan penjelasan (\textit{local explanation}). Evaluasi kualitas dari penjelasan Grad-CAM ini akan dilakukan dengan mengacu pada taksonomi evaluasi \autocite{kadir2023evaluation} sebagai berikut:
+
+\begin{enumerate}
+	\item Konsep yang Diuji (Berdasarkan Aplikasi):\\
+	Konsep yang diuji adalah \textit{local explanation} dan turunannya, yaitu \textit{attribution} atau \textit{saliency} untuk mengukur sejauh mana masukan memengaruhi keluaran. Tujuannya adalah memastikan bahwa \textit{heatmap} yang dihasilkan secara valid menunjuk pada area tumor yang sebenarnya di citra.
+	
+	\item Metodologi Evaluasi (Berdasarkan Teknik):\\
+	Untuk menilai kualitas \textit{local explanation} dari Grad-CAM, penelitian ini akan berfokus pada pendekatan \textit{ground truth comparison} yang dilakukan secara kuantitatif menggunakan metrik khusus XAI \autocite{kadir2023evaluation}.
+	
+	\begin{enumerate}
+		\item \textit{Ground Truth Comparison}\\
+		Penelitian ini menerapkan metrik XAlign yang diusulkan oleh \textcite{muhammad2025heatmap} dengan penjelasan yang dapat dilihat pada Bab \ref{chap:studi-literatur}. Skor XAlign akan dihitung untuk setiap hasil prediksi Grad-CAM menggunakan persamaan:
+		\begin{equation}
+			XAlign = \alpha \cdot WRO + \beta \cdot BAS - \gamma \cdot DP
+		\end{equation}
+		Nilai bobot akan diatur mengikuti konfigurasi standar berdasarkan penelitian tersebut, yaitu $\alpha=0,5$, $\beta=0,4$, dan $\gamma=0,1$. Skor XAlign yang mendekati 1,0 akan mengindikasikan bahwa Grad-CAM berhasil menghasilkan penjelasan yang sangat selaras dengan diagnosis klinis.
+		
+		Sebagai kriteria keberhasilan, penelitian ini mengacu pada performa Grad-CAM yang dilaporkan dalam studi literatur pada \textit{dataset} neuro-onkologi (TCGA-LGG). Metode yang digunakan mencatat skor rata-rata XAlign sebesar $64,1\%$ \autocite{muhammad2025heatmap}. Oleh karena itu, tugas akhir ini menargetkan capaian skor XAlign $\geq 0,641$ sebagai batas minimal validitas penjelasan yang dihasilkan model.
+		
+		\item \textit{Visual Validation} (Evaluasi Kualitatif)\\
+		Sebagai pelengkap data kuantitatif XAlign, perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis kasus per kasus, khususnya pada prediksi \textit{false positive}.
+	\end{enumerate}
+\end{enumerate}

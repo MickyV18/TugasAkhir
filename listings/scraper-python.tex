@@ -1,0 +1,697 @@
+% -- Radiopaedia Brain CT Scraper: Source Code Listings --
+% -- Gunakan minipage agar listing tidak terpotong ke halaman berikutnya --
+
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Import library dan konstanta global (scraper\_base.py)}, label={lst:base_imports}, frame=single, captionpos=t, language=Python]
+import io, os, re, sys, json, time, random, logging, hashlib, shutil, requests
+from pathlib import Path
+from urllib.parse import urlencode, urljoin, urlparse
+
+from bs4 import BeautifulSoup
+from tqdm import tqdm
+from PIL import Image
+from io import BytesIO
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import (
+    TimeoutException, NoSuchElementException,
+    WebDriverException, StaleElementReferenceException,
+    ElementClickInterceptedException,
+)
+from webdriver_manager.chrome import ChromeDriverManager
+
+import config
+
+COOKIE_SYNC_INTERVAL = 900
+logger = logging.getLogger(__name__)
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Konfigurasi logging ke file dan stdout (scraper\_base.py)}, label={lst:setup_logging}, frame=single, captionpos=t, language=Python]
+def setup_logging(log_file: str) -> None:
+    try:
+        stream = io.TextIOWrapper(
+            sys.stdout.buffer, encoding="utf-8",
+            errors="replace", line_buffering=True
+        )
+    except AttributeError:
+        stream = sys.stdout
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s]  %(message)s",
+        handlers=[
+            logging.FileHandler(log_file, encoding="utf-8"),
+            logging.StreamHandler(stream),
+        ],
+    )
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Fungsi-fungsi utilitas pembantu (scraper\_base.py)}, label={lst:utils}, frame=single, captionpos=t, language=Python]
+def random_delay(min_s=None, max_s=None):
+    delay = random.uniform(
+        min_s if min_s is not None else config.REQUEST_DELAY_MIN,
+        max_s if max_s is not None else config.REQUEST_DELAY_MAX,
+    )
+    logger.debug(f"Sleeping {delay:.2f}s ...")
+    time.sleep(delay)
+
+
+def make_output_dir(category: str) -> Path:
+    p = Path(config.OUTPUT_DIR) / category
+    p.mkdir(parents=True, exist_ok=True)
+    logger.info(f"Output directory ready: '{p}'")
+    return p
+
+
+def image_hash(data: bytes) -> str:
+    return hashlib.md5(data).hexdigest()
+
+
+def is_ct_modality(text: str) -> bool:
+    return any(mod in text.lower() for mod in config.ALLOWED_MODALITIES)
+
+
+def sanitize_filename(name: str) -> str:
+    return re.sub(r'[\\/*?:"<>|]', "_", name)
+
+
+def is_driver_alive(driver: webdriver.Chrome) -> bool:
+    try:
+        _ = driver.current_url
+        return True
+    except Exception:
+        return False
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Inisialisasi ChromeDriver dengan opsi anti-deteksi (scraper\_base.py)}, label={lst:build_driver}, frame=single, captionpos=t, language=Python]
+DOWNLOAD_DIR = Path(config.OUTPUT_DIR) / "_downloads"
+
+def build_driver() -> webdriver.Chrome:
+    DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+    opts = Options()
+    opts.page_load_strategy = "eager"
+    if config.HEADLESS_BROWSER:
+        opts.add_argument("--headless=new")
+    opts.add_argument("--window-size=1920,1080")
+    opts.add_argument("--disable-blink-features=AutomationControlled")
+    opts.add_experimental_option("excludeSwitches", ["enable-automation"])
+    opts.add_experimental_option("useAutomationExtension", False)
+    opts.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    )
+    prefs = {
+        "download.default_directory": str(DOWNLOAD_DIR.resolve()),
+        "download.prompt_for_download": False,
+        "download.directory_upgrade": True,
+        "safebrowsing.enabled": True,
+    }
+    opts.add_experimental_option("prefs", prefs)
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()), options=opts
+    )
+    driver.set_page_load_timeout(config.PAGE_LOAD_TIMEOUT)
+    driver.execute_script(
+        "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+    )
+    return driver
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Proses login ke Radiopaedia dengan multi-selector fallback (scraper\_base.py)}, label={lst:login}, frame=single, captionpos=t, language=Python]
+def login(driver: webdriver.Chrome) -> bool:
+    logger.info("Navigating to login page ...")
+    driver.get("https://radiopaedia.org/sessions/new")
+    try:
+        WebDriverWait(driver, config.PAGE_LOAD_TIMEOUT).until(
+            lambda d: d.execute_script("return document.readyState") == "complete"
+        )
+    except TimeoutException:
+        pass
+    random_delay(4, 6)
+    _dismiss_cookie_banner(driver)
+
+    EMAIL_SELECTORS = [
+        (By.NAME, "user[identity]"), (By.ID, "user_identity"),
+        (By.NAME, "session[email]"), (By.CSS_SELECTOR, "input[type='email']"),
+        (By.XPATH, "//input[@autocomplete='email']"),
+    ]
+    email_field = _find_first(driver, EMAIL_SELECTORS, timeout=15)
+    if email_field is None:
+        email_field = _find_visible_input(driver, "email", timeout=10)
+    if email_field is None:
+        logger.error("Login FAILED: email input field tidak ditemukan.")
+        return False
+    email_field.clear()
+    email_field.send_keys(config.RADIOPAEDIA_EMAIL)
+    random_delay(0.5, 1.2)
+
+    PASSWORD_SELECTORS = [
+        (By.NAME, "user[password]"), (By.ID, "user_password"),
+        (By.CSS_SELECTOR, "input[type='password']"),
+        (By.XPATH, "//input[@autocomplete='current-password']"),
+    ]
+    password_field = _find_first(driver, PASSWORD_SELECTORS, timeout=10)
+    if password_field is None:
+        password_field = _find_visible_input(driver, "password", timeout=10)
+    if password_field is None:
+        logger.error("Login FAILED: password input field tidak ditemukan.")
+        return False
+    password_field.clear()
+    password_field.send_keys(config.RADIOPAEDIA_PASSWORD)
+    random_delay(0.5, 1.2)
+
+    submit_btn = _find_first(driver, [
+        (By.CSS_SELECTOR, "input[type='submit']"),
+        (By.XPATH, "//button[contains(text(),'Sign in')]"),
+        (By.XPATH, "//button[contains(text(),'Log in')]"),
+    ], timeout=10)
+    if submit_btn:
+        submit_btn.click()
+    else:
+        password_field.send_keys(Keys.RETURN)
+    random_delay(4, 7)
+
+    logged_in = _find_first(driver, [
+        (By.CSS_SELECTOR, "a[href*='sign_out']"),
+        (By.XPATH, "//*[contains(@class,'user-menu')]"),
+        (By.XPATH, "//a[contains(text(),'Sign out')]"),
+    ], timeout=12)
+    if logged_in:
+        logger.info("[OK] Login successful.")
+        return True
+
+    logger.error("Login FAILED: tidak terdeteksi status logged-in.")
+    return False
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Pembangun URL pencarian dan pembaca jumlah halaman (scraper\_base.py)}, label={lst:search_pagination}, frame=single, captionpos=t, language=Python]
+def build_search_url(query: str, page: int = 1) -> str:
+    params = [
+        ("scope", "cases"),
+        ("q", query),
+        ("page", page),
+        ("modality[]", "CT"),
+    ]
+    return f"https://radiopaedia.org/search?{urlencode(params)}"
+
+
+def get_total_pages(driver: webdriver.Chrome) -> int:
+    try:
+        soup = BeautifulSoup(driver.page_source, "lxml")
+        for selector in [
+            "ul.pagination li a", "nav.pagination a",
+            "div.pagination a", "[class*='pagina'] a"
+        ]:
+            nums = [
+                int(a.get_text(strip=True))
+                for a in soup.select(selector)
+                if a.get_text(strip=True).isdigit()
+            ]
+            if nums:
+                return max(nums)
+        if soup.select_one("a[rel='next']"):
+            return 99
+        return 1
+    except Exception as e:
+        logger.warning(f"Could not determine total pages: {e}")
+        return 1
+
+
+def _is_relevant_case(title: str, keyword: str) -> bool:
+    STOPWORDS = {"and","or","the","of","a","an","in","with","for","to","on","ct","mri"}
+    kw_words = [
+        w for w in re.split(r'\W+', keyword.lower())
+        if w and w not in STOPWORDS
+    ]
+    if not kw_words:
+        return True
+    return any(w in title.lower() for w in kw_words)
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Ekstraksi tautan kasus dari halaman hasil pencarian (scraper\_base.py)}, label={lst:get_case_links}, frame=single, captionpos=t, language=Python]
+def get_case_links_from_page(driver: webdriver.Chrome, keyword: str = "") -> list:
+    soup = BeautifulSoup(driver.page_source, "lxml")
+    BASE = "https://radiopaedia.org"
+    links = []
+
+    result_cards = soup.select(
+        "a.search-result.case, a.search-result[href*='/cases/'], "
+        "div.search-result a[href*='/cases/'], "
+        "article.search-result a[href*='/cases/']"
+    )
+
+    if result_cards:
+        for a in result_cards:
+            href = a.get("href", "")
+            if not href or "/cases/" not in href:
+                continue
+            parent  = a.find_parent(["li", "div", "article"])
+            heading = a.find(["h2", "h3", "h4", "strong"])
+            if not heading and parent:
+                heading = parent.find(["h2", "h3", "h4", "strong"])
+            title = heading.get_text(strip=True) if heading else a.get_text(strip=True)
+            if keyword and title and not _is_relevant_case(title, keyword):
+                logger.debug(f"  [filter] Dilewati: '{title}'")
+                continue
+            url = urljoin(BASE, href)
+            if url not in links:
+                links.append(url)
+
+    if not links:
+        for selector in [
+            "div[class*='search'] a[href*='/cases/']",
+            "div[class*='result'] a[href*='/cases/']",
+            "a[href*='/cases/']",
+        ]:
+            for a in soup.select(selector):
+                url = urljoin(BASE, a["href"])
+                if url not in links:
+                    links.append(url)
+            if links:
+                break
+
+    logger.debug(f"  Found {len(links)} case link(s).")
+    return links
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Sinkronisasi cookie dan restart driver (scraper\_base.py)}, label={lst:cookie_sync}, frame=single, captionpos=t, language=Python]
+def sync_cookies(driver, session) -> bool:
+    try:
+        session.cookies.clear()
+        for cookie in driver.get_cookies():
+            session.cookies.set(cookie["name"], cookie["value"])
+        logger.debug("Cookies synced from browser to requests session.")
+        return True
+    except Exception as e:
+        logger.warning(f"sync_cookies failed: {e}")
+        return False
+
+
+def restart_driver_and_login(seen_case_urls, seen_hashes) -> tuple:
+    logger.warning("Restarting browser session ...")
+    try:
+        driver = build_driver()
+    except Exception as e:
+        raise RuntimeError(f"Could not rebuild driver: {e}") from e
+    session = requests.Session()
+    if not login(driver):
+        driver.quit()
+        raise RuntimeError("Re-login failed after browser restart.")
+    sync_cookies(driver, session)
+    logger.info("Browser restarted and logged in successfully.")
+    return driver, session
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Orkestrator scraping per kategori (scraper\_base.py)}, label={lst:scrape_category}, frame=single, captionpos=t, language=Python]
+def scrape_category(
+    driver, session, category, keywords, output_dir,
+    target_count, seen_hashes, seen_case_urls,
+) -> tuple:
+    downloaded = sum(1 for _ in output_dir.iterdir())
+    logger.info(
+        f"\n{'='*60}\nCategory : {category.upper()}\n"
+        f"Target   : {target_count} images | Already have: {downloaded}\n{'='*60}"
+    )
+    pbar = tqdm(total=target_count, initial=downloaded, desc=category, unit="img")
+    last_cookie_sync = time.time()
+
+    def _ensure_driver_alive():
+        nonlocal driver, session, last_cookie_sync
+        if not is_driver_alive(driver):
+            logger.error("Browser session is dead -- attempting restart.")
+            try:
+                driver.quit()
+            except Exception:
+                pass
+            driver, session = restart_driver_and_login(seen_case_urls, seen_hashes)
+            last_cookie_sync = time.time()
+
+    def _maybe_sync_cookies():
+        nonlocal last_cookie_sync
+        now = time.time()
+        if now - last_cookie_sync >= COOKIE_SYNC_INTERVAL:
+            _ensure_driver_alive()
+            if sync_cookies(driver, session):
+                last_cookie_sync = now
+
+    for keyword in keywords:
+        if downloaded >= target_count:
+            break
+        logger.info(f"  Searching: '{keyword}'")
+        page = 1
+        _ensure_driver_alive()
+        driver.get(build_search_url(keyword, page=1))
+        random_delay()
+        total_pages = get_total_pages(driver)
+
+        while page <= total_pages and downloaded < target_count:
+            driver.get(build_search_url(keyword, page=page))
+            random_delay()
+            case_links = get_case_links_from_page(driver, keyword=keyword)
+            if not case_links:
+                page += 1
+                continue
+
+            for case_url in case_links:
+                if downloaded >= target_count:
+                    break
+                if case_url in seen_case_urls:
+                    continue
+                seen_case_urls.add(case_url)
+                _maybe_sync_cookies()
+
+                try:
+                    n = download_images_from_case(
+                        driver=driver, session=session,
+                        case_url=case_url, output_dir=output_dir,
+                        seen_hashes=seen_hashes,
+                        target_count=target_count,
+                        current_count=downloaded,
+                    )
+                except Exception as e:
+                    logger.error(f"  Error di case {case_url}: {e}")
+                    _ensure_driver_alive()
+                    continue
+
+                if n > 0:
+                    downloaded += n
+                    pbar.update(n)
+                    logger.info(
+                        f"  [RESULT] {case_url} -> {n} gambar. "
+                        f"Total: {downloaded}/{target_count}"
+                    )
+                random_delay()
+            page += 1
+
+    pbar.close()
+    logger.info(f"  Finished '{category}': {downloaded} images collected.")
+    return downloaded, driver, session
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Scraper kategori glioma (scrape\_glioma.py)}, label={lst:scrape_glioma}, frame=single, captionpos=t, language=Python]
+"""
+scrape_glioma.py
+----------------
+Scraper untuk kategori GLIOMA dari Radiopaedia.
+Jalankan langsung:  python scrape_glioma.py
+"""
+
+import requests
+from scraper_base import make_output_dir, build_driver, login, sync_cookies, scrape_category
+import config
+
+CATEGORY = "glioma"
+TARGET   = config.TARGET_PER_CATEGORY.get(CATEGORY, 300)
+KEYWORDS = config.CATEGORIES.get(CATEGORY, [
+    "glioma brain CT",
+    "glioblastoma CT head",
+    "glioblastoma multiforme CT",
+    "astrocytoma brain CT",
+    "high grade glioma CT",
+    "low grade glioma CT",
+    "diffuse glioma CT",
+    "anaplastic astrocytoma CT",
+    "oligodendroglioma CT",
+])
+
+
+def main():
+    output_dir = make_output_dir(CATEGORY)
+    driver     = build_driver()
+    session    = requests.Session()
+
+    try:
+        if not login(driver):
+            print("Login gagal. Periksa kredensial di config.py.")
+            return
+
+        sync_cookies(driver, session)
+        count, driver, session = scrape_category(
+            driver=driver,
+            session=session,
+            category=CATEGORY,
+            keywords=KEYWORDS,
+            output_dir=output_dir,
+            target_count=TARGET,
+            seen_hashes=set(),
+            seen_case_urls=set(),
+        )
+        print(f"Selesai -- {CATEGORY.upper()}: {count} gambar terkumpul.")
+
+    except KeyboardInterrupt:
+        print("\nDihentikan oleh pengguna.")
+    except Exception as e:
+        print(f"Error tak terduga: {e}")
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Scraper kategori meningioma (scrape\_meningioma.py)}, label={lst:scrape_meningioma}, frame=single, captionpos=t, language=Python]
+"""
+scrape_meningioma.py
+--------------------
+Scraper untuk kategori MENINGIOMA dari Radiopaedia.
+Jalankan langsung:  python scrape_meningioma.py
+"""
+
+import requests
+from scraper_base import make_output_dir, build_driver, login, sync_cookies, scrape_category
+import config
+
+CATEGORY = "meningioma"
+TARGET   = config.TARGET_PER_CATEGORY.get(CATEGORY, 300)
+KEYWORDS = config.CATEGORIES.get(CATEGORY, [
+    "meningioma CT head",
+    "meningioma brain CT",
+    "meningioma CT scan",
+    "convexity meningioma CT",
+    "sphenoid wing meningioma CT",
+    "parasagittal meningioma CT",
+    "falcine meningioma CT",
+    "skull base meningioma CT",
+    "olfactory groove meningioma CT",
+    "posterior fossa meningioma CT",
+])
+
+
+def main():
+    output_dir = make_output_dir(CATEGORY)
+    driver     = build_driver()
+    session    = requests.Session()
+
+    try:
+        if not login(driver):
+            print("Login gagal. Periksa kredensial di config.py.")
+            return
+
+        sync_cookies(driver, session)
+        count, driver, session = scrape_category(
+            driver=driver,
+            session=session,
+            category=CATEGORY,
+            keywords=KEYWORDS,
+            output_dir=output_dir,
+            target_count=TARGET,
+            seen_hashes=set(),
+            seen_case_urls=set(),
+        )
+        print(f"Selesai -- {CATEGORY.upper()}: {count} gambar terkumpul.")
+
+    except KeyboardInterrupt:
+        print("\nDihentikan oleh pengguna.")
+    except Exception as e:
+        print(f"Error tak terduga: {e}")
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Scraper kategori normal (scrape\_normal.py)}, label={lst:scrape_normal}, frame=single, captionpos=t, language=Python]
+"""
+scrape_normal.py
+----------------
+Scraper untuk kategori NORMAL (no tumor) dari Radiopaedia.
+Jalankan langsung:  python scrape_normal.py
+"""
+
+import requests
+from scraper_base import make_output_dir, build_driver, login, sync_cookies, scrape_category
+import config
+
+CATEGORY = "normal"
+TARGET   = config.TARGET_PER_CATEGORY.get(CATEGORY, 300)
+KEYWORDS = config.CATEGORIES.get(CATEGORY, [
+    "normal head CT",
+    "normal brain CT",
+    "normal CT head adult",
+    "normal CT head pediatric",
+    "normal CT head neonate",
+    "normal CT brain anatomy",
+    "normal CT head and cervical spine",
+    "normal CTA head",
+    "normal head CT venogram",
+    "normal head CT perfusion",
+])
+
+
+def main():
+    output_dir = make_output_dir(CATEGORY)
+    driver     = build_driver()
+    session    = requests.Session()
+
+    try:
+        if not login(driver):
+            print("Login gagal. Periksa kredensial di config.py.")
+            return
+
+        sync_cookies(driver, session)
+        count, driver, session = scrape_category(
+            driver=driver,
+            session=session,
+            category=CATEGORY,
+            keywords=KEYWORDS,
+            output_dir=output_dir,
+            target_count=TARGET,
+            seen_hashes=set(),
+            seen_case_urls=set(),
+        )
+        print(f"Selesai -- {CATEGORY.upper()}: {count} gambar terkumpul.")
+
+    except KeyboardInterrupt:
+        print("\nDihentikan oleh pengguna.")
+    except Exception as e:
+        print(f"Error tak terduga: {e}")
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+\end{minipage}
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Scraper kategori pituitary (scrape\_pituitary.py)}, label={lst:scrape_pituitary}, frame=single, captionpos=t, language=Python]
+"""
+scrape_pituitary.py
+-------------------
+Scraper untuk kategori PITUITARY (tumor hipofisis) dari Radiopaedia.
+Jalankan langsung:  python scrape_pituitary.py
+"""
+
+import requests
+from scraper_base import make_output_dir, build_driver, login, sync_cookies, scrape_category
+import config
+
+CATEGORY = "pituitary"
+TARGET   = config.TARGET_PER_CATEGORY.get(CATEGORY, 300)
+KEYWORDS = config.CATEGORIES.get(CATEGORY, [
+    "pituitary adenoma CT",
+    "pituitary tumor CT",
+    "pituitary macroadenoma CT",
+    "pituitary microadenoma CT",
+    "sella turcica tumor CT",
+    "craniopharyngioma CT",
+    "pituitary apoplexy CT",
+    "sellar mass CT",
+    "suprasellar mass CT",
+    "pituitary CT head",
+])
+
+
+def main():
+    output_dir = make_output_dir(CATEGORY)
+    driver     = build_driver()
+    session    = requests.Session()
+
+    try:
+        if not login(driver):
+            print("Login gagal. Periksa kredensial di config.py.")
+            return
+
+        sync_cookies(driver, session)
+        count, driver, session = scrape_category(
+            driver=driver,
+            session=session,
+            category=CATEGORY,
+            keywords=KEYWORDS,
+            output_dir=output_dir,
+            target_count=TARGET,
+            seen_hashes=set(),
+            seen_case_urls=set(),
+        )
+        print(f"Selesai -- {CATEGORY.upper()}: {count} gambar terkumpul.")
+
+    except KeyboardInterrupt:
+        print("\nDihentikan oleh pengguna.")
+    except Exception as e:
+        print(f"Error tak terduga: {e}")
+    finally:
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+\end{minipage}

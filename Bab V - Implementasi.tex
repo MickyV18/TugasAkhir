@@ -1,0 +1,132 @@
+% ==========================================
+% BAB V IMPLEMENTASI
+% ==========================================
+\cleardoublepage
+\chapter{IMPLEMENTASI}
+\label{chap:implementasi}
+
+\section{Lingkungan Implementasi}
+Bagian ini menjelaskan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam tahap implementasi penelitian.
+
+\subsection{Lingkungan Perangkat Keras}
+Implementasi sistem ini dilakukan menggunakan perangkat keras dengan spesifikasi sebagai berikut:
+\begin{enumerate}
+	\item Prosesor: AMD Ryzen 5 6600H with Radeon Graphics (6 Core, 12 Thread)
+	\item Memori (RAM): 16 GB
+	\item Penyimpanan: SSD 1 TB
+\end{enumerate}
+
+\subsection{Lingkungan Perangkat Lunak}
+Perangkat lunak yang digunakan untuk mendukung proses pengembangan adalah:
+\begin{enumerate}
+	\item Sistem Operasi: Windows 11
+	\item Bahasa Pemrograman: Python 3.10+
+	\item \textit{Library} Utama:
+	\item \textit{Driver}: 
+\end{enumerate}
+
+\section{Pengumpulan Data}
+
+Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT scan} (\textit{Computed Tomography}) tumor otak yang dikumpulkan dari dua sumber berbeda, menghasilkan total 557 gambar yang terbagi ke dalam tiga kelas, yaitu \textit{no tumor} (otak normal), glioma, dan meningioma. Karakteristik pengumpulan dan pembagian data ini dijabarkan sebagai berikut:
+
+\begin{enumerate}
+	\item Sumber Pertama: Platform Radiopaedia (\textit{radiopaedia.org})\\
+	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Gambar-gambar dari Radiopaedia memiliki karakteristik klinis yang bervariasi karena berasal dari berbagai institusi dan perangkat pencitraan yang berbeda-beda, sehingga mencerminkan keragaman kondisi akuisisi citra yang realistis.
+	
+	\item Sumber Kedua: Dataset Publik Mendeley Data\\
+	Sumber kedua berasal dari dataset publik yang tersedia di platform Mendeley Data \cite{NamaPenulisTahun}. Dataset ini menyediakan 80 gambar citra \textit{CT scan} tumor otak beserta \textit{mask} segmentasi tumornya, yaitu citra biner yang menandai secara piksel wilayah tumor pada setiap gambar. Keberadaan \textit{mask} pada dataset ini memperkaya representasi visual kelas tumor dalam dataset keseluruhan, sekaligus memberikan informasi spasial lokasi tumor yang dapat dimanfaatkan untuk keperluan evaluasi XAI yang digunakan.
+	
+\end{enumerate}
+
+Gambar-gambar dari kedua sumber tersimpan dalam tiga format file berbeda, yaitu PNG (239 gambar, 42,9\%), JPG (221 gambar, 39,7\%), dan JPEG (97 gambar, 17,4\%), dengan resolusi yang bervariasi mulai dari $205 \times 255$ hingga $1.365 \times 1.365$ piksel. Setelah dilakukan penggabungan dari kedua sumber, dataset dibagi ke dalam tiga subset, yaitu data latih (\textit{train}) sebanyak 386 gambar (69,3\%), data uji (\textit{test}) sebanyak 99 gambar (17,8\%), dan data validasi (\textit{val}) sebanyak 72 gambar (12,9\%). Pembagian dataset ke dalam tiga subset tersebut dilakukan secara stratifikasi berdasarkan kelas, sehingga proporsi setiap kelas (\textit{no tumor}, glioma, dan meningioma) terjaga secara merata di seluruh subset \textit{train}, \textit{val}, dan \textit{test}.
+
+Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik yang berbeda dibandingkan sumber pertama, penelitian ini merancang tiga skenario eksperimen penempatan data sumber kedua untuk mengevaluasi dampaknya terhadap generalisasi model. Ketiga skenario tersebut adalah sebagai berikut:
+\begin{enumerate}
+	\item Skenario 1
+	Data sumber kedua pada subset \textit{test} saja: Seluruh gambar dari sumber kedua ditempatkan eksklusif pada subset \textit{test}. Skenario ini bertujuan untuk mengukur kemampuan generalisasi model yang dilatih sepenuhnya pada data sumber pertama ketika diuji pada distribusi data yang berbeda.
+	
+	\item Skenario 2
+	Data sumber kedua pada subset \textit{val} dan \textit{test}: Gambar dari sumber kedua didistribusikan ke dalam subset \textit{val} dan \textit{test}, sementara subset \textit{train} tetap hanya berisi data dari sumber pertama. Skenario ini memungkinkan proses validasi dan pengujian dilakukan pada distribusi yang lebih beragam, sekaligus menjaga proses pelatihan tetap bersih dari data sumber kedua.
+	
+	\item Skenario 3
+	Data sumber kedua pada seluruh subset (\textit{train}, \textit{val}, dan \textit{test}): Gambar dari sumber kedua didistribusikan secara proporsional ke seluruh subset \textit{train}, \textit{val}, dan \textit{test}. Skenario ini mencerminkan kondisi pelatihan yang memanfaatkan keseluruhan data yang tersedia dari kedua sumber secara terpadu.
+\end{enumerate}
+Ketiga skenario ini dirancang untuk mengkaji sejauh mana asal-usul dan penempatan data sumber kedua memengaruhi kinerja model klasifikasi, khususnya dalam konteks perbedaan distribusi (\textit{domain shift}) antara kedua sumber data.
+
+Kondisi dataset mentah yang heterogen ini menjadi dasar dilakukannya proses \textit{preprocessing}.
+
+\section{Pemrosesan Data}
+
+\subsection{Pemrosesan Umum}
+Proses \textit{preprocessing} dilakukan untuk menyeragamkan seluruh gambar agar memenuhi standar \textit{input} model jaringan saraf tiruan yang digunakan. Terdapat tiga tahap \textit{preprocessing} yang diterapkan pada keseluruhan 557 gambar dataset:
+
+\begin{enumerate}
+	\item Konversi Mode Warna ke RGB\\
+	Seluruh gambar yang tidak berformat RGB dikonversi menjadi mode warna RGB. Proses ini menyasar 263 gambar yang sebelumnya berformat L (\textit{grayscale}), RGBA, dan P. Setelah \textit{preprocessing}, 100\% gambar (557 gambar) telah berformat RGB secara seragam, sehingga kompatibel dengan arsitektur model yang mengharapkan \textit{input} tiga kanal warna.
+	
+	\item Standardisasi Resolusi ke $224 \times 224$ Piksel\\
+	Seluruh gambar diubah ukurannya (\textit{resize}) menjadi $224 \times 224$ piksel, sesuai dengan ukuran \textit{input} standar pada model berbasis arsitektur seperti VGG, ResNet, dan EfficientNet. Sebelum \textit{preprocessing}, tidak ada satu pun gambar yang memiliki resolusi target tersebut. Setelah \textit{preprocessing}, seluruh 557 gambar telah memiliki resolusi yang seragam $224 \times 224$ piksel.
+	
+	\item Konversi Format ke PNG\\
+	Seluruh gambar dikonversi ke format PNG untuk memastikan konsistensi format file. Sebelum \textit{preprocessing}, terdapat 318 gambar (57,1\%) yang bukan berekstensi PNG. Setelah \textit{preprocessing}, keseluruhan 557 gambar tersimpan dalam format PNG.
+\end{enumerate}
+
+Hasil akhir proses \textit{preprocessing} menunjukkan perbaikan yang menyeluruh pada seluruh aspek yang disasar. Ukuran rata-rata file juga berkurang secara signifikan dari 96,52 KB menjadi 30,86 KB per gambar, dengan total ukuran dataset menyusut dari 52,5 MB menjadi 16,79 MB --- penghematan sekitar 68\% ruang penyimpanan. 
+
+Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan nilai \textit{test} sebesar 53,47, \textit{train} sebesar 58,56, dan \textit{val} sebesar 64,16 (skala 0--255), yang mengindikasikan tidak adanya bias kecerahan yang signifikan antar subset data. Ringkasan perbandingan kondisi dataset sebelum dan sesudah \textit{preprocessing} disajikan pada Tabel~\ref{tab:preprocessing}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Perbandingan Kondisi Dataset Sebelum dan Sesudah \textit{Preprocessing}}
+	\label{tab:preprocessing}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Aspek & Sebelum & Setelah \\ \hline
+		Mode warna & RGB, L, RGBA, P (4 varian) & RGB \\ \hline
+		Resolusi & 15 varian berbeda & $224 \times 224$ \\ \hline
+		Format file & PNG, JPG, JPEG & PNG \\ \hline
+		Ukuran file rata-rata & 96,52 KB & 30,86 KB \\ \hline
+		Total ukuran dataset & 52,5 MB & 16,79 MB \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsection{Pemrosesan Eksperimen}
+\subsubsection{Gaussian Denoise dan CLAHE}
+Berdasarkan hasil analisis statistik, terdapat perbedaan yang terukur antara dataset sebelum dan sesudah diterapkan \textit{preprocessing} Gaussian dan CLAHE, sebagaimana ditunjukkan pada Tabel~\ref{tab:analisis_statistik}.
+
+\begin{table}[htbp]
+	\centering
+	\caption{Perbandingan Parameter Dataset Sebelum dan Sesudah \textit{Preprocessing}}
+	\label{tab:analisis_statistik}
+	\begin{tabular}{|l|c|c|l|}
+		\hline
+		\textbf{Parameter} & \textbf{Sebelum} & \textbf{Sesudah} & \textbf{Perubahan} \\ \hline
+		Intensitas minimum & 0,0 & 3,78--3,93 & \textit{Noise} impulsif tereliminasi \\ \hline
+		Rata-rata intensitas (\textit{train}) & 58,56 & 64,41 & +5,85 \\ \hline
+		Rata-rata intensitas (\textit{val}) & 64,16 & 69,79 & +5,63 \\ \hline
+		Rata-rata intensitas (\textit{test}) & 53,47 & 59,68 & +6,21 \\ \hline
+		Standar deviasi (\textit{train}) & 78,45 & 77,81 & Sedikit turun \\ \hline
+		Ukuran file rata-rata & 30,86 KB & 52,32 KB & +69,6\% \\ \hline
+	\end{tabular}
+\end{table}
+
+Pergeseran nilai intensitas minimum dari 0,0 menjadi 3,78-3,93 menunjukkan bahwa Gaussian berhasil menghilangkan piksel terisolasi bernilai nol yang merepresentasikan \textit{noise} impulsif pada citra \textit{CT scan}. Kenaikan rata-rata intensitas sebesar 5,6--6,2 poin secara konsisten di seluruh subset menunjukkan bahwa CLAHE berhasil meningkatkan kontras lokal citra. Selain itu, standar deviasi yang tidak meningkat melainkan sedikit menurun mengindikasikan bahwa peningkatan kontras berlangsung terkontrol tanpa \textit{over-amplification noise}. Hal ini sejalan dengan pernyataan Irwandi Rizki Putra \textit{et al.} \cite{Putra2025} bahwa \textit{Gaussian filtering} berfungsi untuk meredam \textit{noise} frekuensi tinggi, sedangkan CLAHE bertujuan meningkatkan kontras lokal tanpa memperkuat \textit{noise} pada citra medis.
+
+\subsubsection{Wavelet Denoise dan Intensity Normalization}
+
+
+\section{Implementasi Arsitektur Model Utama (CLM)}
+
+\subsection{\textit{Convolutional Neural Network} (CNN)}
+
+\subsection{\textit{Artificial Neural Network} (ANN)}
+
+\subsection{Integrasi Model}
+
+\section{\textit{Explainable AI} (Grad-CAM)}
+
+\subsection{Ekstraksi \textit{Feature Maps} dan Gradien}
+
+\subsection{\textit{Global Average Pooling} dan \textit{Weighted Combination}}
+
+\subsection{Pembangkitan \textit{Heatmap} (Aktivasi ReLU)}
