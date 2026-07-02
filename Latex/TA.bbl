@@ -308,6 +308,71 @@
       \field{pages}{164\bibrangedash 172}
       \range{pages}{9}
     \endentry
+    \entry{carey2019impact}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=9c764a7c9a4d2f516662910272b78ccd}{%
+           family={Carey},
+           familyi={C\bibinitperiod},
+           given={Matthew\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c0180961d7dfa2910cf6832841ec54cc}{%
+           family={Callaghan},
+           familyi={C\bibinitperiod},
+           given={Brian\bibnamedelima C.},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b80aef9eff884846ecb4cc0914fddb3e}{%
+           family={Kerber},
+           familyi={K\bibinitperiod},
+           given={Kevin\bibnamedelima A.},
+           giveni={K\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a4507266544bd81dbbb11132babe1bc}{%
+           family={Skolarus},
+           familyi={S\bibinitperiod},
+           given={Lesli\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2bb8181268c43928a58b5d6b32abce51}{%
+           family={Burke},
+           familyi={B\bibinitperiod},
+           given={James\bibnamedelima F.},
+           giveni={J\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{322f3e2a470ab93163af62c25bc47b05}
+      \strng{fullhash}{2e00980c3f1c51498526dbd8ec61d55f}
+      \strng{fullhashraw}{2e00980c3f1c51498526dbd8ec61d55f}
+      \strng{bibnamehash}{2e00980c3f1c51498526dbd8ec61d55f}
+      \strng{authorbibnamehash}{2e00980c3f1c51498526dbd8ec61d55f}
+      \strng{authornamehash}{322f3e2a470ab93163af62c25bc47b05}
+      \strng{authorfullhash}{2e00980c3f1c51498526dbd8ec61d55f}
+      \strng{authorfullhashraw}{2e00980c3f1c51498526dbd8ec61d55f}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{PLOS ONE}
+      \field{note}{Accessed July 3, 2026}
+      \field{number}{2}
+      \field{title}{Impact of early headache neuroimaging on time to malignant brain tumor diagnosis: A retrospective cohort study}
+      \field{volume}{14}
+      \field{year}{2019}
+      \field{pages}{e0211599}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0211599
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0211599
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0211599
+      \endverb
+    \endentry
     \entry{Cea2017GradCAM}{misc}{}{}
       \name{author}{7}{}{%
         {{un=0,uniquepart=base,hash=ec97d85b12fc0e1b5e1e4d365d54eef6}{%
@@ -594,6 +659,161 @@
       \verb https://www.researchgate.net/publication/389133174_Performance_Evaluation_of_Preprocessing_Techniques_for_Noise_Reduction_and_Enhancement_in_MRI-based_Brain_Tumor_Detection
       \endverb
     \endentry
+    \entry{fu2024ai}{article}{}{}
+      \name{author}{20}{}{%
+        {{un=0,uniquepart=base,hash=4b53e4193eaf6ff1302f11880c4f092d}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c165ac65e25818d13dfa889d9c824f49}{%
+           family={Novak},
+           familyi={N\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ab9466b25dd676ce5560192f8c4e2f4c}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a545bd13ef1e9c1672bfb284155fc1ad}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cabdb4373ea41cc9935f2f2dc05557d1}{%
+           family={Tanamala},
+           familyi={T\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e7f74c7540d78b02220fdddc351ce4e6}{%
+           family={Oke},
+           familyi={O\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ab021ad23871db4c3fb0bf9d43eb8970}{%
+           family={Bhatia},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=34c2b8164ada73a96826280758b94996}{%
+           family={Shah},
+           familyi={S\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=13003b0c08de33e6ddcb74904b45a0dc}{%
+           family={Romsauerova},
+           familyi={R\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1bae790a84cf802a7ac481c9c9e5f85b}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad69d1e1baa0bef6972c585fba219567}{%
+           family={Espinosa},
+           familyi={E\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7e3745ebb965d68197cff03e0711e564}{%
+           family={Grzeda},
+           familyi={G\bibinitperiod},
+           given={M.\bibnamedelimi T.},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d0e41efac7e0c09031f3b998ee81256b}{%
+           family={Narbone},
+           familyi={N\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6adc6672f072166c9ff61d3ca666b15}{%
+           family={Dharmadhikari},
+           familyi={D\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b7444a57285978b17deac1ce627d3ff3}{%
+           family={Harrison},
+           familyi={H\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=822d046ad7c324f62431e700b3d0228d}{%
+           family={Vimalesvaran},
+           familyi={V\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a0701cf8e5d976b645cef52780d0b77b}{%
+           family={Gooch},
+           familyi={G\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c8e6f0a3b3ff30c640e5bb158f6f4bfc}{%
+           family={Woznitza},
+           familyi={W\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9fc6b7d5ba2681b5aaaa6af5592c7d3c}{%
+           family={Salik},
+           familyi={S\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=55eef234164dbcc4fe011095616dd1fc}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c3c5294bbdc4f0b05c71536280ec2676}
+      \strng{fullhash}{dc0692d3e725a692722b7bce11886df4}
+      \strng{fullhashraw}{dc0692d3e725a692722b7bce11886df4}
+      \strng{bibnamehash}{94f4ed13bab83b397d27c4ea5a3c1bf0}
+      \strng{authorbibnamehash}{94f4ed13bab83b397d27c4ea5a3c1bf0}
+      \strng{authornamehash}{c3c5294bbdc4f0b05c71536280ec2676}
+      \strng{authorfullhash}{dc0692d3e725a692722b7bce11886df4}
+      \strng{authorfullhashraw}{dc0692d3e725a692722b7bce11886df4}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{BMJ Open}
+      \field{note}{Accessed July 3, 2026}
+      \field{number}{2}
+      \field{title}{AI assisted reader evaluation in acute CT head interpretation (AI-REACT): protocol for a multireader multicase study}
+      \field{volume}{14}
+      \field{year}{2024}
+      \field{pages}{e079824}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1136/bmjopen-2023-079824
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1136/bmjopen-2023-079824
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1136/bmjopen-2023-079824
+      \endverb
+    \endentry
     \entry{gfg2020cnn}{misc}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=f1e069787ece74531d112559945c6871}{%
@@ -622,6 +842,96 @@
       \endverb
       \verb{url}
       \verb https://www.geeksforgeeks.org/deep-learning/convolutional-neural-network-cnn-in-machine-learning/
+      \endverb
+    \endentry
+    \entry{ghasemi2025detection}{article}{}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=2d8646d4eda72b0efab794c910e536fc}{%
+           family={Ghasemi},
+           familyi={G\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4913a1a52f15eeec3709f606011e8527}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=90027d2650dce2afe49a0d5176163d4e}{%
+           family={Bayat},
+           familyi={B\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c8b9f27cc0eb3d19689240dcf947403}{%
+           family={Shabir},
+           familyi={S\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cb34b827a854341427a8ca698ce039cd}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9b1e3348f1d992bb7a8ab6834f0c4e70}{%
+           family={Amin},
+           familyi={A\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3a0e2040446a33c043f76d807676abad}{%
+           family={Torre},
+           familyi={T\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod},
+           givenun=0,
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod},
+           prefixun=0}}%
+        {{un=0,uniquepart=base,hash=ee1e6ec8990537b6d2bb2e4d7bec77e4}{%
+           family={Castilla},
+           familyi={C\bibinitperiod},
+           given={Á.\bibnamedelimi K.},
+           giveni={Á\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa31fa921ab9100e5b326b9a0ca163ac}{%
+           family={García},
+           familyi={G\bibinitperiod},
+           given={D.\bibnamedelimi L.\bibnamedelimi R.\bibnamedelimi V.},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{33f3d89624859f0e5698dec85531c9ef}
+      \strng{fullhash}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \strng{fullhashraw}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \strng{bibnamehash}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \strng{authorbibnamehash}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \strng{authornamehash}{33f3d89624859f0e5698dec85531c9ef}
+      \strng{authorfullhash}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \strng{authorfullhashraw}{b2df120614f70ad0e9af55fc99b5dbd8}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Scientific Reports}
+      \field{note}{Accessed July 3, 2026}
+      \field{number}{1}
+      \field{title}{Detection and classification of brain tumor using a hybrid learning model in CT scan images}
+      \field{volume}{15}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.1038/s41598-025-18979-8
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s41598-025-18979-8
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/s41598-025-18979-8
       \endverb
     \endentry
     \entry{goceri2023medical}{article}{}{}
@@ -1078,6 +1388,77 @@
       \endverb
       \verb{url}
       \verb https://gco.iarc.who.int/media/globocan/factsheets/populations/360-indonesia-fact-sheet.pdf
+      \endverb
+    \endentry
+    \entry{islam2024deep}{article}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=0db7c0d4bcdd2905a1ac72f804df7798}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={Niful},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4da6443ebedd03e57ec917eebeee1aea}{%
+           family={Bhuiyan},
+           familyi={B\bibinitperiod},
+           given={Mohaiminul\bibnamedelima Islam},
+           giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=df2896fdfbb224e8d28812b51d4e07a6}{%
+           family={Raya},
+           familyi={R\bibinitperiod},
+           given={Jarin\bibnamedelima Tasnim},
+           giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d54399d876b2ee5f341e3c60c4ee74ff}{%
+           family={Kamarudin},
+           familyi={K\bibinitperiod},
+           given={Nur\bibnamedelima Shazwani},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=00d7adb3c45678f527bcd29ad20ba6ea}{%
+           family={Hasib},
+           familyi={H\bibinitperiod},
+           given={Khan\bibnamedelima Md},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=43c7de3b190aee49aaac4b5c785d2790}{%
+           family={Mridha},
+           familyi={M\bibinitperiod},
+           given={M.\bibnamedelimi F.},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e63b2ea17f66de3f712ed7001d5dd07}{%
+           family={Farid},
+           familyi={F\bibinitperiod},
+           given={Dewan\bibnamedelima Md.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4d73f13738be624d86eefca2941f9873}
+      \strng{fullhash}{b4ada41c1804a90ac38afce9ded60411}
+      \strng{fullhashraw}{b4ada41c1804a90ac38afce9ded60411}
+      \strng{bibnamehash}{b4ada41c1804a90ac38afce9ded60411}
+      \strng{authorbibnamehash}{b4ada41c1804a90ac38afce9ded60411}
+      \strng{authornamehash}{4d73f13738be624d86eefca2941f9873}
+      \strng{authorfullhash}{b4ada41c1804a90ac38afce9ded60411}
+      \strng{authorfullhashraw}{b4ada41c1804a90ac38afce9ded60411}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{arXiv}
+      \field{note}{Accessed July 2, 2026}
+      \field{title}{Deep Fusion Model for Brain Tumor Classification Using Fine-Grained Gradient Preservation}
+      \field{volume}{2406.19690v1}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.researchgate.net/publication/381851144_Deep_Fusion_Model_for_Brain_Tumor_Classification_Using_Fine-Grained_Gradient_Preservation
+      \endverb
+      \verb{url}
+      \verb https://www.researchgate.net/publication/381851144_Deep_Fusion_Model_for_Brain_Tumor_Classification_Using_Fine-Grained_Gradient_Preservation
       \endverb
     \endentry
     \entry{jaffar2025comparative}{article}{}{}
@@ -2273,9 +2654,6 @@
   \missing{BPBI}
   \missing{NamaPenulisTahun}
   \missing{Putra2025}
-  \missing{carey2019impact}
-  \missing{ghasemi2025hybrid}
-  \missing{islam2024deepfusion}
 \endrefsection
 \endinput
 

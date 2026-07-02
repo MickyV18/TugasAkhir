@@ -196,6 +196,10 @@
 \contentsline {section}{\numberline {II.5}Penelitian Terkait}{20}{section.2.5}%
 \contentsline {subsection}{\numberline {II.5.1}Pendeteksian Tumor}{20}{subsection.2.5.1}%
 \contentsline {subsubsection}{\numberline {II.5.1.1}\textit {Detection and Classification of Brain Tumor Using a Hybrid Learning Model in CT Scan Images}}{20}{subsubsection.2.5.1.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {subsubsection}{\numberline {II.5.1.2}\textit {Deep Neural Network Correlation Learning Mechanism for CT Brain Tumor Detection}}{21}{subsubsection.2.5.1.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
@@ -241,6 +245,10 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {chapter}{\numberline {III}ANALISIS MASALAH}{25}{chapter.3}%
 \contentsline {section}{\numberline {III.1}Analisis Kondisi Saat Ini}{25}{section.3.1}%
 \xpg@aux {}{english}
@@ -266,7 +274,23 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {subsection}{\numberline {III.1.2}Penggunaan AI dalam CT Scan Otak}{26}{subsection.3.1.2}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {section}{\numberline {III.2}Analisis Kebutuhan}{27}{section.3.2}%
 \contentsline {subsection}{\numberline {III.2.1}Identifikasi Masalah Pengguna}{27}{subsection.3.2.1}%
 \xpg@aux {}{english}
@@ -299,7 +323,11 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {III.2.2}Kebutuhan Fungsional}{30}{subsection.3.2.2}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {III.2.2}Kebutuhan Fungsional}{31}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {III.2.3}Kebutuhan Nonfungsional}{31}{subsection.3.2.3}%
 \contentsline {section}{\numberline {III.3}Analisis Pemilihan Solusi}{31}{section.3.3}%
 \contentsline {subsection}{\numberline {III.3.1}Alternatif Solusi}{32}{subsection.3.3.1}%
@@ -327,6 +355,8 @@
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {section}{\numberline {IV.2}\textit {Data} \textit {Preparation}}{43}{section.4.2}%
 \contentsline {subsection}{\numberline {IV.2.1}\textit {Preprocessing} Umum}{43}{subsection.4.2.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {subsection}{\numberline {IV.2.2}\textit {Preprocessing} Eksperimen}{44}{subsection.4.2.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
@@ -345,8 +375,8 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {IV.3}Modelling}{47}{section.4.3}%
-\contentsline {subsection}{\numberline {IV.3.1}Explainable CNN}{47}{subsection.4.3.1}%
+\contentsline {section}{\numberline {IV.3}\textit {Modelling}}{46}{section.4.3}%
+\contentsline {subsection}{\numberline {IV.3.1}CLM (CNN + ANN)}{46}{subsection.4.3.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -356,7 +386,7 @@
 \contentsline {subsection}{\numberline {IV.3.2}Explainable CNN}{48}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {IV.3.3}EfficientNetB0}{48}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {IV.3.4}hyperparameter \textit {tuning}}{48}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {IV.3.5}Explainable AI}{49}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {IV.3.5}Explainable AI}{48}{subsection.4.3.5}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {section}{\numberline {IV.4}Rancangan Evaluasi}{50}{section.4.4}%
@@ -498,8 +528,16 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {chapter}{Lampiran \numberline {A}KODE PROGRAM}{71}{appendix.1.A}%
-\contentsline {chapter}{Lampiran \numberline {B}HASIL SURVEI LAPANGAN}{73}{appendix.1.B}%
-\contentsline {section}{\numberline {B.1}Foto Survei Lokasi 1}{73}{section.1.B.1}%
-\contentsline {section}{\numberline {B.2}Foto Survei Lokasi 2}{73}{section.1.B.2}%
-\contentsline {section}{\numberline {B.3}Transkrip Wawancara dengan Narasumber}{73}{section.1.B.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {chapter}{Lampiran \numberline {A}KODE PROGRAM}{73}{appendix.1.A}%
+\contentsline {chapter}{Lampiran \numberline {B}HASIL SURVEI LAPANGAN}{75}{appendix.1.B}%
+\contentsline {section}{\numberline {B.1}Foto Survei Lokasi 1}{75}{section.1.B.1}%
+\contentsline {section}{\numberline {B.2}Foto Survei Lokasi 2}{75}{section.1.B.2}%
+\contentsline {section}{\numberline {B.3}Transkrip Wawancara dengan Narasumber}{75}{section.1.B.3}%
