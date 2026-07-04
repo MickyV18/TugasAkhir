@@ -175,6 +175,74 @@
       \verb 10.1016/j.inffus.2023.101805
       \endverb
     \endentry
+    \entry{alqhatani2025automated}{article}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=b919d8ac72753c8ac999527137d9ec53}{%
+           family={Alqhatani},
+           familyi={A\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d37f1b3fc2fa5de18ea22363759ed6b5}{%
+           family={Babu},
+           familyi={B\bibinitperiod},
+           given={T.\bibnamedelimi K.\bibnamedelimi S.\bibnamedelimi R.},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=07a69a322fa009b19da47f84ba5f4cc8}{%
+           family={Mahesh},
+           familyi={M\bibinitperiod},
+           given={T.\bibnamedelimi R.},
+           giveni={T\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=830f7216418300ac5f273464c5dbc786}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={S.\bibnamedelimi B.},
+           giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa15e20f40ddd927ab039fc39f6e3ee7}{%
+           family={Saidani},
+           familyi={S\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aa393931bc3c032e3801bc170f4cb7cd}{%
+           family={Quasim},
+           familyi={Q\bibinitperiod},
+           given={M.\bibnamedelimi T.},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{974f249a8ba40729455fcfd8ed7cd410}
+      \strng{fullhash}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \strng{fullhashraw}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \strng{bibnamehash}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \strng{authorbibnamehash}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \strng{authornamehash}{974f249a8ba40729455fcfd8ed7cd410}
+      \strng{authorfullhash}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \strng{authorfullhashraw}{a3614b483cd6a7ae27f9d3088e51e24f}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Frontiers in Medicine}
+      \field{note}{Accessed July 5, 2026}
+      \field{title}{Automated classification and explainable AI analysis of lung cancer stages using EfficientNet and gradient-weighted class activation mapping}
+      \field{volume}{12}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.3389/fmed.2025.1625183
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3389/fmed.2025.1625183
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3389/fmed.2025.1625183
+      \endverb
+    \endentry
     \entry{alshaari2025deepefnet}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=e158fd940ea731528134c864789ee3b8}{%
@@ -373,75 +441,6 @@
       \verb https://doi.org/10.1371/journal.pone.0211599
       \endverb
     \endentry
-    \entry{Cea2017GradCAM}{misc}{}{}
-      \name{author}{7}{}{%
-        {{un=0,uniquepart=base,hash=ec97d85b12fc0e1b5e1e4d365d54eef6}{%
-           family={Cea},
-           familyi={C\bibinitperiod},
-           given={Donatella},
-           giveni={D\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=26bd824af4fe87e046864a78b8ae0ff6}{%
-           family={Barros\bibnamedelimb Andrade\bibnamedelimb e\bibnamedelima Sousa},
-           familyi={B\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim S\bibinitperiod},
-           given={Lisa},
-           giveni={L\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=41c900f43061e923b9ce256f53b146f8}{%
-           family={Bukas},
-           familyi={B\bibinitperiod},
-           given={Christina},
-           giveni={C\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=dcbe9eff4863b2a3dfcd354055dcaa10}{%
-           family={Pelin},
-           familyi={P\bibinitperiod},
-           given={Helena},
-           giveni={H\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=1e2f9957552631ed69ad900d27c4b8f7}{%
-           family={Georgii},
-           familyi={G\bibinitperiod},
-           given={Elisabeth},
-           giveni={E\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=c9187ea043426b4fdf375a168ac3d131}{%
-           family={Hoffmann},
-           familyi={H\bibinitperiod},
-           given={Helene},
-           giveni={H\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=d93258217fcdb60af71974277c5b8cd3}{%
-           family={Starke},
-           familyi={S\bibinitperiod},
-           given={Sebastian},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{4f95f4d3898a861a85231ab6f5f8de8a}
-      \strng{fullhash}{d524bb6d19fd471ff797649d08c24a56}
-      \strng{fullhashraw}{d524bb6d19fd471ff797649d08c24a56}
-      \strng{bibnamehash}{d524bb6d19fd471ff797649d08c24a56}
-      \strng{authorbibnamehash}{d524bb6d19fd471ff797649d08c24a56}
-      \strng{authornamehash}{4f95f4d3898a861a85231ab6f5f8de8a}
-      \strng{authorfullhash}{d524bb6d19fd471ff797649d08c24a56}
-      \strng{authorfullhashraw}{d524bb6d19fd471ff797649d08c24a56}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Accessed November 20, 2025}
-      \field{title}{Introduction to Grad-CAM — XAI Tutorials}
-      \field{year}{2017}
-      \verb{urlraw}
-      \verb https://xai-tutorials.readthedocs.io/en/latest/_model_specific_xai/Grad-CAM.html
-      \endverb
-      \verb{url}
-      \verb https://xai-tutorials.readthedocs.io/en/latest/_model_specific_xai/Grad-CAM.html
-      \endverb
-    \endentry
     \entry{chapman2000crispdm}{manual}{}{}
       \name{author}{7}{}{%
         {{un=0,uniquepart=base,hash=6e42f1026173c2e52fdda7fdd636f359}{%
@@ -508,6 +507,59 @@
       \field{note}{Copyright 1999, 2000. Partners: NCR, DaimlerChrysler, SPSS, OHRA}
       \field{title}{{CRISP-DM} 1.0: Step-by-step data mining guide}
       \field{year}{2000}
+    \endentry
+    \entry{chattopadhyay2018grad}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=e504975fe938395866c8f6413737cabe}{%
+           family={Chattopadhyay},
+           familyi={C\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d10e4faf338a3a021b6c5c237d77b639}{%
+           family={Sarkar},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=21495954f05f8bdcd50d9c88315f0cd6}{%
+           family={Howlader},
+           familyi={H\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c1b1eb220b58fb1930a2873ad6c1f8e}{%
+           family={Balasubramanian},
+           familyi={B\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{29f6aba8243d796be0f42f8c798e459c}
+      \strng{fullhash}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \strng{fullhashraw}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \strng{bibnamehash}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \strng{authorbibnamehash}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \strng{authornamehash}{29f6aba8243d796be0f42f8c798e459c}
+      \strng{authorfullhash}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \strng{authorfullhashraw}{ebbd30264b1273f3fae8a3fd9493dbbb}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{arXiv}
+      \field{note}{Accessed July 5, 2026}
+      \field{title}{Grad-CAM++: Improved Visual Explanations for Deep Convolutional Networks}
+      \field{volume}{1710.11063}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://arxiv.org/pdf/1710.11063
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/pdf/1710.11063
+      \endverb
     \endentry
     \entry{chen2025impact}{article}{}{}
       \name{author}{2}{}{%
@@ -1137,6 +1189,52 @@
       \endverb
       \verb{url}
       \verb https://www.hospetrack.com/product/indonesia/
+      \endverb
+    \endentry
+    \entry{hossain2025mgaug}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=146a32a022152164631627dd3ef06a48}{%
+           family={Hossain},
+           familyi={H\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=922b74338e14a4c81b03a7487c18522b}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{fullhash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{fullhashraw}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{bibnamehash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{authorbibnamehash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{authornamehash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{authorfullhash}{eb261a8aced08cc45279a58b2f52f039}
+      \strng{authorfullhashraw}{eb261a8aced08cc45279a58b2f52f039}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Medical Image Analysis}
+      \field{note}{Accessed July 4, 2026}
+      \field{title}{MGAug: Multimodal Geometric Augmentation in Latent Spaces of Image Deformations}
+      \field{volume}{102}
+      \field{year}{2025}
+      \field{pages}{103540}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.media.2025.103540
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.media.2025.103540
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.media.2025.103540
       \endverb
     \endentry
     \entry{ibm2023xai}{misc}{}{}
@@ -2652,8 +2750,7 @@
     \endentry
   \enddatalist
   \missing{BPBI}
-  \missing{NamaPenulisTahun}
-  \missing{Putra2025}
+  \missing{ref_paper}
 \endrefsection
 \endinput
 
