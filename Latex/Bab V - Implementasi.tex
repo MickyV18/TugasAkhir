@@ -2,7 +2,7 @@
 % BAB V IMPLEMENTASI
 % ==========================================
 \cleardoublepage
-\chapter{IMPLEMENTASI}
+\chapter{IMPLEMENTASI MODEL PENDETEKSIAN TUMOR OTAK BERBASIS CNN YANG TERINTEGRASI XAI}
 \label{chap:implementasi}
 
 \section{Lingkungan Implementasi}
@@ -58,7 +58,7 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			Kategori            & Tumor & Tanpa Tumor & Total & Persentase (\%) \\
+			\textbf{Kategori}            & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
 			\hline
 			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
 			Validation (Validasi) & 75  & 49  & 124 & 22.26 \\
@@ -76,7 +76,7 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			Kategori            & Tumor & Tanpa Tumor & Total & Persentase (\%) \\
+			\textbf{Kategori}            & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
 			\hline
 			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
 			Validation (Validasi) & 114 & 49  & 163 & 29.26 \\
@@ -94,7 +94,7 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			Kategori   & Tumor & Tanpa Tumor & Total & Persentase (\%) \\
+			\textbf{Kategori}   & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)}  \\
 			\hline
 			Train      & 224 & 73  & 297 & 53.32 \\
 			Validation & 90  & 49  & 139 & 24.96 \\
@@ -111,6 +111,14 @@ Ketiga skenario ini dirancang untuk mengkaji sejauh mana asal-usul dan penempata
 
 \section{Pemrosesan Data}
 
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=1.0	\textwidth]{images/preprocess_image.png}
+	\caption{\textit{Preprocess} Gambar}
+	\label{gambar:preprocess}
+\end{figure}
+
 \subsection{Pemrosesan Umum}
 Proses \textit{preprocessing} dilakukan untuk menyeragamkan seluruh gambar agar memenuhi standar \textit{input} model jaringan saraf tiruan yang digunakan. Terdapat tiga tahap \textit{preprocessing} yang diterapkan pada keseluruhan 557 gambar dataset:
 
@@ -118,8 +126,6 @@ Proses \textit{preprocessing} dilakukan untuk menyeragamkan seluruh gambar agar 
 	\item Konversi Format\\
 	Seluruh gambar dikonversi ke format PNG untuk memastikan konsistensi format file. Sebelum \textit{preprocessing}, terdapat 318 gambar (57,1\%) yang bukan berekstensi PNG. Setelah \textit{preprocessing}, keseluruhan 557 gambar tersimpan dalam format PNG.
 \end{enumerate}
-
-Hasil akhir proses \textit{preprocessing} menunjukkan perbaikan yang menyeluruh pada seluruh aspek yang disasar. Ukuran rata-rata file juga berkurang secara signifikan dari 96,52 KB menjadi 30,86 KB per gambar, dengan total ukuran dataset menyusut dari 52,5 MB menjadi 16,79 MB --- penghematan sekitar 68\% ruang penyimpanan. 
 
 Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan nilai \textit{test} sebesar 53,47, \textit{train} sebesar 58,56, dan \textit{val} sebesar 64,16 (skala 0--255), yang mengindikasikan tidak adanya bias kecerahan yang signifikan antar subset data. Ringkasan perbandingan kondisi dataset sebelum dan sesudah \textit{preprocessing} disajikan pada Tabel~\ref{tab:preprocessing}.
 
@@ -131,43 +137,77 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 		\hline
 		\textbf{Aspek} & \textbf{Sebelum} & \textbf{Setelah} \\ \hline
 		Mode warna & RGB, L, RGBA, P (4 varian) & RGB \\ \hline
-		Resolusi & 15 varian berbeda & $224 \times 224$ \\ \hline
 		Format file & PNG, JPG, JPEG & PNG \\ \hline
-		Ukuran file rata-rata & 96,52 KB & 30,86 KB \\ \hline
-		Total ukuran dataset & 52,5 MB & 16,79 MB \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Perbandingan Statistik Dataset Sebelum dan Setelah ROI}
+	\label{tab:statistik_roi}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\textbf{Metrik} & \textbf{Sebelum} & \textbf{Setelah ROI} & \textbf{Perubahan (\%)} \\ \hline
+		Jumlah citra & 557,00 & 557,00 & 0,00 \\ \hline
+		Rata-rata lebar & 640,73 & 502,38 & -21,59 \\ \hline
+		Rata-rata tinggi & 658,48 & 561,75 & -14,69 \\ \hline
+		Rata-rata resolusi piksel & 567.870,39 & 395.233,83 & -30,40 \\ \hline
+		Min lebar & 205,00 & 128,00 & -37,56 \\ \hline
+		Min tinggi & 255,00 & 135,00 & -47,06 \\ \hline
+		Rata-rata ukuran (KB) & 180,31 & 328,22 & 82,03 \\ \hline
+		Rata-rata \textit{aspect ratio} & 0,95 & 0,88 & -7,37 \\ \hline
 	\end{tabular}
 \end{table}
 
 \subsection{Pemrosesan Eksperimen}
-\subsubsection{Gaussian Denoise dan CLAHE}
-Berdasarkan hasil analisis statistik, terdapat perbedaan yang terukur antara dataset sebelum dan sesudah diterapkan \textit{preprocessing} Gaussian dan CLAHE, sebagaimana ditunjukkan pada Tabel~\ref{tab:analisis_statistik}.
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.85\textwidth]{images/preprocess_eksperimen.png}
+	\caption{Arsitektur Model CLM}
+	\label{gambar:preprocess_eksperimen}
+\end{figure}
 
 \begin{table}[htbp]
 	\centering
-	\caption{Perbandingan Parameter Dataset Sebelum dan Sesudah \textit{Preprocessing}}
-	\label{tab:analisis_statistik}
-	\begin{tabular}{|l|c|c|l|}
+	\caption{Perbandingan Metrik Kualitas Citra antara GC dan WN}
+	\label{tab:kualitas_gc_wn}
+	\begin{tabular}{|l|l|l|}
 		\hline
-		\textbf{Parameter} & \textbf{Sebelum} & \textbf{Sesudah} & \textbf{Perubahan} \\ \hline
-		Intensitas minimum & 0,0 & 3,78--3,93 & +3,78--3,93\\ \hline
-		Rata-rata intensitas (\textit{train}) & 58,56 & 64,41 & +5,85 \\ \hline
-		Rata-rata intensitas (\textit{val}) & 64,16 & 69,79 & +5,63 \\ \hline
-		Rata-rata intensitas (\textit{test}) & 53,47 & 59,68 & +6,21 \\ \hline
-		Standar deviasi (\textit{train}) & 78,45 & 77,81 & -0.64 \\ \hline
-		Ukuran file rata-rata & 30,86 KB & 52,32 KB & +69,6\% \\ \hline
+		& \textbf{GC} & \textbf{WN} \\ \hline
+		PSNR & 249,532 & 163,969 \\ \hline
+		SSIM & 7,494 & 6,706 \\ \hline
+		AMBE & 5,3102 & 178,242 \\ \hline
 	\end{tabular}
 \end{table}
 
-Pergeseran nilai intensitas minimum dari 0,0 menjadi 3,78-3,93 menunjukkan bahwa Gaussian berhasil menghilangkan piksel terisolasi bernilai nol yang merepresentasikan \textit{noise} impulsif pada citra \textit{CT scan}. Kenaikan rata-rata intensitas sebesar 5,6--6,2 poin secara konsisten di seluruh subset menunjukkan bahwa CLAHE berhasil meningkatkan kontras lokal citra. Selain itu, standar deviasi yang tidak meningkat melainkan sedikit menurun mengindikasikan bahwa peningkatan kontras berlangsung terkontrol tanpa \textit{over-amplification noise}. Hal ini sejalan dengan pernyataan \textcite{putra2025enhanced} bahwa \textit{Gaussian filtering} berfungsi untuk meredam \textit{noise} frekuensi tinggi, sedangkan CLAHE bertujuan meningkatkan kontras lokal tanpa memperkuat \textit{noise} pada citra medis.
-
-\subsubsection{Wavelet Denoise dan Intensity Normalization}
-
+\begin{table}[htbp]
+	\centering
+	\caption{Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}
+	\label{tab:entropi_edge_density}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		& \textbf{Before} & \textbf{GC} & \textbf{WN} \\ \hline
+		Entropy & 5,0840 & 5,9343 & 4,4025 \\ \hline
+		Edge Density & 1,154 & 1,343 & 1,363 \\ \hline
+	\end{tabular}
+\end{table}
 
 \section{Implementasi Arsitektur Model}
 
 \subsection{Correlation Learning Mechanism (CLM)}
 
 Berdasarkan diagram alur eksperimen, komponen ANN yang disorot dengan warna biru mengalami penyesuaian melalui \textit{hyperparameter tuning}, meliputi:
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.85\textwidth]{images/after CLM.png}
+	\caption{Arsitektur Model CLM}
+	\label{gambar:afterclm}
+\end{figure}
+
 \begin{itemize}
 	\item Dropout Rate: Penambahan \textit{dropout} pada setiap \textit{hidden layer} ANN, diuji pada nilai 0,05; 0,10; dan 0,20 untuk mencegah \textit{overfitting} akibat keterbatasan sampel CT Scan. Nilai terlalu kecil kurang efektif meregularisasi, sedangkan terlalu besar berisiko \textit{underfitting}.
 	\item Jumlah Iterasi: Penyesuaian total iterasi pelatihan BPTA pada nilai 3.000, 5.000, dan 10.000. Iterasi terlalu sedikit membuat bobot belum konvergen, sedangkan terlalu banyak meningkatkan waktu pelatihan dan risiko \textit{overfitting}.
@@ -210,7 +250,7 @@ Berdasarkan diagram alur eksperimen, terdapat komponen-komponen yang disesuaikan
 \centering
 \captionsetup{justification=centering}
 \includegraphics[width=0.85\textwidth]{images/after exp cnn.png}
-\caption{Arsitektur Model CNN + ANN}
+\caption{Arsitektur Model \textit{Explainable }CNN}
 \label{gambar:afterexpcnn}
 \end{figure}
 
@@ -235,12 +275,61 @@ Berdasarkan diagram alur eksperimen, terdapat komponen-komponen yang disesuaikan
 	}
 \end{table}
 
+\begin{verbatim}
+Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN
+	{
+		"learning_rate": 0.0001,
+		"batch_size": 40,
+		"optimizer": "adam",
+		"dropout_rate": 0.1,
+		"test_acc": 0.878307,
+		"f1_weighted": 0.880673,
+		"precision_w": 0.88451,
+		"recall_w": 0.878307,
+		"specificity": 0.785714,
+		"composite_score": 0.8658217
+	}
+\end{verbatim}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Ringkasan Arsitektur Model Explainable CNN}
+	\label{tab:arsitektur_excnn}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+		conv1 (Conv2D) & (None, 224, 224, 8) & 224 \\ \hline
+		pool1 (MaxPooling2D) & (None, 112, 112, 8) & 0 \\ \hline
+		conv2 (Conv2D) & (None, 112, 112, 16) & 1.168 \\ \hline
+		pool2 (MaxPooling2D) & (None, 56, 56, 16) & 0 \\ \hline
+		conv3 (Conv2D) & (None, 56, 56, 32) & 4.640 \\ \hline
+		pool3 (MaxPooling2D) & (None, 28, 28, 32) & 0 \\ \hline
+		conv4 (Conv2D) & (None, 28, 28, 64) & 18.496 \\ \hline
+		pool4 (MaxPooling2D) & (None, 14, 14, 64) & 0 \\ \hline
+		conv5 (Conv2D) & (None, 14, 14, 128) & 73.856 \\ \hline
+		pool5 (MaxPooling2D) & (None, 7, 7, 128) & 0 \\ \hline
+		conv6 (Conv2D) & (None, 7, 7, 256) & 295.168 \\ \hline
+		batchnorm (BatchNormalization) & (None, 7, 7, 256) & 1.024 \\ \hline
+		avgpool (AveragePooling2D) & (None, 3, 3, 256) & 0 \\ \hline
+		flatten (Flatten) & (None, 2304) & 0 \\ \hline
+		dropout1 (Dropout) & (None, 2304) & 0 \\ \hline
+		dense1 (Dense) & (None, 512) & 1.180.160 \\ \hline
+		dropout2 (Dropout) & (None, 512) & 0 \\ \hline
+		dense2 (Dense) & (None, 512) & 262.656 \\ \hline
+		output (Dense) & (None, 2) & 1.026 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 1.838.418 (7,01 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 1.837.906 (7,01 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 (2,00 KB) \\ \hline
+	\end{tabular}
+\end{table}
+
 \subsection{EfficientNetB0}
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
-	\includegraphics[width=0.5\textwidth]{images/after tl.png}
+	\includegraphics[width=0.35\textwidth]{images/after tl.png}
 	\caption{Arsitektur Model EfficientNetB0}
 	\label{gambar:aftertransferlearning}
 \end{figure}
@@ -251,6 +340,48 @@ Berdasarkan diagram alur eksperimen, terdapat komponen-komponen yang disesuaikan
 	\item Dropout Layer: Penambahan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} pertama, yaitu sebelum blok \textit{Dense}(512, ReLU, L2) pada arsitektur model. Berdasarkan riset Wojciuk dkk. (2024), \textit{dropout} efektif dalam mencegah masalah \textit{overfitting} pada model pembelajaran mendalam yang memiliki dataset medis dengan distribusi atau kuantitas sampel yang terbatas.
 	\item Dense 2 Class: Menyesuaikan ujung struktur model dari keluaran multi-kelas (4 kelas) menjadi klasifikasi biner (2 kelas). Modifikasi pada \textit{Dense layer} dan \textit{output} klasifikasi biner ini merupakan bentuk penyesuaian terhadap spesifikasi dan tujuan dari penelitian ini, yaitu membedakan citra CT Scan otak normal dan tidak normal (atau sesuai dua kelas target penelitian).
 \end{itemize}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Ringkasan Arsitektur Model EfficientNetB0}
+	\label{tab:arsitektur_model}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
+		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
+		batchnorm\_head (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
+		dropout1 (Dropout) & (None, 1280) & 0 \\ \hline
+		dense1 (Dense) & (None, 256) & 327.936 \\ \hline
+		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
+		output (Dense) & (None, 2) & 514 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.383.141 (16,72 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 2.618.514 (9,99 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 (6,73 MB) \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{verbatim}
+	Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik EfficientNetB0
+	{
+		"backbone": "EfficientNetB0",
+		"learning_rate": 0.01,
+		"batch_size": 64,
+		"optimizer": "adam",
+		"dropout_rate": 0.3,
+		"epochs_phase1": 12,
+		"epochs_phase2": 17,
+		"finetune_ratio": 0.2,
+		"finetune_lr_factor": 0.1,
+		"test_acc": 0.966292,
+		"f1_weighted": 0.96676,
+		"precision_w": 0.967638,
+		"recall_w": 0.966292,
+		"specificity": 0.928571,
+		"composite_score": 0.96092935
+	}
+\end{verbatim}
 
 \begin{table}[htbp]
 	\centering
@@ -277,4 +408,28 @@ Berdasarkan diagram alur eksperimen, terdapat komponen-komponen yang disesuaikan
 
 \subsection{GradCAM++ untuk Explainable CNN}
 
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=1.0\textwidth]{images/TP_exp_cnn.png}
+	\caption{Arsitektur Model EfficientNetB0}
+	\label{gambar:gradcamexpcnntp}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=1.0\textwidth]{images/FN_exp_cnn.png}
+	\caption{Arsitektur Model EfficientNetB0}
+	\label{gambar:gradcamexpcnnfn}
+\end{figure}
+
 \subsection{GradCAM untuk Transfer Learning EfficientB0}
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=1.0\textwidth]{images/compare_tl_heatmap.png}
+	\caption{Arsitektur Model EfficientNetB0}
+	\label{gambar:gradcamtl}
+\end{figure}

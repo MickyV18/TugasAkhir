@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  5 JUL 2026 00:48
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  5 JUL 2026 22:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2079,26 +2079,29 @@ ate
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[54]
 Overfull \hbox (4.7644pt too wide) in paragraph at lines 280--281
 []\TU/TimesNewRoman(0)/m/it/12 Overlay \TU/TimesNewRoman(0)/m/n/12 dan Visualis
 asi Akhir: Peta aktivasi yang dihasilkan ditumpangk-
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[55]
+
+
+[54]
 Overfull \hbox (12.48454pt too wide) in paragraph at lines 312--313
 \TU/TimesNewRoman(0)/m/n/12 CAM yang dilaporkan dalam studi literatur pada \TU/
 TimesNewRoman(0)/m/it/12 dataset \TU/TimesNewRoman(0)/m/n/12 neuro-onkologi (TC
 GA-
  []
 
-) (Bab V - Implementasi.tex
+
+Underfull \vbox (badness 1622) has occurred while \output is active []
+
+
+
+[55]) (Bab V - Implementasi.tex
 
 [56]
 Bab V.
@@ -2116,9 +2119,20 @@ Underfull \vbox (badness 7030) has occurred while \output is active []
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+File: images/preprocess_image.png Graphic file (type bmp)
+<images/preprocess_image.png>
 
 
 [59]
+File: images/preprocess_eksperimen.png Graphic file (type bmp)
+<images/preprocess_eksperimen.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/after CLM.png Graphic file (type bmp)
+<images/after CLM.png>
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -2126,27 +2140,75 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [60]
 
 [61]
+
+[62]
 File: images/after exp cnn.png Graphic file (type bmp)
 <images/after exp cnn.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Overfull \hbox (65.16138pt too wide) in paragraph at lines 292--292
+[]\TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik E
+xplainable CNN[] 
+ []
+
+
+
+[63]
 File: images/after tl.png Graphic file (type bmp)
 <images/after tl.png>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
+Underfull \vbox (badness 1681) has occurred while \output is active []
 
-[62]) (Bab VI - Evaluasi.tex
 
-[63]
 
 [64]
+
+[65]
+Overfull \hbox (29.17354pt too wide) in paragraph at lines 348--363
+ [][] 
+ []
+
+
+Overfull \hbox (65.16136pt too wide) in paragraph at lines 384--384
+[] \TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik 
+EfficientNetB0[] 
+ []
+
+
+
+[66]
+File: images/TP_exp_cnn.png Graphic file (type bmp)
+<images/TP_exp_cnn.png>
+File: images/FN_exp_cnn.png Graphic file (type bmp)
+<images/FN_exp_cnn.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/compare_tl_heatmap.png Graphic file (type bmp)
+<images/compare_tl_heatmap.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (Bab VI - Evaluasi.tex
+
+[67]
+
+[68]
 Bab VI.
 
-LaTeX Warning: Citation 'BPBI' on page 65 undefined on input line 18.
+LaTeX Warning: Citation 'BPBI' on page 69 undefined on input line 18.
 
 
 Overfull \hbox (20.82396pt too wide) in paragraph at lines 23--29
@@ -2155,36 +2217,36 @@ Overfull \hbox (20.82396pt too wide) in paragraph at lines 23--29
 
 
 
-[65
+[69
 
 
 ]
 
-[66]) (Bab VII - Penutup.tex
+[70]) (Bab VII - Penutup.tex
 
-[67]
+[71]
 
-[68
+[72
 
 ]
 Bab VII.
 )
 
-[69
+[73
 
 ]
 
-[70
+[74
 
 ]
 
-[71
+[75
 
 ]
 
-[72]
+[76]
 
-[73]
+[77]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 410--410
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
@@ -2204,7 +2266,7 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
 
 
 
-[74]
+[78]
 Overfull \hbox (33.26854pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
@@ -2213,7 +2275,7 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[75]
+[79]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
@@ -2227,7 +2289,7 @@ Overfull \hbox (1.24242pt too wide) in paragraph at lines 410--410
 
 
 
-[76]
+[80]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
@@ -2235,29 +2297,29 @@ Julio-Alejandro Romero-González,
 
 (Lampiran-A.tex
 
-[77]
+[81]
 
-[78
+[82
 
 ]
 Lampiran A.
 ) (Lampiran-B.tex
 
-[79
+[83
 
 ]
 
-[80
+[84
 
 ]
 Lampiran B.
 )
 
-[81
+[85
 
 ]
 
-[82
+[86
 
 ]
 
@@ -2278,18 +2340,18 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `TA.out' has not changed.
-(rerunfilecheck)             Checksum: 0B9C45D208D9B947EB7A19091CDE6977;20548.
+(rerunfilecheck)             Checksum: 570B3327064B7934514682164C0CD9F7;20036.
 Package logreq Info: Writing requests to 'TA.run.xml'.
 \openout1 = `TA.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34871 strings out of 403197
- 683105 string characters out of 5455938
- 2124681 words of memory out of 5000000
- 62913 multiletter control sequences out of 15000+600000
- 632934 words of font info for 85 fonts, out of 8000000 for 9000
+ 34942 strings out of 403197
+ 685073 string characters out of 5455938
+ 2123967 words of memory out of 5000000
+ 62976 multiletter control sequences out of 15000+600000
+ 632942 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  73i,14n,100p,1979b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TA.pdf (114 pages).
+Output written on TA.pdf (118 pages).
