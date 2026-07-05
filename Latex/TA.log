@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  5 JUL 2026 22:11
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  6 JUL 2026 00:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1515,8 +1515,39 @@ AK BER-
  []
 
 
+Overfull \hbox (5.44041pt too wide) in paragraph at lines 415--415
+ [][] [][][]\TU/TimesNewRoman(0)/b/n/12 IMPLEMENTASI MODEL PENDETEKSIAN TUMOR O
+TAK BER- 
+ []
 
-[14])
+
+
+[14]
+Overfull \hbox (1.26215pt too wide) detected at line 436
+\TU/TimesNewRoman(0)/m/n/12 VI.2.1.1 
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 437
+\TU/TimesNewRoman(0)/m/n/12 VI.2.1.2 
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 438
+\TU/TimesNewRoman(0)/m/n/12 VI.2.1.3 
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 440
+\TU/TimesNewRoman(0)/m/n/12 VI.2.2.1 
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 441
+\TU/TimesNewRoman(0)/m/n/12 VI.2.2.2 
+ []
+
+)
 \tf@toc=\write5
 \openout5 = `TA.toc'.
 
@@ -2111,9 +2142,6 @@ Bab V.
 
 
 ]
-Underfull \vbox (badness 7030) has occurred while \output is active []
-
-
 
 [58]
 
@@ -2208,45 +2236,32 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [68]
 Bab VI.
 
-LaTeX Warning: Citation 'BPBI' on page 69 undefined on input line 18.
-
-
-Overfull \hbox (20.82396pt too wide) in paragraph at lines 23--29
- [][] 
- []
-
-
 
 [69
 
 
+]) (Bab VII - Penutup.tex
+
+[70]
+Bab VII.
+)
+
+[71
+
+
 ]
-
-[70]) (Bab VII - Penutup.tex
-
-[71]
 
 [72
 
 ]
-Bab VII.
-)
 
 [73
 
 ]
 
-[74
+[74]
 
-]
-
-[75
-
-]
-
-[76]
-
-[77]
+[75]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 410--410
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
@@ -2266,7 +2281,7 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
 
 
 
-[78]
+[76]
 Overfull \hbox (33.26854pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
@@ -2275,7 +2290,7 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[79]
+[77]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
@@ -2289,7 +2304,7 @@ Overfull \hbox (1.24242pt too wide) in paragraph at lines 410--410
 
 
 
-[80]
+[78]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
@@ -2297,29 +2312,29 @@ Julio-Alejandro Romero-González,
 
 (Lampiran-A.tex
 
-[81]
+[79]
 
-[82
+[80
 
 ]
 Lampiran A.
 ) (Lampiran-B.tex
+
+[81
+
+]
+
+[82
+
+]
+Lampiran B.
+)
 
 [83
 
 ]
 
 [84
-
-]
-Lampiran B.
-)
-
-[85
-
-]
-
-[86
 
 ]
 
@@ -2340,18 +2355,23 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `TA.out' has not changed.
-(rerunfilecheck)             Checksum: 570B3327064B7934514682164C0CD9F7;20036.
+(rerunfilecheck)             Checksum: AEB05D3A1E445A28F6397906C15C55F7;19427.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                TA
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'TA.run.xml'.
 \openout1 = `TA.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  34942 strings out of 403197
- 685073 string characters out of 5455938
- 2123967 words of memory out of 5000000
+ 685057 string characters out of 5455938
+ 2124294 words of memory out of 5000000
  62976 multiletter control sequences out of 15000+600000
  632942 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,14n,100p,1979b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,11n,100p,1979b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TA.pdf (118 pages).
+Output written on TA.pdf (116 pages).
