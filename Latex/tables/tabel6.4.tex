@@ -1,0 +1,20 @@
+\begin{table}[H]
+	\centering
+	\caption{Best Model setiap Eksperimen EfficientNetB0}
+	\label{tab:best_model_efficientnetb0}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
+			all & 95.56 & 95.63 & 95.56 & 88.10 & 95.49 & lr=0.01, bs=16, dr=0.1 \\ \hline
+			test & 93.26 & 94.44 & 93.26 & 92.86 & 93.59 & lr=0.01, bs=16, dr=0.3 \\ \hline
+			val+test & 95.24 & 95.42 & 95.24 & 92.86 & 95.30 & lr=0.01, bs=16, dr=0.3 \\ \hline
+			GC -- All & 88.89 & 90.69 & 88.89 & 95.24 & 89.18 & lr=0.0001, bs=64, dr=0.1 \\ \hline
+			\textbf{GC -- Test} & \textbf{96.63} & \textbf{96.76} & \textbf{96.63} & \textbf{92.86} & \textbf{96.68} & \textbf{lr=0.01, bs=64, dr=0.3} \\ \hline
+			GC -- Val+Test & 90.48 & 92.10 & 90.48 & 92.86 & 90.87 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN -- All & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
+			WN -- Test & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
+			WN -- Val+Test & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
+		\end{tabular}
+	}
+\end{table}

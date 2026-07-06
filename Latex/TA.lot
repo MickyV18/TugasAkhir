@@ -4,22 +4,22 @@
 \contentsline {table}{\numberline {III.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Fungsional Model}}{31}{table.caption.21}%
 \contentsline {table}{\numberline {III.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Non-Fungsional Model}}{32}{table.caption.22}%
 \contentsline {table}{\numberline {III.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan Kriteria}}{35}{table.caption.23}%
-\contentsline {table}{\numberline {III.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Vektor Prioritas Kriteria}}{35}{table.caption.24}%
+\contentsline {table}{\numberline {III.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Vektor Prioritas Kriteria}}{36}{table.caption.24}%
 \contentsline {table}{\numberline {III.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C1 (Akurasi)}}{36}{table.caption.25}%
-\contentsline {table}{\numberline {III.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C2 (Interpretability)}}{36}{table.caption.26}%
+\contentsline {table}{\numberline {III.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C2 (Interpretability)}}{37}{table.caption.26}%
 \contentsline {table}{\numberline {III.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C3 (Efisiensi Komputasi)}}{37}{table.caption.27}%
-\contentsline {table}{\numberline {III.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C4 (Kebutuhan Data)}}{37}{table.caption.28}%
-\contentsline {table}{\numberline {III.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C5 (Kompleksitas)}}{38}{table.caption.29}%
+\contentsline {table}{\numberline {III.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C4 (Kebutuhan Data)}}{38}{table.caption.28}%
+\contentsline {table}{\numberline {III.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C5 (Kompleksitas)}}{39}{table.caption.29}%
 \contentsline {table}{\numberline {III.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Hasil Perhitungan Perbandingan Berpasangan}}{39}{table.caption.30}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {V.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 1}}{59}{table.caption.38}%
 \contentsline {table}{\numberline {V.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 2}}{59}{table.caption.39}%
 \contentsline {table}{\numberline {V.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario }}{60}{table.caption.40}%
-\contentsline {table}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Kondisi Dataset Sebelum dan Sesudah \textit {Preprocessing}}}{61}{table.caption.42}%
+\contentsline {table}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Kondisi Dataset Sebelum dan Sesudah \textit {Preprocessing}}}{60}{table.caption.42}%
 \contentsline {table}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Statistik Dataset Sebelum dan Setelah ROI}}{61}{table.caption.43}%
-\contentsline {table}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Metrik Kualitas Citra antara GC dan WN}}{61}{table.caption.45}%
-\contentsline {table}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}}{61}{table.caption.46}%
+\contentsline {table}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Metrik Kualitas Citra antara GC dan WN}}{62}{table.caption.45}%
+\contentsline {table}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}}{62}{table.caption.46}%
 \contentsline {table}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model Explainable CNN}}{64}{table.caption.49}%
 \contentsline {table}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model EfficientNetB0}}{66}{table.caption.51}%
 \addvspace {10\p@ }

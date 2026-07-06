@@ -1,0 +1,20 @@
+\begin{table}[H]
+	\centering
+	\caption{Ringkasan Arsitektur Model EfficientNetB0}
+	\label{tab:arsitektur_model}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
+		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
+		batchnorm\_head (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
+		dropout1 (Dropout) & (None, 1280) & 0 \\ \hline
+		dense1 (Dense) & (None, 256) & 327.936 \\ \hline
+		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
+		output (Dense) & (None, 2) & 514 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.383.141 (16,72 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 2.618.514 (9,99 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 (6,73 MB) \\ \hline
+	\end{tabular}
+\end{table}

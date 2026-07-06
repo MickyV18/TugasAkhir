@@ -120,14 +120,7 @@ Ketiga skenario ini dirancang untuk mengkaji sejauh mana asal-usul dan penempata
 \end{figure}
 
 \subsection{Pemrosesan Umum}
-Proses \textit{preprocessing} dilakukan untuk menyeragamkan seluruh gambar agar memenuhi standar \textit{input} model jaringan saraf tiruan yang digunakan. Terdapat tiga tahap \textit{preprocessing} yang diterapkan pada keseluruhan 557 gambar dataset:
-
-\begin{enumerate}
-	\item Konversi Format\\
-	Seluruh gambar dikonversi ke format PNG untuk memastikan konsistensi format file. Sebelum \textit{preprocessing}, terdapat 318 gambar (57,1\%) yang bukan berekstensi PNG. Setelah \textit{preprocessing}, keseluruhan 557 gambar tersimpan dalam format PNG.
-\end{enumerate}
-
-Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan nilai \textit{test} sebesar 53,47, \textit{train} sebesar 58,56, dan \textit{val} sebesar 64,16 (skala 0--255), yang mengindikasikan tidak adanya bias kecerahan yang signifikan antar subset data. Ringkasan perbandingan kondisi dataset sebelum dan sesudah \textit{preprocessing} disajikan pada Tabel~\ref{tab:preprocessing}.
+Tabel \ref{tab:preprocessing} menunjukkan bahwa proses standardisasi format berhasil menyeragamkan seluruh 557 citra ke dalam satu mode warna (RGB) dan satu ekstensi file (.png), sehingga variasi input yang sebelumnya dapat menyebabkan \textit{error} pada tahap \textit{loading} citra ke arsitektur CNN dapat dihilangkan sepenuhnya.
 
 \begin{table}[htbp]
 	\centering
@@ -140,6 +133,8 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 		Format file & PNG, JPG, JPEG & PNG \\ \hline
 	\end{tabular}
 \end{table}
+
+Tabel \ref{tab:statistik_roi} memperlihatkan dampak seleksi ROI terhadap karakteristik dataset. Jumlah citra tetap konstan (557 citra, perubahan 0{,}00\%), yang mengindikasikan bahwa mekanisme \textit{fallback} berhasil menangani seluruh kasus tanpa kontur \textit{valid}, sehingga tidak ada data yang hilang akibat proses \textit{cropping}. Rata-rata lebar, tinggi, dan resolusi piksel masing-masing menurun sebesar 21{,}59\%, 14{,}69\%, dan 30{,}40\%, yang menunjukkan bahwa area \textit{background} gelap pada citra CT Scan cukup dominan dan berhasil dieliminasi secara signifikan oleh proses \textit{thresholding} Otsu.
 
 \begin{table}[htbp]
 	\centering
@@ -161,6 +156,8 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 
 \subsection{Pemrosesan Eksperimen}
 
+Setelah kedua metode \textit{preprocessing} diterapkan, dilakukan pengujian untuk melihat mana yang hasilnya lebih baik. Pengujian ini menggunakan beberapa metrik, yaitu PSNR, SSIM, AMBE, \textit{entropy}, dan \textit{edge density}. Untuk mempermudah penyebutan, skema CLAHE + Gaussian \textit{denoise} disebut GC, sedangkan skema \textit{Wavelet filter} + \textit{intensity normalization} disebut WN.
+
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
@@ -168,6 +165,8 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 	\caption{Arsitektur Model CLM}
 	\label{gambar:preprocess_eksperimen}
 \end{figure}
+
+Berdasarkan Tabel \ref{tab:kualitas_gc_wn}, terlihat bahwa GC memiliki nilai PSNR dan SSIM yang lebih tinggi dibandingkan WN. Artinya, citra hasil GC lebih mirip dengan citra aslinya dan tidak terlalu banyak mengalami perubahan atau kerusakan pada strukturnya. Selain itu, nilai AMBE GC (5,3102) juga jauh lebih kecil dibandingkan WN (178,242). Nilai AMBE yang kecil ini menunjukkan bahwa tingkat kecerahan citra hasil GC tidak berubah jauh dari citra aslinya. Sebaliknya, nilai AMBE WN yang besar kemungkinan disebabkan oleh proses normalisasi \textit{z-score} yang memang bekerja dengan mengubah skala nilai piksel (dikurangi \textit{mean} lalu dibagi \textit{std}), sehingga tingkat kecerahannya jadi berbeda cukup jauh dari citra asli. Ini berbeda dengan CLAHE yang cara kerjanya membatasi kontras, sehingga kecerahan citra secara keseluruhan lebih terjaga.
 
 \begin{table}[htbp]
 	\centering
@@ -182,6 +181,9 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 	\end{tabular}
 \end{table}
 
+
+Kemudian, pada Tabel \ref{tab:entropi_edge_density}, terlihat bahwa GC berhasil menaikkan nilai \textit{entropy} dari 5,0840 (sebelum \textit{preprocessing}) menjadi 5,9343. Nilai \textit{entropy} yang naik ini menandakan bahwa citra hasil GC memiliki lebih banyak detail atau informasi yang bisa dilihat, karena kontras lokalnya diperkuat oleh CLAHE. Berbeda dengan itu, WN justru membuat nilai \textit{entropy} turun menjadi 4,4025. Hal ini terjadi karena proses \textit{soft-thresholding} pada \textit{wavelet} memang berfungsi untuk menghilangkan derau, tapi efek sampingnya sebagian detail atau tekstur halus pada citra ikut berkurang.
+
 \begin{table}[htbp]
 	\centering
 	\caption{Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}
@@ -193,6 +195,10 @@ Distribusi rata-rata intensitas piksel antarsplit pun relatif konsisten, dengan 
 		Edge Density & 1,154 & 1,343 & 1,363 \\ \hline
 	\end{tabular}
 \end{table}
+
+Namun, jika dilihat dari sisi \textit{edge density} (kepadatan tepi), WN justru sedikit lebih unggul (1,363) dibandingkan GC (1,343). Meski begitu, keduanya tetap lebih baik dibandingkan citra sebelum \textit{preprocessing} (1,154). Hal ini menunjukkan bahwa meskipun WN mengurangi detail tekstur secara keseluruhan, metode \textit{wavelet} yang digunakan cukup baik dalam mempertahankan garis tepi (\textit{edges}) pada citra, seperti batas antara jaringan otak dan area tumor.
+
+Dari hasil ini, dapat disimpulkan bahwa kedua metode \textit{preprocessing} memiliki kelebihan masing-masing. GC lebih unggul dalam menjaga struktur citra tetap mirip dengan aslinya, menjaga kecerahan, dan menambah informasi detail citra. Sementara itu, WN lebih unggul dalam mempertahankan ketajaman garis tepi, meskipun kecerahan dan sebagian detail teksturnya berkurang.
 
 \section{Implementasi Arsitektur Model}
 
@@ -233,21 +239,7 @@ Berdasarkan diagram alur eksperimen, terdapat komponen-komponen yang disesuaikan
 \label{gambar:afterexpcnn}
 \end{figure}
 
-\begin{verbatim}
-Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN
-	{
-		"learning_rate": 0.0001,
-		"batch_size": 40,
-		"optimizer": "adam",
-		"dropout_rate": 0.1,
-		"test_acc": 0.878307,
-		"f1_weighted": 0.880673,
-		"precision_w": 0.88451,
-		"recall_w": 0.878307,
-		"specificity": 0.785714,
-		"composite_score": 0.8658217
-	}
-\end{verbatim}
+Arsitektur model yang diimplementasikan pada penelitian ini secara umum mengikuti struktur backbone CNN yang dijelaskan pada artikel acuan ................. Kesesuaian tersebut terlihat pada aspek ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan padding "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), layer BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta dua dense layer dengan 512 neuron yang identik dengan deskripsi pada artikel.
 
 \begin{table}[htbp]
 	\centering
@@ -281,6 +273,22 @@ Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN
 		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 (2,00 KB) \\ \hline
 	\end{tabular}
 \end{table}
+
+\begin{verbatim}
+Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN
+	{
+		"learning_rate": 0.0001,
+		"batch_size": 40,
+		"optimizer": "adam",
+		"dropout_rate": 0.1,
+		"test_acc": 0.878307,
+		"f1_weighted": 0.880673,
+		"precision_w": 0.88451,
+		"recall_w": 0.878307,
+		"specificity": 0.785714,
+		"composite_score": 0.8658217
+	}
+\end{verbatim}
 
 \subsection{EfficientNetB0}
 

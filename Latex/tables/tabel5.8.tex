@@ -1,0 +1,32 @@
+\begin{table}[H]
+	\centering
+	\caption{Ringkasan Arsitektur Model Explainable CNN}
+	\label{tab:arsitektur_excnn}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+		conv1 (Conv2D) & (None, 224, 224, 8) & 224 \\ \hline
+		pool1 (MaxPooling2D) & (None, 112, 112, 8) & 0 \\ \hline
+		conv2 (Conv2D) & (None, 112, 112, 16) & 1.168 \\ \hline
+		pool2 (MaxPooling2D) & (None, 56, 56, 16) & 0 \\ \hline
+		conv3 (Conv2D) & (None, 56, 56, 32) & 4.640 \\ \hline
+		pool3 (MaxPooling2D) & (None, 28, 28, 32) & 0 \\ \hline
+		conv4 (Conv2D) & (None, 28, 28, 64) & 18.496 \\ \hline
+		pool4 (MaxPooling2D) & (None, 14, 14, 64) & 0 \\ \hline
+		conv5 (Conv2D) & (None, 14, 14, 128) & 73.856 \\ \hline
+		pool5 (MaxPooling2D) & (None, 7, 7, 128) & 0 \\ \hline
+		conv6 (Conv2D) & (None, 7, 7, 256) & 295.168 \\ \hline
+		batchnorm (BatchNormalization) & (None, 7, 7, 256) & 1.024 \\ \hline
+		avgpool (AveragePooling2D) & (None, 3, 3, 256) & 0 \\ \hline
+		flatten (Flatten) & (None, 2304) & 0 \\ \hline
+		dropout1 (Dropout) & (None, 2304) & 0 \\ \hline
+		dense1 (Dense) & (None, 512) & 1.180.160 \\ \hline
+		dropout2 (Dropout) & (None, 512) & 0 \\ \hline
+		dense2 (Dense) & (None, 512) & 262.656 \\ \hline
+		output (Dense) & (None, 2) & 1.026 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 1.838.418 (7,01 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 1.837.906 (7,01 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 (2,00 KB) \\ \hline
+	\end{tabular}
+\end{table}

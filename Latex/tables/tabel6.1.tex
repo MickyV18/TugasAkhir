@@ -1,0 +1,20 @@
+\begin{table}[H]
+	\centering
+	\caption{Best Model setiap Eksperimen CLM}
+	\label{tab:best_model_clm}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config Terbaik} \\ \hline
+			No Prep / All & 65.3 & 65.3 & 100.0 & 0.0 & 79.0 & LR=0.0001, drop=0.1, iter=5000 \\ \hline
+			No Prep / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			No Prep / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			GC / All & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
+			GC / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			GC / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			\textbf{WN / All} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
+			WN / Test & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			WN / Val+Test & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+		\end{tabular}
+	}
+\end{table}

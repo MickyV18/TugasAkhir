@@ -1,0 +1,20 @@
+\begin{table}[H]
+	\centering
+	\caption{Best Model setiap Eksperimen Explainable CNN}
+	\label{tab:best_model_explainable_cnn}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
+			\textbf{all} & \textbf{70.37} & \textbf{69.64} & \textbf{70.37} & \textbf{47.62} & \textbf{69.94} & \textbf{lr=0.01, bs=64, dr=0.1} \\ \hline
+			test & 84.27 & 71.01 & 84.27 & 0.00 & 77.08 & lr=0.0001, bs=40, dr=0.1 \\ \hline
+			val+test & 80.95 & 79.94 & 80.95 & 21.43 & 76.54 & lr=0.01, bs=40, dr=0.1 \\ \hline
+			GC -- All & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
+			\textbf{GC -- Test} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
+			GC -- Val+Test & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN -- All & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
+			WN -- Test & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
+			\textbf{WN -- Val+Test} & \textbf{87.83} & \textbf{88.45} & \textbf{87.83} & \textbf{78.57} & \textbf{88.07} & \textbf{lr=0.0001, bs=40, dr=0.1} \\ \hline
+		\end{tabular}
+	}
+\end{table}

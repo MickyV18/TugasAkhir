@@ -331,8 +331,8 @@
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {subsection}{\numberline {III.2.2}Kebutuhan Fungsional}{31}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {III.2.3}Kebutuhan Nonfungsional}{31}{subsection.3.2.3}%
-\contentsline {section}{\numberline {III.3}Analisis Pemilihan Solusi}{31}{section.3.3}%
-\contentsline {subsection}{\numberline {III.3.1}Alternatif Solusi}{31}{subsection.3.3.1}%
+\contentsline {section}{\numberline {III.3}Analisis Pemilihan Solusi}{32}{section.3.3}%
+\contentsline {subsection}{\numberline {III.3.1}Alternatif Solusi}{32}{subsection.3.3.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -390,7 +390,7 @@
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {section}{\numberline {IV.3}\textit {Modelling}}{47}{section.4.3}%
-\contentsline {subsection}{\numberline {IV.3.1}Correlation Learning Mechanism (CLM)}{47}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {IV.3.1}Correlation Learning Mechanism (CLM)}{48}{subsection.4.3.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -421,14 +421,14 @@
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {section}{\numberline {V.3}Pemrosesan Data}{60}{section.5.3}%
 \contentsline {subsection}{\numberline {V.3.1}Pemrosesan Umum}{60}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {V.3.2}Pemrosesan Eksperimen}{62}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {V.3.2}Pemrosesan Eksperimen}{61}{subsection.5.3.2}%
 \contentsline {section}{\numberline {V.4}Implementasi Arsitektur Model}{62}{section.5.4}%
 \contentsline {subsection}{\numberline {V.4.1}Correlation Learning Mechanism (CLM)}{62}{subsection.5.4.1}%
 \contentsline {subsection}{\numberline {V.4.2}Explainable CNN}{63}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {V.4.3}EfficientNetB0}{64}{subsection.5.4.3}%
-\contentsline {section}{\numberline {V.5}\textit {Explainable AI} (Grad-CAM)}{66}{section.5.5}%
-\contentsline {subsection}{\numberline {V.5.1}GradCAM++ untuk Explainable CNN}{66}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {V.5.2}GradCAM untuk Transfer Learning EfficientB0}{66}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {V.4.3}EfficientNetB0}{65}{subsection.5.4.3}%
+\contentsline {section}{\numberline {V.5}\textit {Explainable AI} (Grad-CAM)}{67}{section.5.5}%
+\contentsline {subsection}{\numberline {V.5.1}GradCAM++ untuk Explainable CNN}{67}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {V.5.2}GradCAM untuk Transfer Learning EfficientB0}{67}{subsection.5.5.2}%
 \contentsline {chapter}{\numberline {VI}EVALUASI}{69}{chapter.6}%
 \contentsline {section}{\numberline {VI.1}Metode Evaluasi}{69}{section.6.1}%
 \contentsline {section}{\numberline {VI.2}Hasil Evaluasi}{69}{section.6.2}%

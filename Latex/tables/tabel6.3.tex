@@ -1,0 +1,16 @@
+\begin{table}[H]
+	\centering
+	\caption{Perbandingan Penelitian Ini dengan Iftikhar dkk. (2025)}
+	\begin{tabular}{p{3.2cm}p{4.8cm}p{4.8cm}}
+		\hline
+		\textbf{Aspek} & \textbf{Iftikhar dkk. (2025)} & \textbf{Penelitian Ini} \\ \hline
+		Jumlah data (sebelum augmentasi) & 10.287 citra & 557 citra (164 \textit{No Tumor}, 393 Tumor) \\ \hline
+		Jumlah kelas & 4 kelas & 2 kelas \\ \hline
+		\textit{Preprocessing} & \textit{Cropping} kontur + normalisasi + \textit{resize} & \textit{Cropping} ROI + \textit{denoising} (GC/WN) \\ \hline
+		Regularisasi & BatchNorm + \textit{average pooling}, tanpa \textit{dropout} & \textit{Dropout} (0,1--0,3) \\ \hline
+		Penyederhanaan arsitektur & Pemangkasan \textit{layer} berbasis Grad-CAM & Tidak dilakukan \\ \hline
+		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}, 4.5) \\ \hline
+		Akurasi \textit{unseen} & 94,72\% & 71,5--78,3\% (skema \textit{test} valid)$^{**}$ \\ \hline
+		Validasi \textit{explainability} & Kualitatif (Grad-CAM/SHAP/LIME) & Belum dilakukan \\ \hline
+	\end{tabular}
+\end{table}

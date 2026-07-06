@@ -112,7 +112,7 @@ Pada tugas akhir ini, diterapkan tiga metode augmentasi geometris yang dijalanka
 		
 		\item \textit{Shearing}: Citra yang telah digeser kemudian didistorsi dengan sudut acak antara $-15^\circ$ hingga $15^\circ$ untuk mensimulasikan variasi proyeksional.
 		
-		\item Rotasi: Terakhir, citra dirotasi dengan sudut acak dari rentang $-25^\circ$ hingga $25^\circ$ untuk mensimulasikan variasi orientasi akuisisi pemindaian.
+		\item Rotasi: Terakhir, citra dirotasi dengan sudut acak dari rentang $-25^\circ$ hingga $25^\circ$ untuk mensimulasikan variasi orientasi akuisisi pemindaian. \\
 	\end{enumerate}
 	
 	Kombinasi ketiga transformasi ini terbukti menjadi pendekatan paling tepat untuk augmentasi citra \textit{MR} otak dalam meningkatkan klasifikasi kasus HGG dan LGG, dengan akurasi sebesar 88.24\%, sensitivitas 90.48\%, dan spesifisitas 97.13\% \autocite{goceri2023medical}.
@@ -312,5 +312,5 @@ Evaluasi terhadap \textit{Explainable Artificial Intelligence} (XAI) bertujuan u
 	Sebagai kriteria keberhasilan, tugas akhir ini mengacu pada performa Grad-CAM yang dilaporkan dalam studi literatur pada \textit{dataset} neuro-onkologi (TCGA-LGG). Metode yang digunakan mencatat skor rata-rata XAlign sebesar $64,1\%$ \autocite{muhammad2025heatmap}. Oleh karena itu, tugas akhir ini menargetkan capaian skor XAlign $\geq 0,641$ sebagai batas minimal validitas penjelasan yang dihasilkan model.
 	
 	\item Evaluasi Kualitatif\\
-	Sebagai pelengkap data kuantitatif XAlign, dilakukan evaluasi kualitatif perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis kasus per kasus. Setelah dilakukan analisis visual dari heatmap, dilakukan analisis penyebab gradcam masih belum sesuai dengan \textit{ground truth mask}, seperti dari kualitas gambar, posisi tumor, dan ukuran tumor.
+	Sebagai pelengkap data kuantitatif XAlign, dilakukan evaluasi kualitatif perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis per kuandran (\textit{True Positive}, \textit{True Negative}, \textit{False Positive}, dan \textit{False Negative}). Setelah dilakukan analisis visual dari heatmap, dilakukan analisis penyebab gradcam masih belum sesuai dengan \textit{ground truth mask}, seperti dari kualitas gambar, posisi tumor, dan ukuran tumor.
 \end{enumerate}
