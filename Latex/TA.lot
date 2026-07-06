@@ -20,12 +20,14 @@
 \contentsline {table}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Statistik Dataset Sebelum dan Setelah ROI}}{61}{table.caption.43}%
 \contentsline {table}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Metrik Kualitas Citra antara GC dan WN}}{61}{table.caption.45}%
 \contentsline {table}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}}{61}{table.caption.46}%
-\contentsline {table}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen CLM}}{63}{table.caption.48}%
-\contentsline {table}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen Explainable CNN}}{64}{table.caption.50}%
-\contentsline {table}{\numberline {V.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model Explainable CNN}}{65}{table.caption.51}%
-\contentsline {table}{\numberline {V.11}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model EfficientNetB0}}{66}{table.caption.53}%
-\contentsline {table}{\numberline {V.12}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen EfficientNetB0}}{67}{table.caption.54}%
+\contentsline {table}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model Explainable CNN}}{64}{table.caption.49}%
+\contentsline {table}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model EfficientNetB0}}{66}{table.caption.51}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {VI.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen CLM}}{69}{table.caption.55}%
+\contentsline {table}{\numberline {VI.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen Explainable CNN}}{71}{table.caption.56}%
+\contentsline {table}{\numberline {VI.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Penelitian Ini dengan Iftikhar dkk. (2025)}}{74}{table.caption.57}%
+\contentsline {table}{\numberline {VI.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen EfficientNetB0}}{75}{table.caption.58}%
+\contentsline {table}{\numberline {VI.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Parameter Model}}{76}{table.caption.59}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

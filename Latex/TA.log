@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  6 JUL 2026 00:04
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  6 JUL 2026 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1533,31 +1533,41 @@ Overfull \hbox (1.26215pt too wide) detected at line 437
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 438
+Overfull \hbox (13.55432pt too wide) in paragraph at lines 441--441
+ [][] [][][]\TU/TimesNewRoman(0)/m/n/12 Pengaruh \TU/TimesNewRoman(0)/m/it/12 P
+reprocessing \TU/TimesNewRoman(0)/m/n/12 terhadap Kemam- 
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 454
 \TU/TimesNewRoman(0)/m/n/12 VI.2.1.3 
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 440
+Overfull \hbox (24.85129pt too wide) in paragraph at lines 457--457
+ [][] [][][]\TU/TimesNewRoman(0)/m/n/12 Perbandingan dengan Deep-EFNet ([])[][]
+ []  
+ []
+
+
+Overfull \hbox (1.26215pt too wide) detected at line 460
 \TU/TimesNewRoman(0)/m/n/12 VI.2.2.1 
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 441
+Overfull \hbox (1.26215pt too wide) detected at line 461
 \TU/TimesNewRoman(0)/m/n/12 VI.2.2.2 
  []
 
-)
+
+
+[15])
 \tf@toc=\write5
 \openout5 = `TA.toc'.
 
 ) (8 Daftar Gambar.tex
 
-[15]
-
-[16
-
-] (TA.lof
+[16] (TA.lof
 Overfull \hbox (13.67876pt too wide) in paragraph at lines 15--15
  [][] [][][]\TU/TimesNewRoman(0)/m/n/12 Visualisasi mekanisme \TU/TimesNewRoman
 (0)/m/it/12 Correlation Learning Mechanism \TU/TimesNewRoman(0)/m/n/12 (CLM) ([
@@ -1571,23 +1581,28 @@ Overfull \hbox (13.67876pt too wide) in paragraph at lines 16--16
 ][]Woź- 
  []
 
-)
+
+Underfull \vbox (badness 1184) has occurred while \output is active []
+
+
+
+[17
+
+])
 \tf@lof=\write6
 \openout6 = `TA.lof'.
 
 ) (9 Daftar Tabel.tex
 
-[17]
-
-[18
-
-] (TA.lot)
+[18] (TA.lot)
 \tf@lot=\write7
 \openout7 = `TA.lot'.
 
 ) (10 Daftar Persamaan.tex
 
-[19]
+[19
+
+]
 
 [20
 
@@ -1977,33 +1992,24 @@ Overfull \hbox (6.12486pt too wide) in paragraph at lines 8--9
 n EfficientNetB0, masing-masing
  []
 
-File: images/Flow Arsitektur.png Graphic file (type bmp)
-<images/Flow Arsitektur.png>
-File: images/data langka.png Graphic file (type bmp)
-<images/data langka.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+File: images/Flow Sistem.png Graphic file (type bmp)
+<images/Flow Sistem.png>
 
 
 [41
 
 ]
-File: images/normal brain radio.png Graphic file (type bmp)
-<images/normal brain radio.png>
+File: images/data langka.png Graphic file (type bmp)
+<images/data langka.png>
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 34.
 
 
 
 [42]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 48.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+File: images/normal brain radio.png Graphic file (type bmp)
+<images/normal brain radio.png>
 
 
 [43]
@@ -2033,17 +2039,14 @@ LaTeX Warning: Reference `expcnn' on page 47 undefined on input line 124.
 
 LaTeX Warning: Reference `efnet' on page 47 undefined on input line 124.
 
-File: images/CLM1.png Graphic file (type bmp)
-<images/CLM1.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [47]
+File: images/CLM1.png Graphic file (type bmp)
+<images/CLM1.png>
 File: images/CLM2.png Graphic file (type bmp)
 <images/CLM2.png>
 
@@ -2054,16 +2057,19 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 143.
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 143.
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 
 [48]
-File: images/before exp cnn.png Graphic file (type bmp)
-<images/before exp cnn.png>
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [49]
+File: images/before exp cnn.png Graphic file (type bmp)
+<images/before exp cnn.png>
+
 Overfull \hbox (8.0398pt too wide) in paragraph at lines 198--199
 []\TU/TimesNewRoman(0)/m/n/12 BatchNorm + Average Pooling: Normalisasi aktivasi
  diikuti dengan \TU/TimesNewRoman(0)/m/it/12 down-
@@ -2110,29 +2116,26 @@ ate
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[54]
 Overfull \hbox (4.7644pt too wide) in paragraph at lines 280--281
 []\TU/TimesNewRoman(0)/m/it/12 Overlay \TU/TimesNewRoman(0)/m/n/12 dan Visualis
 asi Akhir: Peta aktivasi yang dihasilkan ditumpangk-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[54]
+[55]
 Overfull \hbox (12.48454pt too wide) in paragraph at lines 312--313
 \TU/TimesNewRoman(0)/m/n/12 CAM yang dilaporkan dalam studi literatur pada \TU/
 TimesNewRoman(0)/m/it/12 dataset \TU/TimesNewRoman(0)/m/n/12 neuro-onkologi (TC
 GA-
  []
 
-
-Underfull \vbox (badness 1622) has occurred while \output is active []
-
-
-
-[55]) (Bab V - Implementasi.tex
+) (Bab V - Implementasi.tex
 
 [56]
 Bab V.
@@ -2172,16 +2175,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [62]
 File: images/after exp cnn.png Graphic file (type bmp)
 <images/after exp cnn.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (65.16138pt too wide) in paragraph at lines 292--292
+Overfull \hbox (65.16138pt too wide) in paragraph at lines 250--250
 []\TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik E
 xplainable CNN[] 
  []
@@ -2196,26 +2195,24 @@ File: images/after tl.png Graphic file (type bmp)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \vbox (badness 1681) has occurred while \output is active []
-
-
 
 [64]
-
-[65]
-Overfull \hbox (29.17354pt too wide) in paragraph at lines 348--363
+Overfull \hbox (29.17354pt too wide) in paragraph at lines 306--321
  [][] 
  []
 
 
-Overfull \hbox (65.16136pt too wide) in paragraph at lines 384--384
+Overfull \hbox (65.16136pt too wide) in paragraph at lines 342--342
 [] \TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik 
 EfficientNetB0[] 
  []
 
 
+Underfull \vbox (badness 4156) has occurred while \output is active []
 
-[66]
+
+
+[65]
 File: images/TP_exp_cnn.png Graphic file (type bmp)
 <images/TP_exp_cnn.png>
 File: images/FN_exp_cnn.png Graphic file (type bmp)
@@ -2231,37 +2228,183 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (Bab VI - Evaluasi.tex
 
+[66]
+
 [67]
 
-[68]
+[68
+
+]
 Bab VI.
 
 
 [69
 
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]) (Bab VII - Penutup.tex
+
 
 [70]
-Bab VII.
-)
 
-[71
+[71]
+
+[72]
+Overfull \hbox (16.80789pt too wide) in paragraph at lines 101--103
+[] []|\TU/TimesNewRoman(0)/b/n/12 VI.2.1.2.7 \TU/TimesNewRoman(0)/b/it/12 Cross
+-Validation \TU/TimesNewRoman(0)/b/n/12 pada Model Terbaik[] \TU/TimesNewRoman(
+0)/m/n/12 Validasi \TU/TimesNewRoman(0)/m/it/12 10-fold cross-validation
+ []
 
 
-]
+Overfull \hbox (14.39507pt too wide) in paragraph at lines 105--106
+[]\TU/TimesNewRoman(0)/m/it/12 Learning curve \TU/TimesNewRoman(0)/m/n/12 rata-
+rata tetap menunjukkan \TU/TimesNewRoman(0)/m/it/12 overfitting \TU/TimesNewRom
+an(0)/m/n/12 : akurasi \TU/TimesNewRoman(0)/m/it/12 training $\OMS/cmsy/m/n/12 
+^^X$\TU/TimesNewRoman(0)/m/n/12 100%
+ []
 
-[72
 
-]
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 110.
 
-[73
 
-]
+Underfull \hbox (badness 2042) in paragraph at lines 119--120
+[]|\TU/TimesNewRoman(0)/m/n/12 557 citra (164 \TU/TimesNewRoman(0)/m/it/12 No T
+umor\TU/TimesNewRoman(0)/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|\TU/TimesNewRoman(0)/m/n/12 Penyederhanaan
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+[]|\TU/TimesNewRoman(0)/m/n/12 71,5–78,3% (skema \TU/TimesNewRoman(0)/m/it/12 t
+est
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 126--126
+[]|\TU/TimesNewRoman(0)/m/n/12 Validasi \TU/TimesNewRoman(0)/m/it/12 explaina-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]|\TU/TimesNewRoman(0)/m/n/12 Kualitatif (Grad-
+ []
+
+
+Overfull \hbox (1.85674pt too wide) in paragraph at lines 115--129
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[73]
+Overfull \hbox (1.44559pt too wide) in paragraph at lines 135--136
+[]\TU/TimesNewRoman(0)/m/n/12 Terlepas dari skala data, aspek \TU/TimesNewRoman
+(0)/m/it/12 explainability \TU/TimesNewRoman(0)/m/n/12 tetap berbeda mendasar: 
+([][][]Iftikhar
+ []
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 136.
+
+
 
 [74]
 
 [75]
+
+LaTeX Warning: Citation 'deepefnet' on page 76 undefined on input line 170.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\parencite' on input line 170.
+
+File: images/xalign.png Graphic file (type bmp)
+<images/xalign.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[76]
+File: images/TN.png Graphic file (type bmp)
+<images/TN.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/TP_no_mask.png Graphic file (type bmp)
+<images/TP_no_mask.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/TP_mask.png Graphic file (type bmp)
+<images/TP_mask.png>
+
+Underfull \vbox (badness 7869) has occurred while \output is active []
+
+
+
+[77]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/FP.png Graphic file (type bmp)
+<images/FP.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 7468) has occurred while \output is active []
+
+
+
+[78]
+File: images/FN.png Graphic file (type bmp)
+<images/FN.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (Bab VII - Penutup.tex
+
+[79]
+
+[80]
+
+[81]
+
+[82
+
+]
+Bab VII.
+)
+
+[83
+
+]
+
+[84
+
+]
+
+[85
+
+]
+
+[86]
+
+[87]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 410--410
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
@@ -2281,7 +2424,7 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
 
 
 
-[76]
+[88]
 Overfull \hbox (33.26854pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
@@ -2290,7 +2433,7 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[77]
+[89]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 410--410
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
@@ -2304,7 +2447,7 @@ Overfull \hbox (1.24242pt too wide) in paragraph at lines 410--410
 
 
 
-[78]
+[90]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 410--410
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
@@ -2312,29 +2455,29 @@ Julio-Alejandro Romero-González,
 
 (Lampiran-A.tex
 
-[79]
+[91]
 
-[80
+[92
 
 ]
 Lampiran A.
 ) (Lampiran-B.tex
 
-[81
+[93
 
 ]
 
-[82
+[94
 
 ]
 Lampiran B.
 )
 
-[83
+[95
 
 ]
 
-[84
+[96
 
 ]
 
@@ -2355,7 +2498,7 @@ L3 programming layer <2025-09-02>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `TA.out' has not changed.
-(rerunfilecheck)             Checksum: AEB05D3A1E445A28F6397906C15C55F7;19427.
+(rerunfilecheck)             Checksum: FCEE6728A80EB36DECA1E2448FA3FA9A;22809.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                TA
@@ -2366,12 +2509,12 @@ Package logreq Info: Writing requests to 'TA.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34942 strings out of 403197
- 685057 string characters out of 5455938
- 2124294 words of memory out of 5000000
- 62976 multiletter control sequences out of 15000+600000
+ 35013 strings out of 403197
+ 686373 string characters out of 5455938
+ 2127164 words of memory out of 5000000
+ 63041 multiletter control sequences out of 15000+600000
  632942 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,11n,100p,1979b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,100p,1979b,7043s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TA.pdf (116 pages).
+Output written on TA.pdf (128 pages).

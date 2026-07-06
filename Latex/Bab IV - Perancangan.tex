@@ -10,7 +10,7 @@ Secara umum, alur rancangan implementasi pada tugas akhir ini terbagi menjadi em
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
-	\includegraphics[width=1.0\textwidth]{images/Flow Arsitektur.png}
+	\includegraphics[width=1.0\textwidth]{images/Flow Sistem.png}
 	\caption{Perancangan Alur Implementasi}
 	\label{gambar:arsitekturperancangan}
 \end{figure}
@@ -28,21 +28,7 @@ Saat ini, akses publik untuk mendapatkan citra CT scan otak masih sangat terbata
 
 Oleh karena itu, pengumpulan dataset tumor yang digunakan dibagi menjadi dua kategori agar memenuhi standar klinis yang memadai, yaitu dataset dengan mask (anotasi) untuk memudahkan evaluasi XAI dan dataset tanpa mask. Dataset dengan mask diperoleh dari \cite{AlKadi2022Unpaired} yang memang disusun untuk memfasilitasi peneliti di bidang AI dalam mengembangkan berbagai aplikasi medis, termasuk deteksi dini, klasifikasi, dan segmentasi tumor otak pada citra MR maupun CT. Sementara itu, untuk dataset tumor tanpa mask, data bersumber dari Radiopaedia yang dapat diakses secara gratis dan memiliki kredibilitas klinis yang kuat karena telah melalui proses validasi oleh ahli radiologi profesional.
 
-\begin{enumerate}
-	\item \textit{Dataset} Otak CT \textit{Scan} tanpa \textit{Mask} Tumor
-	
-	Untuk melatih dan memvalidasi model, tugas akhir ini mengumpulkan datast melalui website Radiopaedia. Radiopaedia merupakan repositori kasus pencitraan medis yang mencakup berbagai modalitas, seperti CT-scan dan MRI. Meskipun terbuka dari komunitas medis, seluruh draf artikel dan kasus klinis yang diunggah dapat dilakukan \textit{peer-review} dan harus melewati proses divalidasi oleh para ahli radiologi profesional yang bekerja sama dengan Radiopaedia. Proses verifikasi ini memastikan bahwa setiap data gambar yang tersedia memiliki diagnosis patologi yang akurat dan anotasi klinis yang dapat dipertanggungjawabkan.
-	
-	\begin{figure}[h]
-		\centering
-		\captionsetup{justification=centering}
-		\includegraphics[width=0.85\textwidth]{images/normal brain radio.png}
-		\caption{Website Radiopaedia}
-		\label{gambar:websiteradiopaedia}
-	\end{figure}
-	
-	Dalam pengumpulan data, dilakukan pencarian secara manual dengan beberapa kata kunci yang dibagi menjadi dua, yaitu normal dan kelas penyakit (glioma dan meningioma). Pada pencarian tersebut, terdapat \textit{filter} modalitas pencitraan berupa CT \textit{scan}) dan dengan bidang \textit{Axial} \textit{non-contrast}. Setelah dilakukan pencarian, dilakukan pengunduhan secara manual dengan melihat letak tumor dari gambar lain, seperti MRI atau anotasi pada gambar yang lain. Dalam pengunduhan, dilakukan pemisahan folder untuk tempat setiap kelas yang akan dijadikan bahan untuk pelatihan dan tes model.
-	
+\begin{enumerate}	
 	\item \textit{Dataset} Otak CT \textit{Scan} dengan Tumor dan \textit{Mask} Tumor
 	
 	Untuk \textit{Dataset} Otak dengan Tumor dan \textit{Mask} Tumor, tugas akhir ini menggunakan \textit{dataset} \textit{Unpaired MR-CT Brain Dataset for Unsupervised Image Translation} \cite{AlKadi2022Unpaired}. \textit{Dataset} ini digunakan sebagai \textit{ground truth} untuk kebutuhan validasi XAI. Spesifikasi dari \textit{dataset} yang digunakan adalah:
@@ -56,6 +42,20 @@ Oleh karena itu, pengumpulan dataset tumor yang digunakan dibagi menjadi dua kat
 		\item Ketebalan \textit{Slice}: 7,0 mm.
 		\item Jumlah Sampel: 89 citra CT bidang aksial.
 	\end{enumerate}
+	
+	\item \textit{Dataset} Otak CT \textit{Scan} tanpa \textit{Mask} Tumor
+	
+	Untuk melatih dan memvalidasi model, tugas akhir ini mengumpulkan datast melalui website Radiopaedia. Radiopaedia merupakan repositori kasus pencitraan medis yang mencakup berbagai modalitas, seperti CT-scan dan MRI. Meskipun terbuka dari komunitas medis, seluruh draf artikel dan kasus klinis yang diunggah dapat dilakukan \textit{peer-review} dan harus melewati proses divalidasi oleh para ahli radiologi profesional yang bekerja sama dengan Radiopaedia. Proses verifikasi ini memastikan bahwa setiap data gambar yang tersedia memiliki diagnosis patologi yang akurat dan anotasi klinis yang dapat dipertanggungjawabkan.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.85\textwidth]{images/normal brain radio.png}
+		\caption{Website Radiopaedia}
+		\label{gambar:websiteradiopaedia}
+	\end{figure}
+	
+	Dalam pengumpulan data, dilakukan pencarian secara manual dengan beberapa kata kunci yang dibagi menjadi dua, yaitu normal dan kelas penyakit (glioma dan meningioma). Pada pencarian tersebut, dilakukan pencocokan terhadap \textit{dataset} otak CT \textit{scan} dengan tumor dan \textit{mask} tumor dengan menggunakan \textit{filter} modalitas pencitraan berupa CT \textit{scan}) dan dengan bidang \textit{Axial} \textit{non-contrast}. Setelah dilakukan pencarian, dilakukan pengunduhan secara manual dengan melihat letak tumor dari gambar lain, seperti MRI atau anotasi pada gambar yang lain. Dalam pengunduhan, dilakukan pemisahan folder untuk tempat setiap kelas yang akan dijadikan bahan untuk pelatihan dan tes model. Pengunduhan dilakukan secara manual dikarenakan Radiopaedia melarang penggunaan \textit{scrapper} untuk menjaga stabilitas \textit{website} yang dipunya.
 
 \end{enumerate}
 
@@ -225,7 +225,7 @@ Arsitektur Deep-EFNet menggunakan EfficientNetB0 yang telah dilatih pada dataset
 
 Keluaran dari backbone kemudian diproses melalui lapisan-lapisan berikut secara berurutan:
 
-\begin{itemize}
+\begin{enumerate}
 	\item Global Average Pooling (GAP): Mereduksi dimensi spasial feature map menjadi satu nilai per channel (Persamaan~9), sehingga jumlah parameter yang dilatih berkurang dan risiko overfitting menurun.
 	\item Batch Normalization: Menormalisasi aktivasi untuk menstabilkan proses pelatihan dan mengurangi \textit{internal covariate shift} (Persamaan~5--8).
 	\item Dropout (rate = 0.5): Menonaktifkan sebagian neuron secara acak selama pelatihan untuk mencegah ko-adaptasi fitur yang berlebihan (Persamaan~12).
@@ -234,7 +234,7 @@ Keluaran dari backbone kemudian diproses melalui lapisan-lapisan berikut secara 
 	\item Dense Layer 2 (256 unit, ReLU, L2=0.01): Lapisan fully-connected kedua yang mereduksi dimensi representasi fitur secara hierarkis sebelum klasifikasi akhir.
 	\item Batch Normalization + Dropout (0.5): Diulang kembali setelah Dense Layer 2.
 	\item Output Layer (4 unit, Softmax): Menghasilkan distribusi probabilitas atas empat kelas tumor (glioma, meningioma, pituitary, no tumor) menggunakan fungsi softmax (Persamaan~13).
-\end{itemize}
+\end{enumerate}
 
 \subsection{hyperparameter \textit{tuning}}
 Dikarenakan dataset yang sedikit, agar model tidak memiliki kecenderungan untuk menghafal data dilakukan \textit{hyperparameter tuning} yang dapat mencegah \textit{overfitting} dan meningkatkan performa. Pemilihan hyperparameter tidak memiliki standar universal yang menjamin hasil optimal untuk setiap tugas klasifikasi. Berdasarkan penelitian Wojciuk dkk. (2024), meskipun learning rate dan ukuran gambar input secara umum memberikan dampak terbesar pada performa model, tingkat signifikansi dari hyperparameter sangat bervariasi bergantung pada karakteristik dataset yang digunakan. hyperparameter \textit{tuning} yang dilakukan adalah sebagai berikut.

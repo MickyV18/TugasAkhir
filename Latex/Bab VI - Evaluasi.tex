@@ -10,53 +10,246 @@ Berdasarkan
 \section{Hasil Evaluasi}
 \subsection{Model}
 \subsubsection{CLM}
-\subsection{Analisis Kritis Hasil Evaluasi Model}
 
-Evaluasi terhadap sembilan skenario eksperimen menunjukkan bahwa metrik akurasi dan \textit{composite score} yang tinggi tidak selalu merepresentasikan kemampuan model yang sesungguhnya, sehingga diperlukan pembahasan lebih mendalam terhadap beberapa temuan berikut.
+Evaluasi terhadap sembilan skenario eksperimen menunjukkan bahwa performa model yang diperoleh jauh berada di bawah hasil yang dilaporkan oleh ....................... sebagai studi acuan utama arsitektur CLM.
+
+
+\begin{table}[htbp]
+	\centering
+	\caption{Best Model setiap Eksperimen CLM}
+	\label{tab:best_model_clm}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config Terbaik} \\ \hline
+			No Prep / All & 65.3 & 65.3 & 100.0 & 0.0 & 79.0 & LR=0.0001, drop=0.1, iter=5000 \\ \hline
+			No Prep / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			No Prep / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			GC / All & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
+			GC / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			GC / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			\textbf{WN / All} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
+			WN / Test & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			WN / Val+Test & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+Kesenjangan ini dianalisis secara kritis dari empat aspek yang saling berkaitan: keseimbangan klasifikasi, stabilitas pelatihan pada penggabungan dataset, kemungkinan sumber penyebab pada sisi metodologi, dan pengaruh hyperparameter iterasi.
 
 \begin{enumerate}
 	
-	\item \textbf{Kolaps Kelas (\textit{Class Collapse}) dan Pengecualian pada Skema WN--\textit{all}}\\
-	Enam dari sembilan eksperimen menghasilkan model terbaik dengan sensitivitas 100\% namun spesifisitas 0\%, yang berarti model selalu memprediksi kelas tumor tanpa benar-benar mempelajari pola pembeda antar kelas. Nilai akurasi dan \textit{composite score} yang tampak tinggi pada kondisi ini bersifat menyesatkan karena hanya merefleksikan proporsi kelas mayoritas pada data uji, dan mengindikasikan ketidakseimbangan kelas (\textit{class imbalance}) yang belum ditangani secara memadai. Satu-satunya pengecualian adalah kombinasi \textit{wavelet denoising} dan normalisasi intensitas (WN) pada skema \textit{all}, yang menghasilkan sensitivitas dan spesifisitas relatif seimbang (62,03\% dan 38,10\%). Meskipun akurasi mentahnya lebih rendah, hasil ini lebih dapat dipercaya secara klinis karena model benar-benar menangkap sebagian sinyal pembeda antar kelas.
+	\item \textbf{Kolaps Kelas dan Kesenjangan Keseimbangan Sensitivitas--Spesifisitas terhadap Acuan}\\
+	Enam dari sembilan eksperimen menghasilkan model terbaik dengan sensitivitas 100\% namun spesifisitas 0\% (atau sebaliknya), yang berarti model hanya memprediksi satu kelas tanpa benar-benar mempelajari pola pembeda antar kelas. Nilai akurasi dan \textit{composite score} yang tampak tinggi pada kondisi ini bersifat menyesatkan karena hanya merefleksikan proporsi kelas mayoritas pada data uji. Satu-satunya pengecualian adalah kombinasi \textit{wavelet denoising} dan normalisasi intensitas (WN) pada skema \textit{all}, yang menghasilkan sensitivitas dan spesifisitas relatif seimbang (62,03\% dan 38,10\%). Meski demikian, hasil terbaik ini masih jauh di bawah hasil acuan, yang melaporkan sensitivitas dan spesifisitas yang seimbang dan tinggi (88,9--95,97\% dan 96,21--97,5\%). Perbandingan ini menegaskan bahwa model pada penelitian ini belum mencapai kapasitas diskriminatif yang dilaporkan pada studi acuan, dan kolaps kelas yang terjadi mengindikasikan ketidakseimbangan kelas (\textit{class imbalance}) yang belum ditangani secara memadai.
 	
-	\item \textbf{Instabilitas Pelatihan dan \textit{Domain Shift} pada Skema Penggabungan Dataset}\\
-	Skema penggabungan dataset kedua secara penuh ke data latih, validasi, dan uji (\textit{all}) menunjukkan pelatihan yang paling tidak stabil, dengan \textit{cross-entropy loss} yang tertahan di sekitar nilai \textit{random-guess} ($\approx \ln 2 = 0{,}693$) atau berosilasi tanpa tren menurun. Sebaliknya, skema \textit{test} dan \textit{val\_test} menunjukkan penurunan \textit{loss} yang lebih mulus dengan akurasi latih tinggi (90--96\%), namun beberapa konfigurasi mencatat selisih besar antara akurasi validasi dan uji (mis. skema \textit{gc\_test}, \textit{dropout} 0,05: validasi 70,16\% vs uji 29,41\%). Kedua temuan ini mengindikasikan bahwa dataset kedua memiliki distribusi fitur yang cukup berbeda dari dataset pertama, sehingga baik pencampuran penuh maupun kemunculannya hanya pada data uji dapat mengganggu proses pembelajaran atau generalisasi model.
+	\item \textbf{Instabilitas Pelatihan pada Penggabungan Dataset dan Perbedaan Definisi Tugas}\\
+	Skema penggabungan dataset kedua secara penuh ke data latih, validasi, dan uji (\textit{all}) menunjukkan pelatihan yang paling tidak stabil, dengan \textit{cross-entropy loss} yang tertahan di sekitar nilai \textit{random-guess} ($\approx \ln 2 = 0{,}693$) atau berosilasi tanpa tren menurun. Skema \textit{test} dan \textit{val\_test} menunjukkan pelatihan lebih mulus, namun beberapa konfigurasi mencatat selisih besar antara akurasi validasi dan uji (mis. skema \textit{gc\_test}, \textit{dropout} 0,05: validasi 70,16\% vs uji 29,41\%), mengindikasikan \textit{domain shift} antara dataset pertama dan kedua. Perlu dicatat bahwa pada studi acuan, dataset kedua (Cheng dkk., 2015) digunakan sebagai tugas klasifikasi tiga kelas (meningioma, glioma, pituitary) yang dievaluasi secara terpisah dari dataset pertama, sedangkan pada penelitian ini dataset kedua digabungkan ke dalam satu skema klasifikasi biner (tumor/tidak tumor). Dengan demikian, instabilitas dan \textit{domain shift} yang teramati bukan semata kegagalan model, tetapi juga wajar terjadi karena penelitian ini mencoba menyatukan dua dataset dengan definisi tugas yang berbeda dari perlakuan pada studi acuan, sehingga perbandingan akurasi mentah antara kedua penelitian tidak sepenuhnya \textit{apple-to-apple}.
 	
-	\item \textbf{Pengaruh \textit{Learning Rate} Tinggi dan Iterasi Berlebih}\\
-	Konfigurasi dengan \textit{learning rate} 0,001 serta total iterasi 10.000 secara konsisten menghasilkan \textit{composite score} yang lebih rendah dibandingkan konfigurasi \textit{baseline} (\textit{learning rate} 0,00025, 5.000 iterasi) pada hampir seluruh skema, menunjukkan model cukup sensitif terhadap \textit{learning rate} yang terlalu besar dan berisiko tidak stabil atau \textit{overfitting} bila iterasi ditambah tanpa regularisasi tambahan.
+	\item \textbf{Disparitas Anggaran Komputasi dan Mekanisme Inti CLM sebagai Kandidat Penyebab Kesenjangan}\\
+	Wo\'{z}niak dkk. melatih model dengan 120.000--180.000 iterasi untuk dataset pertama, dan hingga 12.000.000 iterasi untuk dataset kedua, menggunakan implementasi \textit{custom} berbasis C++ yang dijalankan secara \textit{multi-threaded} pada \textit{CPU} kelas \textit{workstation} (AMD Threadripper 2950X, 32 \textit{thread}), dengan mekanisme \textit{palette generation}, \textit{archiving}, dan \textit{reshuffling} filter yang dikendalikan oleh efisiensi ANN serta pelatihan BPTA/Adam \textit{custom}. Pada penelitian ini, total iterasi yang digunakan hanya 3.000--10.000 dengan implementasi Adam standar dan tanpa mekanisme arsip-palet yang setara. Selisih anggaran iterasi sebesar 12--1.500 kali, ditambah kemungkinan penyederhanaan mekanisme inti CLM, menjadi kandidat penjelasan utama mengapa kolaps kelas (poin 1) dan instabilitas pelatihan (poin 2) lebih sering muncul pada penelitian ini dibanding hasil yang stabil dan seimbang pada studi acuan.
 	
-	\item \textbf{Kesenjangan terhadap Studi Acuan CLM \parencite{wozniak2023}}\\
-	Dibandingkan dengan Wo\'{z}niak dkk. (2023), yang melaporkan akurasi 95--100\% dengan sensitivitas dan spesifisitas seimbang di atas 88\%, hasil pada penelitian ini masih jauh di bawahnya bahkan pada skenario terbaik (WN--\textit{all}: sensitivitas 62,03\%, spesifisitas 38,10\%). Kesenjangan ini kemungkinan besar disebabkan oleh perbedaan skala anggaran komputasi---studi acuan melatih model hingga 120.000--12.000.000 iterasi dengan implementasi \textit{custom} \textit{multi-threaded} (mekanisme \textit{palette archiving} dan \textit{reshuffling}), sedangkan penelitian ini hanya menggunakan 3.000--10.000 iterasi dengan Adam standar tanpa mekanisme arsip-palet yang setara. Selain itu, dataset kedua pada studi acuan digunakan untuk klasifikasi tiga kelas, berbeda dengan skema biner pada penelitian ini, sehingga perbandingan akurasi antara kedua penelitian tidak sepenuhnya \textit{apple-to-apple}.
+	\item \textbf{Pengaruh \textit{Learning Rate} dan Iterasi pada Eksperimen Internal}\\
+	Sejalan dengan kandidat penyebab pada poin 3, hasil internal menunjukkan bahwa konfigurasi dengan \textit{learning rate} 0,001 serta penambahan iterasi menjadi 10.000 secara konsisten menghasilkan \textit{composite score} yang lebih rendah dibandingkan konfigurasi \textit{baseline} (\textit{learning rate} 0,00025, 5.000 iterasi) pada hampir seluruh skema. Temuan ini memperkuat indikasi bahwa penambahan iterasi tanpa mekanisme \textit{archiving}/\textit{reshuffling} palet seperti pada studi acuan tidak serta-merta meningkatkan performa, dan justru berisiko membuat pelatihan tidak stabil atau \textit{overfitting}. Hal ini menunjukkan bahwa kesenjangan performa terhadap studi acuan kemungkinan besar bukan disebabkan oleh jumlah iterasi semata, melainkan juga oleh ketidaklengkapan mekanisme koreksi palet CNN yang menjadi kontribusi inti dari CLM pada studi acuan.
 	
 \end{enumerate}
+
+Berdasarkan keempat poin di atas, secara jujur dapat disimpulkan bahwa implementasi CLM pada penelitian ini belum berhasil mereplikasi performa yang dilaporkan .................., baik dari sisi keseimbangan klasifikasi maupun stabilitas pelatihan pada skema penggabungan dataset. Namun demikian, kesenjangan ini lebih tepat diatributkan pada keterbatasan anggaran komputasi, perbedaan definisi tugas pada dataset kedua, dan kemungkinan penyederhanaan mekanisme inti CLM (\textit{palette archiving} dan pelatihan \textit{multi-threaded custom}), bukan pada ketidaksesuaian konsep CLM terhadap tugas deteksi tumor otak.
+
 
 \subsubsection{Explainable CNN}
-\subsection{Masalah Model yang Hanya Menebak Satu Kelas}
-Pada sebagian kombinasi \textit{hyperparameter}, model tidak benar-benar mempelajari perbedaan kelas tumor dan bukan tumor, melainkan hanya menebak satu kelas untuk seluruh data uji. Hal ini terlihat dari nilai \textit{specificity} yang tepat 0\% (model selalu menebak kelas tumor) atau 100\% (model selalu menebak kelas bukan tumor), sehingga akurasi yang terlihat tinggi pada kasus ini tidak mencerminkan kemampuan model yang sesungguhnya. Dari 27 kombinasi \textit{hyperparameter} pada tiap skenario, persentase model yang mengalami masalah ini berkisar antara 25,9\% (WN dengan \textit{val\_test}) hingga 85,2\% (tanpa \textit{preprocessing} dan GC dengan \textit{val\_test}). Oleh karena itu, nilai \textit{specificity} dan \textit{F1-Score} perlu selalu diperhatikan bersama akurasi dalam menilai model.
 
-\subsection{Indikasi \textit{Overfitting} pada \textit{Learning Curve}}
-Pada hampir seluruh grafik \textit{learning curve} model terbaik di tiap skenario, akurasi data \textit{training} naik cepat hingga mendekati 100\% dalam kurang dari 10 \textit{epoch}, sementara akurasi data validasi tidak ikut naik dan cenderung tidak stabil, bahkan \textit{loss} validasi meningkat setelah beberapa \textit{epoch} awal. Pola ini menunjukkan \textit{overfitting}, yaitu kondisi model menghafal data \textit{training} alih-alih mempelajari pola umum, yang kemungkinan disebabkan oleh jumlah data \textit{training} yang terbatas dan nilai \textit{dropout} (0,1--0,3) yang belum cukup untuk mencegahnya.
+\begin{table}[htbp]
+	\centering
+	\caption{Best Model setiap Eksperimen Explainable CNN}
+	\label{tab:best_model_explainable_cnn}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
+			\textbf{all} & \textbf{70.37} & \textbf{69.64} & \textbf{70.37} & \textbf{47.62} & \textbf{69.94} & \textbf{lr=0.01, bs=64, dr=0.1} \\ \hline
+			test & 84.27 & 71.01 & 84.27 & 0.00 & 77.08 & lr=0.0001, bs=40, dr=0.1 \\ \hline
+			val+test & 80.95 & 79.94 & 80.95 & 21.43 & 76.54 & lr=0.01, bs=40, dr=0.1 \\ \hline
+			GC -- All & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
+			\textbf{GC -- Test} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
+			GC -- Val+Test & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN -- All & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
+			WN -- Test & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
+			\textbf{WN -- Val+Test} & \textbf{87.83} & \textbf{88.45} & \textbf{87.83} & \textbf{78.57} & \textbf{88.07} & \textbf{lr=0.0001, bs=40, dr=0.1} \\ \hline
+		\end{tabular}%
+	}
+\end{table}
 
-\subsection{Pengaruh \textit{Preprocessing} terhadap Kemampuan Generalisasi}
-Pada skenario \textit{test}, yaitu model dilatih dari \textit{Dataset} 1 lalu diuji langsung pada \textit{Dataset} 2 yang belum pernah dilihat sebelumnya, tanpa \textit{preprocessing} tidak ada satupun dari 27 kombinasi \textit{hyperparameter} yang menghasilkan \textit{specificity} di atas 0\%. Setelah \textit{preprocessing} GC atau WN diterapkan, ditemukan kombinasi yang menghasilkan \textit{specificity} jauh lebih baik (GC: 81\%, WN: 50\%), menunjukkan bahwa \textit{denoising} dan normalisasi intensitas berperan penting dalam menjembatani perbedaan karakteristik antar \textit{dataset}.
+\paragraph{Konteks Dataset dan Skema Eksperimen}
+\textit{Dataset} penelitian ini dikumpulkan mandiri (\textit{scraping} dan sumber lain), berjumlah 557 citra sebelum augmentasi: 164 \textit{No Tumor} dan 393 Tumor (rasio $\pm$1:2,4). Data dibagi menjadi \textit{Dataset} 1 dan \textit{Dataset} 2, digabungkan melalui tiga skema (\textit{all}, \textit{test}, \textit{val\_test}) dan diuji dengan tiga \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) --- menghasilkan 9 skenario, masing-masing diuji pada 27 kombinasi \textit{hyperparameter}. Ukuran data yang kecil ini menjadi konteks penting bagi temuan pada paragraf-paragraf berikut.
 
-\subsection{Pengaruh Strategi Penggabungan \textit{Dataset}}
-Tidak ditemukan satu strategi penggabungan \textit{dataset} (\textit{all}, \textit{test}, atau \textit{val\_test}) yang selalu terbaik pada semua kondisi. Tanpa \textit{preprocessing} dan dengan WN, strategi \textit{val\_test} memberikan hasil terbaik, sedangkan dengan GC strategi \textit{all} justru lebih unggul. Hal ini menunjukkan bahwa efektivitas strategi penggabungan \textit{dataset} tampak bergantung pada jenis \textit{preprocessing} yang digunakan, sehingga belum dapat ditarik kesimpulan tunggal yang berlaku umum.
+\paragraph{Masalah Model yang Hanya Menebak Satu Kelas}
+Pada sebagian kombinasi \textit{hyperparameter}, model tidak belajar membedakan kelas, melainkan hanya menebak satu kelas untuk seluruh data uji --- terlihat dari \textit{specificity} tepat 0\% atau 100\%, sehingga akurasi tinggi tidak mencerminkan kemampuan sesungguhnya. Persentase model yang gagal seperti ini berkisar 25,9\% (WN + \textit{val\_test}) hingga 85,2\% (tanpa \textit{preprocessing} dan GC + \textit{val\_test}). Lompatan nilai \textit{specificity} dalam kelipatan $\sim$5\% sejalan dengan kecilnya jumlah data \textit{No Tumor} (164 citra), sehingga \textit{specificity} mudah berubah drastis akibat satu-dua kesalahan saja. Akurasi karena itu tidak boleh dibaca tanpa \textit{specificity} dan \textit{F1-Score}.
 
-\subsection{Pengaruh \textit{Hyperparameter}}
-\textit{Learning rate} 0,0001 dan 0,001 cenderung memberikan performa lebih baik dan stabil dibanding 0,01, terutama pada skenario dengan \textit{preprocessing} WN. \textit{Dropout} 0,1 cenderung unggul tipis pada skenario dengan performa terbaik, sedangkan \textit{batch size} tidak menunjukkan pola pengaruh yang konsisten pada semua skenario. Karena setiap kombinasi hanya dijalankan satu kali tanpa pengulangan, kesimpulan mengenai pengaruh \textit{hyperparameter} ini bersifat kecenderungan umum dan belum sepenuhnya konklusif.
-\subsubsection{EfficientNetB0}
+\paragraph{Indikasi \textit{Overfitting} pada \textit{Learning Curve}}
+Hampir semua \textit{learning curve} model terbaik menunjukkan akurasi \textit{training} mendekati 100\% dalam kurang dari 10 \textit{epoch}, sementara akurasi validasi stagnan/tidak stabil dan \textit{loss} validasi meningkat setelah beberapa \textit{epoch} awal --- pola \textit{overfitting} klasik. Ini wajar terjadi mengingat data \textit{training} yang terbatas dan \textit{dropout} (0,1--0,3) yang tampaknya belum cukup mencegahnya.
+
+\paragraph{Pengaruh \textit{Preprocessing} terhadap Kemampuan Generalisasi}
+Pada skenario \textit{test} (model dilatih dari \textit{Dataset} 1, diuji langsung ke \textit{Dataset} 2), tanpa \textit{preprocessing} seluruh 27 kombinasi kolaps (\textit{specificity} 0\%, lihat \textit{Masalah Model yang Hanya Menebak Satu Kelas}). Dengan GC dan WN, ditemukan kombinasi non-kolaps: 71,5\% akurasi/81,0\% \textit{specificity} (GC) dan 78,3\%/50,0\% (WN). \textit{Denoising} dan normalisasi intensitas jelas membantu generalisasi lintas-\textit{dataset}, meski peningkatan ini tetap perlu dibaca dalam konteks data yang kecil (lihat \textit{Konteks Dataset}), bukan bukti \textit{domain shift} telah teratasi sepenuhnya.
+
+\paragraph{Pengaruh Strategi Penggabungan \textit{Dataset}}
+Tidak ada strategi penggabungan yang selalu terbaik: tanpa \textit{preprocessing} dan dengan WN, \textit{val\_test} unggul; dengan GC, \textit{all} justru lebih baik. Perlu dicatat skema \textit{val\_test} --- konfigurasi terbaik keseluruhan (87,8\%) --- memasukkan sebagian \textit{Dataset} 2 ke data validasi, sehingga tidak sepenuhnya setara dengan pengujian pada data yang benar-benar belum pernah dilihat, berbeda dari skema \textit{test} pada paragraf sebelumnya. Efektivitas strategi penggabungan tampak bergantung pada jenis \textit{preprocessing}, sehingga belum ada kesimpulan tunggal yang berlaku umum.
+
+\paragraph{Pengaruh \textit{Hyperparameter}}
+\textit{Learning rate} 0,0001--0,001 cenderung lebih baik dan stabil dibanding 0,01, terutama dengan \textit{preprocessing} WN. \textit{Dropout} 0,1 unggul tipis pada skenario terbaik; \textit{batch size} tidak menunjukkan pola konsisten. Karena tiap kombinasi hanya dijalankan sekali dan data terbatas, kesimpulan ini bersifat kecenderungan umum, belum konklusif.
+
+\paragraph{\textit{Cross-Validation} pada Model Terbaik}
+Validasi \textit{10-fold cross-validation} pada konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{bs}=40, \textit{dropout}=0,1) menghasilkan rata-rata akurasi 98,39\% (std 1,78\%) dan \textit{F1-Score} 98,36\% (std 1,83\%), rentang \textit{fold} 94,64--100\%. Hasil ini lebih konsisten dibanding evaluasi \textit{split} tunggal sebelumnya karena tidak ada \textit{fold} yang kolaps total. Catatan kritis:
 \begin{enumerate}
-	\item \textbf{Overfitting yang Konsisten dan Berat}:
-	Pada seluruh skema eksperimen, akurasi \textit{training} stabil mencapai 95--99\%, sementara akurasi \textit{validation} berfluktuasi jauh lebih rendah (55--85\%) dengan lonjakan \textit{validation loss} yang tajam, terutama setelah fase \textit{fine-tuning} dimulai. Pola ini konsisten pada hampir semua kombinasi \textit{hyperparameter} dan varian \textit{preprocessing}, sehingga \textit{overfitting} yang terjadi bersifat sistemik pada pipeline, bukan akibat pemilihan \textit{hyperparameter} tertentu, dan mengindikasikan kapasitas model relatif besar dibandingkan ukuran dan variasi data yang tersedia.
-	
-	\item \textbf{Efek Strategi Penggabungan \textit{Dataset}}:
-	Ketiga strategi penggabungan dataset kedua (\textit{all}, \textit{test}, \textit{val\_test}) tidak menunjukkan satu strategi yang konsisten superior, dengan selisih rata-rata akurasi yang relatif kecil (86,5\%--87,8\%). Strategi \textit{all} membuat distribusi data uji lebih mirip data latih namun mengurangi independensi data uji, sedangkan \textit{test} dan \textit{val\_test} menjadikan dataset kedua benar-benar \textit{unseen} sehingga lebih mencerminkan generalisasi lintas-domain, tetapi dengan variansi metrik yang jauh lebih tinggi (std akurasi >7\% vs sekitar 3\% pada \textit{all}). Pemilihan strategi ini merupakan \textit{trade-off} antara validitas evaluasi dan stabilitas metrik.
-	
-	\item \textbf{\textit{Trade-off} Sensitivitas vs Spesifisitas}:
-	Pada hampir seluruh model terbaik, nilai \textit{recall} secara konsisten lebih tinggi dibandingkan \textit{specificity} (misalnya 95,88\% berbanding 76,19\%), menunjukkan model lebih baik mendeteksi kasus positif dibandingkan mengenali kasus negatif, sehingga berpotensi menghasilkan lebih banyak \textit{false positive}. Bias ke arah sensitivitas ini relatif dapat diterima dalam deteksi tumor karena \textit{false negative} dianggap lebih berbahaya secara klinis, namun spesifisitas yang berada di kisaran 76--80\% pada beberapa skema tetap merupakan keterbatasan yang berimplikasi pada meningkatnya kasus yang memerlukan pemeriksaan lanjutan.
+	\item 4 dari 10 \textit{fold} mencapai akurasi tepat 100\%. Dengan total data 557 (164 \textit{No Tumor}), tiap \textit{fold} hanya berisi $\sim$55--56 sampel uji dan $\sim$16 di antaranya \textit{No Tumor} --- ukuran sekecil ini membuat skor sempurna sangat mungkin kebetulan; kemungkinan kebocoran data (citra mirip dari sumber yang sama tersebar di \textit{train}/\textit{test}) tetap perlu diperiksa lebih lanjut lewat \textit{grouped cross-validation}.
+	\item \textit{Fold} 1 menjadi titik terendah (akurasi 94,64\%; F1 \textit{No Tumor} 89,66\%), konsisten dengan kelas \textit{No Tumor} yang secara umum lebih sulit.
+	\item \textit{Learning curve} rata-rata tetap menunjukkan \textit{overfitting} : akurasi \textit{training} $\sim$100\% sejak \textit{epoch} ke-15, akurasi validasi baru stabil setelah \textit{epoch} ke-30 dan masih berfluktuasi antar \textit{fold}.
+	\item Skema CV ini mengacak seluruh data (\textit{Dataset} 1+2) ke 10 \textit{fold}, berbeda dari skema \textit{val\_test} yang sengaja memisahkan \textit{Dataset} 2 untuk uji generalisasi lintas-\textit{domain}. Kenaikan dari 87,8\% ke 98,39\% karena itu bukan bukti model membaik, melainkan skema pengujian yang berbeda; kedua angka tidak sebaiknya dibandingkan langsung.
 \end{enumerate}
+
+\paragraph{Perbandingan dengan Penelitian Terkait (Iftikhar dkk., 2025)}
+Sebagai pembanding, hasil ini didiskusikan terhadap \cite{iftikhar2025explainable}, yang juga mengusulkan \textit{explainable CNN} berbasis Grad-CAM untuk tumor otak. Kedua penelitian tidak sebanding dari sisi skala data: \cite{iftikhar2025explainable} memakai 10.287 citra publik (Msoud 7023 + NeuroMRI 3264), sementara penelitian ini hanya 557 citra sebelum augmentasi --- sekitar 18,5 kali lebih kecil. Perbandingan angka karena itu bersifat indikatif, bukan \textit{apples-to-apples}.
+
+\begin{table}[h]
+	\centering
+	\caption{Perbandingan Penelitian Ini dengan Iftikhar dkk. (2025)}
+	\begin{tabular}{p{3.2cm}p{4.8cm}p{4.8cm}}
+		\hline
+		\textbf{Aspek} & \textbf{Iftikhar dkk. (2025)} & \textbf{Penelitian Ini} \\
+		\hline
+		Jumlah data (sebelum augmentasi) & 10.287 citra & 557 citra (164 \textit{No Tumor}, 393 Tumor) \\
+		Jumlah kelas & 4 kelas & 2 kelas \\
+		\textit{Preprocessing} & \textit{Cropping} kontur + normalisasi + \textit{resize} & \textit{Cropping} ROI + \textit{denoising} (GC/WN) \\
+		Regularisasi & BatchNorm + \textit{average pooling}, tanpa \textit{dropout} & \textit{Dropout} (0,1--0,3) \\
+		Penyederhanaan arsitektur & Pemangkasan \textit{layer} berbasis Grad-CAM & Tidak dilakukan \\
+		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}, 4.5) \\
+		Akurasi \textit{unseen} & 94,72\% & 71,5--78,3\% (skema \textit{test} valid)$^{**}$ \\
+		Validasi \textit{explainability} & Kualitatif (Grad-CAM/SHAP/LIME) & Belum dilakukan \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Beberapa catatan kritis:
+\begin{enumerate}
+	\item \textbf{Perbedaan skala data (18,5x) kemungkinan besar mendominasi kesenjangan performa} --- \textit{overfitting} cepat dan kecenderungan kolaps model adalah konsekuensi wajar dari data sekecil ini, bukan semata kekurangan arsitektur atau \textit{preprocessing}.
+	\item Rasio ketidakseimbangan kelas pada \textit{dataset} ini (164:393, $\pm$1:2,4) sebenarnya mirip dengan rasio Msoud yang dibinerkan ($\pm$1:2,5) --- tidak ekstrem secara relatif. Yang lebih berpengaruh adalah jumlah \textit{absolut} \textit{No Tumor} yang hanya 164 citra, sehingga sangat sedikit per \textit{fold}/\textit{split}. Augmentasi hanya mentransformasi data yang sudah ada tanpa menambah variasi baru; \textit{class-weighted loss}, \textit{oversampling} bertarget \textit{No Tumor}, atau \textit{transfer learning} dari model berdataset besar kemungkinan lebih efektif.
+	\item Terlepas dari skala data, aspek \textit{explainability} tetap berbeda mendasar: \cite{iftikhar2025explainable} memvalidasi kualitatif bahwa \textit{heatmap} Grad-CAM/SHAP/LIME berfokus pada area klinis relevan, sementara evaluasi ini baru sebatas metrik kuantitatif --- validasi kualitatif serupa idealnya dilengkapi agar label "\textit{explainable} CNN" dipertanggungjawabkan setara.
+	\item \cite{iftikhar2025explainable} juga tidak melakukan pengujian statistik/pengulangan \textit{seed}, sehingga angka mereka pun hasil satu kali percobaan --- perbandingan ini tetap indikatif, bukan setara secara metodologis.
+\end{enumerate}
+
+Ketiga evaluasi di atas (temuan eksperimen, \textit{cross-validation}, dan perbandingan penelitian terkait) mengarah pada satu kesimpulan konsisten: keterbatasan data, terutama kelas \textit{No Tumor} (164 citra), adalah faktor paling mungkin mendasari ketidakstabilan performa --- mulai dari kolaps model, \textit{overfitting} cepat, hingga fluktuasi antar \textit{fold} CV. Konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{dropout}=0,1) menunjukkan model tetap mampu belajar pola bermakna, namun performanya belum sebanding dengan penelitian berdataset jauh lebih besar. Rekomendasi utama: (1) menambah data asli bila memungkinkan, (2) \textit{class-weighted loss}/\textit{oversampling} bertarget \textit{No Tumor}, (3) \textit{transfer learning} dari model berdataset besar, (4) pengulangan eksperimen dengan \textit{seed} berbeda, dan (5) validasi kualitatif Grad-CAM/SHAP/LIME untuk memperkuat klaim \textit{explainability}.
+
+\subsubsection{EfficientNetB0}
+
+\begin{table}[htbp]
+	\centering
+	\caption{Best Model setiap Eksperimen EfficientNetB0}
+	\label{tab:best_model_efficientnetb0}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|c|c|c|c|c|l|}
+			\hline
+			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
+			all & 95.56 & 95.63 & 95.56 & 88.10 & 95.49 & lr=0.01, bs=16, dr=0.1 \\ \hline
+			test & 93.26 & 94.44 & 93.26 & 92.86 & 93.59 & lr=0.01, bs=16, dr=0.3 \\ \hline
+			val+test & 95.24 & 95.42 & 95.24 & 92.86 & 95.30 & lr=0.01, bs=16, dr=0.3 \\ \hline
+			GC -- All & 88.89 & 90.69 & 88.89 & 95.24 & 89.18 & lr=0.0001, bs=64, dr=0.1 \\ \hline
+			\textbf{GC -- Test} & \textbf{96.63} & \textbf{96.76} & \textbf{96.63} & \textbf{92.86} & \textbf{96.68} & \textbf{lr=0.01, bs=64, dr=0.3} \\ \hline
+			GC -- Val+Test & 90.48 & 92.10 & 90.48 & 92.86 & 90.87 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN -- All & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
+			WN -- Test & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
+			WN -- Val+Test & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+\paragraph{Hasil Grid Search 9 Skema Eksperimen}
+Dari 243 kombinasi \textit{hyperparameter} yang diuji pada 9 skema \textit{preprocessing} dan strategi penggabungan dataset, model terbaik (GC\_test; lr=0.01, bs=64, dr=0.3) mencapai Test Accuracy 96,63\% dan F1 96,68\%. Namun, rata-rata dari seluruh 27 kombinasi pada tiap skema jauh lebih rendah dan bervariasi (kisaran 83--90\%), dengan standar deviasi hingga di atas 7\% pada beberapa skema. Preprocessing GC dan WN tidak menunjukkan keunggulan konsisten dibanding data mentah, sementara strategi penggabungan dataset (\textit{all}, \textit{test}, \textit{val\_test}) menghasilkan \textit{trade-off} antara validitas evaluasi dan stabilitas metrik. Pola \textit{overfitting} yang berat dan konsisten teramati pada seluruh kurva pembelajaran, dengan instabilitas tajam tepat setelah fase \textit{fine-tuning} dimulai, mengindikasikan \textit{learning rate} fine-tuning yang terlalu tinggi relatif terhadap ukuran dataset. Variansi antar-kombinasi yang besar ini menimbulkan keraguan terhadap keandalan angka 96,63\% sebagai representasi performa model yang sesungguhnya.
+
+\paragraph{Validasi melalui \textit{Cross-Validation}}
+Untuk menguji keraguan tersebut, dilakukan 10-fold CV pada konfigurasi model terbaik (GC\_test). Hasilnya mengonfirmasi kekhawatiran di atas: akurasi rata-rata turun menjadi 85,21\% $\pm$ 11,19\% (rentang 67,86--100\%), jauh di bawah hasil \textit{single-split} yang dilaporkan sebelumnya. Ditemukan pula bahwa performa tinggi model sebagian besar disumbang oleh kelas mayoritas (tumor), dengan F1 kelas tumor stabil (90,29\% $\pm$ 7,10\%) sementara F1 kelas non-tumor sangat tidak stabil (64,98\% $\pm$ 33,17\%, bahkan 0\% pada satu \textit{fold}) akibat ukuran data validasi per \textit{fold} yang sangat kecil (6--8 pasien). Kurva pembelajaran rata-rata CV memperlihatkan pola \textit{overfitting} dan instabilitas \textit{validation loss} yang sama seperti temuan pada grid search, memperkuat bahwa hasil \textit{single-split} sebelumnya bersifat optimistis dan tidak \textit{robust}.
+
+\paragraph{Perbandingan dengan Deep-EFNet \cite{deepefnet}}
+Dibandingkan dengan Deep-EFNet yang mencapai akurasi 95,4--98,2\% (\textit{single-split}) dan 94--98\% (5-fold CV, variansi kecil), model penelitian ini secara nominal tampak kompetitif pada \textit{single-split}, tetapi perbandingan yang lebih adil (CV vs CV) menunjukkan gap performa dan stabilitas yang besar (85,21\% $\pm$ 11,19\% vs 94--98\%). Perbandingan langsung angka akurasi juga perlu dibaca hati-hati karena kedua studi tidak setara dari segi jumlah kelas (4 kelas vs 2 kelas), ukuran dataset (ribuan gambar per kelas dari dataset benchmark vs data gabungan yang jauh lebih kecil dan heterogen), serta desain regularisasi pada \textit{head} klasifikasi (dropout 0.5 + L2 + BatchNorm berlapis pada Deep-EFNet, vs dropout tanpa L2 pada model ini). Perbedaan-perbedaan ini konsisten menjelaskan mengapa model penelitian ini jauh lebih rentan terhadap \textit{overfitting} dibandingkan hasil yang dilaporkan pada literatur.
+
+Kedua model menggunakan backbone EfficientNetB0 yang identik, namun proporsi parameter yang dilatih ulang sangat berbeda. Angka \textit{trainable params} Deep-EFNet (792.324) habis terpakai oleh \textit{head} klasifikasi saja, mengindikasikan backbone efektif tetap \textit{frozen} meski narasi papernya menyebut 30 \textit{layer} terakhir di-\textit{unfreeze} — sebuah inkonsistensi internal pada paper tersebut. Sebaliknya, model penelitian ini benar-benar membuka $\sim$56\% parameter backbone untuk \textit{fine-tuning}. Fine-tuning porsi backbone yang jauh lebih besar pada dataset yang jauh lebih kecil inilah yang menjadi penjelasan struktural utama di balik \textit{overfitting} berat dan instabilitas yang konsisten ditemukan pada seluruh evaluasi (grid search maupun CV) dibandingkan performa Deep-EFNet yang jauh lebih stabil.
+
+\paragraph{Perbandingan Jumlah Parameter}
+\begin{table}[htbp]
+	\centering
+	\caption{Perbandingan Parameter Model}
+	\label{tab:param_compare}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Komponen} & \textbf{Deep-EFNet} & \textbf{Model Ini} \\ \hline
+		Backbone EfficientNetB0 & 4.049.571 & 4.049.571 \\ \hline
+		Total params & 4.845.991 & 4.383.141 \\ \hline
+		Trainable params & 792.324 (16\%) & 2.618.514 (60\%) \\ \hline
+	\end{tabular}
+\end{table}
+
 \subsection{XAI}
 \subsubsection{Kuantitatif}
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=1.0\textwidth]{images/xalign.png}
+	\caption{Distribusi XAlign}
+	\label{gambar:xalign}
+\end{figure}
+
 \subsubsection{Kualitatif}
+
+\begin{enumerate}
+	\item 29 dari 39 \textit{True Negative} (TN) yang dihasilkan model diperoleh dari keseluruhan fitur yang ada pada otak, dengan sebagian besar \textit{highlight} berada pada daerah \textit{frontal lobe} (bagian atas otak).
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=1.0\textwidth]{images/TN.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:TN}
+	\end{figure}
+	
+	\item 18 dari 20 \textit{True Positive} (TP) pada data input berupa citra otak dengan tumor glioma diperoleh dari fitur yang berada pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi. Sementara itu, 2 TP lainnya diperoleh dari fitur yang berada pada penyangga kepala.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=1.0\textwidth]{images/TP_no_mask.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:TP_no_mask}
+	\end{figure}
+	
+	\item Pada 80 citra otak yang disertai \textit{tumor mask}, 14 citra menunjukkan \textit{highlight} fitur pada daerah tulang orbita (mata) dan sinus. Serupa dengan hasil deteksi tumor glioma, 48 citra menunjukkan \textit{heatmap} yang mengarah pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi, dengan \textit{heatmap} yang lebih dominan pada salah satu sisi. Selain itu, 11 citra menunjukkan \textit{heatmap} yang mengarah pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} hanya pada satu sisi. Terdapat pula 3 citra dengan \textit{heatmap} yang berasal dari keseluruhan fitur otak, dan 1 citra dengan \textit{heatmap} yang berasal dari fitur di bagian tengah otak, yaitu di sekitar \textit{diencephalon}.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.85\textwidth]{images/TP_mask.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:TP}
+	\end{figure}
+	
+	\item 2 dari 3 \textit{False Positive} (FP) yang diprediksi model diperoleh dari fitur yang berada di sekitar \textit{precentral sulcus}, yang secara visual tidak menunjukkan adanya perubahan warna maupun bentuk pada area yang di-\textit{highlight} oleh model. Selain itu, 1 FP lainnya menghighlight bagian kerangka otak bagian bawah beserta penyangga kepala.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=1.0\textwidth]{images/FP.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:FP}
+	\end{figure}
+	
+	\item 1 dari 1 \textit{False Negative} (FN) yang diprediksi model diperoleh dari fitur pada \textit{occipital lobe} yang memiliki bentuk menyerupai perubahan bentuk yang terjadi pada tumor. Pada \textit{slice} lain dari pasien yang sama dengan hasil prediksi TP, fitur yang di-\textit{highlight} menunjukkan perubahan warna dan bentuk pada \textit{diencephalon}. \textit{Highlight} tersebut sejalan dengan lokasi tumor yang mengubah warna dan bentuk struktur otak tersebut, meskipun batas \textit{heatmap} masih belum sesuai dengan batas tumor yang sebenarnya.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=1.0\textwidth]{images/FN.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:FN}
+	\end{figure}
+	
+\end{enumerate}
+
 \section{Pembahasan Hasil Evaluasi}
