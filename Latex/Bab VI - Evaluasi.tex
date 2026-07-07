@@ -14,27 +14,6 @@ Berdasarkan
 Evaluasi terhadap sembilan skenario eksperimen menunjukkan bahwa performa model yang diperoleh jauh berada di bawah hasil yang dilaporkan oleh ....................... sebagai studi acuan utama arsitektur CLM.
 
 
-\begin{table}[htbp]
-	\centering
-	\caption{Best Model setiap Eksperimen CLM}
-	\label{tab:best_model_clm}
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{|l|c|c|c|c|c|l|}
-			\hline
-			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config Terbaik} \\ \hline
-			No Prep / All & 65.3 & 65.3 & 100.0 & 0.0 & 79.0 & LR=0.0001, drop=0.1, iter=5000 \\ \hline
-			No Prep / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			No Prep / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			GC / All & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
-			GC / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
-			GC / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
-			\textbf{WN / All} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
-			WN / Test & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			WN / Val+Test & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-		\end{tabular}%
-	}
-\end{table}
-
 Kesenjangan ini dianalisis secara kritis dari empat aspek yang saling berkaitan: keseimbangan klasifikasi, stabilitas pelatihan pada penggabungan dataset, kemungkinan sumber penyebab pada sisi metodologi, dan pengaruh hyperparameter iterasi.
 
 \begin{enumerate}
@@ -57,27 +36,6 @@ Berdasarkan keempat poin di atas, secara jujur dapat disimpulkan bahwa implement
 
 
 \subsubsection{Explainable CNN}
-
-\begin{table}[htbp]
-	\centering
-	\caption{Best Model setiap Eksperimen Explainable CNN}
-	\label{tab:best_model_explainable_cnn}
-	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{|l|c|c|c|c|c|l|}
-			\hline
-			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
-			\textbf{all} & \textbf{70.37} & \textbf{69.64} & \textbf{70.37} & \textbf{47.62} & \textbf{69.94} & \textbf{lr=0.01, bs=64, dr=0.1} \\ \hline
-			test & 84.27 & 71.01 & 84.27 & 0.00 & 77.08 & lr=0.0001, bs=40, dr=0.1 \\ \hline
-			val+test & 80.95 & 79.94 & 80.95 & 21.43 & 76.54 & lr=0.01, bs=40, dr=0.1 \\ \hline
-			GC -- All & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
-			\textbf{GC -- Test} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
-			GC -- Val+Test & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
-			WN -- All & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
-			WN -- Test & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
-			\textbf{WN -- Val+Test} & \textbf{87.83} & \textbf{88.45} & \textbf{87.83} & \textbf{78.57} & \textbf{88.07} & \textbf{lr=0.0001, bs=40, dr=0.1} \\ \hline
-		\end{tabular}%
-	}
-\end{table}
 
 \paragraph{Konteks Dataset dan Skema Eksperimen}
 \textit{Dataset} penelitian ini dikumpulkan mandiri (\textit{scraping} dan sumber lain), berjumlah 557 citra sebelum augmentasi: 164 \textit{No Tumor} dan 393 Tumor (rasio $\pm$1:2,4). Data dibagi menjadi \textit{Dataset} 1 dan \textit{Dataset} 2, digabungkan melalui tiga skema (\textit{all}, \textit{test}, \textit{val\_test}) dan diuji dengan tiga \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) --- menghasilkan 9 skenario, masing-masing diuji pada 27 kombinasi \textit{hyperparameter}. Ukuran data yang kecil ini menjadi konteks penting bagi temuan pada paragraf-paragraf berikut.
@@ -121,12 +79,13 @@ Sebagai pembanding, hasil ini didiskusikan terhadap \cite{iftikhar2025explainabl
 		\textit{Preprocessing} & \textit{Cropping} kontur + normalisasi + \textit{resize} & \textit{Cropping} ROI + \textit{denoising} (GC/WN) \\
 		Regularisasi & BatchNorm + \textit{average pooling}, tanpa \textit{dropout} & \textit{Dropout} (0,1--0,3) \\
 		Penyederhanaan arsitektur & Pemangkasan \textit{layer} berbasis Grad-CAM & Tidak dilakukan \\
-		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}, 4.5) \\
+		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}) \\
 		Akurasi \textit{unseen} & 94,72\% & 71,5--78,3\% (skema \textit{test} valid)$^{**}$ \\
 		Validasi \textit{explainability} & Kualitatif (Grad-CAM/SHAP/LIME) & Belum dilakukan \\
 		\hline
 	\end{tabular}
 \end{table}
+{\footnotesize $^{*}$Angka 87,8\% tidak sepenuhnya setara karena skema \textit{val\_test} memasukkan sebagian \textit{Dataset} 2 ke data validasi. $^{**}$Nilai 84,3\% yang pernah tercatat pada skema \textit{test} berasal dari model kolaps (\textit{specificity} 0\%, lihat \textit{Masalah Model yang Hanya Menebak Satu Kelas}), sehingga tidak dimasukkan sebagai hasil valid.}
 
 Beberapa catatan kritis:
 \begin{enumerate}
@@ -136,30 +95,10 @@ Beberapa catatan kritis:
 	\item \cite{iftikhar2025explainable} juga tidak melakukan pengujian statistik/pengulangan \textit{seed}, sehingga angka mereka pun hasil satu kali percobaan --- perbandingan ini tetap indikatif, bukan setara secara metodologis.
 \end{enumerate}
 
+\paragraph{Rangkuman Evaluasi}
 Ketiga evaluasi di atas (temuan eksperimen, \textit{cross-validation}, dan perbandingan penelitian terkait) mengarah pada satu kesimpulan konsisten: keterbatasan data, terutama kelas \textit{No Tumor} (164 citra), adalah faktor paling mungkin mendasari ketidakstabilan performa --- mulai dari kolaps model, \textit{overfitting} cepat, hingga fluktuasi antar \textit{fold} CV. Konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{dropout}=0,1) menunjukkan model tetap mampu belajar pola bermakna, namun performanya belum sebanding dengan penelitian berdataset jauh lebih besar. Rekomendasi utama: (1) menambah data asli bila memungkinkan, (2) \textit{class-weighted loss}/\textit{oversampling} bertarget \textit{No Tumor}, (3) \textit{transfer learning} dari model berdataset besar, (4) pengulangan eksperimen dengan \textit{seed} berbeda, dan (5) validasi kualitatif Grad-CAM/SHAP/LIME untuk memperkuat klaim \textit{explainability}.
 
 \subsubsection{EfficientNetB0}
-
-\begin{table}[htbp]
-	\centering
-	\caption{Best Model setiap Eksperimen EfficientNetB0}
-	\label{tab:best_model_efficientnetb0}
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{|l|c|c|c|c|c|l|}
-			\hline
-			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
-			all & 95.56 & 95.63 & 95.56 & 88.10 & 95.49 & lr=0.01, bs=16, dr=0.1 \\ \hline
-			test & 93.26 & 94.44 & 93.26 & 92.86 & 93.59 & lr=0.01, bs=16, dr=0.3 \\ \hline
-			val+test & 95.24 & 95.42 & 95.24 & 92.86 & 95.30 & lr=0.01, bs=16, dr=0.3 \\ \hline
-			GC -- All & 88.89 & 90.69 & 88.89 & 95.24 & 89.18 & lr=0.0001, bs=64, dr=0.1 \\ \hline
-			\textbf{GC -- Test} & \textbf{96.63} & \textbf{96.76} & \textbf{96.63} & \textbf{92.86} & \textbf{96.68} & \textbf{lr=0.01, bs=64, dr=0.3} \\ \hline
-			GC -- Val+Test & 90.48 & 92.10 & 90.48 & 92.86 & 90.87 & lr=0.01, bs=64, dr=0.2 \\ \hline
-			WN -- All & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
-			WN -- Test & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
-			WN -- Val+Test & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
-		\end{tabular}%
-	}
-\end{table}
 
 \paragraph{Hasil Grid Search 9 Skema Eksperimen}
 Dari 243 kombinasi \textit{hyperparameter} yang diuji pada 9 skema \textit{preprocessing} dan strategi penggabungan dataset, model terbaik (GC\_test; lr=0.01, bs=64, dr=0.3) mencapai Test Accuracy 96,63\% dan F1 96,68\%. Namun, rata-rata dari seluruh 27 kombinasi pada tiap skema jauh lebih rendah dan bervariasi (kisaran 83--90\%), dengan standar deviasi hingga di atas 7\% pada beberapa skema. Preprocessing GC dan WN tidak menunjukkan keunggulan konsisten dibanding data mentah, sementara strategi penggabungan dataset (\textit{all}, \textit{test}, \textit{val\_test}) menghasilkan \textit{trade-off} antara validitas evaluasi dan stabilitas metrik. Pola \textit{overfitting} yang berat dan konsisten teramati pada seluruh kurva pembelajaran, dengan instabilitas tajam tepat setelah fase \textit{fine-tuning} dimulai, mengindikasikan \textit{learning rate} fine-tuning yang terlalu tinggi relatif terhadap ukuran dataset. Variansi antar-kombinasi yang besar ini menimbulkan keraguan terhadap keandalan angka 96,63\% sebagai representasi performa model yang sesungguhnya.
@@ -189,6 +128,150 @@ Kedua model menggunakan backbone EfficientNetB0 yang identik, namun proporsi par
 \subsection{XAI}
 \subsubsection{Kuantitatif}
 
+% =====================================================================
+% Bagian Evaluasi Hasil XAI menggunakan XAlign
+% Catatan: fragmen ini diasumsikan disisipkan ke dalam dokumen tugas
+% akhir yang sudah memuat package booktabs (\usepackage{booktabs}).
+% Sesuaikan level sectioning (\subsection / \subsubsection) dengan
+% struktur bab evaluasi pada dokumen utama.
+% =====================================================================
+
+\subsection{Evaluasi Kualitas Penjelasan Grad-CAM menggunakan XAlign}
+
+Untuk mengukur seberapa baik peta saliency Grad-CAM yang dihasilkan oleh
+model EfficientNetB0 selaras dengan anotasi ahli, digunakan metrik
+XAlign yang diperkenalkan oleh Muhammad dan Bendechache
+\cite{muhammad2025heatmap}. Metrik ini menggabungkan tiga komponen,
+yaitu \textit{Weighted Relevance Overlap} (WRO), \textit{Boundary
+	Agreement Score} (BAS), dan \textit{Dispersion Penalty} (DP), dengan
+bobot $\alpha = 0.5$, $\beta = 0.4$, dan $\gamma = 0.1$ sesuai dengan
+konfigurasi default pada paper referensi. Hasil evaluasi pada model
+EfficientNetB0 yang telah dilatih (akurasi uji $96.63\%$, F1-weighted
+$96.68\%$) disajikan pada Tabel~\ref{tab:xalign-hasil}.
+
+\begin{table}[h]
+	\centering
+	\caption{Hasil evaluasi XAlign pada Grad-CAM model EfficientNetB0}
+	\label{tab:xalign-hasil}
+	\begin{tabular}{lc}
+		\toprule
+		\textbf{Komponen} & \textbf{Nilai} \\
+		\midrule
+		WRO (Weighted Relevance Overlap) & 0.0627 \\
+		BAS (Boundary Agreement Score)   & 0.5932 \\
+		DP (Dispersion Penalty)          & 0.9373 \\
+		\textbf{XAlign}                  & \textbf{0.1749} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsubsection{Perbandingan dengan Paper Referensi}
+
+Karena bobot $\alpha, \beta, \gamma$ yang digunakan pada penelitian ini
+identik dengan paper referensi, nilai XAlign yang diperoleh dapat
+dibandingkan secara langsung. Muhammad dan Bendechache
+\cite{muhammad2025heatmap} melaporkan skor XAlign untuk Grad-CAM pada
+dataset TCGA--LGG (MRI) sebesar $0.641 \pm 0.034$ dan pada dataset BUSI
+(ultrasound) sebesar $0.726 \pm 0.029$, dengan urutan performa metode
+yang konsisten yaitu Native head $>$ Grad-CAM $>$ LIME $>$ SHAP.
+
+Dibandingkan dengan acuan tersebut, skor XAlign Grad-CAM pada penelitian
+ini ($0.1749$) berada jauh di bawah nilai referensi, yaitu sekitar
+$73$--$76\%$ lebih rendah. Bahkan, nilai ini lebih rendah dibandingkan
+skor SHAP pada paper referensi ($0.336$ untuk MRI dan $0.241$ untuk
+BUSI), padahal SHAP pada paper tersebut secara konsisten menjadi metode
+dengan performa paling rendah. Dengan kata lain, hasil ini tidak bisa
+dianggap sekadar "di bawah rata-rata", melainkan mengindikasikan
+adanya perbedaan mendasar pada karakteristik saliency yang dihasilkan
+atau pada tahap pra-pemrosesan sebelum perhitungan XAlign, dan bukan
+sekadar variasi wajar akibat perbedaan dataset atau arsitektur model.
+
+\subsubsection{Analisis per Komponen}
+
+Untuk memahami penyebab rendahnya skor XAlign secara keseluruhan,
+ketiga komponen penyusunnya dianalisis satu per satu.
+
+\begin{itemize}
+	\item \textbf{WRO = 0.0627 (sangat rendah).} Nilai ini menunjukkan
+	bahwa hanya sekitar $6\%$ dari total bobot relevansi pada heatmap
+	Grad-CAM yang jatuh di dalam mask tumor. Karena WRO memiliki bobot
+	terbesar pada formula XAlign ($\alpha = 0.5$), komponen inilah yang
+	paling banyak menurunkan skor akhir.
+	
+	\item \textbf{BAS = 0.5932 (sedang).} Berbeda dengan WRO, komponen
+	BAS masih berada pada nilai yang cukup wajar. Artinya, secara
+	kontur (dihitung melalui \textit{Hausdorff Distance}), area
+	aktivasi Grad-CAM masih berada pada jarak yang relatif dekat dari
+	batas tumor sehingga tidak sepenuhnya salah lokasi.
+	
+	\item \textbf{DP = 0.9373 (sangat tinggi).} Hampir $94\%$ dari
+	total relevansi Grad-CAM berada \textit{di luar} mask tumor. Nilai
+	ini sejalan dengan WRO yang rendah, dan bersama-sama menunjukkan
+	bahwa saliency Grad-CAM tersebar cukup luas ke area di luar lesi.
+\end{itemize}
+
+Pola BAS yang moderat namun WRO dan DP yang buruk menunjukkan bahwa
+masalah utama bukan terletak pada Grad-CAM yang menunjuk ke lokasi
+yang sepenuhnya salah, melainkan pada heatmap yang \textit{terlalu
+	menyebar} (difus) dibandingkan ukuran mask tumor yang sebenarnya.
+
+\subsubsection{Kemungkinan Penyebab}
+
+Beberapa faktor yang mungkin menjelaskan rendahnya skor XAlign pada
+implementasi ini, dengan asumsi implementasi metrik XAlign sendiri
+sudah benar, antara lain:
+
+\begin{enumerate}
+	\item \textbf{Resolusi feature map terakhir yang rendah.} Layer
+	konvolusi terakhir pada EfficientNetB0 umumnya menghasilkan feature
+	map berukuran kecil (misalnya $7 \times 7$ untuk input
+	$224 \times 224$). Saat peta ini di-\textit{upsample} ke ukuran
+	mask asli, hasilnya cenderung berbentuk area besar yang jauh
+	melebihi luas tumor, terutama apabila tumor pada dataset yang
+	digunakan berukuran relatif kecil terhadap keseluruhan citra.
+	
+	\item \textbf{Rasio luas lesi terhadap luas citra yang kecil.}
+	Karena WRO dan DP dihitung berdasarkan penjumlahan piksel, jika
+	area tumor hanya menempati sebagian kecil citra, sedikit saja
+	kebocoran saliency ke luar mask akan berdampak besar secara
+	proporsional terhadap kedua metrik tersebut.
+	
+	\item \textbf{Model dilatih murni untuk klasifikasi, bukan
+		lokalisasi.} Model EfficientNetB0 pada penelitian ini dilatih
+	hanya dengan target akurasi klasifikasi, tanpa mekanisme supervisi
+	lokalisasi seperti \textit{native explanation head} pada model
+	SpikeNet di paper referensi. Model klasifikasi konvensional
+	cenderung memanfaatkan konteks jaringan di sekitar lesi, bukan
+	hanya piksel lesi itu sendiri, sehingga Grad-CAM yang dihasilkan
+	secara jujur merefleksikan perilaku tersebut.
+	
+	\item \textbf{Kemungkinan belum diterapkannya tahap normalisasi
+		dan thresholding.} Pada paper referensi, sebelum WRO dan DP
+	dihitung, heatmap terlebih dahulu melalui tahap pemilihan channel
+	teratas (top-$k$, $k=20\%$), normalisasi min--max, dan binarisasi
+	dengan threshold $T=0.5$ (Persamaan 13--16 pada paper). Apabila
+	tahap ini belum diterapkan pada implementasi dan perhitungan
+	XAlign langsung menggunakan heatmap mentah, hasil yang jauh lebih
+	difus dan skor yang jauh lebih rendah menjadi sangat masuk akal
+	secara matematis. Tahap ini perlu diperiksa kembali terlebih
+	dahulu karena berpotensi menjadi penyebab dominan.
+	
+	\item \textbf{Pemilihan layer target Grad-CAM.} Apabila layer
+	konvolusi yang digunakan sebagai target Grad-CAM bukan layer
+	konvolusi terakhir yang paling diskriminatif secara spasial, peta
+	aktivasi yang dihasilkan dapat menjadi lebih kasar dan kurang
+	presisi terhadap lokasi tumor.
+\end{enumerate}
+
+Secara umum, rendahnya skor XAlign yang diperoleh mengindikasikan
+bahwa Grad-CAM pada model EfficientNetB0 dalam penelitian ini
+menghasilkan penjelasan yang cukup difus dan kurang terkonsentrasi
+pada area tumor, meskipun performa klasifikasi model itu sendiri
+tergolong tinggi. Hal ini menegaskan temuan pada paper referensi bahwa
+akurasi klasifikasi yang tinggi tidak selalu berbanding lurus dengan
+kualitas dan keandalan penjelasan (\textit{explanation fidelity}) yang
+dihasilkan oleh model.
+
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
@@ -205,29 +288,46 @@ Kedua model menggunakan backbone EfficientNetB0 yang identik, namun proporsi par
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=1.0\textwidth]{images/TN.png}
+		\includegraphics[width=0.85\textwidth]{images/TN1.png}
 		\caption{Distribusi XAlign}
-		\label{gambar:TN}
+		\label{gambar:TN1}
 	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.85\textwidth]{images/TN2.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:TN2}
+	\end{figure}
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.85\textwidth]{images/TN3.png}
+		\caption{Distribusi XAlign}
+		\label{gambar:TN3}
+	\end{figure}
+	
 	
 	\item 15 dari 20 \textit{True Positive} (TP) pada data input berupa citra otak dengan tumor glioma diperoleh dari fitur yang berada pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi. Terdapat 2 gambar TP diperoleh dari fitur yang berada pada penyangga kepala dan 3 citra menunjukkan \textit{highlight} fitur pada daerah tulang mata dan sinus. 
 	
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=1.0\textwidth]{images/TP_no_mask.png}
+		\includegraphics[width=0.85\textwidth]{images/TP_effnet_no.png}
 		\caption{Distribusi XAlign}
-		\label{gambar:TP_no_mask}
+		\label{gambar:TP_effnet_no}
 	\end{figure}
 	
 	\item Pada 80 citra otak yang disertai \textit{tumor mask}, 14 citra menunjukkan \textit{highlight} fitur pada daerah tulang mata dan sinus. Serupa dengan hasil deteksi tumor glioma, 48 citra menunjukkan \textit{heatmap} yang mengarah pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi, dengan \textit{heatmap} yang lebih dominan pada salah satu sisi. Selain itu, 11 citra menunjukkan \textit{heatmap} yang mengarah pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} hanya pada satu sisi. Terdapat pula 3 citra dengan \textit{heatmap} yang berasal dari keseluruhan fitur otak, dan 1 citra dengan \textit{heatmap} yang berasal dari fitur di bagian tengah otak, yaitu di sekitar \textit{diencephalon}.
-	
+
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=0.85\textwidth]{images/TP_mask.png}
+		\includegraphics[width=0.85\textwidth]{images/TP_effnet_mask.png}
 		\caption{Distribusi XAlign}
-		\label{gambar:TP}
+		\label{gambar:TP_effnet_mask}
 	\end{figure}
 	
 	\item 2 dari 3 \textit{False Positive} (FP) yang diprediksi model diperoleh dari fitur yang berada di sekitar \textit{precentral sulcus}, yang secara visual tidak menunjukkan adanya perubahan warna maupun bentuk pada area yang di-\textit{highlight} oleh model. Selain itu, 1 FP lainnya menghighlight bagian kerangka otak bagian bawah beserta penyangga kepala.
@@ -235,9 +335,9 @@ Kedua model menggunakan backbone EfficientNetB0 yang identik, namun proporsi par
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=1.0\textwidth]{images/FP.png}
+		\includegraphics[width=0.85\textwidth]{images/FP_effnet.png}
 		\caption{Distribusi XAlign}
-		\label{gambar:FP}
+		\label{gambar:FP_effnet}
 	\end{figure}
 	
 	\item 1 dari 1 \textit{False Negative} (FN) yang diprediksi model diperoleh dari fitur pada \textit{occipital lobe} yang memiliki bentuk menyerupai perubahan bentuk yang terjadi pada tumor. Pada \textit{slice} lain dari pasien yang sama dengan hasil prediksi TP, fitur yang di-\textit{highlight} menunjukkan perubahan warna dan bentuk pada \textit{diencephalon}. \textit{Highlight} tersebut sejalan dengan lokasi tumor yang mengubah warna dan bentuk struktur otak tersebut, meskipun batas \textit{heatmap} masih belum sesuai dengan batas tumor yang sebenarnya.
@@ -245,9 +345,9 @@ Kedua model menggunakan backbone EfficientNetB0 yang identik, namun proporsi par
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=1.0\textwidth]{images/FN.png}
+		\includegraphics[width=1.0\textwidth]{images/FN_effnet.png}
 		\caption{Distribusi XAlign}
-		\label{gambar:FN}
+		\label{gambar:FN_effnet}
 	\end{figure}
 	
 \end{enumerate}

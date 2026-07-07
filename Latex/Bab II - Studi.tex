@@ -81,6 +81,33 @@ Terdapat dua metode utama dalam pencitraan medis untuk tugas klasifikasi seperti
 	
 \end{enumerate}
 
+\subsection{Transfer Learning}
+\label{subsec:transferlearning}
+
+Transfer learning merupakan paradigma pembelajaran mesin yang bertujuan meningkatkan performa \textit{learner} pada domain target dengan memanfaatkan pengetahuan dari satu atau lebih domain sumber yang berbeda namun masih berkaitan \cite{zhuang2020comprehensive}. Berbeda dari pembelajaran mesin konvensional yang mengasumsikan data latih dan uji berasal dari distribusi identik, transfer learning mengakomodasi perbedaan distribusi antar-domain sehingga kebutuhan data berlabel pada domain target dapat dikurangi.
+
+Secara formal, domain didefinisikan sebagai $\mathcal{D} = \{\mathcal{X}, P(X)\}$ (ruang fitur dan distribusi marginal), sedangkan \textit{task} didefinisikan sebagai $\mathcal{T} = \{\mathcal{Y}, f\}$ (ruang label dan fungsi keputusan) \cite{zhuang2020comprehensive}. Berdasarkan kesesuaian ruang fitur/label antar-domain, transfer learning dibagi menjadi \textbf{homogeneous} ($\mathcal{X}^S = \mathcal{X}^T$, $\mathcal{Y}^S = \mathcal{Y}^T$) dan \textbf{heterogeneous} (salah satu atau kedua ruang tersebut berbeda, sehingga memerlukan adaptasi fitur tambahan).
+
+\cite{zhuang2020comprehensive} mengelompokkan pendekatan transfer learning menjadi \textbf{data-based} (\textit{instance weighting}, \textit{feature transformation} seperti TCA, JDA, CORAL) dan \textbf{model-based} (\textit{parameter/model control}, \textit{ensemble}, serta pendekatan \textit{deep learning} seperti DAN dan DANN). Pemilihan model sebaiknya mempertimbangkan: (1) kesesuaian ruang fitur (\textit{homogeneous}/\textit{heterogeneous}); (2) ketersediaan label domain target (\textit{inductive}, \textit{transductive}, atau \textit{unsupervised}); (3) jenis pergeseran distribusi, apakah hanya $P(X)$ (mis. TCA) atau juga $P(Y|X)$ (mis. JDA, BDA); (4) jumlah domain sumber, \textit{single-} atau \textit{multi-source}; serta (5) kompleksitas komputasi, karena pendekatan berbasis \textit{kernel}/\textit{semidefinite programming} lebih mahal dibanding pendekatan linear atau dekomposisi eigen.
+
+Secara kritis, hasil eksperimen \cite{zhuang2020comprehensive} menunjukkan performa algoritma sangat bergantung pada karakteristik dataset, sehingga pemilihan model tidak boleh berhenti pada kajian teoretis. Sebagai contoh, GFK yang dirancang untuk pengenalan objek justru berkinerja buruk pada klasifikasi teks (akurasi rata-rata $\approx 62\%$), sementara SFA dan SCL relatif stabil di berbagai domain. Oleh karena itu, pemilihan model transfer learning perlu divalidasi secara empiris pada data penelitian yang bersangkutan, dengan mempertimbangkan risiko \textit{negative transfer} sebagai batas evaluasi keberhasilan.
+
+\subsubsection{EfficientNet}
+
+salah satu \textit{Transfer Learning} yang khusus untuk klasifikasi pada gambar adalah EfficientNet. EfficientNet adalah keluarga arsitektur \textit{Convolutional Neural Network} (CNN) yang diperkenalkan oleh Tan dan Le \cite{tan2019efficientnet}, terdiri atas delapan varian (EfficientNet-B0 hingga B7) yang mencapai akurasi klasifikasi gambar setara model \textit{state-of-the-art} lain dengan jumlah parameter dan komputasi (FLOPS) yang jauh lebih rendah.
+
+Keunggulan utamanya adalah metode \textit{compound scaling}, yaitu penskalaan tiga dimensi jaringan secara seimbang menggunakan koefisien $\phi$:
+
+\begin{equation}
+	d = \alpha^{\phi}, \quad w = \beta^{\phi}, \quad r = \gamma^{\phi}, \qquad \text{dengan } \alpha \cdot \beta^{2} \cdot \gamma^{2} \approx 2
+\end{equation}
+
+dengan $d$, $w$, $r$ berturut-turut merepresentasikan kedalaman (\textit{depth}), lebar (\textit{width}), dan resolusi input, sedangkan $\alpha, \beta, \gamma$ ditentukan lewat pencarian grid kecil pada model dasar B0 \cite{tan2019efficientnet}.
+
+Model dasar EfficientNet-B0 diperoleh melalui \textit{Neural Architecture Search} (NAS), dengan blok \textit{Mobile Inverted Bottleneck Convolution} (MBConv) sebagai komponen utama penyusunnya \cite{tan2019efficientnet}. Tiap varian memiliki resolusi input berbeda, misalnya B0 menggunakan $224 \times 224$ piksel \cite{keras_efficientnet_docs}.
+
+Pada \textit{transfer learning}, EfficientNet yang telah dilatih pada ImageNet digunakan sebagai \textit{feature extractor}: lapisan klasifikasi akhir dihilangkan (\texttt{include\_top=False}) dan digantikan lapisan klasifikasi baru sesuai jumlah kelas target, sementara bobot konvolusi dasar umumnya dibekukan terlebih dahulu sebelum \textit{fine-tuning} \cite{keras_efficientnet_docs}.
+
 \section{\textit{Explainable AI} (XAI)}
 \textit{Explainable Artificial Intelligence} (XAI) adalah seperangkat proses dan metode yang memungkinkan pengguna manusia untuk memahami hasil dan keluaran yang dibuat oleh algoritma \textit{machine learning} \autocite{ibm2023xai}. Tujuan utama \textit{Explainable AI} adalah untuk mendapatkan model yang dapat diinterpretasikan oleh manusia. Interpretasi ini sangat penting untuk aplikasi di sektor-sektor sensitif seperti militer, perbankan, dan layanan kesehatan. Hal ini bertujuan agar para spesialis domain dapat diberikan penjelasan yang bermakna sehingga mereka dapat memahami dan memercayai solusi AI tersebut \autocite{ali2023explainable}.
 
