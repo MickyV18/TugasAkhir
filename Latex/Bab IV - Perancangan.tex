@@ -22,7 +22,7 @@ Saat ini, akses publik untuk mendapatkan citra CT scan otak masih sangat terbata
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=1.0\textwidth]{images/data langka.png}
-	\caption{Perancangan Alur Implementasi}
+	\caption{Permasalahan Kelangkaan Data}
 	\label{gambar:kondisigambar}
 \end{figure}
 
@@ -130,7 +130,7 @@ Berdasarkan hasil analisis pada Bab \ref{analisispemilihansolusi}, dilakukan pen
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.7\textwidth]{images/CLM1.png}
-	\caption{Visualisasi mekanisme \textit{Correlation Learning Mechanism} (CLM) \cite{wozniak2021deep}}
+	\caption{Arsitektur Model \textit{Correlation Learning Mechanism} \cite{wozniak2021deep}}
 	\label{gambar:clm1}
 \end{figure}
 
@@ -140,7 +140,7 @@ Gambar kedua menampilkan secara lebih rinci bagian arsitektur CNN yang digunakan
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.7\textwidth]{images/CLM2.png}
-	\caption{Visualisasi mekanisme \textit{Correlation Learning Mechanism} (CLM) \cite{wozniak2021deep}}
+	\caption{Arsitektur Model CNN dalam CLM \cite{wozniak2021deep}}
 	\label{gambar:clm2}
 \end{figure}
 
@@ -185,7 +185,7 @@ Model yang digunakan adalah CNN yang disederhanakan menggunakan Grad-CAM sebagai
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.95\textwidth]{images/before exp cnn.png}
-	\caption{Arsitektur Model CNN + ANN}
+	\caption{Arsitektur \textit{Explainable} CNN}
 	\label{gambar:beforeexpcnn}
 \end{figure}
 
@@ -213,11 +213,11 @@ Model yang digunakan adalah CNN yang disederhanakan menggunakan Grad-CAM sebagai
 \end{enumerate}
 
 \subsection{EfficientNetB0}
-Berdasarkan kriteria pemilihan model transfer learning yang telah diuraikan pada Bab ..............., penelitian ini memilih pendekatan \textit{model-based} transfer learning berbasis \textit{deep learning}, khususnya Convolutional Neural Network (CNN). Pemilihan ini didasarkan pada dua pertimbangan utama: pertama, kesesuaian ruang fitur antara domain sumber (ImageNet) dan domain target (citra MRI) yang sama-sama berupa data citra, sehingga tergolong \textit{homogeneous transfer learning} dan memungkinkan bobot pretrained diadaptasi tanpa transformasi ruang fitur tambahan; kedua, ketersediaan label pada dataset MRI yang digunakan, yang memungkinkan skema \textit{inductive transfer learning} melalui \textit{fine-tuning} bertahap.
+Berdasarkan kriteria pemilihan model transfer learning yang telah diuraikan pada Bab \ref{subsec:transferlearning}, penelitian ini memilih pendekatan \textit{model-based} transfer learning berbasis \textit{deep learning}, khususnya Convolutional Neural Network (CNN). Pemilihan ini didasarkan pada dua pertimbangan utama: pertama, kesesuaian ruang fitur antara domain sumber (ImageNet) dan domain target (citra MRI) yang sama-sama berupa data citra, sehingga tergolong \textit{homogeneous transfer learning} dan memungkinkan bobot pretrained diadaptasi tanpa transformasi ruang fitur tambahan; kedua, ketersediaan label pada dataset MRI yang digunakan, yang memungkinkan skema \textit{inductive transfer learning} melalui \textit{fine-tuning} bertahap.
 
-Untuk menentukan arsitektur CNN yang sesuai, dilakukan penelusuran terhadap penelitian yang telah mengimplementasikan transfer learning pada citra MRI, dan ditemukan bahwa EfficientNetB0 telah digunakan sebagai \textit{backbone} pada arsitektur Deep-EFNet \cite{ref_paper} untuk klasifikasi tumor otak empat kelas (glioma, meningioma, pituitary, dan no tumor). Backbone tersebut dipretrained pada ImageNet, kemudian dikombinasikan dengan strategi pelatihan dua fase (\textit{feature extraction} dengan bobot backbone dibekukan, dilanjutkan \textit{fine-tuning} pada 30 lapisan terakhir), serta regularisasi ganda (dropout dan L2) untuk mencegah overfitting. Pendekatan tersebut dilaporkan mencapai akurasi 95,4\% dan 98,2\% pada dua dataset MRI berbeda ukuran, sehingga menjadi salah satu acuan bahwa EfficientNetB0 layak dipertimbangkan sebagai \textit{backbone} untuk kasus serupa.
+Untuk menentukan arsitektur CNN yang sesuai, dilakukan penelusuran terhadap penelitian yang telah mengimplementasikan transfer learning pada citra MRI, dan ditemukan bahwa EfficientNetB0 telah digunakan sebagai \textit{backbone} pada arsitektur Deep-EFNet \cite{alshaari2025deepefnet} untuk klasifikasi tumor otak empat kelas (glioma, meningioma, pituitary, dan no tumor). Backbone tersebut dipretrained pada ImageNet, kemudian dikombinasikan dengan strategi pelatihan dua fase (\textit{feature extraction} dengan bobot backbone dibekukan, dilanjutkan \textit{fine-tuning} pada 30 lapisan terakhir), serta regularisasi ganda (dropout dan L2) untuk mencegah overfitting. Pendekatan tersebut dilaporkan mencapai akurasi 95,4\% dan 98,2\% pada dua dataset MRI berbeda ukuran, sehingga menjadi salah satu acuan bahwa EfficientNetB0 layak dipertimbangkan sebagai \textit{backbone} untuk kasus serupa.
 
-Arsitektur Deep-EFNet menggunakan EfficientNetB0 yang telah dilatih pada dataset ImageNet sebagai \textit{backbone} ekstraksi fitur (transfer learning), dengan ukuran input $224 \times 224 \times 3$. Backbone ini menghasilkan feature map $f \in \mathbb{R}^{e \times f \times g}$ melalui serangkaian convolutional layer yang menangkap fitur dari level rendah (tepi, tekstur) hingga level tinggi (bentuk, pola semantik) \cite{ref_paper}, sebagaimana dijelaskan pada Persamaan~(4).
+Arsitektur Deep-EFNet menggunakan EfficientNetB0 yang telah dilatih pada dataset ImageNet sebagai \textit{backbone} ekstraksi fitur (transfer learning), dengan ukuran input $224 \times 224 \times 3$. Backbone ini menghasilkan feature map $f \in \mathbb{R}^{e \times f \times g}$ melalui serangkaian convolutional layer yang menangkap fitur dari level rendah (tepi, tekstur) hingga level tinggi (bentuk, pola semantik) \cite{alshaari2025deepefnet}, sebagaimana dijelaskan pada Persamaan~(4).
 
 \begin{figure}[h]
 	\centering
@@ -316,5 +316,5 @@ Evaluasi terhadap \textit{Explainable Artificial Intelligence} (XAI) bertujuan u
 	Sebagai kriteria keberhasilan, tugas akhir ini mengacu pada performa Grad-CAM yang dilaporkan dalam studi literatur pada \textit{dataset} neuro-onkologi (TCGA-LGG). Metode yang digunakan mencatat skor rata-rata XAlign sebesar $64,1\%$ \autocite{muhammad2025heatmap}. Oleh karena itu, tugas akhir ini menargetkan capaian skor XAlign $\geq 0,641$ sebagai batas minimal validitas penjelasan yang dihasilkan model.
 	
 	\item Evaluasi Kualitatif\\
-	Sebagai pelengkap data kuantitatif XAlign, dilakukan evaluasi kualitatif perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis per kuandran (\textit{True Positive}, \textit{True Negative}, \textit{False Positive}, dan \textit{False Negative}). Setelah dilakukan analisis visual dari heatmap, dilakukan analisis penyebab gradcam masih belum sesuai dengan \textit{ground truth mask}, seperti dari kualitas gambar, posisi tumor, dan ukuran tumor.
+	Sebagai pelengkap data kuantitatif XAlign, dilakukan evaluasi kualitatif perbandingan visual \textit{side-by-side} tetap akan dilakukan antara citra asli, \textit{ground truth mask}, dan \textit{heatmap} Grad-CAM untuk analisis per kuandran (\textit{True Positive}, \textit{True Negative}, \textit{False Positive}, dan \textit{False Negative}). Setelah dilakukan perbandingan visual heatmap tersebut, dilakukan analisis heatmap dari sisi medis dan dari sisi teknologi. Setelah itu, dilakukan analisis apakah \textit{heatmap} menghasilkan visualisasi yang mengarah ke tumor atau tidak.
 \end{enumerate}

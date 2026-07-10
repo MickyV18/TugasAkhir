@@ -41,10 +41,68 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 
 \begin{enumerate}
 	\item Sumber Pertama: Platform Radiopaedia (\textit{radiopaedia.org})\\
-	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Gambar-gambar dari Radiopaedia memiliki karakteristik klinis yang bervariasi karena berasal dari berbagai institusi dan perangkat pencitraan yang berbeda-beda, sehingga mencerminkan keragaman kondisi akuisisi citra yang realistis.
+	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Distribusi jumlah pasien untuk setiap kategori tersebut disajikan pada Tabel \ref{tab:distribusi_pasien}.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|l|r|}
+			\hline
+			Jenis & Jumlah Pasien \\ \hline
+			Glioma & 19 \\ \hline
+			Meningioma & 19 \\ \hline
+			Tanpa Tumor & 20 \\ \hline
+		\end{tabular}
+	\end{table}
 	
 	\item Sumber Kedua: Dataset Publik Mendeley Data\\
 	Sumber kedua berasal dari dataset publik yang tersedia di platform Mendeley Data \cite{AlKadi2022Unpaired}. Dataset ini menyediakan 80 gambar citra \textit{CT scan} tumor otak beserta \textit{mask} segmentasi tumornya, yaitu citra biner yang menandai secara piksel wilayah tumor pada setiap gambar. Keberadaan \textit{mask} pada dataset ini memperkaya representasi visual kelas tumor dalam dataset keseluruhan, sekaligus memberikan informasi spasial lokasi tumor yang dapat dimanfaatkan untuk keperluan evaluasi XAI yang digunakan.
+	
+	Berdasarkan Tabel \ref{tab:jenis_tumor}, pengumpulan data telah diimplementasikan dengan mengelompokkan 20 pasien ke dalam 11 kategori jenis tumor, dengan Meningioma sebagai kelompok terbanyak (7 pasien), diikuti Astrocytoma (3 pasien) dan Glioblastoma multiforme (2 pasien), sementara 8 kategori lainnya masing-masing terdiri dari 1 pasien. Pengelompokan ini mengacu pada hasil histopatologi maupun dugaan radiologis sebagaimana tercantum pada deskripsi lesi MR dan CT dataset.
+	
+	\begin{table}[h]
+		\centering
+		\caption{Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Pertama}
+		\label{tab:jenis_tumor}
+		\begin{tabular}{|l|c|l|}
+			\hline
+			\textbf{Jenis Tumor} & \textbf{Jumlah Pasien} & \textbf{Pasien \#} \\
+			\hline
+			Meningioma & 7 & 3, 9, 13, 14, 15, 17, 19 \\
+			\hline
+			Astrocytoma & 3 & 4, 6, 8 \\
+			\hline
+			Glioblastoma multiforme (GBM) & 2 & 10, 18 \\
+			\hline
+			Schwannoma & 1 & 7 \\
+			\hline
+			Epidermoid cyst & 1 & 12 \\
+			\hline
+			B-cell lymphoma & 1 & 16 \\
+			\hline
+			CNS embryonal cell tumor grade IV & 1 & 11 \\
+			\hline
+			Reactive gliosis & 1 & 2 \\
+			\hline
+			Medulloblastoma vs ependymoma (dugaan) & 1 & 5 \\
+			\hline
+			Neoplastic process (tidak spesifik) & 1 & 1 \\
+			\hline
+			Hemoragik (jenis tumor tidak disebut) & 1 & 20 \\
+			\hline
+			\textbf{Total} & \textbf{20} & \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	Setelah dilakukan pemeriksaan manual, ditemukan gambar otak dengan watermark berupa huruf "F" seperti pada Gambar \ref{gambar:otakwithf}. Untuk menjaga kualitas dataset, gambar-gambar tersebut kemudian difilter dengan menghapus data dari Pasien 4, 5, dan 7. Setelah proses filtering ini, total data yang digunakan pada penelitian ini menjadi 80 gambar dari 17 pasien.
+	
+	\begin{figure}[h]
+		\centering
+		\captionsetup{justification=centering}
+		\includegraphics[width=0.5	\textwidth]{images/otakwithf.png}
+		\caption{Gambar Otak dengan \textit{Watermark}}
+		\label{gambar:otakwithf}
+	\end{figure}
 	
 \end{enumerate}
 
@@ -102,7 +160,7 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			Total      & 393 & 164 & 557 & 100 \\
 			\hline
 		\end{tabular}
-		\caption{Pembagian Data Skenario }
+		\caption{Pembagian Data Skenario 3}
 		\label{tab:dataset_all}
 	\end{table}
 	
@@ -115,7 +173,7 @@ Tahapan \textit{preprocessing} yang telah dirancang diimplementasikan pada selur
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=1.0	\textwidth]{images/preprocess_image.png}
-	\caption{\textit{Preprocess} Gambar}
+	\caption{Implementasi \textit{Preprocess} Gambar}
 	\label{gambar:preprocess}
 \end{figure}
 
@@ -167,7 +225,7 @@ Setelah kedua metode \textit{preprocessing} diterapkan, dilakukan pengujian untu
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.85\textwidth]{images/preprocess_eksperimen.png}
-	\caption{Arsitektur Model CLM}
+	\caption{Implementasi Pemrosesan Eksperimen}
 	\label{gambar:preprocess_eksperimen}
 \end{figure}
 
@@ -204,29 +262,13 @@ Namun, jika dilihat dari sisi \textit{edge density} (kepadatan tepi), WN justru 
 
 Dari hasil ini, dapat disimpulkan bahwa kedua metode \textit{preprocessing} sama-sama memiliki kelebihan masing-masing. GC lebih unggul dalam menjaga struktur citra tetap mirip dengan aslinya, menjaga kecerahan, dan menambah detail informasi pada citra. Sementara itu, WN lebih unggul dalam mempertahankan ketajaman garis tepi, meskipun kecerahan dan sebagian detail teksturnya berkurang.
 
-\section{Implementasi Arsitektur Model}
 
-\subsection{Correlation Learning Mechanism (CLM)}
+\section{Augmentasi}
+\label{subsec:augmentasi}
 
-Berdasarkan diagram alur eksperimen, ada beberapa komponen ANN yang ditandai warna biru karena nilainya disesuaikan melalui proses \textit{hyperparameter tuning}. Komponen tersebut meliputi:
+\section{Implementasi Correlation Learning Mechanism (CLM)}
 
-\begin{figure}[h]
-	\centering
-	\captionsetup{justification=centering}
-	\includegraphics[width=0.85\textwidth]{images/after CLM.png}
-	\caption{Arsitektur Model CLM}
-	\label{gambar:afterclm}
-\end{figure}
-
-\begin{itemize}
-	\item Dropout Rate: pada setiap \textit{hidden layer} ANN ditambahkan \textit{dropout} dengan nilai yang diuji sebesar 0,05; 0,10; dan 0,20. Tujuannya untuk mencegah \textit{overfitting} mengingat jumlah sampel CT Scan yang digunakan masih terbatas. Jika nilainya terlalu kecil, regularisasi jadi kurang efektif, sedangkan jika terlalu besar justru berisiko membuat model \textit{underfitting}.
-	\item Jumlah Iterasi: total iterasi pelatihan BPTA diuji pada nilai 3.000, 5.000, dan 10.000. Iterasi yang terlalu sedikit membuat bobot model belum sempat konvergen, sedangkan iterasi yang terlalu banyak akan menambah waktu pelatihan dan berisiko menyebabkan \textit{overfitting}.
-	\item Learning Rate BPTA: laju pembelajaran pada \textit{gradient descent} klasik diuji pada nilai 0,0001; 0,001; dan 0,01. Nilai yang terlalu kecil membuat proses konvergensi berjalan lambat, sementara nilai yang terlalu besar berisiko menyebabkan \textit{overshooting}, karena BPTA tidak memiliki mekanisme adaptif seperti optimizer modern lainnya.
-\end{itemize}
-
-Ketiga parameter tersebut diuji secara bersamaan menggunakan \textit{grid search}, sehingga menghasilkan total 3×3×3 = 27 kombinasi. Kombinasi terbaik dipilih berdasarkan \textit{composite score} dari lima metrik evaluasi, yaitu \textit{accuracy, precision, recall, specificity}, dan F1, bukan hanya berdasarkan akurasi saja. Hal ini dilakukan agar hasil yang diperoleh lebih representatif dalam menggambarkan kemampuan generalisasi model.
-
-Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dari artikel Woźniak et al. (2023), yaitu terdiri dari 5 \textit{hidden layer} dengan urutan neuron 90-45-10-5-4-2 dan fungsi aktivasi sigmoid (lihat Subbab 2.3, Persamaan 4). Karena mengikuti urutan neuron yang sama, maka parameter pada layer dense2 hingga output otomatis ikut sama, sebab nilainya hanya bergantung pada urutan neuron tersebut. Sementara itu, dimensi input sebesar 6.144 pada dense1 diperoleh dari hasil perkalian antara 64 fragmen citra, 16 channel CNN (dari 4 filter × 4 filter kode palet terbaik), dan 6 nilai statistik (Min, Max, Sum, Median, Mean, Std), sehingga 64 × 16 × 6 = 6.144. Perlu diketahui bahwa angka ini tidak dituliskan secara langsung pada artikel acuan, melainkan diperoleh penulis dengan menurunkan (\textit{derive}) beberapa informasi yang tersebar di bagian berbeda pada artikel tersebut. Selain itu, artikel acuan juga tidak mencantumkan total parameter model, karena implementasi aslinya menggunakan program C++ custom, bukan \textit{framework} seperti TensorFlow atau Keras. Oleh karena itu, total parameter sebesar 557.694 (2,13 MB) pada penelitian ini tidak dapat dibandingkan secara langsung dengan artikel acuan. Kesamaan yang dapat dipastikan hanya pada struktur arsitekturnya saja, bukan pada jumlah total parameter, karena angka tersebut murni merupakan hasil implementasi dan perhitungan penulis sendiri.
+Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dari artikel Woźniak et al. (2023), yaitu terdiri dari 5 \textit{hidden layer} dengan urutan neuron 90-45-10-5-4-2 dan fungsi aktivasi sigmoid (lihat Subbab 2.3, Persamaan 4). Karena mengikuti urutan neuron yang sama, maka parameter pada \textit{layer} dense2 hingga output otomatis ikut sama, sebab nilainya hanya bergantung pada urutan neuron tersebut. Sementara itu, dimensi input sebesar 6.144 pada dense1 diperoleh dari hasil perkalian antara 64 fragmen citra, 16 channel CNN (dari 4 filter × 4 filter kode palet terbaik), dan 6 nilai statistik (Min, Max, Sum, Median, Mean, Std), sehingga 64 × 16 × 6 = 6.144. Perlu diketahui bahwa angka ini tidak dituliskan secara langsung pada artikel acuan, melainkan diperoleh penulis dengan menurunkan (\textit{derive}) beberapa informasi yang tersebar di bagian berbeda pada artikel tersebut. Selain itu, artikel acuan juga tidak mencantumkan total parameter model, karena implementasi aslinya menggunakan program C++ \textit{custom}, bukan \textit{framework} seperti TensorFlow atau Keras. Oleh karena itu, total parameter sebesar 557.694 (2,13 MB) pada penelitian ini tidak dapat dibandingkan secara langsung dengan artikel acuan. Kesamaan yang dapat dipastikan hanya pada struktur arsitekturnya saja, bukan pada jumlah total parameter, karena angka tersebut murni merupakan hasil implementasi dan perhitungan penulis sendiri.
 
 \begin{table}[htbp]
 	\centering
@@ -248,6 +290,24 @@ Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dar
 		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 0 (0,00 MB) \\ \hline
 	\end{tabular}
 \end{table}
+
+Berdasarkan diagram alur eksperimen, terdapat beberapa komponen ANN yang ditandai warna biru karena nilainya disesuaikan melalui proses \textit{hyperparameter tuning}. Komponen tersebut meliputi:
+
+\begin{itemize}
+	\item Dropout Rate: pada setiap \textit{hidden layer} ANN ditambahkan \textit{dropout} dengan nilai yang diuji sebesar 0,05; 0,10; dan 0,20. Tujuannya untuk mencegah \textit{overfitting} mengingat jumlah sampel CT Scan yang digunakan masih terbatas. Jika nilainya terlalu kecil, regularisasi jadi kurang efektif, sedangkan jika terlalu besar justru berisiko membuat model \textit{underfitting}.
+	\item Jumlah Iterasi: total iterasi pelatihan BPTA diuji pada nilai 3.000, 5.000, dan 10.000. Iterasi yang terlalu sedikit membuat bobot model belum sempat konvergen, sedangkan iterasi yang terlalu banyak akan menambah waktu pelatihan dan berisiko menyebabkan \textit{overfitting}.
+	\item Learning Rate BPTA: laju pembelajaran pada \textit{gradient descent} klasik diuji pada nilai 0,0001; 0,001; dan 0,01. Nilai yang terlalu kecil membuat proses konvergensi berjalan lambat, sementara nilai yang terlalu besar berisiko menyebabkan \textit{overshooting}, karena BPTA tidak memiliki mekanisme adaptif seperti optimizer modern lainnya.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{justification=centering}
+	\includegraphics[width=0.85\textwidth]{images/after CLM.png}
+	\caption{Implementasi Arsitektur Model CLM}
+	\label{gambar:afterclm}
+\end{figure}
+
+Ketiga parameter tersebut diuji secara bersamaan menggunakan \textit{grid search}, sehingga menghasilkan total 3×3×3 = 27 kombinasi. Kombinasi terbaik dipilih berdasarkan \textit{composite score} dari lima metrik evaluasi, yaitu \textit{accuracy, precision, recall, specificity}, dan F1, bukan hanya berdasarkan akurasi saja. Hal ini dilakukan agar hasil yang diperoleh lebih representatif dalam menggambarkan kemampuan generalisasi model.
 
 Selanjutnya, dilakukan \textit{grid search} pada model CLM untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001; 0,00025; 0,001), \textit{dropout} (0,05; 0,1), dan iterasi (dibuat tetap sebesar 5000). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yang merupakan gabungan dari tiga metode \textit{preprocessing} (No Prep, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan menggunakan metrik evaluasi untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 1.
 
@@ -274,7 +334,7 @@ Namun, dari hasil yang diperoleh, ditemukan adanya masalah yang cukup serius. Pa
 	}
 \end{table}
 
-\subsection{Explainable CNN}
+\section{Implementasi Explainable CNN}
 
 Berdasarkan diagram alur eksperimen, terdapat beberapa komponen yang disesuaikan pada tugas akhir ini dan ditandai dengan warna biru, yaitu:
 \begin{itemize}
@@ -287,11 +347,11 @@ Berdasarkan diagram alur eksperimen, terdapat beberapa komponen yang disesuaikan
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.85\textwidth]{images/after exp cnn.png}
-	\caption{Arsitektur Model \textit{Explainable }CNN}
+	\caption{Implementasi Arsitektur Model \textit{Explainable }CNN}
 	\label{gambar:afterexpcnn}
 \end{figure}
 
-Secara umum, arsitektur model yang diimplementasikan pada penelitian ini mengikuti struktur \textit{backbone} CNN yang dijelaskan pada artikel acuan ................. Kesesuaian tersebut dapat dilihat dari beberapa aspek, seperti ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan \textit{padding} "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), penggunaan \textit{layer} BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta penggunaan dua \textit{dense layer} dengan 512 neuron yang sama persis seperti yang dijelaskan pada artikel acuan.
+Secara umum, arsitektur model yang diimplementasikan pada penelitian ini mengikuti struktur \textit{backbone} CNN yang dijelaskan pada artikel acuan \textcite{iftikhar2025explainable} Kesesuaian tersebut dapat dilihat dari beberapa aspek, seperti ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan \textit{padding} "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), penggunaan \textit{layer} BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta penggunaan dua \textit{dense layer} dengan 512 neuron yang sama persis seperti yang dijelaskan pada artikel acuan.
 
 \begin{table}[htbp]
 	\centering
@@ -373,26 +433,26 @@ Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa ya
 	}
 \end{verbatim}
 
-\subsection{EfficientNetB0}
+\section{Implementasi EfficientNetB0}
+
+Dari diagram alur eksperimen di atas, ada beberapa bagian yang disesuaikan untuk tugas akhir ini, yang ditandai dengan warna biru, yaitu:
+\begin{itemize}
+	\item CT Scan Input: jenis citra medis yang digunakan diubah, dari yang awalnya MRI menjadi CT Scan. Perubahan ini dilakukan karena tujuan utama penelitian ini memang untuk membuat model yang bisa mendeteksi kondisi otak menggunakan citra CT Scan, bukan MRI.
+	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset Wojciuk dkk. (2024) yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah \textit{overfitting}, terutama pada model \textit{deep learning} yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata.
+	\item Dense 2 Class: bagian output model diubah dari yang tadinya multi kelas (4 kelas) menjadi klasifikasi biner (2 kelas) saja. Perubahan pada \textit{Dense layer} dan output ini disesuaikan dengan tujuan penelitian ini, yaitu membedakan citra CT Scan otak yang normal dan tidak normal.
+\end{itemize}
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.35\textwidth]{images/after tl.png}
-	\caption{Arsitektur Model EfficientNetB0}
+	\caption{Implementasi Arsitektur Model EfficientNetB0}
 	\label{gambar:aftertransferlearning}
 \end{figure}
 
-Dari diagram alur eksperimen di atas, ada beberapa bagian yang saya sesuaikan untuk tugas akhir ini, yang ditandai dengan warna biru, yaitu:
-\begin{itemize}
-	\item CT Scan Input: Saya mengubah jenis citra medis yang digunakan, dari yang awalnya MRI menjadi CT Scan. Perubahan ini saya lakukan karena tujuan utama penelitian ini memang untuk membuat model yang bisa mendeteksi kondisi otak menggunakan citra CT Scan, bukan MRI.
-	\item Dropout Layer: Saya menambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset Wojciuk dkk. (2024) yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah \textit{overfitting}, terutama pada model deep learning yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata.
-	\item Dense 2 Class: Saya mengubah bagian output model dari yang tadinya multi kelas (4 kelas) menjadi klasifikasi biner (2 kelas) saja. Perubahan pada \textit{Dense layer} dan output ini saya sesuaikan dengan tujuan penelitian saya, yaitu membedakan citra CT Scan otak yang normal dan tidak normal.
-\end{itemize}
+Secara umum, arsitektur model EfficientNetB0 yang digunakan pada tugas akhir ini mengikuti struktur \textit{head} klasifikasi yang dijelaskan pada artikel acuan Deep-EFNet (Alshaari \& Alqahtani, 2025). Kesamaan ini bisa dilihat dari ukuran input 224×224×3, penggunaan \textit{backbone} EfficientNetB0 dengan bobot ImageNet, GlobalAveragePooling2D, BatchNormalization setelah \textit{base model} dan setiap \textit{dense layer}, dua \textit{dense layer} berukuran 512 dan 256 neuron yang jumlah parameternya sama persis dengan artikel (655.872 dan 131.328), sampai skema \textit{fine-tuning} dengan 30 \textit{layer} terakhir \textit{backbone} yang di-\textit{unfreeze}, sesuai strategi dua fase yang dijelaskan di artikel. Perbedaan jumlah kelas output (2 kelas pada model ini, 4 kelas pada artikel) juga yang membuat total parameter sedikit berbeda, yaitu 4.845.477 pada model ini dibanding 4.845.991 pada artikel, seperti yang sudah disebutkan sebelumnya.
 
-Secara umum, arsitektur model EfficientNetB0 yang saya gunakan pada tugas akhir ini mengikuti struktur head klasifikasi yang dijelaskan pada artikel acuan Deep-EFNet (Alshaari \& Alqahtani, 2025). Kesamaan ini bisa dilihat dari ukuran input 224×224×3, penggunaan backbone EfficientNetB0 dengan bobot ImageNet, GlobalAveragePooling2D, BatchNormalization setelah base model dan setiap dense layer, dua dense layer berukuran 512 dan 256 neuron yang jumlah parameternya sama persis dengan artikel (655.872 dan 131.328), sampai skema fine-tuning dengan 30 layer terakhir backbone yang di-unfreeze, sesuai strategi dua fase yang dijelaskan di artikel. Perbedaan jumlah kelas output (2 kelas pada model saya, 4 kelas pada artikel) juga yang membuat total parameter sedikit berbeda, yaitu 4.845.477 pada model saya dibanding 4.845.991 pada artikel, seperti yang sudah disebutkan sebelumnya.
-
-Namun ada satu hal yang menurut saya perlu dikritisi, yaitu pelaporan jumlah parameter trainable dan non-trainable pada artikel acuan. Angka 792.324 trainable dan 4.053.667 non-trainable yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh backbone-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses unfreeze 30 layer terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter trainable yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah fine-tuning dengan benar, di mana trainable params saya naik menjadi 3.080.850 karena sebagian bobot backbone (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih
+Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \textit{trainable} dan \textit{non-trainable} pada artikel acuan. Angka 792.324 \textit{trainable} dan 4.053.667 \textit{non-trainable} yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh \textit{backbone}-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses \textit{unfreeze} 30 \textit{layer} terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter \textit{trainable} yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah \textit{fine-tuning} dengan benar, di mana jumlah \textit{trainable params} meningkat menjadi 3.080.850 karena sebagian bobot \textit{backbone} (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih.
 
 \begin{table}[htbp]
 	\centering
@@ -420,11 +480,11 @@ Namun ada satu hal yang menurut saya perlu dikritisi, yaitu pelaporan jumlah par
 	\vspace{4pt}
 \end{table}
 
-Saya melakukan grid search pada model EfficientNetB0 untuk mencari konfigurasi hyperparameter terbaik di setiap skema eksperimen. Hyperparameter yang saya uji meliputi learning rate (0.0001, 0.01), batch size (16, 40, 64), dan dropout rate (0.1, 0.2, 0.3). Semua kombinasi nilai tersebut saya uji pada 9 skenario eksperimen, yaitu gabungan dari tiga metode preprocessing (tanpa preprocessing, GC, WN) dan tiga cakupan data (All, Test, Val+Test). Hasilnya kemudian saya bandingkan berdasarkan metrik evaluasi untuk menentukan konfigurasi terbaik, seperti yang ditampilkan pada Tabel 3.
+Selanjutnya, dilakukan \textit{grid search} pada model EfficientNetB0 untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0.0001, 0.01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0.1, 0.2, 0.3). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan berdasarkan metrik evaluasi untuk menentukan konfigurasi terbaik, seperti yang ditampilkan pada Tabel 3.
 
-Dari hasil yang saya peroleh, secara keseluruhan model menunjukkan performa yang tinggi dan konsisten di hampir semua skenario, dengan akurasi berkisar antara 88.89\% sampai 96.63\%, serta nilai specificity yang juga tinggi (di atas 88\%) di semua skenario. Ini menunjukkan bahwa model mampu mengenali kedua kelas dengan baik dan tidak condong ke salah satu kelas saja. Skenario dengan performa terbaik saya peroleh pada GC-Test, dengan akurasi 96.63\% dan F1-score 96.68\%.
+Dari hasil yang diperoleh, secara keseluruhan model menunjukkan performa yang tinggi dan konsisten di hampir semua skenario, dengan akurasi berkisar antara 88.89\% sampai 96.63\%, serta nilai \textit{specificity} yang juga tinggi (di atas 88\%) di semua skenario. Ini menunjukkan bahwa model mampu mengenali kedua kelas dengan baik dan tidak condong ke salah satu kelas saja. Skenario dengan performa terbaik diperoleh pada GC-Test, dengan akurasi 96.63\% dan F1-score 96.68\%.
 
-Meskipun begitu, sebagian besar konfigurasi terbaik yang saya peroleh menggunakan learning rate 0.01. Hal ini menunjukkan bahwa rentang nilai learning rate yang saya uji mungkin masih perlu diperluas lagi, untuk memastikan apakah nilai tersebut memang benar-benar titik yang paling optimal, atau hanya yang terbaik dari pilihan yang ada saat itu. Selain itu, meskipun grid search yang saya lakukan sudah mencakup variasi yang cukup luas pada ketiga hyperparameter, pengujiannya tetap terbatas pada kombinasi yang sudah ditentukan sebelumnya. Jadi masih ada kemungkinan konfigurasi lain di luar rentang tersebut yang bisa menghasilkan performa yang lebih baik.
+Meskipun begitu, sebagian besar konfigurasi terbaik yang diperoleh menggunakan \textit{learning rate} 0.01. Hal ini menunjukkan bahwa rentang nilai \textit{learning rate} yang diuji mungkin masih perlu diperluas lagi, untuk memastikan apakah nilai tersebut memang benar-benar titik yang paling optimal, atau hanya yang terbaik dari pilihan yang ada saat itu. Selain itu, meskipun \textit{grid search} yang dilakukan sudah mencakup variasi yang cukup luas pada ketiga \textit{hyperparameter}, pengujiannya tetap terbatas pada kombinasi yang sudah ditentukan sebelumnya. Jadi, masih ada kemungkinan konfigurasi lain di luar rentang tersebut yang bisa menghasilkan performa yang lebih baik.
 
 \begin{table}[htbp]
 	\centering
@@ -447,9 +507,9 @@ Meskipun begitu, sebagian besar konfigurasi terbaik yang saya peroleh menggunaka
 	}
 \end{table}
 
-Berdasarkan tabel grid search dan hyperparameter tuning yang sudah saya lakukan, model terbaik pada eksperimen EfficientNetB0 saya peroleh pada skenario GC-Test, dengan konfigurasi learning rate 0.01, batch size 64, optimizer Adam, dropout rate 0.3, epoch fase 1 sebanyak 12 kali, epoch fase 2 (fine-tuning) sebanyak 17 kali, finetune ratio 0.2, dan finetune learning rate factor 0.1. Konfigurasi ini menghasilkan akurasi sebesar 96.63\%, F1-score (weighted) 96.68\%, precision (weighted) 96.76\%, recall (weighted) 96.63\%, dan specificity 92.86\%, dengan composite score 0.9609.
+Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen EfficientNetB0 diperoleh pada skenario GC-Test, dengan konfigurasi \textit{learning rate} 0.01, \textit{batch size} 64, \textit{optimizer} Adam, \textit{dropout rate} 0.3, \textit{epoch} fase 1 sebanyak 12 kali, \textit{epoch} fase 2 (\textit{fine-tuning}) sebanyak 17 kali, \textit{finetune ratio} 0.2, dan \textit{finetune learning rate factor} 0.1. Konfigurasi ini menghasilkan akurasi sebesar 96.63\%, F1-score (\textit{weighted}) 96.68\%, \textit{precision} (\textit{weighted}) 96.76\%, \textit{recall} (\textit{weighted}) 96.63\%, dan \textit{specificity} 92.86\%, dengan \textit{composite score} sebesar 0.9609.
 
-Saya memilih model ini sebagai model terbaik karena performanya tinggi dan seimbang di semua metrik evaluasi, termasuk nilai specificity yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja. Penerapan skema fine-tuning dua fase pada proses training juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot backbone secara menyeluruh dengan learning rate yang lebih kecil. Composite score yang tinggi ini juga menegaskan bahwa konfigurasi tersebut merupakan hasil paling optimal dibandingkan semua kombinasi hyperparameter lain yang saya uji selama proses grid search.
+Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang di semua metrik evaluasi, termasuk nilai \textit{specificity} yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja. Penerapan skema \textit{fine-tuning} dua fase pada proses \textit{training} juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot \textit{backbone} secara menyeluruh dengan \textit{learning rate} yang lebih kecil. \textit{Composite score} yang tinggi ini juga menegaskan bahwa konfigurasi tersebut merupakan hasil paling optimal dibandingkan semua kombinasi \textit{hyperparameter} lain yang telah diuji selama proses \textit{grid search}.
 
 \begin{verbatim}
 	Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik EfficientNetB0
@@ -473,22 +533,13 @@ Saya memilih model ini sebagai model terbaik karena performanya tinggi dan seimb
 \end{verbatim}
 
 \section{\textit{Explainable AI} (Grad-CAM)}
-Pada model terbaik dari eksperimen Explainable CNN dan EfficientNetB0, saya melakukan visualisasi \textit{Explainable AI} (XAI) menggunakan metode \textbf{Grad-CAM++} untuk menghasilkan \textit{heatmap} yang menunjukkan area pada citra CT scan yang paling berpengaruh terhadap keputusan prediksi model. Saya memilih Grad-CAM++ karena metode ini mampu menunjukkan lokasi area penting dengan lebih presisi dibandingkan Grad-CAM konvensional, dengan memanfaatkan gradien pada \textit{layer} konvolusi terakhir untuk membentuk peta aktivasi (\textit{activation map}).
-
-Proses visualisasi ini saya lakukan dengan mengambil beberapa sampel citra CT scan yang mewakili empat kategori hasil prediksi, yaitu \textit{True Positive} (TP), \textit{True Negative} (TN), \textit{False Positive} (FP), dan \textit{False Negative} (FN). Tujuannya agar bisa terlihat bagaimana kondisi model, baik saat memprediksi dengan benar maupun saat salah memprediksi. Setiap sampel kemudian saya tampilkan dalam empat bentuk visual, yaitu:
-\begin{enumerate}
-	\item CT Scan asli, yaitu citra input sebelum diproses.
-	\item Ground-Truth Mask, yaitu area anotasi tumor yang sebenarnya berdasarkan label data.
-	\item Heatmap Grad-CAM++, yaitu peta area yang menjadi fokus perhatian model, yang divisualisasikan dalam skala warna dari biru (aktivasi rendah) sampai merah (aktivasi tinggi).
-	\item Overlay, yaitu hasil penggabungan (\textit{superimpose}) antara heatmap dan citra CT scan asli, untuk mempermudah dalam melihat lokasi area yang menjadi perhatian model.
-\end{enumerate}
-Pada setiap sampel yang divisualisasikan, saya juga menyertakan informasi label sebenarnya (\textit{true label}), hasil prediksi model (\textit{predicted label}), beserta nilai probabilitas atau \textit{confidence score} dari prediksi tersebut. Dengan begitu, hasil visualisasi ini bisa langsung dikaitkan dengan performa model pada sampel data yang bersangkutan.
+Pada model terbaik dari eksperimen Explainable CNN dan EfficientNetB0, dilakukan visualisasi \textit{Explainable AI} (XAI) menggunakan metode \textbf{Grad-CAM++} untuk menghasilkan \textit{heatmap} yang menunjukkan area pada citra CT scan yang paling berpengaruh terhadap keputusan prediksi model. Grad-CAM++ dipilih karena metode ini mampu menunjukkan lokasi area penting dengan lebih presisi dibandingkan Grad-CAM konvensional, dengan memanfaatkan gradien pada \textit{layer} konvolusi terakhir untuk membentuk peta aktivasi (\textit{activation map}).
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=1.0\textwidth]{images/TP_exp_cnn.png}
-	\caption{Arsitektur Model EfficientNetB0}
+	\caption{Implementasi XAI pada Explainable CNN (\textit{True Positive})}
 	\label{gambar:gradcamexpcnntp}
 \end{figure}
 
@@ -496,14 +547,23 @@ Pada setiap sampel yang divisualisasikan, saya juga menyertakan informasi label 
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=1.0\textwidth]{images/FN_exp_cnn.png}
-	\caption{Arsitektur Model EfficientNetB0}
+	\caption{Implementasi XAI pada Explainable CNN (\textit{False Negative})}
 	\label{gambar:gradcamexpcnnfn}
 \end{figure}
+
+Proses visualisasi ini dilakukan dengan mengambil beberapa sampel citra CT scan yang mewakili empat kategori hasil prediksi, yaitu \textit{True Positive} (TP), \textit{True Negative} (TN), \textit{False Positive} (FP), dan \textit{False Negative} (FN). Tujuannya agar bisa terlihat bagaimana kondisi model, baik saat memprediksi dengan benar maupun saat salah memprediksi. Setiap sampel kemudian ditampilkan dalam empat bentuk visual, yaitu:
+\begin{enumerate}
+	\item CT Scan asli, yaitu citra input sebelum diproses.
+	\item Ground-Truth Mask, yaitu area anotasi tumor yang sebenarnya berdasarkan label data.
+	\item Heatmap Grad-CAM++, yaitu peta area yang menjadi fokus perhatian model, yang divisualisasikan dalam skala warna dari biru (aktivasi rendah) sampai merah (aktivasi tinggi).
+	\item Overlay, yaitu hasil penggabungan (\textit{superimpose}) antara heatmap dan citra CT scan asli, untuk mempermudah dalam melihat lokasi area yang menjadi perhatian model.
+\end{enumerate}
+Pada setiap sampel yang divisualisasikan, disertakan juga informasi label sebenarnya (\textit{true label}), hasil prediksi model (\textit{predicted label}), beserta nilai probabilitas atau \textit{confidence score} dari prediksi tersebut. Dengan begitu, hasil visualisasi ini bisa langsung dikaitkan dengan performa model pada sampel data yang bersangkutan.
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
-	\includegraphics[width=1.0\textwidth]{images/compare_tl_heatmap.png}
-	\caption{Arsitektur Model EfficientNetB0}
+	\includegraphics[width=0.7\textwidth]{images/compare_tl_heatmap.png}
+	\caption{Implementasi XAI pada EfficientNetB0}
 	\label{gambar:gradcamtl}
 \end{figure}

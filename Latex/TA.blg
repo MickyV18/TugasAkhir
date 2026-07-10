@@ -1,21 +1,20 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'TA.blg'
-[127] biber-MSWIN64:342> INFO - === 
-[173] Biber.pm:421> INFO - Reading 'TA.bcf'
-[430] Biber.pm:1002> INFO - Found 58 citekeys in bib section 0
-[448] Biber.pm:4487> INFO - Processing section 0
-[466] Biber.pm:4678> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
-[594] bibtex.pm:1713> INFO - LaTeX decoding ...
-[767] bibtex.pm:1519> INFO - Found BibTeX data source 'daftar-pustaka.bib'
-[1640] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1641] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'level = 4' with 'level = 2'
-[1641] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1641] Biber.pm:4307> INFO - Sorting list 'cms/global//global/global/global' of type 'entry' with template 'cms' and locale 'id-ID'
-[1641] Biber.pm:4313> INFO - No sort tailoring available for locale 'id-ID'
-[1790] bbl.pm:676> INFO - Writing 'TA.bbl' with encoding 'UTF-8'
-[1877] bbl.pm:779> INFO - Output to TA.bbl
-[1877] Biber.pm:132> WARN - Duplicate entry key: 'budiman2024effectiveness' in file 'daftar-pustaka.bib', skipping ...
-[1877] Biber.pm:132> WARN - I didn't find a database entry for 'zhuang2020comprehensive' (section 0)
-[1878] Biber.pm:132> WARN - I didn't find a database entry for 'ref_paper' (section 0)
-[1878] Biber.pm:132> WARN - I didn't find a database entry for 'deepefnet' (section 0)
-[1878] Biber.pm:134> INFO - WARNINGS: 4
+[402] biber-MSWIN64:342> INFO - === 
+[554] Biber.pm:421> INFO - Reading 'TA.bcf'
+[930] Biber.pm:1002> INFO - Found 59 citekeys in bib section 0
+[960] Biber.pm:4487> INFO - Processing section 0
+[1000] Biber.pm:4678> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
+[1080] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1229] bibtex.pm:1519> INFO - Found BibTeX data source 'daftar-pustaka.bib'
+[2082] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'level = 4' with 'level = 2'
+[2082] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2082] UCollate.pm:68> INFO - Overriding locale 'id-ID' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2082] Biber.pm:4307> INFO - Sorting list 'cms/global//global/global/global' of type 'entry' with template 'cms' and locale 'id-ID'
+[2082] Biber.pm:4313> INFO - No sort tailoring available for locale 'id-ID'
+[2300] bbl.pm:676> INFO - Writing 'TA.bbl' with encoding 'UTF-8'
+[2383] bbl.pm:779> INFO - Output to TA.bbl
+[2383] Biber.pm:132> WARN - Duplicate entry key: 'budiman2024effectiveness' in file 'daftar-pustaka.bib', skipping ...
+[2383] Biber.pm:132> WARN - I didn't find a database entry for 'tan2019efficientnet' (section 0)
+[2383] Biber.pm:132> WARN - I didn't find a database entry for 'deepefnet' (section 0)
+[2383] Biber.pm:134> INFO - WARNINGS: 3

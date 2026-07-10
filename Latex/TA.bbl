@@ -1737,6 +1737,36 @@
       \verb https://www.dfki.de/fileadmin/user_upload/import/14708_XAI_Evaluation_Metrics__Taxonomies__Concepts_and_Applications__INES_2023_-7.pdf
       \endverb
     \endentry
+    \entry{keras2020efficientnet}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7d293ef219b1c0e4182ade1649f375d7}{%
+           family={{Keras Team}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{fullhash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{fullhashraw}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{bibnamehash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{authorbibnamehash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{authornamehash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{authorfullhash}{7d293ef219b1c0e4182ade1649f375d7}
+      \strng{authorfullhashraw}{7d293ef219b1c0e4182ade1649f375d7}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Keras.io. Accessed July 8, 2026}
+      \field{title}{Keras Documentation: Image Classification via Fine-tuning with EfficientNet}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://keras.io/examples/vision/image_classification_efficientnet_fine_tuning/
+      \endverb
+      \verb{url}
+      \verb https://keras.io/examples/vision/image_classification_efficientnet_fine_tuning/
+      \endverb
+    \endentry
     \entry{mahesh2024xai}{article}{}{}
       \name{author}{6}{}{%
         {{un=0,uniquepart=base,hash=3838573546a6df0f420ef4df425894e5}{%
@@ -2634,6 +2664,75 @@
       \verb https://doi.org/10.1186/s13244-023-01521-7
       \endverb
     \endentry
+    \entry{zhuang2020comprehensive}{article}{}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=f80c633bdaeb37dfe8ee7a8562a118b0}{%
+           family={Zhuang},
+           familyi={Z\bibinitperiod},
+           given={Fuzhen},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6eb93da45a7519c00163e7c7c4ea2b1e}{%
+           family={Qi},
+           familyi={Q\bibinitperiod},
+           given={Zhiqiang},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ccc5fede6d425151794d6eabaefb1f08}{%
+           family={Duan},
+           familyi={D\bibinitperiod},
+           given={Keyu},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=65b14154afccb41d2c3d56f51927c049}{%
+           family={Xi},
+           familyi={X\bibinitperiod},
+           given={Dongbo},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b76935a05c886aa24f9e3861344c420c}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Yongchun},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aa0c7ab0b9dad5902ab8fc501f57cd77}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Hui},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7c27f1b2b48feefb0593a05e9c6a8b12}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{280ac335acbe982cf6197f52ba0caff1}
+      \strng{fullhash}{9ce020310bdfcf13341e373b91a7c58d}
+      \strng{fullhashraw}{9ce020310bdfcf13341e373b91a7c58d}
+      \strng{bibnamehash}{9ce020310bdfcf13341e373b91a7c58d}
+      \strng{authorbibnamehash}{9ce020310bdfcf13341e373b91a7c58d}
+      \strng{authornamehash}{280ac335acbe982cf6197f52ba0caff1}
+      \strng{authorfullhash}{9ce020310bdfcf13341e373b91a7c58d}
+      \strng{authorfullhashraw}{9ce020310bdfcf13341e373b91a7c58d}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{arXiv preprint arXiv:1911.02685}
+      \field{title}{A Comprehensive Survey on Transfer Learning}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://arxiv.org/pdf/1911.02685
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/pdf/1911.02685
+      \endverb
+    \endentry
     \entry{zienius2019direct}{article}{}{}
       \name{author}{14}{}{%
         {{un=0,uniquepart=base,hash=bb0b28bac2fa51f44f55b6ed50dc561f}{%
@@ -2750,8 +2849,7 @@
     \endentry
   \enddatalist
   \missing{deepefnet}
-  \missing{ref_paper}
-  \missing{zhuang2020comprehensive}
+  \missing{tan2019efficientnet}
 \endrefsection
 \endinput
 

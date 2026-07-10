@@ -4979,66 +4979,67 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">daftar-pustaka.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="10" intorder="1">owid2025causesofdeath</bcf:citekey>
     <bcf:citekey order="11" intorder="1">owid2025causesofdeath</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">owid2025causesofdeath</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">ferlay2024gco1</bcf:citekey>
     <bcf:citekey order="13" intorder="1">ferlay2024gco1</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">ferlay2024gco1</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">owid2025causesofdeath</bcf:citekey>
     <bcf:citekey order="15" intorder="1">owid2025causesofdeath</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">owid2025causesofdeath</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">ferlay2024gco2</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">kemkes2025tatalaksana</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">ferlay2024gco2</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">kemkes2025tatalaksana</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">mayoclinic2019braintumor</bcf:citekey>
     <bcf:citekey order="19" intorder="1">mayoclinic2019braintumor</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">mayoclinic2019braintumor</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">jaffar2025comparative</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">jaffar2025comparative</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">medtech2020hospitalintelligence</bcf:citekey>
     <bcf:citekey order="22" intorder="1">medtech2020hospitalintelligence</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">medtech2020hospitalintelligence</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">purnama2025disparitas</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">permana2025kelangkaan</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">purnama2025disparitas</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">permana2025kelangkaan</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">budiman2024effectiveness</bcf:citekey>
     <bcf:citekey order="26" intorder="1">budiman2024effectiveness</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">budiman2024effectiveness</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">nuraini2024kesulitan</bcf:citekey>
     <bcf:citekey order="28" intorder="1">nuraini2024kesulitan</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">nuraini2024kesulitan</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">darmiati2023impact</bcf:citekey>
     <bcf:citekey order="30" intorder="1">darmiati2023impact</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">darmiati2023impact</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">wozniak2021deep</bcf:citekey>
     <bcf:citekey order="32" intorder="1">wozniak2021deep</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">xu2023medical</bcf:citekey>
     <bcf:citekey order="34" intorder="1">xu2023medical</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">xu2023medical</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">asmita2025from</bcf:citekey>
     <bcf:citekey order="36" intorder="1">asmita2025from</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">asmita2025from</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">AlKadi2022Unpaired</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">AlKadi2022Unpaired</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">chapman2000crispdm</bcf:citekey>
     <bcf:citekey order="39" intorder="1">chapman2000crispdm</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">chapman2000crispdm</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">mayo2023brain</bcf:citekey>
     <bcf:citekey order="41" intorder="1">mayo2023brain</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">mayo2023brain</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">farber2025how</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">hartung2023abdominal</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">farber2025how</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">hartung2023abdominal</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">kamesh2024brain</bcf:citekey>
     <bcf:citekey order="45" intorder="1">kamesh2024brain</bcf:citekey>
-    <bcf:citekey order="46" intorder="1">kamesh2024brain</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">radiologykey2015brain</bcf:citekey>
     <bcf:citekey order="47" intorder="1">radiologykey2015brain</bcf:citekey>
-    <bcf:citekey order="48" intorder="1">radiologykey2015brain</bcf:citekey>
-    <bcf:citekey order="49" intorder="1">nibib2025mri</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">nibib2025mri</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">budiman2024effectiveness</bcf:citekey>
     <bcf:citekey order="50" intorder="1">budiman2024effectiveness</bcf:citekey>
-    <bcf:citekey order="51" intorder="1">budiman2024effectiveness</bcf:citekey>
-    <bcf:citekey order="52" intorder="1">nibib2022ct</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">nibib2022ct</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">mamourian2020recognizing</bcf:citekey>
     <bcf:citekey order="53" intorder="1">mamourian2020recognizing</bcf:citekey>
     <bcf:citekey order="54" intorder="1">mamourian2020recognizing</bcf:citekey>
     <bcf:citekey order="55" intorder="1">mamourian2020recognizing</bcf:citekey>
     <bcf:citekey order="56" intorder="1">mamourian2020recognizing</bcf:citekey>
-    <bcf:citekey order="57" intorder="1">mamourian2020recognizing</bcf:citekey>
-    <bcf:citekey order="58" intorder="1">moreira2024benchmarking</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">moreira2024benchmarking</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">hosny2018artificial</bcf:citekey>
     <bcf:citekey order="59" intorder="1">hosny2018artificial</bcf:citekey>
-    <bcf:citekey order="60" intorder="1">hosny2018artificial</bcf:citekey>
-    <bcf:citekey order="61" intorder="1">gfg2020cnn</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">gfg2020cnn</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">zhuang2020comprehensive</bcf:citekey>
     <bcf:citekey order="62" intorder="1">zhuang2020comprehensive</bcf:citekey>
     <bcf:citekey order="63" intorder="1">zhuang2020comprehensive</bcf:citekey>
     <bcf:citekey order="64" intorder="1">zhuang2020comprehensive</bcf:citekey>
-    <bcf:citekey order="65" intorder="1">zhuang2020comprehensive</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">tan2019efficientnet</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">tan2019efficientnet</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">keras2020efficientnet</bcf:citekey>
     <bcf:citekey order="67" intorder="1">tan2019efficientnet</bcf:citekey>
     <bcf:citekey order="68" intorder="1">tan2019efficientnet</bcf:citekey>
-    <bcf:citekey order="69" intorder="1">keras_efficientnet_docs</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">keras_efficientnet_docs</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">keras2020efficientnet</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">keras2020efficientnet</bcf:citekey>
     <bcf:citekey order="71" intorder="1">ibm2023xai</bcf:citekey>
     <bcf:citekey order="72" intorder="1">ali2023explainable</bcf:citekey>
     <bcf:citekey order="73" intorder="1">iftikhar2025explainable</bcf:citekey>
@@ -5151,8 +5152,8 @@
     <bcf:citekey order="180" intorder="1">wozniak2021deep</bcf:citekey>
     <bcf:citekey order="181" intorder="1">wozniak2021deep</bcf:citekey>
     <bcf:citekey order="182" intorder="1">wozniak2021deep</bcf:citekey>
-    <bcf:citekey order="183" intorder="1">ref_paper</bcf:citekey>
-    <bcf:citekey order="184" intorder="1">ref_paper</bcf:citekey>
+    <bcf:citekey order="183" intorder="1">alshaari2025deepefnet</bcf:citekey>
+    <bcf:citekey order="184" intorder="1">alshaari2025deepefnet</bcf:citekey>
     <bcf:citekey order="185" intorder="1">chattopadhyay2018grad</bcf:citekey>
     <bcf:citekey order="186" intorder="1">alqhatani2025automated</bcf:citekey>
     <bcf:citekey order="187" intorder="1">muhammad2025heatmap</bcf:citekey>
@@ -5161,9 +5162,24 @@
     <bcf:citekey order="190" intorder="1">AlKadi2022Unpaired</bcf:citekey>
     <bcf:citekey order="191" intorder="1">iftikhar2025explainable</bcf:citekey>
     <bcf:citekey order="192" intorder="1">iftikhar2025explainable</bcf:citekey>
-    <bcf:citekey order="193" intorder="1">iftikhar2025explainable</bcf:citekey>
-    <bcf:citekey order="194" intorder="1">iftikhar2025explainable</bcf:citekey>
-    <bcf:citekey order="195" intorder="1">deepefnet</bcf:citekey>
+    <bcf:citekey order="193" intorder="1">muhammad2025heatmap</bcf:citekey>
+    <bcf:citekey order="194" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="195" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="196" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="197" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="198" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="199" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="200" intorder="1">iftikhar2025explainable</bcf:citekey>
+    <bcf:citekey order="201" intorder="1">iftikhar2025explainable</bcf:citekey>
+    <bcf:citekey order="202" intorder="1">deepefnet</bcf:citekey>
+    <bcf:citekey order="203" intorder="1">deepefnet</bcf:citekey>
+    <bcf:citekey order="204" intorder="1">iftikhar2025explainable</bcf:citekey>
+    <bcf:citekey order="205" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="206" intorder="1">wozniak2021deep</bcf:citekey>
+    <bcf:citekey order="207" intorder="1">iftikhar2025explainable</bcf:citekey>
+    <bcf:citekey order="208" intorder="1">deepefnet</bcf:citekey>
+    <bcf:citekey order="209" intorder="1">muhammad2025heatmap</bcf:citekey>
+    <bcf:citekey order="210" intorder="1">muhammad2025heatmap</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="cms">

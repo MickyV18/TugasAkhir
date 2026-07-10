@@ -119,7 +119,7 @@
 \contentsline {subsubsection}{\numberline {II.1.1.1}MRI}{10}{subsubsection.2.1.1.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.1.1.2}CT Scan}{11}{subsubsection.2.1.1.2}%
+\contentsline {subsubsection}{\numberline {II.1.1.2}\textit {CT Scan}}{11}{subsubsection.2.1.1.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -144,39 +144,7 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.2.2}Transfer Learning}{13}{subsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {II.2.2.1}EfficientNet}{14}{subsubsection.2.2.2.1}%
-\contentsline {section}{\numberline {II.3}\textit {Explainable AI} (XAI)}{15}{section.2.3}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.3.1}Metode \textit {Explainable AI} (XAI)}{15}{subsection.2.3.1}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.3.1.1}\textit {Attribution-based Methods}}{16}{subsubsection.2.3.1.1}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.3.1.2}\textit {Perturbation-based Methods}}{17}{subsubsection.2.3.1.2}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.3.1.3}\textit {Activation-based Methods}}{17}{subsubsection.2.3.1.3}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.3.1.4}\textit {Transformer-based Methods}}{18}{subsubsection.2.3.1.4}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {II.4}Evaluasi Model}{18}{section.2.4}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.4.1}\textit {Deep Learning}}{18}{subsection.2.4.1}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.4.2}\textit {Explainable Artificial Intelligence} (XAI)}{19}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {II.2.2}\textit {Transfer Learning}}{13}{subsection.2.2.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -185,6 +153,44 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.2.2.1}EfficientNet}{15}{subsubsection.2.2.2.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {section}{\numberline {II.3}\textit {Explainable AI} (XAI)}{16}{section.2.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {II.3.1}Metode \textit {Explainable AI} (XAI)}{17}{subsection.2.3.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.3.1.1}\textit {Attribution-based Methods}}{17}{subsubsection.2.3.1.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.3.1.2}\textit {Perturbation-based Methods}}{18}{subsubsection.2.3.1.2}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.3.1.3}\textit {Activation-based Methods}}{18}{subsubsection.2.3.1.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.3.1.4}\textit {Transformer-based Methods}}{19}{subsubsection.2.3.1.4}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {section}{\numberline {II.4}Evaluasi Model}{19}{section.2.4}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {II.4.1}\textit {Deep Learning}}{19}{subsection.2.4.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {II.4.2}\textit {Explainable Artificial Intelligence} (XAI)}{20}{subsection.2.4.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -197,40 +203,48 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {II.5}Penelitian Terkait}{21}{section.2.5}%
-\contentsline {subsection}{\numberline {II.5.1}Pendeteksian Tumor}{21}{subsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {II.5.1.1}\textit {Detection and Classification of Brain Tumor Using a Hybrid Learning Model in CT Scan Images}}{21}{subsubsection.2.5.1.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.5.1.2}\textit {Deep Neural Network Correlation Learning Mechanism for CT Brain Tumor Detection}}{22}{subsubsection.2.5.1.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.5.1.3}\textit {Explainable CNN for brain tumor detection and classification through XAI based key features identification}}{22}{subsubsection.2.5.1.3}%
+\contentsline {section}{\numberline {II.5}Penelitian Terkait}{23}{section.2.5}%
+\contentsline {subsection}{\numberline {II.5.1}Pendeteksian Tumor}{23}{subsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {II.5.1.1}\textit {Detection and Classification of Brain Tumor Using a Hybrid Learning Model in CT Scan Images}}{23}{subsubsection.2.5.1.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.5.1.4}\textit {Deep-EFNet: An Optimized EfficientNetB0 Architecture with Dual Regularization for Scalable Multi-Class Brain Tumor Classification in MRI}}{23}{subsubsection.2.5.1.4}%
+\contentsline {subsubsection}{\numberline {II.5.1.2}\textit {Deep Neural Network Correlation Learning Mechanism for CT Brain Tumor Detection}}{23}{subsubsection.2.5.1.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.5.2}XAI}{23}{subsection.2.5.2}%
-\contentsline {subsubsection}{\numberline {II.5.2.1}\textit {An XAI-Enhanced EfficientNetB0 Framework for Precision Brain Tumor Detection in MRI Imaging}}{23}{subsubsection.2.5.2.1}%
+\contentsline {subsubsection}{\numberline {II.5.1.3}\textit {Explainable CNN for brain tumor detection and classification through XAI based key features identification}}{23}{subsubsection.2.5.1.3}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {II.5.2.2}\textit {Explainable CNN for Brain Tumor Detection and Classification through XAI Based Key Features Identification}}{24}{subsubsection.2.5.2.2}%
+\contentsline {subsubsection}{\numberline {II.5.1.4}\textit {Deep-EFNet: An Optimized EfficientNetB0 Architecture with Dual Regularization for Scalable Multi-Class Brain Tumor Classification in MRI}}{24}{subsubsection.2.5.1.4}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {II.5.3}Kesenjangan}{24}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {II.5.2}XAI}{24}{subsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {II.5.2.1}\textit {An XAI-Enhanced EfficientNetB0 Framework for Precision Brain Tumor Detection in MRI Imaging}}{24}{subsubsection.2.5.2.1}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {II.5.2.2}\textit {Explainable CNN for Brain Tumor Detection and Classification through XAI Based Key Features Identification}}{25}{subsubsection.2.5.2.2}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {II.5.3}Kesenjangan}{25}{subsection.2.5.3}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -399,6 +413,10 @@
 \xpg@aux {variant=indonesian}{malay}
 \contentsline {subsection}{\numberline {IV.3.2}Explainable CNN}{52}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {IV.3.3}EfficientNetB0}{53}{subsection.4.3.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
 \contentsline {subsection}{\numberline {IV.3.4}hyperparameter \textit {tuning}}{55}{subsection.4.3.4}%
 \contentsline {subsection}{\numberline {IV.3.5}Explainable AI}{56}{subsection.4.3.5}%
 \xpg@aux {}{english}
@@ -421,49 +439,27 @@
 \contentsline {section}{\numberline {V.2}Pengumpulan Data}{62}{section.5.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {V.3}Pemrosesan Data}{64}{section.5.3}%
-\contentsline {subsection}{\numberline {V.3.1}Pemrosesan Umum}{64}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {V.3.2}Pemrosesan Eksperimen}{65}{subsection.5.3.2}%
-\contentsline {section}{\numberline {V.4}Implementasi Arsitektur Model}{67}{section.5.4}%
-\contentsline {subsection}{\numberline {V.4.1}Correlation Learning Mechanism (CLM)}{67}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {V.4.2}Explainable CNN}{69}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {V.4.3}EfficientNetB0}{72}{subsection.5.4.3}%
-\contentsline {section}{\numberline {V.5}\textit {Explainable AI} (Grad-CAM)}{76}{section.5.5}%
-\contentsline {chapter}{\numberline {VI}EVALUASI}{79}{chapter.6}%
-\contentsline {section}{\numberline {VI.1}Metode Evaluasi}{79}{section.6.1}%
-\contentsline {section}{\numberline {VI.2}Hasil Evaluasi}{79}{section.6.2}%
-\contentsline {subsection}{\numberline {VI.2.1}Model}{79}{subsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {VI.2.1.1}CLM}{79}{subsubsection.6.2.1.1}%
-\contentsline {subsubsection}{\numberline {VI.2.1.2}Explainable CNN}{81}{subsubsection.6.2.1.2}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.1}Konteks Dataset dan Skema Eksperimen}{81}{paragraph.6.2.1.2.1}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.2}Masalah Model yang Hanya Menebak Satu Kelas}{81}{paragraph.6.2.1.2.2}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.3}Indikasi \textit {Overfitting} pada \textit {Learning Curve}}{82}{paragraph.6.2.1.2.3}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.4}Pengaruh \textit {Preprocessing} terhadap Kemampuan Generalisasi}{82}{paragraph.6.2.1.2.4}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.5}Pengaruh Strategi Penggabungan \textit {Dataset}}{82}{paragraph.6.2.1.2.5}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.6}Pengaruh \textit {Hyperparameter}}{82}{paragraph.6.2.1.2.6}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.7}\textit {Cross-Validation} pada Model Terbaik}{82}{paragraph.6.2.1.2.7}%
-\contentsline {paragraph}{\numberline {VI.2.1.2.8}Perbandingan dengan Penelitian Terkait (Iftikhar dkk., 2025)}{83}{paragraph.6.2.1.2.8}%
+\contentsline {section}{\numberline {V.3}Pemrosesan Data}{65}{section.5.3}%
+\contentsline {subsection}{\numberline {V.3.1}Pemrosesan Umum}{66}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {V.3.2}Pemrosesan Eksperimen}{66}{subsection.5.3.2}%
+\contentsline {section}{\numberline {V.4}Augmentasi}{68}{section.5.4}%
+\contentsline {section}{\numberline {V.5}Implementasi Arsitektur Model}{68}{section.5.5}%
+\contentsline {subsection}{\numberline {V.5.1}Correlation Learning Mechanism (CLM)}{68}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {V.5.2}Explainable CNN}{71}{subsection.5.5.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {V.5.3}EfficientNetB0}{74}{subsection.5.5.3}%
+\contentsline {section}{\numberline {V.6}\textit {Explainable AI} (Grad-CAM)}{78}{section.5.6}%
+\contentsline {chapter}{\numberline {VI}EVALUASI}{81}{chapter.6}%
+\contentsline {section}{\numberline {VI.1}Metode Evaluasi}{81}{section.6.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\contentsline {paragraph}{\numberline {VI.2.1.2.9}Rangkuman Evaluasi}{84}{paragraph.6.2.1.2.9}%
-\contentsline {subsubsection}{\numberline {VI.2.1.3}EfficientNetB0}{85}{subsubsection.6.2.1.3}%
-\contentsline {paragraph}{\numberline {VI.2.1.3.1}Hasil Grid Search 9 Skema Eksperimen}{85}{paragraph.6.2.1.3.1}%
-\contentsline {paragraph}{\numberline {VI.2.1.3.2}Validasi melalui \textit {Cross-Validation}}{85}{paragraph.6.2.1.3.2}%
-\contentsline {paragraph}{\numberline {VI.2.1.3.3}Perbandingan dengan Deep-EFNet \blx@tocontentsinit {0}\parencite {deepefnet}}{85}{paragraph.6.2.1.3.3}%
-\contentsline {paragraph}{\numberline {VI.2.1.3.4}Perbandingan Jumlah Parameter}{86}{paragraph.6.2.1.3.4}%
-\contentsline {subsection}{\numberline {VI.2.2}XAI}{86}{subsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {VI.2.2.1}Kuantitatif}{86}{subsubsection.6.2.2.1}%
-\contentsline {subsubsection}{\numberline {VI.2.2.2}Kualitatif}{86}{subsubsection.6.2.2.2}%
-\contentsline {section}{\numberline {VI.3}Pembahasan Hasil Evaluasi}{88}{section.6.3}%
-\contentsline {chapter}{\numberline {VII}PENUTUP}{91}{chapter.7}%
-\contentsline {section}{\numberline {VII.1}Kesimpulan}{91}{section.7.1}%
-\contentsline {section}{\numberline {VII.2}Saran}{91}{section.7.2}%
+\contentsline {section}{\numberline {VI.2}Hasil Evaluasi}{82}{section.6.2}%
+\contentsline {subsection}{\numberline {VI.2.1}Evaluasi Model CLM}{82}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {VI.2.1.1}\textit {Hyperparameter Tuning}}{82}{subsubsection.6.2.1.1}%
+\contentsline {subsubsection}{\numberline {VI.2.1.2}Validasi dan Komparasi Performa}{83}{subsubsection.6.2.1.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -476,6 +472,19 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {VI.2.2}Evaluasi Explainable CNN}{84}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {VI.2.2.1}\textit {Hyperparameter Tuning}}{84}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {VI.2.2.2}10-fold Cross-Validation}{85}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {VI.2.2.3}Komparasi Performa}{86}{subsubsection.6.2.2.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {VI.2.3}Evaluasi EfficientNetB0}{87}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {VI.2.3.1}\textit {Hyperparameter Tuning}}{87}{subsubsection.6.2.3.1}%
+\contentsline {subsubsection}{\numberline {VI.2.3.2}10-fold Cross-Validation}{88}{subsubsection.6.2.3.2}%
+\contentsline {subsubsection}{\numberline {VI.2.3.3}Komparasi Performa}{88}{subsubsection.6.2.3.3}%
+\contentsline {subsection}{\numberline {VI.2.4}Komparasi Antar-Model}{89}{subsection.6.2.4}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -484,16 +493,16 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {VI.2.5}XAI}{92}{subsection.6.2.5}%
+\contentsline {subsubsection}{\numberline {VI.2.5.1}Kuantitatif}{92}{subsubsection.6.2.5.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsubsection}{\numberline {VI.2.5.2}Kualitatif}{93}{subsubsection.6.2.5.2}%
+\contentsline {chapter}{\numberline {VII}PENUTUP}{101}{chapter.7}%
+\contentsline {section}{\numberline {VII.1}Kesimpulan}{101}{section.7.1}%
+\contentsline {section}{\numberline {VII.2}Saran}{102}{section.7.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -574,8 +583,42 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {chapter}{Lampiran \numberline {A}KODE PROGRAM}{101}{appendix.1.A}%
-\contentsline {chapter}{Lampiran \numberline {B}HASIL SURVEI LAPANGAN}{103}{appendix.1.B}%
-\contentsline {section}{\numberline {B.1}Foto Survei Lokasi 1}{103}{section.1.B.1}%
-\contentsline {section}{\numberline {B.2}Foto Survei Lokasi 2}{103}{section.1.B.2}%
-\contentsline {section}{\numberline {B.3}Transkrip Wawancara dengan Narasumber}{103}{section.1.B.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {chapter}{Lampiran \numberline {A}KODE PROGRAM}{113}{appendix.1.A}%
+\contentsline {chapter}{Lampiran \numberline {B}HASIL SURVEI LAPANGAN}{115}{appendix.1.B}%
+\contentsline {section}{\numberline {B.1}Foto Survei Lokasi 1}{115}{section.1.B.1}%
+\contentsline {section}{\numberline {B.2}Foto Survei Lokasi 2}{115}{section.1.B.2}%
+\contentsline {section}{\numberline {B.3}Transkrip Wawancara dengan Narasumber}{115}{section.1.B.3}%
