@@ -377,7 +377,7 @@
 \contentsline {subsection}{\numberline {IV.2.1}\textit {Preprocessing} Umum}{46}{subsection.4.2.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {IV.2.2}\textit {Preprocessing} Eksperimen}{46}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {IV.2.2}\textit {Preprocessing} Eksperimen}{47}{subsection.4.2.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -423,8 +423,8 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {IV.4}Rancangan Evaluasi}{57}{section.4.4}%
-\contentsline {subsection}{\numberline {IV.4.1}Evaluasi Model}{57}{subsection.4.4.1}%
+\contentsline {section}{\numberline {IV.4}Rancangan Evaluasi}{58}{section.4.4}%
+\contentsline {subsection}{\numberline {IV.4.1}Evaluasi Model}{58}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {IV.4.2}Evaluasi XAI}{58}{subsection.4.4.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
@@ -443,27 +443,21 @@
 \contentsline {subsection}{\numberline {V.3.1}Pemrosesan Umum}{66}{subsection.5.3.1}%
 \contentsline {subsection}{\numberline {V.3.2}Pemrosesan Eksperimen}{66}{subsection.5.3.2}%
 \contentsline {section}{\numberline {V.4}Augmentasi}{68}{section.5.4}%
-\contentsline {section}{\numberline {V.5}Implementasi Arsitektur Model}{68}{section.5.5}%
-\contentsline {subsection}{\numberline {V.5.1}Correlation Learning Mechanism (CLM)}{68}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {V.5.2}Explainable CNN}{71}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {V.4.1}Implementasi Augmentasi}{68}{subsection.5.4.1}%
+\contentsline {section}{\numberline {V.5}Implementasi Correlation Learning Mechanism (CLM)}{69}{section.5.5}%
+\contentsline {section}{\numberline {V.6}Implementasi Explainable CNN}{72}{section.5.6}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {V.5.3}EfficientNetB0}{74}{subsection.5.5.3}%
-\contentsline {section}{\numberline {V.6}\textit {Explainable AI} (Grad-CAM)}{78}{section.5.6}%
-\contentsline {chapter}{\numberline {VI}EVALUASI}{81}{chapter.6}%
-\contentsline {section}{\numberline {VI.1}Metode Evaluasi}{81}{section.6.1}%
+\contentsline {section}{\numberline {V.7}Implementasi EfficientNetB0}{76}{section.5.7}%
+\contentsline {section}{\numberline {V.8}\textit {Explainable AI} (Grad-CAM)}{80}{section.5.8}%
+\contentsline {chapter}{\numberline {VI}EVALUASI}{83}{chapter.6}%
+\contentsline {section}{\numberline {VI.1}Metode Evaluasi}{83}{section.6.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {section}{\numberline {VI.2}Hasil Evaluasi}{82}{section.6.2}%
-\contentsline {subsection}{\numberline {VI.2.1}Evaluasi Model CLM}{82}{subsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {VI.2.1.1}\textit {Hyperparameter Tuning}}{82}{subsubsection.6.2.1.1}%
-\contentsline {subsubsection}{\numberline {VI.2.1.2}Validasi dan Komparasi Performa}{83}{subsubsection.6.2.1.2}%
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
-\xpg@aux {}{english}
-\xpg@aux {variant=indonesian}{malay}
+\contentsline {section}{\numberline {VI.2}Hasil Evaluasi}{84}{section.6.2}%
+\contentsline {subsection}{\numberline {VI.2.1}Evaluasi Model CLM}{84}{subsection.6.2.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -472,19 +466,20 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {VI.2.2}Evaluasi Explainable CNN}{84}{subsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {VI.2.2.1}\textit {Hyperparameter Tuning}}{84}{subsubsection.6.2.2.1}%
-\contentsline {subsubsection}{\numberline {VI.2.2.2}10-fold Cross-Validation}{85}{subsubsection.6.2.2.2}%
-\contentsline {subsubsection}{\numberline {VI.2.2.3}Komparasi Performa}{86}{subsubsection.6.2.2.3}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {VI.2.3}Evaluasi EfficientNetB0}{87}{subsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {VI.2.3.1}\textit {Hyperparameter Tuning}}{87}{subsubsection.6.2.3.1}%
-\contentsline {subsubsection}{\numberline {VI.2.3.2}10-fold Cross-Validation}{88}{subsubsection.6.2.3.2}%
-\contentsline {subsubsection}{\numberline {VI.2.3.3}Komparasi Performa}{88}{subsubsection.6.2.3.3}%
-\contentsline {subsection}{\numberline {VI.2.4}Komparasi Antar-Model}{89}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {VI.2.2}Evaluasi Explainable CNN}{86}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {VI.2.2.1}\textit {Hyperparameter Tuning}}{86}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {VI.2.2.2}10-fold Cross-Validation}{87}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {VI.2.2.3}Komparasi Performa}{88}{subsubsection.6.2.2.3}%
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\xpg@aux {}{english}
+\xpg@aux {variant=indonesian}{malay}
+\contentsline {subsection}{\numberline {VI.2.3}Evaluasi EfficientNetB0}{89}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {VI.2.4}Komparasi Antar-Model}{91}{subsection.6.2.4}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
@@ -493,16 +488,16 @@
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsection}{\numberline {VI.2.5}XAI}{92}{subsection.6.2.5}%
-\contentsline {subsubsection}{\numberline {VI.2.5.1}Kuantitatif}{92}{subsubsection.6.2.5.1}%
+\contentsline {subsection}{\numberline {VI.2.5}XAI}{94}{subsection.6.2.5}%
+\contentsline {subsubsection}{\numberline {VI.2.5.1}Kuantitatif}{94}{subsubsection.6.2.5.1}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
-\contentsline {subsubsection}{\numberline {VI.2.5.2}Kualitatif}{93}{subsubsection.6.2.5.2}%
-\contentsline {chapter}{\numberline {VII}PENUTUP}{101}{chapter.7}%
-\contentsline {section}{\numberline {VII.1}Kesimpulan}{101}{section.7.1}%
-\contentsline {section}{\numberline {VII.2}Saran}{102}{section.7.2}%
+\contentsline {subsubsection}{\numberline {VI.2.5.2}Kualitatif}{95}{subsubsection.6.2.5.2}%
+\contentsline {chapter}{\numberline {VII}PENUTUP}{103}{chapter.7}%
+\contentsline {section}{\numberline {VII.1}Kesimpulan}{103}{section.7.1}%
+\contentsline {section}{\numberline {VII.2}Saran}{104}{section.7.2}%
 \xpg@aux {}{english}
 \xpg@aux {variant=indonesian}{malay}
 \xpg@aux {}{english}

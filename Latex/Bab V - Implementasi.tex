@@ -83,11 +83,11 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 			\hline
 			Reactive gliosis & 1 & 2 \\
 			\hline
-			Medulloblastoma vs ependymoma (dugaan) & 1 & 5 \\
+			Medulloblastoma vs ependymoma & 1 & 5 \\
 			\hline
-			Neoplastic process (tidak spesifik) & 1 & 1 \\
+			Neoplastic process& 1 & 1 \\
 			\hline
-			Hemoragik (jenis tumor tidak disebut) & 1 & 20 \\
+			Hemoragik & 1 & 20 \\
 			\hline
 			\textbf{Total} & \textbf{20} & \\
 			\hline
@@ -229,7 +229,7 @@ Setelah kedua metode \textit{preprocessing} diterapkan, dilakukan pengujian untu
 	\label{gambar:preprocess_eksperimen}
 \end{figure}
 
-Berdasarkan Tabel \ref{tab:kualitas_gc_wn}, nilai PSNR dan SSIM pada GC terlihat lebih tinggi dibandingkan WN. Artinya, citra hasil GC lebih mirip dengan citra aslinya dan strukturnya tidak banyak berubah atau rusak. Selain itu, nilai AMBE pada GC (5,3102) jauh lebih kecil dibandingkan WN (178,242). Nilai AMBE yang kecil ini berarti tingkat kecerahan citra hasil GC tidak jauh berbeda dari citra aslinya. Sebaliknya, nilai AMBE WN yang besar kemungkinan disebabkan oleh proses normalisasi \textit{z-score}, di mana nilai piksel dikurangi dengan rata-rata (\textit{mean}) lalu dibagi dengan standar deviasi (\textit{std}), sehingga tingkat kecerahannya berubah cukup jauh dari citra asli. Hal ini berbeda dengan CLAHE yang cara kerjanya hanya membatasi kontras citra, sehingga tingkat kecerahan citra secara keseluruhan tetap lebih terjaga.
+Berdasarkan Tabel \ref{tab:kualitas_gc_wn}, nilai PSNR dan SSIM pada GC terlihat lebih tinggi dibandingkan WN. Artinya, citra hasil GC lebih mirip dengan citra aslinya dan strukturnya tidak banyak berubah atau rusak. Selain itu, nilai AMBE pada GC (5,3102) jauh lebih kecil dibandingkan WN (178,242). Nilai AMBE yang kecil ini berarti tingkat kecerahan citra hasil GC tidak jauh berbeda dari citra aslinya. Sebaliknya, nilai AMBE WN yang besar kemungkinan disebabkan oleh proses normalisasi \textit{z-score} yang mengurangkan nilai piksel dengan rata-rata (\textit{mean}) kemudian membaginya dengan standar deviasi (\textit{std}), sehingga tingkat kecerahannya berubah cukup jauh dari citra asli. Hal ini berbeda dengan CLAHE yang cara kerjanya hanya membatasi kontras citra, sehingga tingkat kecerahan citra secara keseluruhan tetap lebih terjaga.
 
 \begin{table}[htbp]
 	\centering
@@ -265,6 +265,26 @@ Dari hasil ini, dapat disimpulkan bahwa kedua metode \textit{preprocessing} sama
 
 \section{Augmentasi}
 \label{subsec:augmentasi}
+
+Implementasi augmentasi dilakukan hanya pada data \textit{training}, dengan setiap gambar asli menghasilkan tepat satu salinan dari masing-masing metode (\textit{shearing}, rotasi, dan translasi-\textit{shearing}-rotasi), sehingga total data \textit{training} menjadi 4 kali lipat dari jumlah data asli.
+
+Setiap gambar asli diproses oleh ketiga metode secara bergiliran (\textit{round-robin}) dan bukan dipilih secara acak, sehingga jumlah hasil augmentasi per metode akan selalu sama dengan jumlah gambar asli pada kelas tersebut. Hal ini terlihat pada Gambar \ref{fig:jumlah-metode}, di mana ketiga metode augmentasi menghasilkan jumlah gambar yang sama persis pada tiap kelas, yaitu 73 gambar untuk kelas \textit{no\_tumor} dan 173 gambar untuk kelas \textit{tumor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/jumlah metode.png}
+	\caption{Distribusi Jumlah Gambar per Metode Augmentasi}
+	\label{fig:jumlah-metode}
+\end{figure}
+
+Total data \textit{training} setelah augmentasi, yaitu 292 gambar untuk kelas \textit{no\_tumor} (73 asli + 219 augmentasi) dan 692 gambar untuk kelas \textit{tumor} (173 asli + 519 augmentasi), dapat dilihat pada Gambar \ref{fig:perbandingan-augmentasi}. Kedua angka ini konsisten dengan rasio penggandaan 4x yang telah dirancang sebelumnya. Namun perlu dicatat bahwa proses augmentasi ini menggandakan kedua kelas dengan faktor yang sama, sehingga rasio ketimpangan antara kelas \textit{no\_tumor} dan \textit{tumor} (sekitar 1:2,4) tetap tidak berubah setelah augmentasi dilakukan.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/perbandingan augmentasi.png}
+	\caption{Distribusi Jumlah Data Asli vs Augmentasi per Kelas}
+	\label{fig:perbandingan-augmentasi}
+\end{figure}
 
 \section{Implementasi Correlation Learning Mechanism (CLM)}
 
@@ -321,15 +341,15 @@ Namun, dari hasil yang diperoleh, ditemukan adanya masalah yang cukup serius. Pa
 		\begin{tabular}{|l|c|c|c|c|c|l|}
 			\hline
 			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config Terbaik} \\ \hline
-			No Prep / All & 65.3 & 65.3 & 100.0 & 0.0 & 79.0 & LR=0.0001, drop=0.1, iter=5000 \\ \hline
-			No Prep / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			No Prep / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			GC / All & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
-			GC / Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
-			GC / Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
-			\textbf{WN / All} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
-			WN / Test & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
-			WN / Val+Test & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			All & 65.3 & 65.3 & 100.0 & 0.0 & 79.0 & LR=0.0001, drop=0.1, iter=5000 \\ \hline
+			Test & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			Val+Test & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			GC (All) & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
+			GC (Test) & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			GC (Val+Test) & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
+			\textbf{WN (All)} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
+			WN (Test) & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			WN (Val+Test) & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -403,12 +423,12 @@ Meskipun begitu, masih ada beberapa skenario dengan nilai \textit{specificity} y
 			\textbf{all} & \textbf{70.37} & \textbf{69.64} & \textbf{70.37} & \textbf{47.62} & \textbf{69.94} & \textbf{lr=0.01, bs=64, dr=0.1} \\ \hline
 			test & 84.27 & 71.01 & 84.27 & 0.00 & 77.08 & lr=0.0001, bs=40, dr=0.1 \\ \hline
 			val+test & 80.95 & 79.94 & 80.95 & 21.43 & 76.54 & lr=0.01, bs=40, dr=0.1 \\ \hline
-			GC -- All & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
-			\textbf{GC -- Test} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
-			GC -- Val+Test & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
-			WN -- All & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
-			WN -- Test & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
-			\textbf{WN -- Val+Test} & \textbf{87.83} & \textbf{88.45} & \textbf{87.83} & \textbf{78.57} & \textbf{88.07} & \textbf{lr=0.0001, bs=40, dr=0.1} \\ \hline
+			GC (All) & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
+			\textbf{GC (Test)} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
+			GC (Val+Test) & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN (All) & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
+			WN  (Test) & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
+			\textbf{WN (Val+Test)} & \textbf{87.83} & \textbf{88.45} & \textbf{87.83} & \textbf{78.57} & \textbf{88.07} & \textbf{lr=0.0001, bs=40, dr=0.1} \\ \hline
 		\end{tabular}%
 	}
 \end{table}
@@ -452,11 +472,11 @@ Dari diagram alur eksperimen di atas, ada beberapa bagian yang disesuaikan untuk
 
 Secara umum, arsitektur model EfficientNetB0 yang digunakan pada tugas akhir ini mengikuti struktur \textit{head} klasifikasi yang dijelaskan pada artikel acuan Deep-EFNet (Alshaari \& Alqahtani, 2025). Kesamaan ini bisa dilihat dari ukuran input 224×224×3, penggunaan \textit{backbone} EfficientNetB0 dengan bobot ImageNet, GlobalAveragePooling2D, BatchNormalization setelah \textit{base model} dan setiap \textit{dense layer}, dua \textit{dense layer} berukuran 512 dan 256 neuron yang jumlah parameternya sama persis dengan artikel (655.872 dan 131.328), sampai skema \textit{fine-tuning} dengan 30 \textit{layer} terakhir \textit{backbone} yang di-\textit{unfreeze}, sesuai strategi dua fase yang dijelaskan di artikel. Perbedaan jumlah kelas output (2 kelas pada model ini, 4 kelas pada artikel) juga yang membuat total parameter sedikit berbeda, yaitu 4.845.477 pada model ini dibanding 4.845.991 pada artikel, seperti yang sudah disebutkan sebelumnya.
 
-Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \textit{trainable} dan \textit{non-trainable} pada artikel acuan. Angka 792.324 \textit{trainable} dan 4.053.667 \textit{non-trainable} yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh \textit{backbone}-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses \textit{unfreeze} 30 \textit{layer} terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter \textit{trainable} yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah \textit{fine-tuning} dengan benar, di mana jumlah \textit{trainable params} meningkat menjadi 3.080.850 karena sebagian bobot \textit{backbone} (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih.
+Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \textit{trainable} dan \textit{non-trainable} pada artikel acuan. Angka 792.324 \textit{trainable} dan 4.053.667 \textit{non-trainable} yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh \textit{backbone}-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses \textit{unfreeze} 30 \textit{layer} terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter \textit{trainable} yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah \textit{fine-tuning} dengan benar, dengan jumlah \textit{trainable params} yang meningkat menjadi 3.080.850 karena sebagian bobot \textit{backbone} (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih.
 
 \begin{table}[htbp]
 	\centering
-	\caption{Ringkasan Arsitektur Model EfficientNetB0 (Deep-EFNet Head)}
+	\caption{Ringkasan Arsitektur Model EfficientNetB0}
 	\label{tab:arsitektur_model}
 	\begin{tabular}{|l|l|l|}
 		\hline
@@ -497,12 +517,12 @@ Meskipun begitu, sebagian besar konfigurasi terbaik yang diperoleh menggunakan \
 			all & 95.56 & 95.63 & 95.56 & 88.10 & 95.49 & lr=0.01, bs=16, dr=0.1 \\ \hline
 			test & 93.26 & 94.44 & 93.26 & 92.86 & 93.59 & lr=0.01, bs=16, dr=0.3 \\ \hline
 			val+test & 95.24 & 95.42 & 95.24 & 92.86 & 95.30 & lr=0.01, bs=16, dr=0.3 \\ \hline
-			GC -- All & 88.89 & 90.69 & 88.89 & 95.24 & 89.18 & lr=0.0001, bs=64, dr=0.1 \\ \hline
-			\textbf{GC -- Test} & \textbf{96.63} & \textbf{96.76} & \textbf{96.63} & \textbf{92.86} & \textbf{96.68} & \textbf{lr=0.01, bs=64, dr=0.3} \\ \hline
-			GC -- Val+Test & 90.48 & 92.10 & 90.48 & 92.86 & 90.87 & lr=0.01, bs=64, dr=0.2 \\ \hline
-			WN -- All & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
-			WN -- Test & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
-			WN -- Val+Test & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
+			GC (All) & 88.89 & 90.69 & 88.89 & 95.24 & 89.18 & lr=0.0001, bs=64, dr=0.1 \\ \hline
+			\textbf{GC (Test)} & \textbf{96.63} & \textbf{96.76} & \textbf{96.63} & \textbf{92.86} & \textbf{96.68} & \textbf{lr=0.01, bs=64, dr=0.3} \\ \hline
+			GC (Val+Test) & 90.48 & 92.10 & 90.48 & 92.86 & 90.87 & lr=0.01, bs=64, dr=0.2 \\ \hline
+			WN (All) & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
+			WN (Test) & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
+			WN (Val+Test) & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
 		\end{tabular}%
 	}
 \end{table}

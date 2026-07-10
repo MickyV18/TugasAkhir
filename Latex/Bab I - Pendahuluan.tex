@@ -33,23 +33,19 @@ Pada AI yang digunakan untuk suplemen diagnostik tanpa transparansi terdapat per
 
 % --- Rumusan Masalah ---
 \section{Rumusan Masalah}
-Berdasarkan latar belakang yang telah disampaikan, diagnosis tumor otak di Indonesia menghadapi tantangan berupa keterbatasan fasilitas MRI, sehingga mendorong penggunaan citra \textit{CT Scan} sebagai alternatif utama. Di sisi lain, penggunaan \textit{Artificial Intelligence} (AI) berbasis \textit{deep learning} sebagai alat bantu diagnosis pada \textit{CT Scan} masih memiliki kelemahan mendasar, yaitu sifat \textit{black box} yang membuat landasan keputusannya tidak transparan. Ketiadaan penjelasan visual atas prediksi model ini menjadi persoalan, karena jika dibiarkan, model AI dengan akurasi tinggi sekalipun akan sulit divalidasi dan diandalkan objektivitasnya secara klinis. Oleh karena itu, penelitian ini mengusulkan pengembangan model \textit{deep learning} untuk klasifikasi tumor otak pada citra \textit{CT Scan} yang diintegrasikan dengan metode \textit{Explainable AI} (XAI) guna memberikan transparansi diagnostik. Berdasarkan pokok persoalan tersebut, rumusan masalah dalam tugas akhir ini adalah sebagai berikut:
-
+Keterbatasan fasilitas MRI di Indonesia mendorong penggunaan citra \textit{CT Scan} sebagai alternatif diagnosis tumor otak. Namun, model \textit{deep learning} yang umum digunakan untuk membantu diagnosis bersifat \textit{black box}, sehingga landasan keputusannya sulit divalidasi secara klinis meski akurasinya tinggi. Selain itu, arsitektur \textit{deep learning} yang berbeda berpotensi menghasilkan performa dan kualitas penjelasan visual yang berbeda pula, sehingga perlu dibandingkan. Oleh karena itu, tugas akhir ini merumuskan masalah sebagai berikut:
 \begin{enumerate}
-	\item Sejauh mana tingkat performa klasifikasi model \textit{deep learning} yang dibangun dalam mendeteksi keberadaan tumor otak pada citra \textit{CT Scan}?
-	
-	\item Apakah integrasi metode \textit{Explainable AI} pada model tersebut mampu menghasilkan representasi visual yang secara relevan dan tepat menyoroti area anomali tumor penyokong keputusan klasifikasi?
+	\item Sejauh mana performa klasifikasi dari  arsitektur CLM, \textit{Explainable} CNN, EfficientNetB0 dalam mendeteksi tumor otak pada citra \textit{CT Scan}?
+	\item Apakah integrasi Explainable AI (XAI) pada model dengan performa klasifikasi terbaik mampu menghasilkan visualisasi yang relevan menyoroti area tumor?
 \end{enumerate}
 
 
 % --- Tujuan ---
 \section{Tujuan}
-Tujuan utama dari tugas akhir ini adalah mengembangkan dan mengevaluasi arsitektur \textit{deep learning} yang dapat mendeteksi keberadaan tumor otak pada citra \textit{CT Scan} secara akurat sekaligus transparan. Kriteria keberhasilan dari tugas akhir ini diukur melalui dua aspek utama: (1) tercapainya performa klasifikasi model yang terukur secara kuantitatif melalui metrik evaluasi seperti akurasi, presisi, dan \textit{recall}, serta (2) dihasilkannya visualisasi XAI sehingga model tidak lagi bertindak sebagai \textit{black box}. Adapun tujuan dari pelaksanaan tugas akhir ini adalah:
-
+Tujuan tugas akhir ini adalah mengembangkan dan membandingkan beberapa arsitektur \textit{deep learning} untuk deteksi tumor otak pada citra \textit{CT Scan}, serta mengevaluasi sejauh mana model dengan performa terbaik dapat dijelaskan secara visual melalui XAI. Keberhasilan diukur melalui: (1) teridentifikasinya performa tiap arsitektur secara kuantitatif dan (2) teridentifikasinya sejauh mana visualisasi XAI relevan terhadap area tumor beserta faktor yang mempengaruhinya. Adapun tujuan pelaksanaannya:
 \begin{enumerate}
-	\item Mengembangkan model \textit{deep learning} untuk mengklasifikasikan keberadaan tumor otak pada citra \textit{CT Scan}.
-	
-	\item Mengembangkan visualisasi pada citra untuk menjelaskan fokus perhatian model saat melakukan klasifikasi. 
+	\item Mengembangkan arsitektur CLM, \textit{Explainable} CNN, EfficientNetB0 untuk klasifikasi tumor otak pada citra \textit{CT Scan}.
+	\item Mengevaluasi relevansi visualisasi XAI pada model dengan performa klasifikasi terbaik terhadap area tumor secara kuantitatif maupun kualitatif
 \end{enumerate}
 
 % --- Batasan Masalah ---

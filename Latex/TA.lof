@@ -12,27 +12,30 @@
 \contentsline {figure}{\numberline {IV.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perancangan Alur Implementasi}}{43}{figure.caption.31}%
 \contentsline {figure}{\numberline {IV.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Permasalahan Kelangkaan Data}}{44}{figure.caption.32}%
 \contentsline {figure}{\numberline {IV.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Website Radiopaedia}}{45}{figure.caption.33}%
-\contentsline {figure}{\numberline {IV.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model \textit {Correlation Learning Mechanism} \blx@tocontentsinit {0}\parencite {wozniak2021deep}}}{50}{figure.caption.34}%
-\contentsline {figure}{\numberline {IV.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model CNN dalam CLM \blx@tocontentsinit {0}\parencite {wozniak2021deep}}}{51}{figure.caption.35}%
-\contentsline {figure}{\numberline {IV.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur \textit {Explainable} CNN}}{52}{figure.caption.36}%
-\contentsline {figure}{\numberline {IV.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model EfficientNetB0}}{54}{figure.caption.37}%
+\contentsline {figure}{\numberline {IV.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perancangan \textit {Preprocess}}}{46}{figure.caption.34}%
+\contentsline {figure}{\numberline {IV.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model \textit {Correlation Learning Mechanism} \blx@tocontentsinit {0}\parencite {wozniak2021deep}}}{50}{figure.caption.35}%
+\contentsline {figure}{\numberline {IV.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model CNN dalam CLM \blx@tocontentsinit {0}\parencite {wozniak2021deep}}}{51}{figure.caption.36}%
+\contentsline {figure}{\numberline {IV.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur \textit {Explainable} CNN}}{52}{figure.caption.37}%
+\contentsline {figure}{\numberline {IV.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Arsitektur Model EfficientNetB0}}{54}{figure.caption.38}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {V.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Gambar Otak dengan \textit {Watermark}}}{63}{figure.caption.40}%
-\contentsline {figure}{\numberline {V.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi \textit {Preprocess} Gambar}}{65}{figure.caption.44}%
-\contentsline {figure}{\numberline {V.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Pemrosesan Eksperimen}}{67}{figure.caption.47}%
-\contentsline {figure}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model CLM}}{70}{figure.caption.51}%
-\contentsline {figure}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model \textit {Explainable }CNN}}{71}{figure.caption.53}%
-\contentsline {figure}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model EfficientNetB0}}{74}{figure.caption.56}%
-\contentsline {figure}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada Explainable CNN (\textit {True Positive})}}{78}{figure.caption.59}%
-\contentsline {figure}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada Explainable CNN (\textit {False Negative})}}{78}{figure.caption.60}%
-\contentsline {figure}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada EfficientNetB0}}{79}{figure.caption.61}%
+\contentsline {figure}{\numberline {V.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Gambar Otak dengan \textit {Watermark}}}{63}{figure.caption.41}%
+\contentsline {figure}{\numberline {V.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi \textit {Preprocess} Gambar}}{65}{figure.caption.45}%
+\contentsline {figure}{\numberline {V.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Pemrosesan Eksperimen}}{67}{figure.caption.48}%
+\contentsline {figure}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jumlah Gambar per Metode Augmentasi}}{69}{figure.caption.51}%
+\contentsline {figure}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jumlah Data Asli vs Augmentasi per Kelas}}{69}{figure.caption.52}%
+\contentsline {figure}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model CLM}}{71}{figure.caption.54}%
+\contentsline {figure}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model \textit {Explainable }CNN}}{73}{figure.caption.56}%
+\contentsline {figure}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi Arsitektur Model EfficientNetB0}}{76}{figure.caption.59}%
+\contentsline {figure}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada Explainable CNN (\textit {True Positive})}}{80}{figure.caption.62}%
+\contentsline {figure}{\numberline {V.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada Explainable CNN (\textit {False Negative})}}{80}{figure.caption.63}%
+\contentsline {figure}{\numberline {V.11}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Implementasi XAI pada EfficientNetB0}}{81}{figure.caption.64}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {VI.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi XAlign}}{94}{figure.caption.65}%
-\contentsline {figure}{\numberline {VI.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Negative}}}{95}{figure.caption.66}%
-\contentsline {figure}{\numberline {VI.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Positive tanpa Mask}}}{95}{figure.caption.67}%
-\contentsline {figure}{\numberline {VI.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Positive dengan Mask}}}{96}{figure.caption.68}%
-\contentsline {figure}{\numberline {VI.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {False Negative}}}{97}{figure.caption.69}%
-\contentsline {figure}{\numberline {VI.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {False Positive}}}{97}{figure.caption.70}%
+\contentsline {figure}{\numberline {VI.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi XAlign}}{96}{figure.caption.68}%
+\contentsline {figure}{\numberline {VI.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Negative}}}{97}{figure.caption.69}%
+\contentsline {figure}{\numberline {VI.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Positive tanpa Mask}}}{97}{figure.caption.70}%
+\contentsline {figure}{\numberline {VI.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {True Positive dengan Mask}}}{98}{figure.caption.71}%
+\contentsline {figure}{\numberline {VI.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {False Negative}}}{99}{figure.caption.72}%
+\contentsline {figure}{\numberline {VI.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Visualisasi Heatmap dengan Hasil \textit {False Positive}}}{99}{figure.caption.73}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
