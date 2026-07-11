@@ -1,3 +1,4 @@
+% !TeX root = ta.tex
 % ==========================================
 % BAB V IMPLEMENTASI
 % ==========================================
@@ -20,7 +21,7 @@ Spesifikasi sumber daya komputasi yang digunakan pada masing-masing platform sel
 	\item Google Colaboratory
 	\begin{enumerate}
 		\item Prosesor: 2 \textit{vCPU}
-		\item Memori (RAM): 12--13 GB
+		\item Memori (RAM): 12-13 GB
 		\item GPU: NVIDIA Tesla T4 (16 GB VRAM), digunakan jika tersedia. Saat tidak tersedia, \textit{runtime} dijalankan menggunakan CPU.
 	\end{enumerate}
 \end{enumerate}
@@ -31,7 +32,6 @@ Perangkat lunak yang digunakan untuk mendukung proses pengembangan adalah:
 	\item Sistem Operasi: Linux (\textit{runtime environment} berbasis Ubuntu yang disediakan oleh Kaggle Notebook dan Google Colab)
 	\item Bahasa Pemrograman: Python 3.10+ 
 	\item \textit{Platform Notebook}: Kaggle Notebook dan Google Colaboratory (Google Colab)
-	\item \textit{Library} Utama: % isi sesuai library yang dipakai
 	\item \textit{Driver}: CUDA Toolkit dan cuDNN (terpasang otomatis pada \textit{runtime} GPU Kaggle/Colab)
 \end{enumerate}
 
@@ -41,13 +41,15 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 
 \begin{enumerate}
 	\item Sumber Pertama: Platform Radiopaedia (\textit{radiopaedia.org})\\
-	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Distribusi jumlah pasien untuk setiap kategori tersebut disajikan pada Tabel \ref{tab:distribusi_pasien}.
+	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Distribusi jumlah pasien untuk setiap kategori tersebut disajikan pada Tabel \ref{tab:jenis_tumor_kedua}.
 	
 	\begin{table}[h]
 		\centering
+		\caption{Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Radiopaedia}
+		\label{tab:jenis_tumor_kedua}
 		\begin{tabular}{|l|r|}
 			\hline
-			Jenis & Jumlah Pasien \\ \hline
+			\textbf{Jenis} & \textbf{Jumlah Pasien} \\ \hline
 			Glioma & 19 \\ \hline
 			Meningioma & 19 \\ \hline
 			Tanpa Tumor & 20 \\ \hline
@@ -61,11 +63,11 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 	
 	\begin{table}[h]
 		\centering
-		\caption{Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Pertama}
+		\caption{Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Mendeley}
 		\label{tab:jenis_tumor}
 		\begin{tabular}{|l|c|l|}
 			\hline
-			\textbf{Jenis Tumor} & \textbf{Jumlah Pasien} & \textbf{Pasien \#} \\
+			\textbf{Jenis Tumor} & \textbf{Jumlah} & \textbf{Nomor Pasien} \\
 			\hline
 			Meningioma & 7 & 3, 9, 13, 14, 15, 17, 19 \\
 			\hline
@@ -89,7 +91,7 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 			\hline
 			Hemoragik & 1 & 20 \\
 			\hline
-			\textbf{Total} & \textbf{20} & \\
+			Total & 20 & \\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -99,7 +101,7 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 	\begin{figure}[h]
 		\centering
 		\captionsetup{justification=centering}
-		\includegraphics[width=0.5	\textwidth]{images/otakwithf.png}
+		\includegraphics[width=0.4	\textwidth]{images/otakwithf.png}
 		\caption{Gambar Otak dengan \textit{Watermark}}
 		\label{gambar:otakwithf}
 	\end{figure}
@@ -118,10 +120,10 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			\hline
 			\textbf{Kategori}            & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
 			\hline
-			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
-			Validation (Validasi) & 75  & 49  & 124 & 22.26 \\
-			Test (Uji)          & 145 & 42  & 187 & 33.57 \\
-			Total               & 393 & 164 & 557 & 100 \\
+			Train (Latih)       & 173 & 73  & 246 & 44.17 \\ \hline
+			Validation (Validasi) & 75  & 49  & 124 & 22.26 \\ \hline
+			Test (Uji)          & 145 & 42  & 187 & 33.57 \\ \hline
+			Total               & 393 & 164 & 557 & 100 \\ \hline
 			\hline
 		\end{tabular}
 		\caption{Pembagian Data Skenario 1}
@@ -136,10 +138,10 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			\hline
 			\textbf{Kategori}            & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)} \\
 			\hline
-			Train (Latih)       & 173 & 73  & 246 & 44.17 \\
-			Validation (Validasi) & 114 & 49  & 163 & 29.26 \\
-			Test (Uji)          & 106 & 42  & 148 & 26.57 \\
-			Total               & 393 & 164 & 557 & 100 \\
+			Train (Latih)       & 173 & 73  & 246 & 44.17 \\ \hline
+			Validation (Validasi) & 114 & 49  & 163 & 29.26 \\ \hline
+			Test (Uji)          & 106 & 42  & 148 & 26.57 \\ \hline
+			Total               & 393 & 164 & 557 & 100 \\ \hline
 			\hline
 		\end{tabular}
 		\caption{Pembagian Data Skenario 2}
@@ -154,11 +156,11 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			\hline
 			\textbf{Kategori}   & \textbf{Tumor} & \textbf{Tanpa Tumor} & \textbf{Total} & \textbf{Persentase (\%)}  \\
 			\hline
-			Train      & 224 & 73  & 297 & 53.32 \\
-			Validation & 90  & 49  & 139 & 24.96 \\
-			Test       & 79  & 42  & 121 & 21.72 \\
-			Total      & 393 & 164 & 557 & 100 \\
-			\hline
+			Train      & 224 & 73  & 297 & 53.32 \\ \hline
+			Validation & 90  & 49  & 139 & 24.96 \\ \hline
+			Test       & 79  & 42  & 121 & 21.72 \\ \hline
+			Total      & 393 & 164 & 557 & 100 \\ \hline
+			\hline 
 		\end{tabular}
 		\caption{Pembagian Data Skenario 3}
 		\label{tab:dataset_all}
@@ -262,7 +264,6 @@ Namun, jika dilihat dari sisi \textit{edge density} (kepadatan tepi), WN justru 
 
 Dari hasil ini, dapat disimpulkan bahwa kedua metode \textit{preprocessing} sama-sama memiliki kelebihan masing-masing. GC lebih unggul dalam menjaga struktur citra tetap mirip dengan aslinya, menjaga kecerahan, dan menambah detail informasi pada citra. Sementara itu, WN lebih unggul dalam mempertahankan ketajaman garis tepi, meskipun kecerahan dan sebagian detail teksturnya berkurang.
 
-
 \section{Augmentasi}
 \label{subsec:augmentasi}
 
@@ -288,7 +289,7 @@ Total data \textit{training} setelah augmentasi, yaitu 292 gambar untuk kelas \t
 
 \section{Implementasi Correlation Learning Mechanism (CLM)}
 
-Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dari artikel Woźniak et al. (2023), yaitu terdiri dari 5 \textit{hidden layer} dengan urutan neuron 90-45-10-5-4-2 dan fungsi aktivasi sigmoid (lihat Subbab 2.3, Persamaan 4). Karena mengikuti urutan neuron yang sama, maka parameter pada \textit{layer} dense2 hingga output otomatis ikut sama, sebab nilainya hanya bergantung pada urutan neuron tersebut. Sementara itu, dimensi input sebesar 6.144 pada dense1 diperoleh dari hasil perkalian antara 64 fragmen citra, 16 channel CNN (dari 4 filter × 4 filter kode palet terbaik), dan 6 nilai statistik (Min, Max, Sum, Median, Mean, Std), sehingga 64 × 16 × 6 = 6.144. Perlu diketahui bahwa angka ini tidak dituliskan secara langsung pada artikel acuan, melainkan diperoleh penulis dengan menurunkan (\textit{derive}) beberapa informasi yang tersebar di bagian berbeda pada artikel tersebut. Selain itu, artikel acuan juga tidak mencantumkan total parameter model, karena implementasi aslinya menggunakan program C++ \textit{custom}, bukan \textit{framework} seperti TensorFlow atau Keras. Oleh karena itu, total parameter sebesar 557.694 (2,13 MB) pada penelitian ini tidak dapat dibandingkan secara langsung dengan artikel acuan. Kesamaan yang dapat dipastikan hanya pada struktur arsitekturnya saja, bukan pada jumlah total parameter, karena angka tersebut murni merupakan hasil implementasi dan perhitungan penulis sendiri.
+Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dari artikel \textcite{wozniak2021deep}, yaitu terdiri dari 5 \textit{hidden layer} dengan urutan neuron 90-45-10-5-4-2 dan fungsi aktivasi sigmoid (lihat Subbab 2.3, Persamaan 4). Karena mengikuti urutan neuron yang sama, maka parameter pada \textit{layer} dense2 hingga output otomatis ikut sama, sebab nilainya hanya bergantung pada urutan neuron tersebut. Sementara itu, dimensi input sebesar 6.144 pada dense1 diperoleh dari hasil perkalian antara 64 fragmen citra, 16 channel CNN (dari 4 filter × 4 filter kode palet terbaik), dan 6 nilai statistik (Min, Max, Sum, Median, Mean, Std), sehingga 64 × 16 × 6 = 6.144. Perlu diketahui bahwa angka ini tidak dituliskan secara langsung pada artikel acuan, melainkan diperoleh penulis dengan menurunkan (\textit{derive}) beberapa informasi yang tersebar di bagian berbeda pada artikel tersebut. Selain itu, artikel acuan juga tidak mencantumkan total parameter model, karena implementasi aslinya menggunakan program C++ \textit{custom}, bukan \textit{framework} seperti TensorFlow atau Keras. Oleh karena itu, total parameter sebesar 557.694 (2,13 MB) pada penelitian ini tidak dapat dibandingkan secara langsung dengan artikel acuan. Kesamaan yang dapat dipastikan hanya pada struktur arsitekturnya saja, bukan pada jumlah total parameter, karena angka tersebut murni merupakan hasil implementasi dan perhitungan penulis sendiri.
 
 \begin{table}[htbp]
 	\centering
@@ -305,19 +306,19 @@ Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dar
 		dense4 (Sigmoid) & (None, 5) & 55 \\ \hline
 		dense5 (Sigmoid) & (None, 4) & 24 \\ \hline
 		output (Sigmoid) & (None, 2) & 10 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total params}} & 557.694 (2,13 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 557.694 (2,13 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 0 (0,00 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 557.694 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 557.694 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 0 \\ \hline
 	\end{tabular}
 \end{table}
 
 Berdasarkan diagram alur eksperimen, terdapat beberapa komponen ANN yang ditandai warna biru karena nilainya disesuaikan melalui proses \textit{hyperparameter tuning}. Komponen tersebut meliputi:
 
-\begin{itemize}
+\begin{enumerate}
 	\item Dropout Rate: pada setiap \textit{hidden layer} ANN ditambahkan \textit{dropout} dengan nilai yang diuji sebesar 0,05; 0,10; dan 0,20. Tujuannya untuk mencegah \textit{overfitting} mengingat jumlah sampel CT Scan yang digunakan masih terbatas. Jika nilainya terlalu kecil, regularisasi jadi kurang efektif, sedangkan jika terlalu besar justru berisiko membuat model \textit{underfitting}.
 	\item Jumlah Iterasi: total iterasi pelatihan BPTA diuji pada nilai 3.000, 5.000, dan 10.000. Iterasi yang terlalu sedikit membuat bobot model belum sempat konvergen, sedangkan iterasi yang terlalu banyak akan menambah waktu pelatihan dan berisiko menyebabkan \textit{overfitting}.
 	\item Learning Rate BPTA: laju pembelajaran pada \textit{gradient descent} klasik diuji pada nilai 0,0001; 0,001; dan 0,01. Nilai yang terlalu kecil membuat proses konvergensi berjalan lambat, sementara nilai yang terlalu besar berisiko menyebabkan \textit{overshooting}, karena BPTA tidak memiliki mekanisme adaptif seperti optimizer modern lainnya.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[h]
 	\centering
@@ -357,11 +358,11 @@ Namun, dari hasil yang diperoleh, ditemukan adanya masalah yang cukup serius. Pa
 \section{Implementasi Explainable CNN}
 
 Berdasarkan diagram alur eksperimen, terdapat beberapa komponen yang disesuaikan pada tugas akhir ini dan ditandai dengan warna biru, yaitu:
-\begin{itemize}
+\begin{enumerate}
 	\item CT Scan Input: modalitas medis utama yang digunakan diganti dari citra MRI menjadi citra CT Scan. Perubahan ini dilakukan agar sesuai dengan tujuan utama penelitian, yaitu membuat model pendeteksian otak menggunakan citra medis CT Scan.
-	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah proses \textit{Flattening}. Berdasarkan riset Wojciuk dkk. (2024), \textit{dropout} terbukti efektif dalam mencegah masalah \textit{overfitting} pada model pembelajaran mendalam, terutama jika dataset medis yang digunakan memiliki distribusi atau jumlah sampel yang terbatas.
+	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah proses \textit{Flattening}. Berdasarkan riset \textcite{wojciuk2024improving}, \textit{dropout} terbukti efektif dalam mencegah masalah \textit{overfitting} pada model pembelajaran mendalam, terutama jika dataset medis yang digunakan memiliki distribusi atau jumlah sampel yang terbatas.
 	\item Dense 2 Class: bagian ujung struktur model disesuaikan dari keluaran multi-kelas menjadi klasifikasi biner. Perubahan pada \textit{Dense layer} dan \textit{Output} klasifikasi biner ini dilakukan sebagai bentuk penyesuaian terhadap tujuan dan spesifikasi penelitian ini.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[h]
 	\centering
@@ -371,7 +372,7 @@ Berdasarkan diagram alur eksperimen, terdapat beberapa komponen yang disesuaikan
 	\label{gambar:afterexpcnn}
 \end{figure}
 
-Secara umum, arsitektur model yang diimplementasikan pada penelitian ini mengikuti struktur \textit{backbone} CNN yang dijelaskan pada artikel acuan \textcite{iftikhar2025explainable} Kesesuaian tersebut dapat dilihat dari beberapa aspek, seperti ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan \textit{padding} "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), penggunaan \textit{layer} BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta penggunaan dua \textit{dense layer} dengan 512 neuron yang sama persis seperti yang dijelaskan pada artikel acuan.
+Secara umum, arsitektur model yang diimplementasikan pada tugas akhir ini mengikuti struktur \textit{backbone} CNN yang dijelaskan pada artikel acuan \textcite{iftikhar2025explainable} Kesesuaian tersebut dapat dilihat dari beberapa aspek, seperti ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan \textit{padding} "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), penggunaan \textit{layer} BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta penggunaan dua \textit{dense layer} dengan 512 neuron yang sama persis seperti yang dijelaskan pada artikel acuan.
 
 \begin{table}[htbp]
 	\centering
@@ -400,9 +401,9 @@ Secara umum, arsitektur model yang diimplementasikan pada penelitian ini mengiku
 		dropout2 (Dropout) & (None, 512) & 0 \\ \hline
 		dense2 (Dense) & (None, 512) & 262.656 \\ \hline
 		output (Dense) & (None, 2) & 1.026 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total params}} & 1.838.418 (7,01 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 1.837.906 (7,01 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 (2,00 KB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 1.838.418 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 1.837.906 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -438,7 +439,8 @@ Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang s
 Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa yang baik antara \textit{recall} dan \textit{specificity}. Hal ini menandakan bahwa model tidak hanya unggul dalam mengenali satu kelas saja, tetapi juga mampu membedakan kedua kelas secara proporsional. Selain itu, nilai \textit{composite score} yang tinggi juga menunjukkan bahwa konfigurasi ini memberikan hasil paling optimal secara keseluruhan, dibandingkan dengan seluruh kombinasi \textit{hyperparameter} lain yang telah diuji pada proses \textit{grid search}.
 
 \begin{verbatim}
-	Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN
+	Konfigurasi Hyperparameter 
+	dan Hasil Evaluasi Model Terbaik Explainable CNN
 	{
 		"learning_rate": 0.0001,
 		"batch_size": 40,
@@ -456,21 +458,21 @@ Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa ya
 \section{Implementasi EfficientNetB0}
 
 Dari diagram alur eksperimen di atas, ada beberapa bagian yang disesuaikan untuk tugas akhir ini, yang ditandai dengan warna biru, yaitu:
-\begin{itemize}
+\begin{enumerate}
 	\item CT Scan Input: jenis citra medis yang digunakan diubah, dari yang awalnya MRI menjadi CT Scan. Perubahan ini dilakukan karena tujuan utama penelitian ini memang untuk membuat model yang bisa mendeteksi kondisi otak menggunakan citra CT Scan, bukan MRI.
-	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset Wojciuk dkk. (2024) yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah \textit{overfitting}, terutama pada model \textit{deep learning} yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata.
+	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset \textcite{wojciuk2024improving} yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah \textit{overfitting}, terutama pada model \textit{deep learning} yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata.
 	\item Dense 2 Class: bagian output model diubah dari yang tadinya multi kelas (4 kelas) menjadi klasifikasi biner (2 kelas) saja. Perubahan pada \textit{Dense layer} dan output ini disesuaikan dengan tujuan penelitian ini, yaitu membedakan citra CT Scan otak yang normal dan tidak normal.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
-	\includegraphics[width=0.35\textwidth]{images/after tl.png}
+	\includegraphics[width=0.85\textwidth]{images/after tl.png}
 	\caption{Implementasi Arsitektur Model EfficientNetB0}
 	\label{gambar:aftertransferlearning}
 \end{figure}
 
-Secara umum, arsitektur model EfficientNetB0 yang digunakan pada tugas akhir ini mengikuti struktur \textit{head} klasifikasi yang dijelaskan pada artikel acuan Deep-EFNet (Alshaari \& Alqahtani, 2025). Kesamaan ini bisa dilihat dari ukuran input 224×224×3, penggunaan \textit{backbone} EfficientNetB0 dengan bobot ImageNet, GlobalAveragePooling2D, BatchNormalization setelah \textit{base model} dan setiap \textit{dense layer}, dua \textit{dense layer} berukuran 512 dan 256 neuron yang jumlah parameternya sama persis dengan artikel (655.872 dan 131.328), sampai skema \textit{fine-tuning} dengan 30 \textit{layer} terakhir \textit{backbone} yang di-\textit{unfreeze}, sesuai strategi dua fase yang dijelaskan di artikel. Perbedaan jumlah kelas output (2 kelas pada model ini, 4 kelas pada artikel) juga yang membuat total parameter sedikit berbeda, yaitu 4.845.477 pada model ini dibanding 4.845.991 pada artikel, seperti yang sudah disebutkan sebelumnya.
+Secara umum, arsitektur model EfficientNetB0 yang digunakan pada tugas akhir ini mengikuti struktur \textit{head} klasifikasi yang dijelaskan pada artikel acuan Deep-EFNet \textcite{alshaari2025deepefnet}. Kesamaan ini bisa dilihat dari ukuran input 224×224×3, penggunaan \textit{backbone} EfficientNetB0 dengan bobot ImageNet, GlobalAveragePooling2D, BatchNormalization setelah \textit{base model} dan setiap \textit{dense layer}, dua \textit{dense layer} berukuran 512 dan 256 neuron yang jumlah parameternya sama persis dengan artikel (655.872 dan 131.328), sampai skema \textit{fine-tuning} dengan 30 \textit{layer} terakhir \textit{backbone} yang di-\textit{unfreeze}, sesuai strategi dua fase yang dijelaskan di artikel. Perbedaan jumlah kelas output (2 kelas pada model ini, 4 kelas pada artikel) juga yang membuat total parameter sedikit berbeda, yaitu 4.845.477 pada model ini dibanding 4.845.991 pada artikel, seperti yang sudah disebutkan sebelumnya.
 
 Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \textit{trainable} dan \textit{non-trainable} pada artikel acuan. Angka 792.324 \textit{trainable} dan 4.053.667 \textit{non-trainable} yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh \textit{backbone}-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses \textit{unfreeze} 30 \textit{layer} terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter \textit{trainable} yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah \textit{fine-tuning} dengan benar, dengan jumlah \textit{trainable params} yang meningkat menjadi 3.080.850 karena sebagian bobot \textit{backbone} (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih.
 
@@ -493,9 +495,9 @@ Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \text
 		batchnorm\_dense2 (BatchNormalization) & (None, 256) & 1.024 \\ \hline
 		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
 		output (Dense) & (None, 2) & 514 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 (18,48 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 (11,75 MB) \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 (6,73 MB) \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 \\ \hline
 	\end{tabular}
 	\vspace{4pt}
 \end{table}
@@ -523,7 +525,7 @@ Meskipun begitu, sebagian besar konfigurasi terbaik yang diperoleh menggunakan \
 			WN (All) & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
 			WN (Test) & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
 			WN (Val+Test) & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
-		\end{tabular}%
+		\end{tabular}
 	}
 \end{table}
 
@@ -532,7 +534,8 @@ Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang s
 Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang di semua metrik evaluasi, termasuk nilai \textit{specificity} yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja. Penerapan skema \textit{fine-tuning} dua fase pada proses \textit{training} juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot \textit{backbone} secara menyeluruh dengan \textit{learning rate} yang lebih kecil. \textit{Composite score} yang tinggi ini juga menegaskan bahwa konfigurasi tersebut merupakan hasil paling optimal dibandingkan semua kombinasi \textit{hyperparameter} lain yang telah diuji selama proses \textit{grid search}.
 
 \begin{verbatim}
-	Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik EfficientNetB0
+	Konfigurasi Hyperparameter dan 
+	Hasil Evaluasi Model Terbaik EfficientNetB0
 	{
 		"backbone": "EfficientNetB0",
 		"learning_rate": 0.01,
@@ -553,37 +556,40 @@ Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang d
 \end{verbatim}
 
 \section{\textit{Explainable AI} (Grad-CAM)}
-Pada model terbaik dari eksperimen Explainable CNN dan EfficientNetB0, dilakukan visualisasi \textit{Explainable AI} (XAI) menggunakan metode \textbf{Grad-CAM++} untuk menghasilkan \textit{heatmap} yang menunjukkan area pada citra CT scan yang paling berpengaruh terhadap keputusan prediksi model. Grad-CAM++ dipilih karena metode ini mampu menunjukkan lokasi area penting dengan lebih presisi dibandingkan Grad-CAM konvensional, dengan memanfaatkan gradien pada \textit{layer} konvolusi terakhir untuk membentuk peta aktivasi (\textit{activation map}).
 
-\begin{figure}[h]
-	\centering
-	\captionsetup{justification=centering}
-	\includegraphics[width=1.0\textwidth]{images/TP_exp_cnn.png}
-	\caption{Implementasi XAI pada Explainable CNN (\textit{True Positive})}
-	\label{gambar:gradcamexpcnntp}
-\end{figure}
+Seperti yang sudah dijelaskan pada subbab perancangan, penerapan XAI hanya dilakukan pada model EfficientNetB0 karena model ini terbukti memiliki performa klasifikasi paling baik dibandingkan Explainable CNN dan CLM. Implementasi diawali dengan memuat model terbaik hasil pelatihan beserta file konfigurasinya. Setelah itu, dilakukan pencarian otomatis terhadap \textit{backbone} EfficientNetB0 dan lapisan konvolusi terakhirnya. Pencarian ini dilakukan dengan menelusuri semua \textit{layer} yang ada di dalam \textit{backbone}, lalu mengambil \texttt{Conv2D} yang letaknya paling akhir. Cara otomatis ini dipakai supaya kode tetap bisa dipakai walau nanti struktur model berubah pada eksperimen selanjutnya.
 
-\begin{figure}[h]
-	\centering
-	\captionsetup{justification=centering}
-	\includegraphics[width=1.0\textwidth]{images/FN_exp_cnn.png}
-	\caption{Implementasi XAI pada Explainable CNN (\textit{False Negative})}
-	\label{gambar:gradcamexpcnnfn}
-\end{figure}
+Model kemudian dibentuk ulang menjadi model dengan dua keluaran (\textit{dual-output model}). Keluaran pertama berupa \textit{feature map} dari lapisan konvolusi terakhir, dan keluaran kedua berupa skor logit dari lapisan \textit{dense} terakhir, sebelum masuk ke fungsi aktivasi \textit{softmax}. Fungsi aktivasi pada lapisan akhir ini sengaja dimatikan sementara, supaya proses penurunan gradien dilakukan langsung terhadap nilai logit, bukan terhadap hasil \textit{softmax} yang sudah dinormalisasi. Dengan begitu, gradien yang didapat lebih menggambarkan kontribusi asli tiap bagian citra terhadap keputusan model.
 
-Proses visualisasi ini dilakukan dengan mengambil beberapa sampel citra CT scan yang mewakili empat kategori hasil prediksi, yaitu \textit{True Positive} (TP), \textit{True Negative} (TN), \textit{False Positive} (FP), dan \textit{False Negative} (FN). Tujuannya agar bisa terlihat bagaimana kondisi model, baik saat memprediksi dengan benar maupun saat salah memprediksi. Setiap sampel kemudian ditampilkan dalam empat bentuk visual, yaitu:
-\begin{enumerate}
-	\item CT Scan asli, yaitu citra input sebelum diproses.
-	\item Ground-Truth Mask, yaitu area anotasi tumor yang sebenarnya berdasarkan label data.
-	\item Heatmap Grad-CAM++, yaitu peta area yang menjadi fokus perhatian model, yang divisualisasikan dalam skala warna dari biru (aktivasi rendah) sampai merah (aktivasi tinggi).
-	\item Overlay, yaitu hasil penggabungan (\textit{superimpose}) antara heatmap dan citra CT scan asli, untuk mempermudah dalam melihat lokasi area yang menjadi perhatian model.
-\end{enumerate}
-Pada setiap sampel yang divisualisasikan, disertakan juga informasi label sebenarnya (\textit{true label}), hasil prediksi model (\textit{predicted label}), beserta nilai probabilitas atau \textit{confidence score} dari prediksi tersebut. Dengan begitu, hasil visualisasi ini bisa langsung dikaitkan dengan performa model pada sampel data yang bersangkutan.
+Proses \textit{backward pass} dilakukan menggunakan \texttt{tf.GradientTape}, yang secara otomatis mencatat semua operasi pada saat \textit{forward pass} dan menghitung gradien dari skor kelas hasil prediksi terhadap \textit{feature map} pada lapisan konvolusi terakhir. Gradien yang didapat kemudian dirata-rata (\textit{global average pooling}) untuk setiap kanal pada \textit{feature map}, sehingga menghasilkan satu nilai bobot per kanal. Bobot ini dipakai untuk mengalikan setiap kanal \textit{feature map}, lalu hasilnya dijumlahkan dan melewati fungsi ReLU agar hanya bagian yang berpengaruh positif terhadap kelas target yang dipertahankan. Hasil akhir dinormalisasi ke rentang 0 sampai 1 sehingga terbentuk \textit{heatmap} Grad-CAM.
 
 \begin{figure}[h]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.7\textwidth]{images/compare_tl_heatmap.png}
-	\caption{Implementasi XAI pada EfficientNetB0}
+	\caption{Implementasi Grad-CAM pada EfficientNetB0}
 	\label{gambar:gradcamtl}
 \end{figure}
+
+Supaya hasil model bisa dilihat lebih menyeluruh, seluruh citra pada data uji terlebih dahulu dikelompokkan berdasarkan empat kemungkinan hasil prediksi pada \textit{confusion matrix}, yaitu \textit{True Positive} (TP), \textit{True Negative} (TN), \textit{False Positive} (FP), dan \textit{False Negative} (FN), dengan kelas tumor sebagai kelas positif. Hasil pengelompokan ini ditampilkan pada \textit{confusion matrix} yang sudah diberi label kuadran pada tiap selnya, sehingga jumlah dan proporsi masing-masing kategori bisa langsung terlihat.
+
+\textit{Ground-truth mask} tumor untuk setiap citra didapat dengan mencocokkan nama file citra dan nama file \textit{mask} secara otomatis, berdasarkan pola nama file yang memuat identitas pasien dan nomor \textit{slice} CT. Dari masing-masing kuadran, diambil beberapa contoh citra (maksimal enam citra per kuadran) untuk ditampilkan dalam empat panel berikut:
+\begin{enumerate}
+	\item CT Scan asli, yaitu citra input sebelum diproses.
+	\item Heatmap Grad-CAM, yaitu peta yang menunjukkan bagian citra yang paling diperhatikan model saat membuat prediksi.
+	\item Ground-Truth Mask, yaitu area tumor yang sebenarnya berdasarkan label data, ditampilkan dengan garis kontur berwarna kuning di atas citra asli.
+	\item Overlay Grad-CAM, yaitu gabungan antara \textit{heatmap} dan citra CT asli menggunakan pencampuran transparansi (\textit{alpha blending}) dengan nilai $\alpha = 0.5$, supaya lokasi yang menjadi perhatian model lebih mudah dilihat langsung di atas citra aslinya.
+\end{enumerate}
+Pada setiap contoh citra yang ditampilkan, disertakan juga label yang sebenarnya (\textit{true label}), label hasil prediksi model (\textit{predicted label}), dan nilai keyakinan model (\textit{confidence score}) untuk setiap kelas. Dengan begitu, hasil visualisasi ini bisa langsung dihubungkan dengan benar atau salahnya prediksi model pada kuadran tersebut.
+
+\subsection{Evaluasi Kesesuaian Heatmap dengan XAlign}
+
+Selain dilihat secara visual, kesesuaian antara \textit{heatmap} Grad-CAM dengan area tumor yang sebenarnya pada \textit{ground-truth mask} juga dihitung secara angka menggunakan metrik XAlign, yang diadaptasi dari penelitian \textcite{muhammad2025heatmap}. Metrik ini terdiri dari tiga bagian, yaitu:
+\begin{enumerate}
+	\item \textit{Weighted Relevance Overlap} (WRO), yang menghitung seberapa besar bagian \textit{heatmap} yang berada di dalam area \textit{ground-truth mask}.
+	\item \textit{Boundary Agreement Score} (BAS), yang menghitung seberapa mirip bentuk tepi \textit{heatmap} dengan tepi \textit{ground-truth mask}, dihitung menggunakan jarak \textit{Hausdorff} yang sudah dinormalisasi lalu dibalik nilainya.
+	\item \textit{Dispersion Penalty} (DP), yang menghitung seberapa besar bagian \textit{heatmap} yang berada di luar area \textit{ground-truth mask}, sebagai bentuk pengurang nilai karena \textit{heatmap} yang terlalu menyebar.
+\end{enumerate}
+Ketiga nilai tersebut kemudian digabung menjadi satu skor akhir dengan rumus $\text{XAlign} = \alpha \cdot \text{WRO} + \beta \cdot \text{BAS} - \gamma \cdot \text{DP}$, dengan nilai bobot bawaan $\alpha = 0.5$, $\beta = 0.4$, dan $\gamma = 0.1$. Perhitungan XAlign ini hanya dilakukan pada citra kelas tumor yang memiliki \textit{ground-truth mask}, sehingga tidak berlaku untuk citra kelas \textit{no\_tumor}.
+
+Nilai XAlign beserta ketiga bagian penyusunnya (WRO, BAS, dan DP) dihitung untuk semua citra tumor pada data uji, kemudian dicari rata-rata dan standar deviasinya untuk kuadran TP dan FN, supaya bisa dilihat apakah tingkat kesesuaian \textit{heatmap} berbeda antara prediksi yang benar dan prediksi yang salah. Sebaran nilai XAlign secara keseluruhan juga ditampilkan dalam bentuk histogram dan \textit{boxplot} untuk tiap kuadran. Selain itu, dilakukan juga uji coba dengan beberapa kombinasi nilai bobot $\alpha$, $\beta$, dan $\gamma$ yang berbeda, untuk melihat apakah nilai XAlign tetap stabil walaupun bobotnya diubah, mengikuti Tabel 16 pada penelitian \textcite{muhammad2025heatmap}. Semua hasil, seperti nama \textit{backbone}, nama lapisan konvolusi terakhir, jumlah TP/TN/FP/FN, serta rata-rata dan standar deviasi XAlign, disimpan dalam satu file ringkasan berformat JSON supaya bisa didokumentasikan dan dianalisis lebih lanjut.

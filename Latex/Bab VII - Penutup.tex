@@ -1,3 +1,4 @@
+% !TeX root = ta.tex
 % ==========================================
 % BAB VII PENUTUP
 % ==========================================
@@ -12,16 +13,16 @@
 \end{enumerate}
 
 \section{Saran}
-Berdasarkan keterbatasan yang ditemukan selama penelitian ini, beberapa saran diajukan untuk pengembangan lebih lanjut.
+Berdasarkan keterbatasan yang ditemukan selama tugas akhir ini, beberapa saran diajukan untuk pengembangan lebih lanjut.
 
 \begin{enumerate}
 	\item Memperluas \textit{dataset} baik dari sisi jumlah maupun keragamannya, tidak hanya membedakan ada atau tidaknya tumor, tetapi juga mencakup jenis-jenis tumor otak lain seperti \textit{glioma}, \textit{meningioma}, dan tumor \textit{pituitary}, sehingga model yang dihasilkan dapat lebih mendekati kebutuhan diagnosis klinis yang sebenarnya.
 	
-	\item Mengintegrasikan model klasifikasi dengan model segmentasi, sehingga sistem tidak hanya mampu menyatakan ada atau tidaknya tumor, tetapi juga menunjukkan batas dan area tumor secara lebih presisi, sekaligus dapat menjadi pembanding bagi hasil visualisasi Grad-CAM yang masih kurang akurat pada penelitian ini.
+	\item Mengintegrasikan model klasifikasi dengan model segmentasi, sehingga sistem tidak hanya mampu menyatakan ada atau tidaknya tumor, tetapi juga menunjukkan batas dan area tumor secara lebih presisi, sekaligus dapat menjadi pembanding bagi hasil visualisasi Grad-CAM yang masih kurang akurat pada tugas akhir ini.
 	
-	\item Menyesuaikan proses pengolahan data maupun pengaturan \textit{hyperparameter} dengan karakteristik masing-masing model, mengingat setiap arsitektur memiliki kebutuhan yang berbeda. Pada EfficientNetB0 misalnya, seberapa besar bagian model yang ikut dilatih ulang (\textit{fine-tuning}) turut memengaruhi hasil, namun hal ini belum ikut diuji secara sistematis pada penelitian ini sehingga perlu menjadi perhatian pada penelitian selanjutnya. Selain itu, penyebutan persentase \textit{fine-tuning} pada laporan sebaiknya dijelaskan lebih konsisten, karena angka yang berbeda dapat muncul tergantung bagian model mana yang dijadikan acuan perhitungan, agar tidak menimbulkan kesan hasil yang saling bertentangan.
+	\item Menyesuaikan proses pengolahan data maupun pengaturan \textit{hyperparameter} dengan karakteristik masing-masing model, mengingat setiap arsitektur memiliki kebutuhan yang berbeda. Pada EfficientNetB0 misalnya, seberapa besar bagian model yang ikut dilatih ulang (\textit{fine-tuning}) turut memengaruhi hasil, namun hal ini belum ikut diuji secara sistematis pada tugas akhir ini sehingga perlu menjadi perhatian pada penelitian selanjutnya. Selain itu, penyebutan persentase \textit{fine-tuning} pada laporan sebaiknya dijelaskan lebih konsisten, karena angka yang berbeda dapat muncul tergantung bagian model mana yang dijadikan acuan perhitungan, agar tidak menimbulkan kesan hasil yang saling bertentangan.
 	
-	\item Melibatkan pakar biomedis, seperti dokter spesialis radiologi, untuk mengevaluasi secara langsung hasil prediksi maupun visualisasi Grad-CAM yang dihasilkan model, mengingat penilaian yang dilakukan pada penelitian ini masih bersifat kuantitatif dan belum divalidasi dari sudut pandang klinis yang sesungguhnya.
+	\item Melibatkan pakar biomedis, seperti dokter spesialis radiologi, untuk mengevaluasi secara langsung hasil prediksi maupun visualisasi Grad-CAM yang dihasilkan model, mengingat penilaian yang dilakukan pada tugas akhir ini masih bersifat kuantitatif dan belum divalidasi dari sudut pandang klinis yang sesungguhnya.
 	
 	\item Mengeksplorasi kemungkinan pengubahan citra \textit{CT Scan} menjadi citra MRI sintesis, sehingga keterbatasan detail jaringan lunak pada \textit{CT Scan} dapat diatasi tanpa bergantung pada ketersediaan mesin MRI yang masih terbatas, sekaligus berpotensi memperjelas lokalisasi tumor pada hasil \textit{explainability} model.
 \end{enumerate}

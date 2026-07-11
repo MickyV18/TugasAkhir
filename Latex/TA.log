@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  10 JUL 2026 23:41
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  11 JUL 2026 23:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./TA.tex
-(TA.tex
+**./ta.tex
+(ta.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
 (C:\Users\micky\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
@@ -1079,8 +1079,8 @@ Package csquotes Warning: No style for language 'bahasam'.
 (csquotes)                Using fallback style on input line 331.
 
 Package csquotes Info: Redefining alias 'default' -> 'fallback'.
-(TA.aux)
-\openout1 = `TA.aux'.
+(ta.aux)
+\openout1 = `ta.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 331.
 LaTeX Font Info:    ... okay on input line 331.
@@ -1243,9 +1243,9 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package hyperref Info: Link coloring ON on input line 331.
-(TA.out) (TA.out)
+(ta.out) (ta.out)
 \@outlinefile=\write4
-\openout4 = `TA.out'.
+\openout4 = `ta.out'.
 
 Package biblatex Info: Trying to load language 'bahasam'...
 Package biblatex Info: ... file 'bahasam.lbx' not found.
@@ -1303,11 +1303,11 @@ Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `TA.bcf'.
+\openout3 = `ta.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'TA.bbl' found.
-(TA.bbl
+Package biblatex Info: ... file 'ta.bbl' found.
+(ta.bbl
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
@@ -1334,13 +1334,13 @@ Package datetime2 Warning: Region `english-base' has ignored
 (datetime2)                the following settings:
 (datetime2)                showdayofmonth=false,showmonthname=true,showyear=tru
 e
- on input line 39.
+ on input line 40.
 
 
 Package datetime2 Warning: Region `en-US' has ignored 
 (datetime2)                the following settings:
 (datetime2)                showmonthname=true
- on input line 39.
+ on input line 40.
 
 
 
@@ -1352,16 +1352,26 @@ Package datetime2 Warning: Region `en-US' has ignored
 
 [2
 
-]) (3 Pernyataan Orisinalitas.tex
+]
 
 [3]
+! Missing } inserted.
+<inserted text> 
+                }
+l.42 \end{center}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-[4
+) (3 Pernyataan Orisinalitas.tex
 
-]
+[4]
 File: images/ttd.jpg Graphic file (type bmp)
 <images/ttd.jpg>
-LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
 
  (C:\Users\micky\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1369,7 +1379,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\micky\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 
 
 (C:\Users\micky\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1384,37 +1394,39 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 ))
 (4 Pernyataan Penggunaan AI.tex
 
-[5]
+[5
+
+]
 
 [6
 
 ]
-Overfull \hbox (3.43965pt too wide) in paragraph at lines 9--9
+Overfull \hbox (3.43965pt too wide) in paragraph at lines 10--10
 []|\TU/TimesNewRoman(0)/b/n/12 No.| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--17
+Underfull \hbox (badness 10000) in paragraph at lines 18--18
 []|\TU/TimesNewRoman(0)/m/n/12 Pencarian informasi
  []
 
 
-Underfull \hbox (badness 2269) in paragraph at lines 21--21
+Underfull \hbox (badness 2269) in paragraph at lines 22--22
 []|\TU/TimesNewRoman(0)/m/n/12 Penyusunan kode pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--23
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
 []|\TU/TimesNewRoman(0)/m/n/12 Penyusunan formula
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--29
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 []|\TU/TimesNewRoman(0)/m/n/12 Penyusunan kesimpul-
  []
 
 
-Overfull \hbox (13.72078pt too wide) in paragraph at lines 7--32
+Overfull \hbox (13.72078pt too wide) in paragraph at lines 8--33
  [][] 
  []
 
@@ -1478,34 +1490,34 @@ Package geometry Warning: `a4paper': not available in `\newgeometry'; skipped.
 [12
 
 
-] (TA.toc
+] (ta.toc
 
 [13]
-Overfull \hbox (2.63689pt too wide) in paragraph at lines 226--226
+Overfull \hbox (2.63689pt too wide) in paragraph at lines 231--231
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 Explainable CNN for brain tumor detect
 ion and clas- 
  []
 
 
-Overfull \hbox (7.76979pt too wide) in paragraph at lines 237--237
+Overfull \hbox (7.76979pt too wide) in paragraph at lines 242--242
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 An XAI-Enhanced EfficientNetB0 Framewo
 rk for Pre- 
  []
 
 
-Overfull \hbox (3.05681pt too wide) in paragraph at lines 242--242
+Overfull \hbox (3.05681pt too wide) in paragraph at lines 247--247
  \TU/TimesNewRoman(0)/m/it/12 Classification through XAI Based Key Features Ide
 n- 
  []
 
 
-Overfull \hbox (4.98338pt too wide) in paragraph at lines 370--370
+Overfull \hbox (4.98338pt too wide) in paragraph at lines 383--383
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 PERANCANGAN MODEL PENDETEKSIAN TUMOR OT
 AK BER- 
  []
 
 
-Overfull \hbox (5.44041pt too wide) in paragraph at lines 435--435
+Overfull \hbox (5.44041pt too wide) in paragraph at lines 466--466
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 IMPLEMENTASI MODEL PENDETEKSIAN TUMOR O
 TAK BER- 
  []
@@ -1513,33 +1525,18 @@ TAK BER-
 
 
 [14]
-Overfull \hbox (1.26215pt too wide) detected at line 474
-\TU/TimesNewRoman(0)/m/n/12 VI.2.2.1 
- []
-
-
-Overfull \hbox (1.26215pt too wide) detected at line 475
-\TU/TimesNewRoman(0)/m/n/12 VI.2.2.2 
- []
-
-
-Overfull \hbox (1.26215pt too wide) detected at line 476
-\TU/TimesNewRoman(0)/m/n/12 VI.2.2.3 
- []
-
-
-Overfull \hbox (1.26215pt too wide) detected at line 492
+Overfull \hbox (1.26215pt too wide) detected at line 552
 \TU/TimesNewRoman(0)/m/n/12 VI.2.5.1 
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 497
+Overfull \hbox (1.26215pt too wide) detected at line 557
 \TU/TimesNewRoman(0)/m/n/12 VI.2.5.2 
  []
 
 )
 \tf@toc=\write5
-\openout5 = `TA.toc'.
+\openout5 = `ta.toc'.
 
 ) (8 Daftar Gambar.tex
 
@@ -1547,7 +1544,7 @@ Overfull \hbox (1.26215pt too wide) detected at line 497
 
 [16
 
-] (TA.lof
+] (ta.lof
 Overfull \hbox (0.91527pt too wide) in paragraph at lines 16--16
  [][] [][][]\TU/TimesNewRoman(0)/m/n/12 Arsitektur Model \TU/TimesNewRoman(0)/m
 /it/12 Correlation Learning Mechanism \TU/TimesNewRoman(0)/m/n/12 ([][]Woźniak,
@@ -1558,13 +1555,13 @@ Overfull \hbox (0.91527pt too wide) in paragraph at lines 16--16
 
 [17])
 \tf@lof=\write6
-\openout6 = `TA.lof'.
+\openout6 = `ta.lof'.
 
 ) (9 Daftar Tabel.tex
 
-[18] (TA.lot)
+[18] (ta.lot)
 \tf@lot=\write7
-\openout7 = `TA.lot'.
+\openout7 = `ta.lot'.
 
 ) (10 Daftar Persamaan.tex
 
@@ -1572,23 +1569,22 @@ Overfull \hbox (0.91527pt too wide) in paragraph at lines 16--16
 
 ]
 
-[20
-
-] (TA.equ)
+[20] (ta.equ)
 \tf@equ=\write8
-\openout8 = `TA.equ'.
+\openout8 = `ta.equ'.
 
 ) (11 Daftar Algoritma.tex
 
 [21
 
+
 ]
 
 [22
 
-] (TA.loa)
+] (ta.loa)
 \tf@loa=\write9
-\openout9 = `TA.loa'.
+\openout9 = `ta.loa'.
 
 ) (12 Daftar Listing.tex
 
@@ -1598,9 +1594,9 @@ Overfull \hbox (0.91527pt too wide) in paragraph at lines 16--16
 
 [24
 
-] (TA.lol)
+] (ta.lol)
 \tf@lol=\write10
-\openout10 = `TA.lol'.
+\openout10 = `ta.lol'.
 
 ) (13 Daftar Simbol.tex
 
@@ -1670,7 +1666,7 @@ Bab II.
 File: images/gambartumor.png Graphic file (type bmp)
 <images/gambartumor.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 
 
 
@@ -1683,91 +1679,67 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/ctvsmri.png Graphic file (type bmp)
 <images/ctvsmri.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 51.
 
 
 
 [11]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 55.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
 
 
 
 [12]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 88.
 
 
 
 [13]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 88.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 93.
-
-
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 96.
+
+
+LaTeX Warning: Citation 'tan2019efficientnet' on page 14 undefined on input lin
+e 107.
 
 
 
 [14]
 
-LaTeX Warning: Citation 'tan2019efficientnet' on page 15 undefined on input lin
-e 107.
-
-
-LaTeX Warning: Citation 'tan2019efficientnet' on page 15 undefined on input lin
-e 109.
-
-
-LaTeX Warning: Citation 'tan2019efficientnet' on page 15 undefined on input lin
-e 113.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 113.
 
 
 
 [15]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 119.
-
 File: images/HierarkiXAI.png Graphic file (type bmp)
 <images/HierarkiXAI.png>
+
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 134.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 138.
 
 
 
 [16]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 138.
-
-
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 141.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 156.
 
 
 
 [17]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 169.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 182.
 
 
 
 [18]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 182.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[19]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 201.
 
@@ -1777,8 +1749,8 @@ File: images/TaksonomiXAI.png Graphic file (type bmp)
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 207.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 207.
 
+[19]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 212.
 
@@ -1799,69 +1771,58 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 218.
 
 
 [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[21]
 Underfull \hbox (badness 10000) in paragraph at lines 246--248
 
  []
 
 
+
+[21]
 Overfull \hbox (0.23163pt too wide) in paragraph at lines 254--256
 \TU/TimesNewRoman(0)/m/n/12 Penggunaan XAlign memungkinkan evaluasi yang tidak 
 hanya mengukur aku-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 264.
 
 
 
 [22]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[23]
 Overfull \hbox (5.24149pt too wide) in paragraph at lines 275--275
 \TU/TimesNewRoman(0)/b/it/12 gularization for Scalable Multi-Class Brain Tumor 
 Classification in MRI| 
  []
 
 
-Overfull \hbox (3.4778pt too wide) in paragraph at lines 283--284
+
+[23]
+Overfull \hbox (3.4778pt too wide) in paragraph at lines 284--285
 [][][][][][]\TU/TimesNewRoman(0)/m/n/12 Mahesh dkk. ([][]2024[][])[] []menginte
 grasikan teknik \TU/TimesNewRoman(0)/m/it/12 Explainable AI \TU/TimesNewRoman(0
 )/m/n/12 (XAI) berupa \TU/TimesNewRoman(0)/m/it/12 Gradient-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [24]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [25]) (Bab III - Analisis.tex
 
 [26]
 Bab III.
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 16.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 20.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 21.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 23.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 24.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 26.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 27.
 
 
 
@@ -1870,64 +1831,58 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 26.
 
 ]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 35.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 36.
 
 
 
 [28]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 44.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 45.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 44.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 45.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 44.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 45.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 47.
 
 
 
 [29]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 55.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 59.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 57.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 61.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 58.
-
-
-Underfull \vbox (badness 1412) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 63.
 
 
 
 [30]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 67.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 72.
 
 
 
 [31]
-Overfull \hbox (1.38477pt too wide) in paragraph at lines 76--77
+Overfull \hbox (1.38477pt too wide) in paragraph at lines 81--82
 []\TU/TimesNewRoman(0)/m/n/12 Dengan mempertimbangkan keempat permasalahan ters
 ebut, dapat disimpulkan bah-
  []
 
-(tables/tabel3.1.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-[32]) (tables/tabel3.2.tex
-Overfull \hbox (79.95322pt too wide) in paragraph at lines 5--12
+[32]
+Overfull \hbox (9.77548pt too wide) in paragraph at lines 115--122
  [][] 
  []
 
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
@@ -1938,48 +1893,48 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [35]
 
 [36]
-Overfull \hbox (16.66393pt too wide) in paragraph at lines 160--161
+Overfull \hbox (3.38562pt too wide) in paragraph at lines 188--189
 []\TU/TimesNewRoman(0)/m/n/12 A2: \TU/TimesNewRoman(0)/m/it/12 Vision Transform
-er \TU/TimesNewRoman(0)/m/n/12 (ViT) + \TU/TimesNewRoman(0)/m/it/12 Attention M
-ap \TU/TimesNewRoman(0)/m/n/12 (Mewakili \TU/TimesNewRoman(0)/m/it/12 Transform
-er-
+er \TU/TimesNewRoman(0)/m/n/12 + \TU/TimesNewRoman(0)/m/it/12 Attention Map \TU
+/TimesNewRoman(0)/m/n/12 (Representasi \TU/TimesNewRoman(0)/m/it/12 Transformer
+-
  []
 
 
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
 
 
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
 
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
+Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [40]
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 342--343
 
  []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
@@ -1987,13 +1942,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 314--315
 
 [42]
 Bab IV.
-
-Overfull \hbox (6.12486pt too wide) in paragraph at lines 8--9
-\TU/TimesNewRoman(0)/m/it/12 Explainable \TU/TimesNewRoman(0)/m/n/12 CNN (CNN +
- Grad-CAM \TU/TimesNewRoman(0)/m/it/12 Pruning\TU/TimesNewRoman(0)/m/n/12 ), da
-n EfficientNetB0, masing-masing
- []
-
 File: images/Flow Sistem.png Graphic file (type bmp)
 <images/Flow Sistem.png>
 
@@ -2006,7 +1954,7 @@ File: images/data langka.png Graphic file (type bmp)
 <images/data langka.png>
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 34.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 35.
 
 
 
@@ -2026,25 +1974,15 @@ File: images/Flow preprocess.png Graphic file (type bmp)
 
 [48]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 114.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 116.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 126.
-
-
-LaTeX Warning: Reference `analisispemilihansolusi' on page 49 undefined on inpu
-t line 132.
-
-
-LaTeX Warning: Reference `expcnn' on page 49 undefined on input line 132.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 128.
 
 
 
@@ -2058,10 +1996,10 @@ File: images/CLM2.png Graphic file (type bmp)
 <images/CLM2.png>
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 151.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 153.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 151.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 153.
 
 
 
@@ -2069,7 +2007,7 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 151.
 File: images/before exp cnn.png Graphic file (type bmp)
 <images/before exp cnn.png>
 
-Overfull \hbox (8.0398pt too wide) in paragraph at lines 206--207
+Overfull \hbox (8.0398pt too wide) in paragraph at lines 208--209
 []\TU/TimesNewRoman(0)/m/n/12 BatchNorm + Average Pooling: Normalisasi aktivasi
  diikuti dengan \TU/TimesNewRoman(0)/m/it/12 down-
  []
@@ -2077,14 +2015,11 @@ Overfull \hbox (8.0398pt too wide) in paragraph at lines 206--207
 
 
 [52]
-Overfull \hbox (0.57104pt too wide) in paragraph at lines 217--218
+Overfull \hbox (0.57104pt too wide) in paragraph at lines 219--220
 []\TU/TimesNewRoman(0)/m/n/12 Gradien \TU/TimesNewRoman(0)/m/it/12 Feature Map 
 \TU/TimesNewRoman(0)/m/n/12 per Layer: Melakukan \TU/TimesNewRoman(0)/m/it/12 b
 ackward pass \TU/TimesNewRoman(0)/m/n/12 untuk meng-
  []
-
-
-Underfull \vbox (badness 7722) has occurred while \output is active []
 
 
 
@@ -2092,89 +2027,48 @@ Underfull \vbox (badness 7722) has occurred while \output is active []
 File: images/before tl.png Graphic file (type bmp)
 <images/before tl.png>
 
+Overfull \hbox (4.70398pt too wide) in paragraph at lines 244--245
+\TU/TimesNewRoman(0)/m/n/12 latihan dan mengurangi \TU/TimesNewRoman(0)/m/it/12
+ internal covariate shift \TU/TimesNewRoman(0)/m/n/12 (Persamaan 5 sampai denga
+n 8). 
+ []
+
+
 
 [54]
 
 [55]
-Overfull \hbox (4.29529pt too wide) in paragraph at lines 276--277
-[]\TU/TimesNewRoman(0)/m/n/12 Transformasi Skor Kelas: Skor $\OML/cmm/m/it/12 Y
-[]$ \TU/TimesNewRoman(0)/m/n/12 ditransformasikan menggunakan fung-
- []
-
-
 
 [56]
-Overfull \hbox (35.43286pt too wide) in paragraph at lines 284--287
-\TU/TimesNewRoman(0)/m/n/12 Tahapan teknis integrasi Grad-CAM ke dalam model kl
-asifikasi berbasis EfficientNet-
- []
-
-
-Overfull \hbox (23.03403pt too wide) in paragraph at lines 289--290
-[]\TU/TimesNewRoman(0)/m/it/12 Backward Pass \TU/TimesNewRoman(0)/m/n/12 dan Pe
-rhitungan Gradien: Skor kelas target di-\TU/TimesNewRoman(0)/m/it/12 backpropag
-ate
- []
-
-
-Overfull \hbox (4.7644pt too wide) in paragraph at lines 292--293
-[]\TU/TimesNewRoman(0)/m/it/12 Overlay \TU/TimesNewRoman(0)/m/n/12 dan Visualis
-asi Akhir: Peta aktivasi yang dihasilkan ditumpangk-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [57]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 324.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 312.
 
+) (Bab V - Implementasi.tex
 
-Overfull \hbox (12.48454pt too wide) in paragraph at lines 324--325
-\TU/TimesNewRoman(0)/m/n/12 CAM yang dilaporkan dalam studi literatur pada \TU/
-TimesNewRoman(0)/m/it/12 dataset \TU/TimesNewRoman(0)/m/n/12 neuro-onkologi (TC
-GA-
- []
-
-
-Underfull \vbox (badness 1622) has occurred while \output is active []
-
-
-
-[58]) (Bab V - Implementasi.tex
-
-[59]
-
-[60
-
-]
+[58]
 Bab V.
 
 
-[61
+[59
+
 
 ]
 
-LaTeX Warning: Reference `tab:distribusi_pasien' on page 62 undefined on input 
-line 44.
-
-
-
-[62]
+[60]
 File: images/otakwithf.png Graphic file (type bmp)
 <images/otakwithf.png>
 
 
-[63]
+[61]
 
-[64]
+[62]
 File: images/preprocess_image.png Graphic file (type bmp)
 <images/preprocess_image.png>
 
 
-[65]
+[63]
 File: images/preprocess_eksperimen.png Graphic file (type bmp)
 <images/preprocess_eksperimen.png>
 
@@ -2183,255 +2077,162 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[66]
+[64]
 
-[67]
+[65]
 File: images/jumlah metode.png Graphic file (type bmp)
 <images/jumlah metode.png>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-[68]
+[66]
 File: images/perbandingan augmentasi.png Graphic file (type bmp)
 <images/perbandingan augmentasi.png>
 
 
-[69]
-Overfull \hbox (4.54659pt too wide) in paragraph at lines 299--314
- [][] 
- []
+[67]
 
-
-
-[70]
+[68]
 File: images/after CLM.png Graphic file (type bmp)
 <images/after CLM.png>
 
 
-[71]
+[69]
 
-[72]
+[70]
 File: images/after exp cnn.png Graphic file (type bmp)
 <images/after exp cnn.png>
 
-Overfull \hbox (10.43173pt too wide) in paragraph at lines 376--377
+Overfull \hbox (10.43173pt too wide) in paragraph at lines 375--376
 []\TU/TimesNewRoman(0)/m/n/12 Kesesuaian tersebut dapat dilihat dari beberapa a
 spek, seperti ukuran input 224×224×3,
  []
 
 
 
-[73]
+[71]
 
-[74]
+[72]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (71.34137pt too wide) in paragraph at lines 456--456
-[] \TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik 
-Explainable CNN[] 
- []
 
-
-
-[75]
+[73]
 File: images/after tl.png Graphic file (type bmp)
 <images/after tl.png>
 
-Underfull \vbox (badness 1642) has occurred while \output is active []
 
+[74]
 
-
-[76]
-Overfull \hbox (39.84346pt too wide) in paragraph at lines 483--503
- [][] 
- []
-
-
+[75]
 Overfull \hbox (5.91016pt too wide) in paragraph at lines 507--508
 \TU/TimesNewRoman(0)/m/n/12 tinggi dan konsisten di hampir semua skenario, deng
 an akurasi berkisar antara 88.89%
  []
 
 
-Underfull \vbox (badness 1412) has occurred while \output is active []
 
-
+[76]
 
 [77]
-
-[78]
-Overfull \hbox (65.16136pt too wide) in paragraph at lines 555--555
-[] \TU/lmtt/m/n/12 Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik 
-EfficientNetB0[] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[79]
-File: images/TP_exp_cnn.png Graphic file (type bmp)
-<images/TP_exp_cnn.png>
-File: images/FN_exp_cnn.png Graphic file (type bmp)
-<images/FN_exp_cnn.png>
-
-
-[80]
 File: images/compare_tl_heatmap.png Graphic file (type bmp)
 <images/compare_tl_heatmap.png>
-) (Bab VI - Evaluasi.tex
-
-[81]
-
-[82
-
-]
-Bab VI.
-
-LaTeX Warning: Reference `chap:rancangan' on page 83 undefined on input line 10
-.
-
-
-LaTeX Warning: Reference `sec:rancangan-evaluasi' on page 83 undefined on input
- line 10.
-
-
-
-[83
-
-]
-
-[84]
-Underfull \vbox (badness 1412) has occurred while \output is active []
-
-
-
-[85]
-
-[86]
-
-[87]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 76.
-
-
-Underfull \hbox (badness 2042) in paragraph at lines 87--88
-[]|\TU/TimesNewRoman(0)/m/n/12 557 citra (164 \TU/TimesNewRoman(0)/m/it/12 No T
-umor\TU/TimesNewRoman(0)/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
-[]|\TU/TimesNewRoman(0)/m/n/12 Penyederhanaan
- []
-
-
-Underfull \hbox (badness 6641) in paragraph at lines 94--94
-[]|\TU/TimesNewRoman(0)/m/n/12 Validasi \TU/TimesNewRoman(0)/m/it/12 explaina-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-[]|\TU/TimesNewRoman(0)/m/n/12 Kualitatif (Grad-
- []
-
-
-Overfull \hbox (1.85674pt too wide) in paragraph at lines 83--97
- [][] 
- []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[88]
+[78]
 
-[89]
+[79]) (Bab VI - Evaluasi.tex
 
-LaTeX Warning: Citation 'deepefnet' on page 90 undefined on input line 110.
+[80]
+Bab VI.
 
-
-LaTeX Warning: Citation 'deepefnet' on page 90 undefined on input line 112.
-
-
-Underfull \vbox (badness 1412) has occurred while \output is active []
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 
 
 
-[90]
-Overfull \hbox (109.57002pt too wide) in paragraph at lines 120--127
+[81
+
+
+]
+
+[82]
+
+[83]
+
+[84]
+
+[85]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 68.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 73.
+
+
+Underfull \hbox (badness 2042) in paragraph at lines 78--78
+[]|\TU/TimesNewRoman(0)/m/n/12 557 citra (164 \TU/TimesNewRoman(0)/m/it/12 No T
+umor\TU/TimesNewRoman(0)/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
+[]|\TU/TimesNewRoman(0)/m/n/12 Penyederhanaan
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 85--85
+[]|\TU/TimesNewRoman(0)/m/n/12 Validasi \TU/TimesNewRoman(0)/m/it/12 explaina-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
+[]|\TU/TimesNewRoman(0)/m/n/12 Kualitatif (Grad-
+ []
+
+
+Overfull \hbox (3.45671pt too wide) in paragraph at lines 75--87
  [][] 
  []
 
 
-LaTeX Warning: Reference `subsec:clm_validasi' on page 91 undefined on input li
-ne 131.
+
+[86]
+
+[87]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 102.
 
 
-LaTeX Warning: Reference `subsec:efnet_komparasi' on page 91 undefined on input
- line 131.
+
+[88]
+
+[89]
+Overfull \hbox (0.3371pt too wide) in paragraph at lines 127--128
+\TU/TimesNewRoman(0)/m/n/12 nunjukkan hasil \TU/TimesNewRoman(0)/m/it/12 cross 
+validation \TU/TimesNewRoman(0)/m/n/12 yang justru lebih tinggi dan lebih konsi
+sten (98,39%
+ []
 
 
-LaTeX Warning: Reference `subsec:clm_tuning' on page 91 undefined on input line
- 131.
 
-
-LaTeX Warning: Reference `subsec:efnet_cv' on page 91 undefined on input line 1
-31.
-
-
+[90]
 
 [91]
 
-LaTeX Warning: Reference `subsec:efnet_cv' on page 92 undefined on input line 1
-35.
-
-
-LaTeX Warning: Reference `subsec:efnet_gridsearch' on page 92 undefined on inpu
-t line 137.
-
-
-LaTeX Warning: Reference `subsec:efnet_cv' on page 92 undefined on input line 1
-37.
-
-
-LaTeX Warning: Reference `subsec:clm_tuning' on page 92 undefined on input line
- 137.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 155.
 
 
 
 [92]
-
-LaTeX Warning: Reference `subsec:clm_validasi' on page 93 undefined on input li
-ne 139.
-
-
-LaTeX Warning: Citation 'deepefnet' on page 93 undefined on input line 139.
-
-
-LaTeX Warning: Reference `subsec:efnet_komparasi' on page 93 undefined on input
- line 139.
-
-
-Underfull \vbox (badness 1412) has occurred while \output is active []
-
-
-
-[93]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 166.
-
-
-
-[94]
-Overfull \hbox (2.754pt too wide) in paragraph at lines 175--176
+Overfull \hbox (2.754pt too wide) in paragraph at lines 164--165
 []\TU/TimesNewRoman(0)/m/n/12 Secara umum, rendahnya skor XAlign yang didapat m
 enunjukkan bahwa Grad-CAM
  []
@@ -2439,108 +2240,69 @@ enunjukkan bahwa Grad-CAM
 File: images/xalign.png Graphic file (type bmp)
 <images/xalign.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
+[93]
 File: images/TN_effnet.png Graphic file (type bmp)
 <images/TN_effnet.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
 
+[94]
 File: images/TP_effnet_no.png Graphic file (type bmp)
 <images/TP_effnet_no.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[95]
 File: images/TP_effnet_mask.png Graphic file (type bmp)
 <images/TP_effnet_mask.png>
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+[95]
 File: images/FP_effnet.png Graphic file (type bmp)
 <images/FP_effnet.png>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: images/FN_effnet.png Graphic file (type bmp)
-<images/FN_effnet.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
 
 [96]
-Underfull \vbox (badness 2126) has occurred while \output is active []
-
+File: images/FN_effnet.png Graphic file (type bmp)
+<images/FN_effnet.png>
 
 
 [97]
 
 [98]
-Overfull \hbox (4.3078pt too wide) in paragraph at lines 265--267
-[]\TU/TimesNewRoman(0)/b/n/12 Evaluasi Kontribusi Perbedaan \TU/TimesNewRoman(0
-)/b/it/12 Sharpness\TU/TimesNewRoman(0)/b/n/12 /\TU/TimesNewRoman(0)/b/it/12 Bl
-ur \TU/TimesNewRoman(0)/b/n/12 Antar Kelas terhadap Pre-
- []
 
+[99]) (Bab VII - Penutup.tex
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[99]
-Underfull \vbox (badness 2181) has occurred while \output is active []
-
-
-
-[100]) (Bab VII - Penutup.tex
-
-[101]
-
-[102
-
-]
+[100]
 Bab VII.
 
 
-[103
+[101
+
 
 ])
 
-[104]
+[102]
 
-[105
+[103
 
 
 ]
 
-[106]
+[104]
 
-[107]
-Overfull \hbox (10.90576pt too wide) in paragraph at lines 410--410
-[][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
-etection and classification through
- []
-
-
-Overfull \hbox (13.76628pt too wide) in paragraph at lines 410--410
+[105]
+Overfull \hbox (13.76628pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Al-Kadi, Omar, Israa Almallahi, Alaa Abu-Srhan,
  Mohammad Abushariah, dan Waleed
  []
 
 
-Overfull \hbox (1.18301pt too wide) in paragraph at lines 410--410
+Overfull \hbox (1.18301pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/n/12 Mahafza. 2022. \TU/TimesNewRoman(0)/m/it/12 Unpaire
 d MR-CT Brain Dataset for Unsupervised Image Trans-
  []
 
 
 
-[108]
-Overfull \hbox (33.26854pt too wide) in paragraph at lines 410--410
+[106]
+Overfull \hbox (33.26854pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 0:110227.
@@ -2548,50 +2310,56 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[109]
-Overfull \hbox (3.25732pt too wide) in paragraph at lines 410--410
+[107]
+Overfull \hbox (3.25732pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
  []
 
 
-Overfull \hbox (1.24242pt too wide) in paragraph at lines 410--410
+Overfull \hbox (1.24242pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Republik Indonesia, Kementerian Kesehatan. 2025
 . \TU/TimesNewRoman(0)/m/it/12 Update Tatalaksana Tumor Otak
  []
 
 
 
-[110]
-Overfull \hbox (3.6216pt too wide) in paragraph at lines 410--410
+[108]
+Overfull \hbox (3.6216pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
  []
 
 
+Overfull \hbox (5.51889pt too wide) in paragraph at lines 411--411
+[][]\TU/TimesNewRoman(0)/m/n/12 Wojciuk, Mikolaj, Zaneta Swiderska-Chadaj, K. S
+iwek, dan Arkadiusz Gertych. 2024.
+ []
 
-[111] (Lampiran-A.tex
 
-[112]
+
+[109] (Lampiran-A.tex
+
+[110]
 Lampiran A.
 ) (Lampiran-B.tex
 
-[113
+[111
 
 
 ]
 
-[114
+[112
 
 ]
 Lampiran B.
 )
 
-[115
+[113
 
 ]
 
-[116
+[114
 
 ]
 
@@ -2602,7 +2370,7 @@ See the caption package documentation for explanation.
 Package caption Warning: Unused \captionsetup[algorithm] on input line 316.
 See the caption package documentation for explanation.
 
-(TA.aux)
+(ta.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -2611,19 +2379,24 @@ L3 programming layer <2025-09-02>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `TA.out' has not changed.
-(rerunfilecheck)             Checksum: A562B1476D84B626864CDC1890B75038;20043.
-Package logreq Info: Writing requests to 'TA.run.xml'.
-\openout1 = `TA.run.xml'.
+Package rerunfilecheck Info: File `ta.out' has not changed.
+(rerunfilecheck)             Checksum: 2CBF817F9E4309188CA470C09E2E5C85;19673.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                ta
+(biblatex)                and rerun LaTeX afterwards.
+
+Package logreq Info: Writing requests to 'ta.run.xml'.
+\openout1 = `ta.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35156 strings out of 403197
- 690234 string characters out of 5455938
- 2127471 words of memory out of 5000000
- 63166 multiletter control sequences out of 15000+600000
- 634673 words of font info for 98 fonts, out of 8000000 for 9000
+ 35102 strings out of 403197
+ 688825 string characters out of 5455938
+ 2125092 words of memory out of 5000000
+ 63127 multiletter control sequences out of 15000+600000
+ 632942 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,12n,100p,1988b,7045s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,100p,1986b,7045s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TA.pdf (148 pages).
+Output written on ta.pdf (146 pages).

@@ -1,4 +1,5 @@
-	% ==========================================
+% !TeX root = ta.tex
+% ==========================================
 % BAB VI EVALUASI
 % ==========================================
 \cleardoublepage
@@ -7,7 +8,7 @@
 Pembahasan evaluasi eksperimen ini dipisahkan menjadi lima bagian evaluasi: (1) Model, yang membandingkan performa akhir tiap arsitektur dengan studi acuan masing-masing dan menjelaskan kemungkinan penyebab kesenjangannya; (2) Augmentasi, yang membahas sejauh mana augmentasi data dievaluasi dan memengaruhi hasil; (3) \textit{Grid Search}, yang membahas variasi hasil di seluruh kombinasi \textit{preprocessing}, strategi penggabungan \textit{dataset}, dan konfigurasi yang diuji; serta (4) \textit{Parameter Tuning}, yang membahas pengaruh masing-masing \textit{hyperparameter} (\textit{learning rate}, \textit{dropout}, \textit{batch size}, jumlah iterasi, serta proporsi \textit{fine-tuning}) beserta hasil \textit{cross validation} pada konfigurasi terbaik; (5) evaluasi XAI yang memvisualisasikan fitur model secara kuantitatif maupun kualitatif.
 
 \section{Metode Evaluasi}
-Metode evaluasi yang digunakan pada bab ini mengacu pada rancangan evaluasi yang telah dijelaskan pada Bab \ref{chap:rancangan} Subbab \ref{sec:rancangan-evaluasi}, yang terdiri atas dua aspek utama, yaitu evaluasi kinerja model klasifikasi dan evaluasi kualitas penjelasan \textit{Explainable Artificial Intelligence} (XAI).
+Metode evaluasi yang digunakan pada bab ini mengacu pada rancangan evaluasi yang telah dijelaskan pada Bab \ref{sec:rancangan_XAI}, yang terdiri atas dua aspek utama, yaitu evaluasi kinerja model klasifikasi dan evaluasi kualitas penjelasan \textit{Explainable Artificial Intelligence} (XAI).
 
 Evaluasi kinerja model dilakukan menggunakan lima metrik, yaitu Akurasi, Presisi, \textit{Recall}, Spesifisitas, dan \textit{F1-Score}, untuk mengukur seberapa baik model dalam mengklasifikasikan data secara keseluruhan maupun terhadap masing-masing kelas.
 
@@ -41,23 +42,17 @@ Berdasarkan kedua poin di atas, dapat disimpulkan bahwa implementasi CLM pada pe
 \subsection{Evaluasi Explainable CNN}
 \label{subsec:excnn}
 
-\subsubsection{\textit{Hyperparameter Tuning}}
-\label{subsec:excnn_tuning}
-
 Pada sebagian kombinasi \textit{hyperparameter} dari total 243 kombinasi yang diuji (9 skenario $\times$ 27 kombinasi), model ternyata tidak benar-benar belajar membedakan kelas, melainkan hanya menebak satu kelas saja untuk seluruh data uji. Hal ini terlihat dari nilai \textit{specificity} yang tepat 0\% atau 100\%, sehingga meskipun akurasinya tinggi, angka tersebut tidak mencerminkan kemampuan model yang sesungguhnya. Persentase model yang mengalami masalah seperti ini berkisar antara 25,9\% (pada WN + \textit{val\_test}) hingga 85,2\% (pada tanpa \textit{preprocessing} dan GC + \textit{val\_test}). Nilai \textit{specificity} yang naik turun dalam kelipatan sekitar 5\% ini kemungkinan berkaitan dengan sedikitnya jumlah data \textit{No Tumor} (hanya 164 citra), sehingga satu atau dua kesalahan prediksi saja sudah bisa membuat nilai \textit{specificity} berubah cukup jauh.
 
 Pada skenario \textit{test}, yaitu model yang dilatih menggunakan \textit{Dataset} tanpa \textit{mask} lalu langsung diuji pada \textit{Dataset} dengan \textit{mask} tumor, seluruh 27 kombinasi \textit{hyperparameter} tanpa \textit{preprocessing} mengalami kolaps (\textit{specificity} 0\%, sesuai temuan sebelumnya). Namun, ketika menggunakan \textit{preprocessing} GC dan WN, ditemukan beberapa kombinasi yang tidak kolaps, yaitu akurasi 71,5\% dengan \textit{specificity} 81,0\% (GC), dan akurasi 78,3\% dengan \textit{specificity} 50,0\% (WN). Hasil ini menunjukkan bahwa \textit{denoising} dan normalisasi intensitas cukup membantu model untuk melakukan generalisasi antar \textit{dataset}. Meski begitu, hasil ini tetap perlu dilihat dalam konteks jumlah data yang kecil, dan belum bisa dijadikan bukti bahwa masalah \textit{domain shift} sudah teratasi sepenuhnya.
 
-Dari hasil yang didapat, tidak ada satu strategi penggabungan \textit{dataset} yang selalu memberikan hasil terbaik. Pada kondisi tanpa \textit{preprocessing} dan dengan WN, skema \textit{val\_test} memberikan hasil yang lebih unggul, sedangkan pada kondisi dengan GC, skema \textit{all} justru lebih baik. Perlu dicatat bahwa skema \textit{val\_test}, yang merupakan konfigurasi terbaik secara keseluruhan (87,8\%). Artinya, pengujian pada skema ini tidak sepenuhnya menggunakan data yang benar-benar baru, berbeda dengan skema \textit{test} pada temuan sebelumnya. Karena efektivitas strategi penggabungan tampaknya bergantung pada jenis \textit{preprocessing} yang digunakan, belum bisa ditarik satu kesimpulan umum yang berlaku untuk semua kondisi. Pada konfigurasi terbaik dilakukan validasi untuk melihat kebenaran performa yang dimiliki yang dibahas pada Subbagian~\ref{subsec:excnn_cv}.
+Dari hasil yang didapat, tidak ada satu strategi penggabungan \textit{dataset} yang selalu memberikan hasil terbaik. Pada kondisi tanpa \textit{preprocessing} dan dengan WN, skema \textit{val\_test} memberikan hasil yang lebih unggul, sedangkan pada kondisi dengan GC, skema \textit{all} justru lebih baik. Perlu dicatat bahwa skema \textit{val\_test}, yang merupakan konfigurasi terbaik secara keseluruhan (87,8\%). Artinya, pengujian pada skema ini tidak sepenuhnya menggunakan data yang benar-benar baru, berbeda dengan skema \textit{test} pada temuan sebelumnya. Karena efektivitas strategi penggabungan tampaknya bergantung pada jenis \textit{preprocessing} yang digunakan, belum bisa ditarik satu kesimpulan umum yang berlaku untuk semua kondisi. Pada konfigurasi terbaik dilakukan validasi lebih lanjut untuk melihat kebenaran performa yang dimiliki, sebagaimana dibahas berikut ini.
 
 Hampir seluruh \textit{learning curve} dari model-model terbaik menunjukkan akurasi \textit{training} yang sudah mendekati 100\% dalam waktu kurang dari 10 \textit{epoch}, sementara akurasi validasi terlihat stagnan atau tidak stabil, dan \textit{loss} validasi justru meningkat setelah beberapa \textit{epoch} awal. Pola seperti ini merupakan ciri khas dari \textit{overfitting}. Hal ini cukup wajar terjadi mengingat jumlah data \textit{training} yang masih terbatas, sedangkan \textit{dropout} yang digunakan (0,1 hingga 0,3) tampaknya belum cukup untuk mencegah \textit{overfitting} tersebut.
 
 Dari hasil eksperimen, \textit{learning rate} 0,0001 hingga 0,001 cenderung memberikan hasil yang lebih baik dan lebih stabil dibandingkan 0,01, terutama saat digunakan bersama \textit{preprocessing} WN. \textit{Dropout} 0,1 juga terlihat sedikit lebih unggul pada skenario terbaik, sedangkan \textit{batch size} tidak menunjukkan pola yang jelas. Karena setiap kombinasi \textit{hyperparameter} hanya dijalankan satu kali dan jumlah data yang digunakan masih terbatas, kesimpulan ini hanya menggambarkan kecenderungan umum dan belum bisa dikatakan pasti.
 
-\subsubsection{10-fold Cross-Validation}
-\label{subsec:excnn_cv}
-
-Untuk memastikan hasil terbaik tersebut tidak kebetulan, dilakukan \textit{10-fold cross-validation} pada konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{bs}=40, \textit{dropout}=0,1). Hasilnya menunjukkan rata-rata akurasi 98,39\% (std 1,78\%) dan \textit{F1-Score} 98,36\% (std 1,83\%), dengan rentang akurasi antar \textit{fold} sebesar 94,64 hingga 100\%. Hasil ini terlihat lebih konsisten dibandingkan evaluasi \textit{split} tunggal sebelumnya (lihat Subbagian~\ref{subsec:excnn_tuning}), karena tidak ada \textit{fold} yang mengalami kolaps total. Meski demikian, ada beberapa catatan yang perlu diperhatikan:
+Untuk memastikan hasil terbaik tersebut tidak kebetulan, dilakukan \textit{10-fold cross-validation} pada konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{bs}=40, \textit{dropout}=0,1). Hasilnya menunjukkan rata-rata akurasi 98,39\% (std 1,78\%) dan \textit{F1-Score} 98,36\% (std 1,83\%), dengan rentang akurasi antar \textit{fold} sebesar 94,64 hingga 100\%. Hasil ini terlihat lebih konsisten dibandingkan evaluasi \textit{split} tunggal sebelumnya, karena tidak ada \textit{fold} yang mengalami kolaps total. Meski demikian, ada beberapa catatan yang perlu diperhatikan:
 \begin{enumerate}
 	\item Sebanyak 4 dari 10 \textit{fold} mencapai akurasi tepat 100\%. Namun, dengan total data hanya 557 citra (164 di antaranya \textit{No Tumor}), setiap \textit{fold} hanya berisi sekitar 55 hingga 56 sampel uji, dan hanya sekitar 16 di antaranya \textit{No Tumor}. Dengan jumlah data uji yang sekecil ini, skor sempurna cukup mungkin terjadi karena kebetulan saja. Selain itu, kemungkinan adanya kebocoran data, misalnya citra yang mirip dari sumber yang sama tersebar di data \textit{train} dan \textit{test}, masih perlu diperiksa lebih lanjut menggunakan \textit{grouped cross-validation}.
 	\item \textit{Fold} 1 menjadi \textit{fold} dengan hasil paling rendah (akurasi 94,64\%; F1 kelas \textit{No Tumor} 89,66\%). Hal ini sejalan dengan temuan sebelumnya bahwa kelas \textit{No Tumor} memang lebih sulit diprediksi model.
@@ -65,38 +60,33 @@ Untuk memastikan hasil terbaik tersebut tidak kebetulan, dilakukan \textit{10-fo
 	\item Skema \textit{cross-validation} ini mengacak seluruh data (\textit{Dataset} 1 dan 2) ke dalam 10 \textit{fold}, berbeda dengan skema \textit{val\_test} yang sengaja memisahkan \textit{Dataset} 2 untuk menguji kemampuan model pada data dari sumber yang berbeda. Oleh karena itu, kenaikan angka dari 87,8\% menjadi 98,39\% bukan berarti model menjadi lebih baik, melainkan karena skema pengujiannya memang berbeda. Kedua angka ini sebaiknya tidak dibandingkan secara langsung.
 \end{enumerate}
 
-\subsubsection{Komparasi Performa}
-\label{subsec:excnn_komparasi}
-
 Beberapa hal yang perlu diperhatikan dari perbandingan yang ada pada Tabel \ref{tab:iftikhar_compare}:
 \begin{enumerate}
 	\item Perbedaan jumlah data yang sangat besar (18,5 kali) kemungkinan menjadi penyebab utama kesenjangan performa. \textit{Overfitting} yang cepat terjadi dan kecenderungan model mengalami kolaps merupakan hal yang wajar terjadi pada data sekecil ini, dan bukan semata-mata karena kekurangan pada arsitektur atau \textit{preprocessing} yang digunakan.
-	\item Perbandingan jumlah kelas pada \textit{dataset} ini (164:393, atau sekitar 1:2,4) sebenarnya cukup mirip dengan rasio dataset Msoud yang dijadikan dua kelas (sekitar 1:2,5), sehingga tidak terlalu ekstrem jika dilihat secara rasio. Yang lebih berpengaruh justru jumlah data \textit{No Tumor} secara nyata, yaitu hanya 164 citra (lihat juga Subbagian~\ref{subsec:augmentasi} mengenai keterbatasan augmentasi untuk kelas ini).
+	\item Perbandingan jumlah kelas pada \textit{dataset} ini (164:393, atau sekitar 1:2,4) sebenarnya cukup mirip dengan rasio dataset Msoud yang dijadikan dua kelas (sekitar 1:2,5), sehingga tidak terlalu ekstrem jika dilihat secara rasio. Yang lebih berpengaruh justru jumlah data \textit{No Tumor} secara nyata, yaitu hanya 164 citra.
 	\item Selain masalah skala data, ada juga perbedaan mendasar dari sisi \textit{explainability}. \cite{iftikhar2025explainable} melakukan validasi secara kualitatif bahwa \textit{heatmap} Grad-CAM/SHAP/LIME memang berfokus pada area yang relevan secara klinis, sedangkan pada penelitian ini evaluasi baru dilakukan secara kuantitatif saja. Idealnya, validasi kualitatif yang serupa juga perlu dilakukan agar label ``\textit{explainable} CNN'' pada penelitian ini bisa dipertanggungjawabkan secara setara.
 	\item Perlu dicatat juga bahwa \cite{iftikhar2025explainable} tidak melakukan pengujian statistik atau pengulangan dengan \textit{seed} yang berbeda, sehingga angka yang mereka laporkan juga berasal dari satu kali percobaan saja. Dengan demikian, perbandingan pada bagian ini tetap bersifat gambaran umum dan belum setara secara metodologi.
 \end{enumerate}
 
-\begin{table}[h]
+\begin{table}[htbp]
 	\centering
-	\caption{Perbandingan Penelitian Ini dengan Iftikhar dkk. (2025)}
+	\caption{Perbandingan Penelitian Ini dengan \autocite{iftikhar2025explainable}}
 	\label{tab:iftikhar_compare}
-	\begin{tabular}{p{3.2cm}p{4.8cm}p{4.8cm}}
+	\begin{tabular}{|p{3.2cm}|p{4.8cm}|p{4.8cm}|}
 		\hline
-		\textbf{Aspek} & \textbf{Iftikhar dkk. (2025)} & \textbf{Penelitian Ini} \\
-		\hline
-		Jumlah data (sebelum augmentasi) & 10.287 citra & 557 citra (164 \textit{No Tumor}, 393 Tumor) \\
-		Jumlah kelas & 4 kelas & 2 kelas \\
-		\textit{Preprocessing} & \textit{Cropping} kontur + normalisasi + \textit{resize} & \textit{Cropping} ROI + \textit{denoising} (GC/WN) \\
-		Regularisasi & BatchNorm + \textit{average pooling}, tanpa \textit{dropout} & \textit{Dropout} (0,1 hingga 0,3) \\
-		Penyederhanaan arsitektur & Pemangkasan \textit{layer} berbasis Grad-CAM & Tidak dilakukan \\
-		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}) \\
-		Akurasi \textit{unseen} & 94,72\% & 71,5 hingga 78,3\% (skema \textit{test} valid)$^{**}$ \\
-		Validasi \textit{explainability} & Kualitatif (Grad-CAM/SHAP/LIME) & Belum dilakukan \\
-		\hline
+		\textbf{Aspek} & \textbf{Iftikhar dkk. (2025)} & \textbf{Penelitian Ini} \\ \hline
+		Jumlah data (sebelum augmentasi) & 10.287 citra & 557 citra (164 \textit{No Tumor}, 393 Tumor) \\ \hline
+		Jumlah kelas & 4 kelas & 2 kelas \\ \hline
+		\textit{Preprocessing} & \textit{Cropping} kontur + normalisasi + \textit{resize} & \textit{Cropping} ROI + \textit{denoising} (GC/WN) \\ \hline
+		Regularisasi & BatchNorm + \textit{average pooling}, tanpa \textit{dropout} & \textit{Dropout} (0,1 hingga 0,3) \\ \hline
+		Penyederhanaan arsitektur & Pemangkasan \textit{layer} berbasis Grad-CAM & Tidak dilakukan \\ \hline
+		Akurasi data \textit{seen}$^{*}$ & 99,21\% & 87,8\% (\textit{val\_test}) \\ \hline
+		Akurasi \textit{unseen} & 94,72\% & 71,5 hingga 78,3\% (skema \textit{test} valid)$^{**}$ \\ \hline
+		Validasi \textit{explainability} & Kualitatif (Grad-CAM/SHAP/LIME) & Belum dilakukan \\ \hline
 	\end{tabular}
 \end{table}
 
-Berdasarkan variasi hasil pada Subbagian~\ref{subsec:excnn_tuning}, pengaruh \textit{hyperparameter} dan \textit{cross validation} pada Subbagian~\ref{subsec:excnn_cv}, serta perbandingan dengan penelitian terkait di atas), dapat disimpulkan bahwa keterbatasan jumlah data, terutama pada kelas \textit{No Tumor} yang hanya 164 citra, kemungkinan besar menjadi faktor utama penyebab ketidakstabilan performa model, mulai dari kolaps model, \textit{overfitting} yang cepat terjadi, hingga hasil yang berbeda-beda antar \textit{fold} pada \textit{cross-validation} (rata-rata akurasi 98,39\%, std 1,78\%). Meskipun begitu, konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{dropout}=0,1) menunjukkan bahwa model tetap mampu menghasilkan performa yang bagus, meskipun performanya belum bisa disamakan dengan penelitian yang menggunakan \textit{dataset} jauh lebih besar.
+Berdasarkan variasi hasil pengujian \textit{hyperparameter}, hasil \textit{cross validation}, serta perbandingan dengan penelitian terkait di atas, dapat disimpulkan bahwa keterbatasan jumlah data, terutama pada kelas \textit{No Tumor} yang hanya 164 citra, kemungkinan besar menjadi faktor utama penyebab ketidakstabilan performa model, mulai dari kolaps model, \textit{overfitting} yang cepat terjadi, hingga hasil yang berbeda-beda antar \textit{fold} pada \textit{cross-validation} (rata-rata akurasi 98,39\%, std 1,78\%). Meskipun begitu, konfigurasi terbaik (WN, \textit{val\_test}, \textit{lr}=0,0001, \textit{dropout}=0,1) menunjukkan bahwa model tetap mampu menghasilkan performa yang bagus, meskipun performanya belum bisa disamakan dengan penelitian yang menggunakan \textit{dataset} jauh lebih besar.
 
 \subsection{Evaluasi EfficientNetB0}
 \label{subsec:efnet}
@@ -107,13 +97,13 @@ Pola \textit{overfitting} berat yang ditemukan pada seluruh kombinasi di atas me
 
 Untuk memastikan dugaan tersebut, dilakukan \textit{10-fold cross-validation} pada konfigurasi model terbaik (\textit{GC\_test}). Hasilnya memang menunjukkan kekhawatiran tersebut benar: akurasi rata-rata turun menjadi 85,21\% $\pm$ 11,19\% (dengan rentang 67,86 hingga 100\%), jauh lebih rendah dibandingkan hasil \textit{single-split} yang dilaporkan sebelumnya. Ditemukan juga bahwa performa tinggi model sebagian besar berasal dari kelas mayoritas, yaitu tumor, dengan F1 kelas tumor yang cukup stabil (90,29\% $\pm$ 7,10\%). Sementara itu, F1 kelas non-tumor sangat tidak stabil (64,98\% $\pm$ 33,17\%, bahkan 0\% pada salah satu \textit{fold}), yang kemungkinan disebabkan oleh jumlah data validasi per \textit{fold} yang sangat sedikit (6 hingga 8 pasien). Kurva pembelajaran rata-rata dari \textit{cross-validation} juga menunjukkan pola \textit{overfitting} dan ketidakstabilan \textit{validation loss} yang sama seperti pada hasil \textit{grid search} sebelumnya. Hal ini semakin memperkuat dugaan bahwa hasil \textit{single-split} yang dilaporkan sebelumnya terlalu optimis dan belum cukup \textit{robust}, sebagaimana akan terlihat dari perbandingan angka ini dengan Deep-EFNet berikut ini.
 
-Bagian ini membandingkan performa akhir model EfficientNetB0 pada penelitian ini dengan Deep-EFNet \cite{deepefnet}, yang juga menggunakan \textit{backbone} EfficientNetB0 untuk tugas serupa, berdasarkan hasil \textit{grid search} dan \textit{cross-validation} yang telah dibahas di atas.
+Bagian ini membandingkan performa akhir model EfficientNetB0 pada penelitian ini dengan Deep-EFNet \cite{alshaari2025deepefnet}, yang juga menggunakan \textit{backbone} EfficientNetB0 untuk tugas serupa, berdasarkan hasil \textit{grid search} dan \textit{cross-validation} yang telah dibahas di atas.
 
-Jika dibandingkan dengan Deep-EFNet \cite{deepefnet} yang mencapai akurasi 95,4 hingga 98,2\% (\textit{single-split}) dan 94 hingga 98\% (\textit{5-fold CV} dengan variansi kecil), model pada penelitian ini terlihat cukup kompetitif jika hanya dilihat dari hasil \textit{single-split} (96,63\%, lihat hasil \textit{grid search} di atas). Namun, jika dibandingkan dengan cara yang lebih adil, yaitu CV dengan CV, terlihat jelas bahwa performa dan kestabilan model pada penelitian ini masih jauh di bawah Deep-EFNet (85,21\% $\pm$ 11,19\%, lihat hasil \textit{cross-validation} di atas, dibandingkan 94 hingga 98\%). Perbandingan angka akurasi ini juga perlu dibaca dengan hati-hati, karena kedua penelitian tidak sepenuhnya setara. Perbedaannya meliputi jumlah kelas (4 kelas pada Deep-EFNet vs 2 kelas pada penelitian ini), ukuran \textit{dataset} (ribuan citra per kelas dari \textit{dataset benchmark} pada Deep-EFNet vs data gabungan yang jauh lebih kecil dan bervariasi pada penelitian ini), serta desain regularisasi pada \textit{head} klasifikasi (\textit{dropout} 0,5 + L2 + \textit{BatchNorm} berlapis pada Deep-EFNet, sedangkan pada penelitian ini hanya menggunakan \textit{dropout} tanpa L2). Perbedaan-perbedaan tersebut kemungkinan menjadi alasan mengapa model pada penelitian ini jauh lebih mudah mengalami \textit{overfitting} dibandingkan hasil yang dilaporkan pada literatur.
+Jika dibandingkan dengan Deep-EFNet \cite{alshaari2025deepefnet} yang mencapai akurasi 95,4 hingga 98,2\% (\textit{single-split}) dan 94 hingga 98\% (\textit{5-fold CV} dengan variansi kecil), model pada penelitian ini terlihat cukup kompetitif jika hanya dilihat dari hasil \textit{single-split} (96,63\%, lihat hasil \textit{grid search} di atas). Namun, jika dibandingkan dengan cara yang lebih adil, yaitu CV dengan CV, terlihat jelas bahwa performa dan kestabilan model pada penelitian ini masih jauh di bawah Deep-EFNet (85,21\% $\pm$ 11,19\%, lihat hasil \textit{cross-validation} di atas, dibandingkan 94 hingga 98\%). Perbandingan angka akurasi ini juga perlu dibaca dengan hati-hati, karena kedua penelitian tidak sepenuhnya setara. Perbedaannya meliputi jumlah kelas (4 kelas pada Deep-EFNet vs 2 kelas pada penelitian ini), ukuran \textit{dataset} (ribuan citra per kelas dari \textit{dataset benchmark} pada Deep-EFNet vs data gabungan yang jauh lebih kecil dan bervariasi pada penelitian ini), serta desain regularisasi pada \textit{head} klasifikasi (\textit{dropout} 0,5 + L2 + \textit{BatchNorm} berlapis pada Deep-EFNet, sedangkan pada penelitian ini hanya menggunakan \textit{dropout} tanpa L2). Perbedaan-perbedaan tersebut kemungkinan menjadi alasan mengapa model pada penelitian ini jauh lebih mudah mengalami \textit{overfitting} dibandingkan hasil yang dilaporkan pada literatur.
 
 Kedua model sama-sama menggunakan \textit{backbone} EfficientNetB0, namun jumlah parameter yang dilatih ulang ternyata cukup berbeda. Jumlah \textit{trainable params} pada Deep-EFNet (792.324, sekitar 16\% dari total parameter) ternyata hanya cukup untuk \textit{head} klasifikasi saja, yang berarti \textit{backbone}-nya kemungkinan tetap \textit{frozen} (tidak dilatih ulang), meskipun pada paper tersebut disebutkan bahwa 30 \textit{layer} terakhir di-\textit{unfreeze}. Hal ini menunjukkan adanya ketidaksesuaian pada paper tersebut. Sebaliknya, pada penelitian ini, sekitar 60\% dari total parameter (2.618.514 dari 4.383.141) dibuka untuk \textit{fine-tuning}, setara dengan sekitar 56\% dari parameter \textit{backbone} EfficientNetB0 saja, karena sebagian \textit{trainable params} juga berasal dari \textit{head} klasifikasi di luar \textit{backbone}. \textit{Fine-tuning} pada bagian \textit{backbone} yang jauh lebih besar ini, sementara jumlah data yang tersedia jauh lebih kecil, kemungkinan menjadi salah satu penyebab utama \textit{overfitting} yang berat dan ketidakstabilan yang ditemukan pada seluruh hasil evaluasi (baik \textit{grid search} maupun \textit{cross-validation} yang telah dibahas sebelumnya), berbeda dengan Deep-EFNet yang hasilnya jauh lebih stabil. Perbandingan jumlah parameter kedua model secara lengkap disajikan pada Tabel~\ref{tab:param_compare}.
 
-\begin{table}[htbp]
+\begin{table}[H]
 	\centering
 	\caption{Perbandingan Parameter Model}
 	\label{tab:param_compare}
@@ -122,59 +112,58 @@ Kedua model sama-sama menggunakan \textit{backbone} EfficientNetB0, namun jumlah
 		\textbf{Komponen} & \textbf{Deep-EFNet} & \textbf{Model Ini} \\ \hline
 		\textit{Backbone} EfficientNetB0 & 4.049.571 & 4.049.571 \\ \hline
 		\textit{Total params} & 4.845.991 & 4.383.141 \\ \hline
-		\textit{Trainable params} & 792.324 (16\% dari total) & 2.618.514 (60\% dari total / 56\% dari \textit{backbone}) \\ \hline
+		\textit{Trainable params} & 792.324 (16\% total) & 2.618.514 (60\% total) \\ \hline
 	\end{tabular}
 \end{table}
 
 \subsection{Komparasi Antar-Model}
 \label{subsec:komparasi_antarmodel}
-Berdasarkan hasil evaluasi pada Subbagian~\ref{subsec:clm_validasi}, \ref{subsec:excnn_komparasi}, dan \ref{subsec:efnet_komparasi}, dapat dilihat bahwa ketiga model yang diuji pada penelitian ini menghadapi tantangan yang secara garis besar bersumber dari keterbatasan yang sama, yaitu ukuran \textit{dataset} yang kecil dan ketidakseimbangan jumlah data antar kelas, khususnya kelas \textit{No Tumor} yang hanya berjumlah 164 citra. Keterbatasan ini muncul dalam bentuk yang berbeda-beda pada setiap model: pada CLM dan Explainable CNN, keterbatasan data menyebabkan kolaps kelas pada sebagian besar kombinasi \textit{hyperparameter} yang diuji (lihat Subbagian~\ref{subsec:clm_tuning} dan~\ref{subsec:excnn_tuning}), sedangkan pada EfficientNetB0, keterbatasan yang sama muncul dalam bentuk F1 kelas non-tumor yang sangat tidak stabil pada hasil \textit{cross-validation} (64,98\% $\pm$ 33,17\%, lihat Subbagian~\ref{subsec:efnet_cv}).
+Berdasarkan hasil evaluasi pada setiap model, dapat dilihat bahwa ketiga model yang diuji pada penelitian ini menghadapi tantangan yang secara garis besar bersumber dari keterbatasan yang sama, yaitu ukuran \textit{dataset} yang kecil dan ketidakseimbangan jumlah data antar kelas, khususnya kelas \textit{No Tumor} yang hanya berjumlah 164 citra. Keterbatasan ini muncul dalam bentuk yang berbeda-beda pada setiap model: pada CLM dan Explainable CNN, keterbatasan data menyebabkan kolaps kelas pada sebagian besar kombinasi \textit{hyperparameter} yang diuji, sedangkan pada EfficientNetB0, keterbatasan yang sama muncul dalam bentuk F1 kelas non-tumor yang sangat tidak stabil pada hasil \textit{cross-validation} (64,98\% $\pm$ 33,17\%).
 
 Perbedaan tingkat kerentanan ketiga model terhadap keterbatasan data tersebut dapat ditelusuri dari strategi pembelajaran fiturnya. Pada CLM, komponen yang disebut "CNN" sebenarnya adalah bank filter tetap (Sobel, Laplacian, \textit{high-pass}, dsb.) yang bobotnya tidak pernah diperbarui lewat \textit{backpropagation}; yang dioptimasi hanya kombinasi filter (\textit{palette}) melalui pencarian heuristik, sehingga ekstraksi fitur sama sekali tidak belajar dari data. Fitur hasil filter juga direduksi secara agresif menjadi enam nilai statistik (min, maks, \textit{sum}, median, \textit{mean}, \textit{std}) per \textit{feature map}, yang menghilangkan sebagian besar informasi spasial. Pada bagian klasifikasinya, penggunaan aktivasi sigmoid di lima \textit{hidden layer} yang dilatih dengan BPTA tanpa momentum maupun \textit{adaptive learning rate} membuat CLM rentan terhadap \textit{vanishing gradient}, karena turunan maksimum sigmoid hanya 0,25 dan sinyal \textit{error} harus melewati enam lapisan dari dimensi input yang besar (6.144). Kombinasi ketiga faktor ini menjadikan CLM model yang paling rentan terhadap keterbatasan data, karena tidak ada representasi fitur yang benar-benar dipelajari.
 
-Explainable CNN, meskipun seluruh \textit{layer convolutional}-nya bersifat \textit{trainable}, tetap dilatih dari nol (\textit{from scratch}) tanpa bobot \textit{pretrained} seperti ImageNet, sehingga sekitar 1,84 juta parameter harus dipelajari hanya dari data CT \textit{scan} yang terbatas dengan augmentasi geometris ringan (pengali 4x). Ketidakseimbangan antara kapasitas model dan jumlah data ini tercermin pada beberapa skenario dengan \textit{specificity} serendah 0\% meskipun telah menggunakan \texttt{class\_weight='balanced'}, yang mengindikasikan akar masalah ada pada representasi fitur yang belum cukup diskriminatif, bukan sekadar pembobotan kelas. \textit{Backbone} yang diadaptasi dari \cite{iftikhar2025explainable} pun pada dasarnya dirancang untuk MRI multi-kelas dan belum divalidasi ulang secara arsitektural untuk domain CT \textit{scan} biner. Sebaliknya, EfficientNetB0 diuntungkan oleh \textit{transfer learning}: bobot \textit{pretrained} ImageNet memberikan representasi visual dasar (tepi, tekstur, bentuk) yang sudah matang sebelum di-\textit{fine-tune}, sehingga model ini secara umum lebih tahan terhadap keterbatasan data dan augmentasi minim dibandingkan CLM maupun Explainable CNN — meskipun, sebagaimana dibahas pada Subbagian~\ref{subsec:efnet_cv}, ketahanan ini tetap memiliki batas ketika proporsi \textit{fine-tuning} terlalu besar.
+Explainable CNN, meskipun seluruh \textit{layer convolutional}-nya bersifat \textit{trainable}, tetap dilatih dari nol (\textit{from scratch}) tanpa bobot \textit{pretrained} seperti ImageNet, sehingga sekitar 1,84 juta parameter harus dipelajari hanya dari data CT \textit{scan} yang terbatas dengan augmentasi geometris ringan (pengali 4x). Ketidakseimbangan antara kapasitas model dan jumlah data ini tercermin pada beberapa skenario dengan \textit{specificity} serendah 0\% meskipun telah menggunakan \texttt{class\_weight='balanced'}, yang mengindikasikan akar masalah ada pada representasi fitur yang belum cukup diskriminatif, bukan sekadar pembobotan kelas. \textit{Backbone} yang diadaptasi dari \cite{iftikhar2025explainable} pun pada dasarnya dirancang untuk MRI multi-kelas dan belum divalidasi ulang secara arsitektural untuk domain CT \textit{scan} biner. Sebaliknya, EfficientNetB0 diuntungkan oleh \textit{transfer learning}: bobot \textit{pretrained} ImageNet memberikan representasi visual dasar (tepi, tekstur, bentuk) yang sudah matang sebelum di-\textit{fine-tune}, sehingga model ini secara umum lebih tahan terhadap keterbatasan data dan augmentasi minim dibandingkan CLM maupun Explainable CNN — meskipun ketahanan ini tetap memiliki batas ketika proporsi \textit{fine-tuning} terlalu besar.
 
-Perbandingan hasil \textit{single-split} dan \textit{cross validation} pada ketiga model juga menunjukkan pola yang konsisten, yaitu evaluasi \textit{single-split} cenderung memberikan gambaran performa yang terlalu optimis dibandingkan kondisi sebenarnya. Pola ini terlihat paling jelas pada EfficientNetB0, dengan penurunan akurasi dari 96,63\% (\textit{single-split}, Subbagian~\ref{subsec:efnet_gridsearch}) menjadi 85,21\% $\pm$ 11,19\% (\textit{10-fold CV}, Subbagian~\ref{subsec:efnet_cv}). Sebaliknya, Explainable CNN menunjukkan hasil \textit{cross validation} yang justru lebih tinggi dan lebih konsisten (98,39\% $\pm$ 1,78\%, Subbagian~\ref{subsec:excnn_cv}) dibandingkan skema \textit{val\_test} (87,8\%), meskipun sebagaimana telah dibahas sebelumnya, kedua angka ini tidak sepenuhnya dapat dibandingkan secara langsung karena perbedaan skema pembagian data. CLM tidak memiliki hasil \textit{cross validation} untuk dibandingkan, sehingga penilaian terhadap kestabilan model ini hanya dapat mengandalkan hasil \textit{grid search} dan \textit{parameter tuning} pada Subbagian~\ref{subsec:clm_tuning}.
+Perbandingan hasil \textit{single-split} dan \textit{cross validation} pada ketiga model juga menunjukkan pola yang konsisten, yaitu evaluasi \textit{single-split} cenderung memberikan gambaran performa yang terlalu optimis dibandingkan kondisi sebenarnya. Pola ini terlihat paling jelas pada EfficientNetB0, dengan penurunan akurasi dari 96,63\% (\textit{single-split}) menjadi 85,21\% $\pm$ 11,19\% (\textit{10-fold CV}). Sebaliknya, Explainable CNN menunjukkan hasil \textit{cross validation} yang justru lebih tinggi dan lebih konsisten (98,39\% $\pm$ 1,78\%) dibandingkan skema \textit{val\_test} (87,8\%), meskipun sebagaimana telah dibahas sebelumnya, kedua angka ini tidak sepenuhnya dapat dibandingkan secara langsung karena perbedaan skema pembagian data. CLM tidak memiliki hasil \textit{cross validation} untuk dibandingkan, sehingga penilaian terhadap kestabilan model ini hanya dapat mengandalkan hasil \textit{grid search} dan \textit{parameter tuning} yang telah dibahas sebelumnya.
 
-Dari sisi kesenjangan dengan studi acuan masing-masing, penyebab utamanya juga berbeda antar model. Pada CLM, kesenjangan performa terhadap \textcite{wozniak2021deep} kemungkinan besar disebabkan oleh keterbatasan sumber daya komputasi dan ketiadaan mekanisme \textit{archiving}/\textit{reshuffling} palet CNN, bukan karena masalah pada konsep arsitekturnya (Subbagian~\ref{subsec:clm_validasi}). Pada Explainable CNN, kesenjangan terhadap \cite{iftikhar2025explainable} terutama disebabkan oleh perbedaan skala data yang sangat besar (18,5 kali) serta belum dilakukannya validasi kualitatif terhadap hasil \textit{explainability} (Subbagian~\ref{subsec:excnn_komparasi}). Sementara itu, pada EfficientNetB0, kesenjangan terhadap Deep-EFNet \cite{deepefnet} lebih banyak dikaitkan dengan proporsi \textit{fine-tuning backbone} yang jauh lebih besar (56 hingga 60\% dibandingkan 16\% pada Deep-EFNet), yang kemungkinan menjadi penyebab utama \textit{overfitting} berat yang ditemukan (Subbagian~\ref{subsec:efnet_komparasi}).
+Dari sisi kesenjangan dengan studi acuan masing-masing, penyebab utamanya juga berbeda antar model. Pada CLM, kesenjangan performa terhadap \textcite{wozniak2021deep} kemungkinan besar disebabkan oleh keterbatasan sumber daya komputasi dan ketiadaan mekanisme \textit{archiving}/\textit{reshuffling} palet CNN, bukan karena masalah pada konsep arsitekturnya. Pada Explainable CNN, kesenjangan terhadap \cite{iftikhar2025explainable} terutama disebabkan oleh perbedaan skala data yang sangat besar (18,5 kali) serta belum dilakukannya validasi kualitatif terhadap hasil \textit{explainability}. Sementara itu, pada EfficientNetB0, kesenjangan terhadap Deep-EFNet \cite{alshaari2025deepefnet} lebih banyak dikaitkan dengan proporsi \textit{fine-tuning backbone} yang jauh lebih besar (56 hingga 60\% dibandingkan 16\% pada Deep-EFNet), yang kemungkinan menjadi penyebab utama \textit{overfitting} berat yang ditemukan.
 
 Secara keseluruhan, kecenderungan performa ketiga model tersebut sejalan dengan perbedaan strategi pembelajaran fitur yang telah dibahas sebelumnya. CLM menunjukkan kesenjangan performa terbesar dibandingkan studi acuannya, yang konsisten dengan sifat ekstraksi fiturnya yang \textit{non-trainable} dan reduksi informasi spasial yang agresif, sehingga performanya paling bergantung pada kombinasi \textit{hyperparameter} yang kebetulan sesuai. Explainable CNN menunjukkan kestabilan performa yang relatif paling baik pada pengujian \textit{cross validation}, yang mengindikasikan bahwa sifat \textit{layer convolutional}-nya yang sepenuhnya \textit{trainable} tetap mampu menghasilkan generalisasi yang cukup konsisten meskipun dilatih dari nol tanpa bobot \textit{pretrained}. Sementara itu, EfficientNetB0 menunjukkan performa \textit{single-split} tertinggi, yang sejalan dengan keuntungan awal dari bobot \textit{pretrained} ImageNet, namun penurunan performa yang tajam pada \textit{cross-validation} mengindikasikan bahwa proporsi \textit{fine-tuning backbone} yang besar pada penelitian ini turut mengikis sebagian keunggulan tersebut, sehingga model menjadi lebih rentan terhadap variasi pembagian data.
 
 Namun, mengingat perbedaan mendasar pada arsitektur, skema evaluasi, dan jumlah data yang digunakan pada masing-masing studi acuan, perbandingan ketiga model ini sebaiknya dipahami sebagai gambaran kecenderungan umum, yaitu bahwa strategi ekstraksi fitur yang sepenuhnya \textit{trainable}, terlebih yang memanfaatkan \textit{transfer learning}, cenderung lebih tahan terhadap keterbatasan data dibandingkan ekstraksi fitur tetap seperti pada CLM, dan bukan sebagai pembuktian bahwa satu arsitektur secara definitif lebih unggul dibandingkan yang lain pada tugas deteksi tumor otak menggunakan CT Scan.
 
 \subsection{XAI}
+Pada bagian ini, dilakukan evaluasi terhadap kualitas penjelasan (\textit{explainability}) yang dihasilkan oleh model EfficientNetB0 melalui metode Grad-CAM. Evaluasi dilakukan dari dua sisi, yaitu secara kuantitatif menggunakan metrik XAlign untuk mengukur seberapa sesuai \textit{heatmap} Grad-CAM dengan anotasi tumor dari ahli, dan secara kualitatif dengan mengamati langsung pola \textit{heatmap} pada berbagai hasil prediksi (\textit{True Negative}, \textit{True Positive}, \textit{False Positive}, dan \textit{False Negative}) untuk melihat apakah area yang di-\textit{highlight} model benar-benar berada pada lokasi tumor. Hasil kedua evaluasi ini kemudian ditelusuri lebih lanjut untuk mencari kemungkinan penyebab dari rendahnya kualitas penjelasan yang dihasilkan, mulai dari keterbatasan resolusi spasial Grad-CAM, potensi \textit{confounder} berupa perbedaan ketajaman (\textit{sharpness}) citra antar kelas, hingga pengaruh arsitektur CNN yang digunakan.
 \subsubsection{Kuantitatif}
 
 Untuk mengetahui seberapa sesuai peta \textit{saliency} Grad-CAM yang dihasilkan model EfficientNetB0 dengan anotasi yang dibuat oleh ahli, digunakan metrik XAlign yang diperkenalkan oleh Muhammad dan Bendechache \cite{muhammad2025heatmap}. Metrik ini terdiri dari tiga komponen, yaitu \textit{Weighted Relevance Overlap} (WRO), \textit{Boundary Agreement Score} (BAS), dan \textit{Dispersion Penalty} (DP), dengan bobot $\alpha = 0.5$, $\beta = 0.4$, dan $\gamma = 0.1$ mengikuti konfigurasi \textit{default} pada paper referensi. Hasil evaluasi pada model EfficientNetB0 yang sudah dilatih (dengan akurasi uji 96,63\% dan F1-\textit{weighted} 96,68\%) dapat dilihat pada Tabel~\ref{tab:xalign-hasil}.
 
-\begin{table}[h]
+\begin{table}[htbp]
 	\centering
 	\caption{Hasil evaluasi XAlign pada Grad-CAM model EfficientNetB0}
 	\label{tab:xalign-hasil}
-	\begin{tabular}{lc}
-		\toprule
-		\textbf{Komponen} & \textbf{Nilai} \\
-		\midrule
-		WRO (Weighted Relevance Overlap) & 0.0627 \\
-		BAS (Boundary Agreement Score)   & 0.5932 \\
-		DP (Dispersion Penalty)          & 0.9373 \\
-		\textbf{XAlign}                  & \textbf{0.1749} \\
-		\bottomrule
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Komponen} & \textbf{Nilai} \\ \hline
+		WRO (Weighted Relevance Overlap) & 0.0627 \\ \hline
+		BAS (Boundary Agreement Score)   & 0.5932 \\ \hline
+		DP (Dispersion Penalty)          & 0.9373 \\ \hline
+		XAlign                  & 0.1749 \\ \hline
 	\end{tabular}
 \end{table}
 
 Karena bobot $\alpha, \beta, \gamma$ yang digunakan pada penelitian ini sama dengan yang digunakan pada \textit{paper} referensi, nilai XAlign yang didapat bisa langsung dibandingkan. Muhammad dan Bendechache \cite{muhammad2025heatmap} melaporkan skor XAlign untuk Grad-CAM pada \textit{dataset} TCGA LGG (MRI) sebesar $0,641 \pm 0,034$ dan pada \textit{dataset} BUSI (\textit{ultrasound}) sebesar $0,726 \pm 0,029$, dengan urutan performa metode yang selalu sama, yaitu \textit{Native head} $>$ Grad-CAM $>$ LIME $>$ SHAP. Jika dibandingkan dengan angka tersebut, skor XAlign Grad-CAM pada penelitian ini ($0,1749$) jauh lebih rendah, yaitu sekitar $73$ hingga $76\%$ di bawah nilai pada \textit{paper} referensi. Bahkan, nilai ini masih lebih rendah dibandingkan skor SHAP pada \textit{paper} referensi ($0,336$ untuk MRI dan $0,241$ untuk BUSI), padahal SHAP pada \textit{paper} tersebut selalu menjadi metode dengan performa paling rendah. Dengan kata lain, hasil ini tidak bisa dianggap sekadar berada di bawah rerata saja, tetapi kemungkinan menunjukkan adanya perbedaan mendasar pada karakteristik \textit{saliency} yang dihasilkan, atau pada tahap prapemrosesan sebelum perhitungan XAlign dilakukan, bukan hanya variasi biasa akibat perbedaan \textit{dataset} atau arsitektur model. Untuk memahami mengapa skor XAlign secara keseluruhan cukup rendah, ketiga komponen penyusunnya akan dibahas satu per satu.
-\begin{itemize}
+\begin{enumerate}
 	\item WRO = 0,0627 (sangat rendah). Nilai ini menunjukkan bahwa hanya sekitar $6\%$ dari total bobot relevansi pada \textit{heatmap} Grad-CAM yang berada di dalam \textit{mask} tumor. Karena WRO memiliki bobot paling besar pada formula XAlign ($\alpha = 0,5$), komponen inilah yang paling berpengaruh dalam menurunkan skor akhir.
 	\item BAS = 0,5932 (sedang). Berbeda dengan WRO, nilai BAS masih berada pada kisaran yang cukup wajar. Artinya, jika dilihat dari sisi kontur (dihitung menggunakan \textit{Hausdorff Distance}), area aktivasi Grad-CAM masih berada pada jarak yang relatif dekat dengan batas tumor, sehingga lokasinya tidak sepenuhnya salah.
 	\item DP = 0,9373 (sangat tinggi). Hampir $94\%$ dari total relevansi Grad-CAM berada di luar \textit{mask} tumor. Nilai ini sejalan dengan nilai WRO yang rendah, dan keduanya menunjukkan bahwa \textit{saliency} Grad-CAM tersebar cukup luas ke area di luar lesi tumor.
-\end{itemize}
+\end{enumerate}
 
 Nilai BAS yang cukup wajar namun WRO dan DP yang buruk menunjukkan bahwa masalah utamanya bukan karena Grad-CAM menunjuk ke lokasi yang sepenuhnya salah, melainkan karena \textit{heatmap} yang dihasilkan terlalu menyebar (difus) dibandingkan ukuran \textit{mask} tumor yang sebenarnya.
 
 Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada model EfficientNetB0 dalam penelitian ini menghasilkan penjelasan yang kurang terfokus pada area tumor, meskipun performa klasifikasi model ini sendiri cukup tinggi. Hal ini sejalan dengan temuan pada \textit{paper} referensi, bahwa akurasi klasifikasi yang tinggi tidak selalu berbanding lurus dengan kualitas dan keandalan penjelasan yang dihasilkan oleh model.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\captionsetup{justification=centering}
 	\includegraphics[width=0.75\textwidth]{images/xalign.png}
@@ -187,7 +176,7 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 \begin{enumerate}
 	\item Sebanyak 29 dari 39 hasil \textit{True Negative} (TN) yang dihasilkan model diperoleh dari keseluruhan fitur yang ada pada otak, dengan sebagian besar \textit{highlight} berada pada daerah \textit{frontal lobe} (bagian atas otak).
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=0.75\textwidth]{images/TN_effnet.png}
@@ -198,7 +187,7 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 	
 	\item Sebanyak 15 dari 20 hasil \textit{True Positive} (TP) pada citra otak dengan tumor glioma diperoleh dari fitur yang berada pada perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi. Selain itu, terdapat 2 citra TP yang diperoleh dari fitur pada penyangga kepala, dan 3 citra lainnya menunjukkan \textit{highlight} pada daerah tulang mata dan sinus.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=0.75\textwidth]{images/TP_effnet_no.png}
@@ -208,7 +197,7 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 	
 	\item Dari 80 citra otak yang disertai \textit{tumor mask}, 14 citra menunjukkan \textit{highlight} pada daerah tulang mata dan sinus. Sama seperti hasil deteksi tumor glioma sebelumnya, 48 citra menunjukkan \textit{heatmap} yang mengarah ke perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} di kedua sisi, dengan \textit{heatmap} yang lebih dominan pada salah satu sisi. Selain itu, 11 citra menunjukkan \textit{heatmap} yang mengarah ke perbatasan antara \textit{frontal lobe} dan \textit{temporal lobe} hanya pada satu sisi. Terdapat pula 3 citra dengan \textit{heatmap} yang berasal dari keseluruhan fitur otak, dan 1 citra dengan \textit{heatmap} yang berasal dari fitur di bagian tengah otak, yaitu di sekitar \textit{diencephalon}.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=0.75\textwidth]{images/TP_effnet_mask.png}
@@ -218,7 +207,7 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 	
 	\item Sebanyak 2 dari 3 hasil \textit{False Positive} (FP) yang diprediksi model diperoleh dari fitur di sekitar \textit{precentral sulcus}, yang secara visual tidak menunjukkan adanya perubahan warna maupun bentuk pada area yang di-\textit{highlight} oleh model. Selain itu, 1 FP lainnya menunjukkan \textit{highlight} pada bagian kerangka otak bagian bawah beserta penyangga kepala.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=0.75\textwidth]{images/FP_effnet.png}
@@ -228,7 +217,7 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 	
 	\item Satu-satunya hasil \textit{False Negative} (FN) yang diprediksi model diperoleh dari fitur pada \textit{occipital lobe} yang bentuknya menyerupai perubahan bentuk yang biasa terjadi pada tumor. Pada \textit{slice} lain dari pasien yang sama, yang hasil prediksinya TP, fitur yang di-\textit{highlight} menunjukkan perubahan warna dan bentuk pada \textit{diencephalon}. \textit{Highlight} tersebut sudah sejalan dengan lokasi tumor yang memang mengubah warna dan bentuk struktur otak, meskipun batas \textit{heatmap} yang dihasilkan masih belum sesuai persis dengan batas tumor yang sebenarnya.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\captionsetup{justification=centering}
 		\includegraphics[width=0.75\textwidth]{images/FN_effnet.png}
@@ -241,57 +230,51 @@ Secara umum, rendahnya skor XAlign yang didapat menunjukkan bahwa Grad-CAM pada 
 Berdasarkan hasil evaluasi XAI di atas, baik secara kuantitatif melalui skor XAlign yang rendah, maupun secara kualitatif melalui pola \textit{heatmap} yang kerap tidak berada tepat pada area tumor, terlihat bahwa Grad-CAM pada model EfficientNetB0 belum mampu memberikan penjelasan yang benar-benar terfokus pada lokasi tumor. Oleh karena itu, dilakukan analisis lebih lanjut untuk mencari tahu kemungkinan penyebab dari keterbatasan tersebut, mulai dari sisi resolusi spasial Grad-CAM, potensi \textit{confounder} pada citra, hingga pengaruh arsitektur CNN yang digunakan.
 
 \begin{enumerate}
-	\item \textbf{Evaluasi Kesesuaian Lokasi \textit{Heatmap}} \\
-	Grad-CAM bekerja dengan mengambil gradien dari kelas yang diprediksi, lalu menghubungkannya dengan \textit{feature map} pada lapisan konvolusi terakhir untuk menghasilkan peta lokasi objek (Selvaraju et al., 2017). Masalahnya, lapisan konvolusi terakhir ini sudah melewati banyak proses \textit{pooling}, sehingga ukuran \textit{feature map} yang dihasilkan jauh lebih kecil dibanding gambar aslinya (misalnya dari 224×224 piksel bisa menyusut menjadi hanya 7×7 atau 14×14 piksel saja). Karena itu, resolusi spasial peta yang dihasilkan Grad-CAM otomatis menjadi kasar (\textit{coarse}), tidak setajam gambar \textit{input}. Berdasarkan \textit{dataset mask} yang dimiliki, berikut statistik piksel dari \textit{mask} tersebut.
+	\item Evaluasi Kesesuaian Lokasi \textit{Heatmap} \\
+	Grad-CAM bekerja dengan mengambil gradien dari kelas yang diprediksi, lalu menghubungkannya dengan \textit{feature map} pada lapisan konvolusi terakhir untuk menghasilkan peta lokasi objek \textcite{selvaraju2020gradcam}. Masalahnya, lapisan konvolusi terakhir ini sudah melewati banyak proses \textit{pooling}, sehingga ukuran \textit{feature map} yang dihasilkan jauh lebih kecil dibanding gambar aslinya (misalnya dari 224×224 piksel bisa menyusut menjadi hanya 7×7 atau 14×14 piksel saja). Karena itu, resolusi spasial peta yang dihasilkan Grad-CAM otomatis menjadi kasar (\textit{coarse}), tidak setajam gambar \textit{input}. Berdasarkan \textit{dataset mask} yang dimiliki, berikut statistik piksel dari \textit{mask} tersebut.
 	
-	\begin{table}[h]
+	\begin{table}[htbp]
 		\centering
 		\caption{Statistik Jumlah Piksel Tumor}
 		\label{tab:statistik_piksel_tumor}
-		\begin{tabular}{lr}
+		\begin{tabular}{|l|r|}
 			\hline
-			\textbf{Statistik} & \textbf{Nilai} \\
-			\hline
-			Rata-rata piksel tumor & 887{,}55 \\
-			Standar deviasi        & 602{,}92 \\
-			Minimum                & 76 \\
-			Maksimum                & 2717 \\
-			\hline
+			\textbf{Statistik} & \textbf{Nilai} \\ \hline
+			Rata-rata piksel tumor & 887{,}55 \\ \hline
+			Standar deviasi        & 602{,}92 \\ \hline
+			Minimum                & 76 \\ \hline
+			Maksimum                & 2717 \\ \hline
 		\end{tabular}
 	\end{table}
 	
 	Untuk tumor yang berukuran kecil pada citra medis, jumlah pikselnya yang sedikit membuat informasi lokasinya mudah hilang atau menjadi kabur saat proses \textit{downsampling} tersebut terjadi. Akibatnya, \textit{heatmap} yang dihasilkan bisa saja salah menunjukkan lokasi tumor, atau area yang ditampilkan terlihat jauh lebih besar dan kurang presisi dibandingkan ukuran tumor yang sebenarnya.
 	
-	\item \textbf{Evaluasi Kontribusi Perbedaan \textit{Sharpness}/\textit{Blur} Antar Kelas terhadap Prediksi Model} \\
+	\item Evaluasi Kontribusi Perbedaan \textit{Sharpness}/\textit{Blur} Antar Kelas terhadap Prediksi Model \\
 	Selain masalah resolusi spasial pada Grad-CAM, pola \textit{heatmap} yang muncul juga bergantung pada sinyal apa yang sebenarnya dipelajari oleh model. Salah satu kemungkinan sinyal non-morfologis yang bisa dipelajari CNN adalah ketajaman (\textit{sharpness}) citra, yang bisa muncul karena perbedaan sumber data atau \textit{pipeline} praproses antar kelas, bukan karena patologi tumor itu sendiri.
 	
 	Untuk mengecek hal ini, ketajaman tiap citra diukur menggunakan \textit{variance of Laplacian}, lalu dibandingkan antara kelas \textit{tumor} dan \textit{no\_tumor} menggunakan uji \textit{Mann-Whitney U} (Tabel~\ref{tab:statistik_sharpness}).
 	
-	\begin{table}[h]
+	\begin{table}[htbp]
 		\centering
 		\caption{Statistik Perbandingan \textit{Sharpness} Antar Kelas}
 		\label{tab:statistik_sharpness}
-		\begin{tabular}{lrr}
+		\begin{tabular}{|l|r|r|}
 			\hline
-			\textbf{Statistik} & \textbf{\textit{No Tumor} (n=42)} & \textbf{\textit{Tumor} (n=145)} \\
-			\hline
-			Median     & 2146,78 & 310,40 \\
-			\textit{Std. Dev.}  & 574,33  & 1012,52 \\
-			\hline
+			\textbf{Statistik} & \textbf{\textit{No Tumor} (n=42)} & \textbf{\textit{Tumor} (n=145)} \\ \hline
+			Median     & 2146,78 & 310,40 \\ \hline
+			\textit{Std. Dev.}  & 574,33  & 1012,52 \\ \hline
 		\end{tabular}
 		\vspace{0.3em}
-		
-		\footnotesize{Uji \textit{Mann-Whitney U}: $p < 0{,}0001$}
 	\end{table}
 	
 	Median ketajaman pada kelas \textit{no\_tumor} sekitar 85\% lebih tinggi dibanding kelas \textit{tumor}, dan perbedaan ini signifikan secara statistik ($p < 0{,}0001$). Artinya, \textit{sharpness} berpotensi menjadi \textit{confounder}, yaitu faktor lain yang ikut dipelajari model, padahal seharusnya model hanya belajar dari morfologi tumor. Temuan ini juga sejalan dengan pola \textit{heatmap} Grad-CAM yang didapatkan, sebab hilangnya detail frekuensi tinggi akibat \textit{blur} paling terasa pada bagian otak yang bertekstur, yaitu sisi kiri dan kanan, bukan pada bagian \textit{midline} yang cenderung homogen. Karena itu, model yang ikut memanfaatkan sinyal ini cenderung menghasilkan aktivasi yang simetris di kedua sisi otak, mengikuti struktur anatomis secara umum, bukan menunjuk lokasi tumor yang sebenarnya, sebagaimana terlihat pada beberapa sampel meskipun \textit{ground truth}-nya hanya berada di satu sisi saja.
 	
 	Namun, temuan ini masih bersifat korelasional, bukan bukti sebab akibat (kausal). Untuk memastikannya, diperlukan uji ablasi, misalnya dengan menambahkan \textit{blur} artifisial pada citra \textit{no\_tumor}, lalu mengamati apakah prediksinya berubah menjadi \textit{tumor} atau tidak.
 	
-	\item \textbf{Ketergantungan Performa Grad-CAM terhadap Arsitektur CNN} \\
-	Selain keterbatasan resolusi spasial dan kemungkinan \textit{confounder sharpness}, kegagalan Grad-CAM juga bisa dijelaskan oleh ketergantungannya pada arsitektur CNN yang digunakan. Guan dan Loew (2022) menguji enam arsitektur CNN untuk klasifikasi tumor pada citra mamografi, dan menemukan bahwa nilai \textit{mean-Dice} antar arsitektur ternyata berbeda beda dengan sangat jauh, Xception mencapai 0,435, sementara DenseNet121 dan MobileNetV2 hanya sekitar 0,03, padahal akurasi klasifikasi keduanya tetap tinggi ($\geq$0,84). \textit{Heatmap} dari kedua model tersebut justru lebih banyak menyorot bagian sudut atau tepi citra, bukan area tumor, walaupun hasil prediksinya tetap benar.
+	\item Ketergantungan Performa Grad-CAM terhadap Arsitektur CNN \\
+	Selain keterbatasan resolusi spasial dan kemungkinan \textit{confounder sharpness}, kegagalan Grad-CAM juga bisa dijelaskan oleh ketergantungannya pada arsitektur CNN yang digunakan. \textcite{guan2022sneak} menguji enam arsitektur CNN untuk klasifikasi tumor pada citra mamografi, dan menemukan bahwa nilai \textit{mean-Dice} antar arsitektur ternyata berbeda beda dengan sangat jauh, Xception mencapai 0,435, sementara DenseNet121 dan MobileNetV2 hanya sekitar 0,03, padahal akurasi klasifikasi keduanya tetap tinggi ($\geq$0,84). \textit{Heatmap} dari kedua model tersebut justru lebih banyak menyorot bagian sudut atau tepi citra, bukan area tumor, walaupun hasil prediksinya tetap benar.
 	
 	Temuan ini relevan dengan EfficientNetB0 yang digunakan pada penelitian ini, karena arsitekturnya (blok \textit{MBConv} dengan \textit{depthwise separable convolution} dan koneksi residual) mirip dengan prinsip yang dipakai MobileNetV2. Karena MobileNetV2 pada studi tersebut juga terbukti menghasilkan lokalisasi Grad-CAM yang kurang baik meski akurasinya tetap tinggi, dapat diduga bahwa arsitektur \textit{lightweight} berbasis \textit{depthwise separable convolution} menghasilkan gradien yang lebih menyebar pada \textit{feature map} terakhir, sehingga peta aktivasi yang dihasilkan menjadi kurang presisi terhadap objek target.
 	
-	Guan dan Loew (2022) juga menunjukkan bahwa keputusan CNN sifatnya global (bukan berbasis piksel seperti pada segmentasi), dan bagian yang terlihat gelap pada \textit{heatmap} pun sebenarnya tetap terbukti berkontribusi terhadap hasil klasifikasi. Hal ini menjelaskan mengapa akurasi model bisa tetap tinggi walaupun \textit{heatmap}-nya tidak akurat, model sebenarnya sudah "mengetahui" tumor secara implisit lewat keseluruhan \textit{feature map}, hanya saja Grad-CAM tidak selalu berhasil menerjemahkannya menjadi peta lokalisasi yang presisi, khususnya pada arsitektur ringan seperti EfficientNetB0. Dengan demikian, kegagalan Grad-CAM pada model ini bukan semata masalah data, melainkan juga keterbatasan bawaan dari kombinasi metode Grad-CAM dengan karakteristik arsitektur CNN yang digunakan.
+	\textcite{guan2022sneak} juga menunjukkan bahwa keputusan CNN sifatnya global (bukan berbasis piksel seperti pada segmentasi), dan bagian yang terlihat gelap pada \textit{heatmap} pun sebenarnya tetap terbukti berkontribusi terhadap hasil klasifikasi. Hal ini menjelaskan mengapa akurasi model bisa tetap tinggi walaupun \textit{heatmap}-nya tidak akurat, model sebenarnya sudah "mengetahui" tumor secara implisit lewat keseluruhan \textit{feature map}, hanya saja Grad-CAM tidak selalu berhasil menerjemahkannya menjadi peta lokalisasi yang presisi, khususnya pada arsitektur ringan seperti EfficientNetB0. Dengan demikian, kegagalan Grad-CAM pada model ini bukan semata masalah data, melainkan juga keterbatasan bawaan dari kombinasi metode Grad-CAM dengan karakteristik arsitektur CNN yang digunakan.
 \end{enumerate}

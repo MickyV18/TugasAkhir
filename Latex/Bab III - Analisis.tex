@@ -1,3 +1,4 @@
+% !TeX root = ta.tex
 % ============================================================================================
 % BAB III ANALISIS MASALAH
 % Pembagian subbab tidak rigid dan dapat bervariasi. Bab ini minimal berisi analisis kebutuhan
@@ -10,7 +11,7 @@
 
 \section{Analisis Kondisi Saat Ini}
 
-Penelitian oleh \textcite{zienius2019direct} menganalisis jalur diagnosis tumor otak melalui pemindaian \textit{Direct Access Computed Tomography} (DACT) di layanan primer. Studi berbasis populasi ini dilakukan selama lima tahun di wilayah Lothian, Skotlandia, dengan mengevaluasi 2.938 rujukan dari dokter umum yang mencurigai adanya patologi intrakranial. Selain menilai keandalan CT kepala sebagai modalitas diagnostik, studi ini secara kritis mengevaluasi efektivitas dua pedoman rujukan utama, yaitu pedoman Kernick dan NICE 2005, dalam mengidentifikasi pasien yang berisiko mengidap tumor otak.
+Penelitian oleh \textcite{zienius2019direct} menganalisis jalur diagnosis tumor otak melalui pemindaian \textit{Direct Access Computed Tomography} (DACT) di layanan primer. Studi berbasis populasi ini dilakukan selama lima tahun di wilayah Lothian, Skotlandia, dengan mengevaluasi 2.938 rujukan dari dokter umum yang mencurigai adanya patologi intrakranial. Selain menilai keandalan CT kepala sebagai modalitas diagnostik, studi ini mengevaluasi efektivitas dua pedoman rujukan utama, yaitu pedoman Kernick dan NICE 2005, dalam mengidentifikasi pasien yang berisiko mengidap tumor otak.
 
 \subsection{Alur Diagnosis Tumor Otak}
 Saat ini, diagnosis tumor otak di layanan primer dilakukan melalui serangkaian tahapan berikut \cite{zienius2019direct}:
@@ -43,6 +44,8 @@ Meskipun teknologi AI telah dikembangkan untuk membantu interpretasi \textit{non
 
 Hasil evaluasi menunjukkan bahwa bantuan AI meningkatkan sensitivitas pembaca secara bermakna dalam mendeteksi abnormalitas kritis, namun disertai penurunan spesifisitas yang signifikan \cite{fu2024ai}. Lebih lanjut, performa algoritma terbukti tidak merata, yakni deteksi \textit{mass effect}, yang merupakan salah satu tanda adanya lesi desak ruang seperti tumor, hanya menghasilkan AUC sebesar 0,604, jauh di bawah subkelompok patologi lainnya \cite{fu2024ai}. Para penulis secara eksplisit menyatakan bahwa hasil studi retrospektif ini tidak dapat langsung diterapkan dalam praktik klinis, dan menegaskan perlunya studi prospektif lanjutan sebelum teknologi ini dapat diimplementasikan secara bertanggung jawab \cite{fu2024ai}.
 
+Penelitian \textcite{khan2024comparative} juga menunjukkan bahwa klasifikasi biner (ada/tidak tumor) memiliki akurasi lebih tinggi dibandingkan multikelas (jenis tumor). Pada CNN kustom misalnya, akurasi biner mencapai 99,62\%, sedangkan multikelas hanya 98,09\%. Pola yang sama juga terlihat pada ResNet18 dan VGG16 \cite{khan2024comparative}. Meski begitu, hal ini wajar karena semakin sedikit kelas yang harus dibedakan, semakin kecil pula peluang model salah menebak, dengan selisih akurasi yang juga tidak terlalu besar (sekitar 0,3\%-1,5\%). Selain itu, klasifikasi multikelas tetap lebih bermanfaat secara klinis karena memberikan informasi jenis tumor, bukan hanya ada atau tidaknya tumor.
+
 \section{Analisis Kebutuhan}
 \subsection{Identifikasi Masalah Pengguna}
 Terdapat dua kelompok pengguna utama yang menghadapi masalah terkait penerapan AI dalam medis, yaitu profesional medis (dokter dan radiolog) serta pasien.
@@ -52,28 +55,30 @@ Di Indonesia, masalah ini menjadi jauh lebih kritis akibat ketimpangan rasio ten
 profesional medis juga menghadapi masalah rendahnya kepercayaan terhadap keandalan sistem AI. Masalah ini berakar dari kurangnya edukasi, pelatihan, dan minimnya keterlibatan mereka dalam proses pengembangan sistem \autocite{syaftahan2025transformasi}. Hal ini menciptakan paradoks bahwa teknologi yang sangat dibutuhkan untuk mengurangi \textit{human error} justru diragukan validitasnya oleh penggunanya sendiri.
 
 Dari sisi pasien, tantangan utama yang menghambat adopsi \textit{Artificial Intelligence} (AI) dalam praktik klinis adalah kurangnya kepercayaan terhadap validitas diagnosis yang melibatkan algoritma. Berbeda dengan asumsi umum bahwa teknologi canggih akan meningkatkan rasa aman pasien, literatur terbaru justru menunjukkan fenomena sebaliknya, yaitu keterlibatan AI sering kali dipersepsikan sebagai faktor yang mendegradasi kualitas layanan medis.
+
 Riset eksperimental terbaru yang dilakukan oleh \textcite{chen2025impact} memberikan bukti bahwa kepercayaan pasien terhadap dokter dan intensi untuk melakukan pengobatan mencapai titik tertinggi justru ketika dokter secara eksplisit menyatakan tidak menggunakan AI dalam proses diagnosisnya dengan skor rata-rata kepercayaan 0,63. Sebaliknya, ketika pasien mengetahui bahwa dokter menggunakan AI secara ekstensif, tingkat kepercayaan mereka menurun ke angka 0,30 \autocite{chen2025impact}. Hal ini mengindikasikan bahwa di mata pasien, penggunaan AI belum dianggap sebagai peningkatan kapabilitas diagnostik, melainkan sebagai substitusi yang mengurangi nilai keahlian manusia.
 
 Penurunan kepercayaan ini bukan tanpa alasan. Skeptisisme pasien berakar pada beberapa kekhawatiran fundamental. Pertama, risiko halusinasi AI, seperti model generatif dapat memproduksi informasi medis yang terdengar masuk akal dan meyakinkan tetapi secara faktual salah atau dibuat-buat. Ketakutan akan diagnosis yang keliru akibat kesalahan algoritma ini menjadi penghalang psikologis utama. Kedua, masalah transparansi dan akuntabilitas. Pasien sering kali memandang AI sebagai \textit{black-box} yang proses pengambilan keputusannya tidak dapat dijelaskan secara intuitif, memicu keraguan apakah keputusan medis tersebut didasarkan pada kondisi unik pasien atau sekadar pola statistik semata \autocite{chen2025impact}.
+
 Selain itu, terdapat korelasi negatif antara persepsi profesionalisme dan penggunaan AI. Pasien cenderung mempertanyakan kompetensi dan penilaian klinis dokter yang terlalu bergantung pada alat bantu AI, terutama jika alat tersebut bersifat umum dan tidak dirancang khusus untuk medis. Penggunaan alat semacam ini dianggap mengaburkan batas tanggung jawab profesional dan menurunkan standar interaksi manusiawi yang menjadi inti dari layanan kesehatan \autocite{chen2025impact}. Temuan ini menegaskan bahwa diperlukan transparansi, validasi klinis yang ketat, dan jaminan pengawasan manusia untuk mengatasi ketidakpercayaan pasien.
 
-Berdasarkan analisis dari studi literatur yang dijelaskan pada Bab \ref{sec:penelitian-terkait}, analisis kondisi saat ini, dan analisis permasalahan pengguna, diidentifikasikan 4 permasalahan utama, yaitu:
+Berdasarkan analisis dari studi literatur yang dijelaskan pada Bab \ref{sec:penelitian terkait tumor}, analisis kondisi saat ini, dan analisis permasalahan pengguna, diidentifikasikan 4 permasalahan utama, yaitu:
 
 \begin{enumerate}
-	\item Seleksi Pasien yang Lh dan Tidak Akurat \\
+	\item Seleksi Pasien Kurang Akurat \\
 	Pedoman rujukan yang digunakan dokter umum, yaitu pedoman Kernick dan NICE 2005, terbukti memiliki nilai prediksi positif yang sangat rendah, hanya sebesar 3\%, dengan tingkat kesepakatan antar pedoman yang buruk (\textit{weighted kappa} = 0,33). Artinya, kedua pedoman ini hampir tidak lebih baik dari tebakan acak dalam memilah pasien yang benar-benar berisiko tumor. Implikasinya, sebagian besar pemindaian yang dilakukan tidak menemukan tumor (\textit{diagnostic yield} hanya 1,43\%), sehingga sumber daya radiologi terbuang untuk kasus yang tidak relevan, sementara pasien berisiko tinggi bisa saja terlambat tersaring \cite{zienius2019direct}.
 	
 	\item Keterlambatan Diagnosis \\
 	Rata-rata pasien harus mengunjungi dokter umum tiga kali atau lebih sebelum mendapat rujukan, ditambah waktu tunggu pemindaian rata-rata sebesar 17,3 hari \cite{zienius2019direct}. Meskipun prosedur ini dianggap wajar secara administratif, dalam konteks tumor otak setiap hari penundaan berdampak signifikan terhadap prognosis. Studi \textcite{carey2019impact} membuktikan bahwa \textit{neuroimaging} awal mampu mempersingkat waktu diagnosis hingga median 8 hari sejak kunjungan pertama, namun sayangnya akses ke jalur cepat ini masih bergantung pada keputusan dokter umum yang disaring dengan pedoman yang tidak akurat.
 	
 	\item Ketimpangan Sumber Daya Radiologi \\
-	Rasio 1,2 radiolog per 100.000 penduduk di Indonesia merupakan angka yang jauh dari memadai untuk menopang sistem diagnosis berbasis pencitraan \autocite{insights102023indonesia}. Beban kerja yang berlebihan ini tidak hanya menciptakan risiko \textit{burnout}---dengan 47\% radiolog mengalaminya secara global---tetapi juga mendegradasi akurasi interpretasi secara sistemik, mengingat 60--80\% kesalahan diagnostik dalam radiologi bersifat perseptual, yakni radiolog gagal mendeteksi lesi yang sebenarnya ada \cite{zhang2023diagnostic}. Kondisi ini menjadikan keterlibatan AI bukan sekadar pilihan, melainkan kebutuhan yang mendesak.
+	Rasio 1,2 radiolog per 100.000 penduduk di Indonesia merupakan angka yang jauh dari memadai untuk menopang sistem diagnosis berbasis pencitraan \autocite{insights102023indonesia}. Beban kerja yang berlebihan ini tidak hanya menciptakan risiko \textit{burnout} (yang dialami oleh 47\% radiolog secara global), tetapi juga mendegradasi akurasi interpretasi secara sistemik, mengingat 60--80\% kesalahan diagnostik dalam radiologi bersifat perseptual, yakni radiolog gagal mendeteksi lesi yang sebenarnya ada \cite{zhang2023diagnostic}. Kondisi ini menjadikan keterlibatan AI bukan sekadar pilihan, melainkan kebutuhan yang mendesak.
 	
-	\item Kurangnya Kepercayaan dari Klinisi dan Pasien
-	Ini adalah isu paradoksikal yang paling kritis. Di satu sisi, profesional medis meragukan AI karena kurangnya edukasi dan minimnya keterlibatan mereka dalam proses pengembangannya \autocite{syaftahan2025transformasi}. Di sisi lain, pasien justru memberikan kepercayaan tertinggi kepada dokter yang secara eksplisit \textit{tidak} menggunakan AI (skor rata-rata 0,63), dibandingkan dokter yang menggunakannya secara ekstensif (skor 0,30) \autocite{chen2025impact}. Paradoks ini menunjukkan bahwa masalah adopsi AI dalam medis bukan semata-mata soal kapabilitas teknis, melainkan soal legitimasi sosial dan kepercayaan institusional yang belum terbangun. Tanpa menyelesaikan krisis kepercayaan ini, sistem AI yang secara teknis canggih sekalipun akan menghadapi resistensi besar dari seluruh ekosistem layanan kesehatan.
+	\item Kurangnya Kepercayaan dari Klinisi dan Pasien \\
+	Isu ini berjalan dua arah sekaligus. Di satu sisi, profesional medis meragukan AI karena kurangnya edukasi dan minimnya keterlibatan mereka dalam proses pengembangannya \autocite{syaftahan2025transformasi}. Di sisi lain, pasien justru memberikan kepercayaan tertinggi kepada dokter yang secara eksplisit \textit{tidak} menggunakan AI (skor rata-rata 0,63), dibandingkan dokter yang menggunakannya secara ekstensif (skor 0,30) \autocite{chen2025impact}. Kedua fenomena ini berakar dari sifat \textit{black-box} sistem AI medis, di mana baik klinisi maupun pasien tidak dapat menelusuri dasar suatu keputusan sehingga kepercayaan sulit terbentuk meskipun performa teknisnya tinggi. Karena itu, interpretabilitas perlu menjadi prasyarat pengembangan AI medis, bukan sekadar fitur tambahan. Sistem yang mampu menjelaskan rasionalitas keputusannya secara transparan akan lebih mudah diaudit klinisi sekaligus lebih dipercaya pasien. Tanpa interpretabilitas ini, krisis kepercayaan akan terus berulang terlepas dari secanggih apa pun sistem yang ditawarkan.
 \end{enumerate}
 
-Dengan mempertimbangkan keempat permasalahan tersebut, dapat disimpulkan bahwa meskipun alur diagnosis tumor otak melalui jalur \textit{Direct Access CT} telah berfungsi secara teknis, sistem ini masih memiliki berbagai kelemahan yang signifikan dari sisi klinis maupun struktural. Seleksi pasien yang tidak akurat, keterlambatan diagnosis yang berdampak klinis nyata, ketimpangan sumber daya radiologi yang ekstrem, khususnya di Indonesia, serta defisit kepercayaan terhadap AI dari sisi klinisi maupun pasien. Oleh karena itu, penelitian ini bertujuan untuk mengembangkan model AI yang dilengkapi dengan modul \textit{Explainable AI} berupa visualisasi untuk deteksi tumor otak melalui citra CT scan kepala. 
+Dengan mempertimbangkan keempat permasalahan tersebut, dapat disimpulkan bahwa meskipun alur diagnosis tumor otak melalui jalur \textit{Direct Access CT} telah berfungsi secara teknis, sistem ini masih memiliki berbagai kelemahan yang signifikan dari sisi klinis maupun struktural. Seleksi pasien yang tidak akurat, keterlambatan diagnosis yang berdampak klinis nyata, ketimpangan sumber daya radiologi yang ekstrem, khususnya di Indonesia, serta defisit kepercayaan terhadap AI dari sisi klinisi maupun pasien. Oleh karena itu, tugas akhir ini bertujuan untuk mengembangkan model AI yang dilengkapi dengan modul \textit{interpretability} berupa visualisasi dalam mendeteksi tumor otak melalui citra CT scan kepala.
 
 Model ini diharapkan dapat membuka peluang dalam pembuatan sistem yang memperketat seleksi pasien sejak tahap awal, mempersingkat waktu menuju diagnosis, serta membantu radiolog dalam menganalisis citra secara lebih efisien untuk mengatasi keterbatasan sumber daya manusia. Dengan menyediakan visualisasi penjelas terhadap setiap hasil prediksi, model ini diharapkan dapat menjembatani kesenjangan antara akurasi teknis dan kepercayaan klinis, sekaligus memperluas peluang integrasi dalam pengembangan sistem pendukung keputusan medis yang lebih terbuka, transparan, dan bertanggung jawab. Pengembangan model ini diharapkan memiliki peluang sebagai berikut.
 
@@ -87,25 +92,48 @@ Model ini diharapkan dapat membuka peluang dalam pembuatan sistem yang memperket
 \subsection{Kebutuhan Fungsional}
 Untuk dapat memenuhi kebutuhan peluang tersebut, diperlukan kebutuhan fungsional model sebagai berikut.
 
-\input{tables/tabel3.1.tex}
+\begin{table}[h]
+	\centering
+	\caption{Spesifikasi Kebutuhan Fungsional Model}
+	\label{tab:kebutuhan_fungsional}
+	\begin{tabular}{|l|p{11cm}|}
+		\hline
+		\textbf{Kode} & \textbf{Kebutuhan Fungsional} \\ \hline
+		FR01 & Model harus dapat menerima \textit{input} data berupa citra digital \textit{CT Scan} otak. \\ \hline
+		FR02 & Model harus mampu mengklasifikasikan citra \textit{input} ke dalam dua kelas keputusan, yaitu tumor atau sehat (tidak ada tumor). \\ \hline
+		FR03 & Model harus menghasilkan visualisasi interpretasi keputusan model untuk menyoroti area fitur pada citra yang membuat model mengklasifikasikan gambar citra tersebut ke dalam kelas tumor. \\ \hline
+		FR04 & Model harus menampilkan tingkat kepercayaan dari hasil prediksi untuk membantu tenaga medis dalam menilai validitas keputusan sistem dan membangun kepercayaan pengguna. \\ \hline
+	\end{tabular}
+\end{table}
 
 \subsection{Kebutuhan Nonfungsional}
 Kebutuhan nonfungsional model adalah sebagai berikut.
-
-\input{tables/tabel3.2.tex}
+\begin{table}[h]
+	\centering
+	\caption{Spesifikasi Kebutuhan Non-Fungsional Model}
+	\label{tab:kebutuhan_non_fungsional}
+	\begin{tabular}{|c|l|p{9.5cm}|}
+		\hline
+		\textbf{Kode} & \textbf{Kebutuhan} & \textbf{Deskripsi} \\ \hline
+		NF01 & \textit{Interpretability} & Berbeda dengan model \textit{black-box} sebelumnya, model harus menyediakan transparansi atas keputusan yang diambil dengan memvisualisasikan area fokus sebagai dasar prediksi. Hal ini menjawab keraguan pasien terhadap validitas diagnosis AI dan membantu profesional medis memverifikasi hasil tanpa harus mempercayai algoritma secara buta. \\ \hline
+		NF02 & \textit{Reliability} & Model harus memiliki konsistensi tinggi dalam memberikan hasil prediksi, dengan mempertahankan atau melampaui akurasi model referensi. \\ \hline
+		NF03 & \textit{Complexity} & Model harus memiliki \textit{space complexity} yang rendah dan terukur pada tahap inferensi, agar dapat diimplementasikan secara optimal pada infrastruktur komputasi umum di fasilitas kesehatan tanpa mengorbankan kecepatan maupun akurasi klasifikasi dan visualisasi. \\ \hline
+	\end{tabular}
+\end{table}
 
 \section{Analisis Pemilihan Solusi}
 \label{sec:analisispemilihansolusi}
 Pada bagian ini, dilakukan analisis kebutuhan untuk menentukan solusi yang paling tepat dalam mengatasi permasalahan \textit{black-box} pada model AI. Tahapan analisis ini mencakup identifikasi dan pemaparan berbagai alternatif solusi dan menggunakan metodologi AHP untuk mengevaluasi dan memilih solusi terbaik dari alternatif tersebut.
 
 \subsection{Alternatif Solusi}
-Alternatif solusi yang dapat diberikan dalam permasalahan tersebut terbagi menjadi dua, yaitu penggunaan metode XAI pada infrastruktur yang sama dan penggunaan model yang berbeda untuk mencegah terjadinya \textit{black-box} pada AI.
 
-Alternatif solusi pertama fokus pada penerapan metode XAI yang dapat menyelesaikan masalah \textit{black-box}, khususnya dalam konteks \textit{computer vision} (\textit{CT scan}) dan model CNN yang sudah ada. Penjelasan mendalam mengenai metode-metode berikut dapat dilihat pada Bab \ref{sec:metode_xai}, Subbab \nameref{sec:metode_xai}.
+Masalah \textit{black-box} pada model AI sebenarnya berkaitan erat dengan konsep \textit{interpretability}, yaitu seberapa mudah manusia memahami alasan di balik suatu keputusan yang dihasilkan oleh model. \textit{Interpretability} dapat dicapai melalui dua cara. Cara pertama disebut \textit{post-hoc interpretability}, yaitu menambahkan metode penjelas pada model \textit{black-box} yang sudah ada tanpa mengubah model itu sendiri. Cara kedua disebut \textit{intrinsic interpretability}, yaitu menggunakan model yang sejak awal sudah mudah dipahami strukturnya, sehingga tidak memerlukan metode tambahan untuk menjelaskannya.
+
+Berdasarkan dua cara tersebut, alternatif solusi pada tugas akhir ini juga dibagi menjadi dua. Alternatif pertama adalah menerapkan metode \textit{post-hoc interpretability} pada model \textit{deep learning}. Metode-metode ini sering disebut sebagai \textit{Explainable AI} (XAI). Metode XAI tidak benar-benar membuka isi model, melainkan hanya memberi perkiraan tentang bagian mana dari gambar yang paling berpengaruh terhadap keputusan model. Karena sifatnya perkiraan, hasil penjelasannya belum tentu 100\% sesuai dengan proses yang sebenarnya terjadi di dalam model. Penjelasan lebih lengkap mengenai metode-metode ini dapat dilihat pada Bab \ref{sec:metode_xai}, Subbab \nameref{sec:metode_xai}.
 
 \begin{enumerate}
 	\item \textit{Attribution-based methods} \\
-	\textit{Attribution-based methods} memberi nilai pada setiap bagian masukan gambar. Bagian yang paling memengaruhi keputusan akhir akan mendapat nilai tinggi. Hal ini dapat membantu penggunanya untuk melihat area mana pada gambar yang paling penting bagi AI. Alternatif solusi yang menggunakan \textit{attribution-based methods} adalah sebagai berikut.
+	Metode ini bekerja dengan memberi nilai pada setiap bagian dari gambar masukan. Semakin besar pengaruh suatu bagian gambar terhadap keputusan akhir model, semakin tinggi nilai yang diberikan. Dengan cara ini, pengguna bisa melihat area mana pada gambar yang dianggap paling penting oleh model. Namun, karena metode ini hanya menghitung berdasarkan gradien setelah model selesai membuat keputusan, hasilnya tetap berupa perkiraan, bukan penjelasan langsung dari cara kerja model. Beberapa contoh metode \textit{attribution-based} yang dipertimbangkan adalah sebagai berikut.
 	\begin{enumerate}
 		\item \textit{Gradient-weighted Class Activation Mapping} (Grad-CAM)
 		
@@ -114,19 +142,19 @@ Alternatif solusi pertama fokus pada penerapan metode XAI yang dapat menyelesaik
 		\item \textit{SmoothGrad}
 	\end{enumerate}
 	
-	\item \textit{Transformer-based methods}
-	\textit{Transformer-based methods} memanfaatkan mekanisme \textit{attention} bawaan pada arsitektur \textit{Vision Transformer} (ViT). Teknik ini membagi gambar menjadi beberapa \textit{patch} dan memvisualisasikan skor atensinya menjadi peta yang menyoroti area paling krusial dalam pengambilan keputusan model \autocite{iftikhar2025explainable}.
+	\item \textit{Transformer-based methods} \\
+	Metode ini memanfaatkan mekanisme \textit{attention} yang memang sudah ada di dalam arsitektur \textit{Vision Transformer} (ViT). Bedanya dengan \textit{attribution-based methods}, nilai \textit{attention} ini bukan hasil perkiraan tambahan, melainkan memang bagian dari proses perhitungan model itu sendiri. Oleh karena itu, metode ini bisa dibilang lebih dekat ke sifat \textit{intrinsic interpretability} dibanding metode berbasis gradien. Caranya adalah dengan membagi gambar menjadi beberapa \textit{patch}, lalu menampilkan skor \textit{attention}-nya dalam bentuk peta yang menunjukkan area mana yang paling penting bagi model \autocite{iftikhar2025explainable}.
 \end{enumerate}
 
-Selain mengevaluasi berbagai metode XAI untuk disematkan pada arsitektur \textit{deep learning} yang ada, analisis ini juga memperhitungkan alternatif penggunaan model yang berbeda secara mendasar, seperti model \textit{machine learning} konvensional. Perbandingan komprehensif antara pendekatan \textit{deep learning} berbasis XAI dengan model konvensional (baik yang bersifat \textit{white-box} maupun \textit{black-box}) diperlukan untuk membuktikan efektivitas dan urgensi dari solusi yang diusulkan dalam tugas akhir ini.
+Selain mempertimbangkan berbagai metode \textit{post-hoc interpretability} di atas, tugas akhir ini juga mempertimbangkan alternatif kedua, yaitu mengganti model \textit{deep learning} yang digunakan dengan model \textit{machine learning} konvensional yang lebih mudah dipahami secara langsung, seperti \textit{decision tree} atau regresi logistik. Model semacam ini bersifat \textit{intrinsically interpretable} atau \textit{white-box}, karena proses pengambilan keputusannya bisa ditelusuri langsung dari strukturnya, tanpa perlu metode penjelas tambahan. Perbandingan antara pendekatan \textit{deep learning} yang dibantu \textit{post-hoc interpretability} dengan model konvensional (baik yang \textit{white-box} maupun yang masih \textit{black-box}) diperlukan untuk membuktikan solusi mana yang paling efektif dan cocok digunakan pada tugas akhir ini.
 
-Analisis penentuan solusi yang digunakan pada tugas akhir ini menggunakan \textit{Analytic Hierarchy Process} (AHP). AHP adalah metode pengambilan keputusan yang digunakan oleh individu atau organisasi untuk melakukan pemeringkatan alternatif yang mereka pertimbangkan berdasarkan perbandingan berpasangan. \textit{Analytic Hierarchy Process} (AHP) melibatkan lima langkah utama. Pertama, menyusun hierarki masalah keputusan ke dalam tiga tingkatan, yaitu tujuan, kriteria, dan alternatif. Kedua, melakukan perbandingan berpasangan untuk kriteria guna menilai kepentingan relatifnya menggunakan skala sembilan poin, mulai dari rasio 1 yang berarti sama penting hingga rasio 9 yang berarti sangat penting, serta nilai kebalikannya. Ketiga, menghitung bobot kriteria untuk mewakili kepentingan relatifnya, yang diturunkan dari rasio preferensi pada langkah sebelumnya. Keempat, mengevaluasi alternatif dengan melakukan perbandingan berpasangan serupa untuk setiap pasangan alternatif berdasarkan setiap kriteria. Kelima, menggabungkan bobot kriteria dan skor alternatif melalui perkalian dan penjumlahan untuk menghasilkan skor total bagi setiap alternatif, yang kemudian digunakan untuk memeringkatnya \autocite{1000minds2025ahp}.
+Untuk menentukan solusi mana yang akan dipilih, tugas akhir ini menggunakan metode \textit{Analytic Hierarchy Process} (AHP). AHP adalah metode pengambilan keputusan yang digunakan untuk memeringkat beberapa alternatif berdasarkan perbandingan berpasangan. Metode ini terdiri dari lima langkah utama. Pertama, menyusun masalah keputusan ke dalam tiga tingkatan, yaitu tujuan, kriteria, dan alternatif. Kedua, membandingkan setiap pasangan kriteria untuk menilai kepentingan relatifnya menggunakan skala sembilan poin, mulai dari 1 (sama penting) hingga 9 (sangat penting), beserta nilai kebalikannya. Ketiga, menghitung bobot masing-masing kriteria berdasarkan hasil perbandingan tersebut. Keempat, membandingkan setiap pasangan alternatif berdasarkan masing-masing kriteria. Kelima, mengalikan dan menjumlahkan bobot kriteria dengan skor alternatif untuk mendapatkan skor akhir setiap alternatif, yang kemudian digunakan untuk menentukan peringkatnya \autocite{1000minds2025ahp}.
 
 AHP pada tugas akhir dilakukan berdasarkan literatur yang melakukan evaluasi terhadap model terkait. Terdapat tiga studi literatur yang digunakan untuk menganalisis alternatif solusi, yaitu:
 
 \begin{enumerate}
 	\item \textit{Explainable AI and vision transformers for detection and classification of brain tumor: a comprehensive survey} \cite{hosny2025explainable} \\
-	Penelitian ini membahas tentang tinjauan teknis dan perbandingan teknik diagnostik \textit{deep learning} (DL) untuk tumor otak, dengan fokus pada penelitian dari tahun 2020 hingga 2024, seperti CNN, \textit{transfer learning}, \textit{vision transformers} (ViT), teknik hibrida, dan \textit{Explainable AI} (XAI). Tugas akhir ini mengeksplorasi kinerja, keunggulan, dan keterbatasan dari pendekatan-pendekatan tersebut pada \textit{dataset} umum seperti Figshare dan BraTS.
+	Penelitian ini membahas tentang tinjauan teknis dan perbandingan teknik diagnostik \textit{deep learning} (DL) untuk tumor otak, dengan fokus pada penelitian dari tahun 2020 hingga 2024, seperti CNN, \textit{vision transformers} (ViT), teknik hibrida, dan \textit{Explainable AI} (XAI). Tugas akhir ini mengeksplorasi kinerja, keunggulan, dan keterbatasan dari pendekatan-pendekatan tersebut pada \textit{dataset} umum seperti Figshare dan BraTS.
 	
 	\item \textit{Explainable CNN for brain tumor detection and classification through XAI based key features identification} \cite{iftikhar2025explainable}\\
 	Penelitian ini menggunakan metodologi yang menggabungkan \textit{Explainable AI} (XAI) dengan arsitektur CNN untuk mengatasi masalah model yang kompleks dan sulit diinterpretasi. Tugas akhir ini menggunakan teknik XAI berupa \textit{Gradient-weighted Class Activation Mapping} (Grad-CAM) agar memastikan model fokus pada fitur tumor yang relevan.
@@ -147,8 +175,8 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 			Kemampuan model untuk secara benar mengidentifikasi atau mengklasifikasikan kondisi medis.
 			\item C2: \textit{Interpretability} \\
 			Kemampuan model untuk memberikan penjelasan atas prediksinya, yang krusial dalam konteks medis untuk membangun kepercayaan dan memahami fokus model.
-			\item C3: \textit{Robustness} dan Generalisasi \\
-			Kemampuan model untuk berkinerja baik pada data baru (\textit{unseen data}) atau \textit{dataset} yang berbeda, serta ketahanan terhadap variasi data.
+			\item C3: Efisiensi Komputasi \\
+			Kebutuhan sumber daya komputasi, waktu pelatihan, dan memori yang diperlukan model untuk mencapai performa yang diinginkan.
 			\item C4: Kebutuhan Data dan Teknik \textit{Preprocessing}\\
 			Sensitivitas model terhadap jumlah data yang tersedia dan efektivitas teknik seperti augmentasi data, \textit{transfer learning}, atau \textit{preprocessing} spesifik.
 			\item C5: Kompleksitas Model \\
@@ -156,8 +184,8 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\end{enumerate}
 		\item Alternatif Solusi
 		\begin{enumerate}
-			\item A1: CNN + Grad-CAM (Mewakili \textit{attribution-based methods})
-			\item A2: \textit{Vision Transformer }(ViT) + \textit{Attention Map }(Mewakili \textit{Transformer-based methods})
+			\item A1: CNN + Grad-CAM (Representasi \textit{attribution-based methods})
+			\item A2: \textit{Vision Transformer} + \textit{Attention Map }(Representasi \textit{Transformer-based methods})
 			\item A3: \textit{Naive Bayes} (Representasi \textit{white-box})
 			\item A4: \textit{Extra Trees} (Representasi \textit{black-box})
 		\end{enumerate}
@@ -170,7 +198,7 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_kriteria}
 		\begin{tabular}{|l|c|c|c|c|c|}
 			\hline
-			Kriteria & C1 & C2 & C3 & C4 & C5 \\ \hline
+			\textbf{Kriteria} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} & \textbf{C5} \\ \hline
 			C1 (Akurasi) & $1$ & $1$ & $5$ & $3$ & $5$ \\ \hline
 			C2 (XAI) & $1$ & $1$ & $5$ & $3$ & $5$ \\ \hline
 			C3 (Efisiensi) & $1/5$ & $1/5$ & $1$ & $1/3$ & $1$ \\ \hline
@@ -185,10 +213,10 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:prioritas_kriteria}
 		\begin{tabular}{|l|r|r|}
 			\hline
-			Kriteria & Bobot & Prioritas (\%) \\ \hline
+			\textbf{Kriteria} & \textbf{Bobot} & \textbf{Prioritas} (\%) \\ \hline
 			C1: Akurasi & 359 & 35,9\% \\ \hline
 			C2: \textit{Interpretability} & 359 & 35,9\% \\ \hline
-			C3: \textit{Robustness}/Generalisasi & 64 & 6,4\% \\ \hline
+			C3: Efisiensi Komputasi & 64 & 6,4\% \\ \hline
 			C4: Kebutuhan Data & 153 & 15,3\% \\ \hline
 			C5: Kompleksitas Model & 64 & 6,4\% \\ \hline
 			Total & 1.000 & 100,0\% \\ \hline
@@ -202,11 +230,11 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_c1}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			C1: Akurasi & A1 & A2 & A3 & A4 \\ \hline
-			A1 & $1$ & $2$ & $7$ & $4$ \\ \hline
-			A2 & $1/2$ & $1$ & $5$ & $3$ \\ \hline
-			A3 & $1/7$ & $1/5$ & $1$ & $1/3$ \\ \hline
-			A4 & $1/4$ & $1/3$ & $3$ & $1$ \\ \hline
+			\textbf{C1: Akurasi} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} \\ \hline
+			\textbf{A1} & $1$ & $2$ & $7$ & $4$ \\ \hline
+			\textbf{A2} & $1/2$ & $1$ & $5$ & $3$ \\ \hline
+			\textbf{A3} & $1/7$ & $1/5$ & $1$ & $1/3$ \\ \hline
+			\textbf{A4} & $1/4$ & $1/3$ & $3$ & $1$ \\ \hline
 		\end{tabular}
 	\end{table}
 	
@@ -226,11 +254,11 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_c2}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			C2: XAI & A1 & A2 & A3 & A4 \\ \hline
-			A1 & $1$ & $3$ & $2$ & $7$ \\ \hline
-			A2 & $1/3$ & $1$ & $1/3$ & $3$ \\ \hline
-			A3 & $1/2$ & $3$ & $1$ & $7$ \\ \hline
-			A4 & $1/7$ & $1/3$ & $1/7$ & $1$ \\ \hline
+			\textbf{C2: XAI} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} \\ \hline
+			\textbf{A1} & $1$ & $3$ & $2$ & $7$ \\ \hline
+			\textbf{A2} & $1/3$ & $1$ & $1/3$ & $3$ \\ \hline
+			\textbf{A3} & $1/2$ & $3$ & $1$ & $7$ \\ \hline
+			\textbf{A4} & $1/7$ & $1/3$ & $1/7$ & $1$ \\ \hline
 		\end{tabular}
 	\end{table}
 	
@@ -250,11 +278,11 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_c3}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			C3: Efisiensi & A1 & A2 & A3 & A4 \\ \hline
-			A1 & $1$ & $3$ & $7$ & $1/3$ \\ \hline
-			A2 & $1/3$ & $1$ & $1/9$ & $1/5$ \\ \hline
-			A3 & $7$ & $9$ & $1$ & $3$ \\ \hline
-			A4 & $3$ & $5$ & $1/3$ & $1$ \\ \hline
+			\textbf{C3: Efisiensi} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} \\ \hline
+			\textbf{A1} & $1$ & $3$ & $1/7$ & $1/3$ \\ \hline
+			\textbf{A2} & $1/3$ & $1$ & $1/9$ & $1/5$ \\ \hline
+			\textbf{A3} & $7$ & $9$ & $1$ & $3$ \\ \hline
+			\textbf{A4} & $3$ & $5$ & $1/3$ & $1$ \\ \hline
 		\end{tabular}
 	\end{table}
 	
@@ -274,11 +302,11 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_c4}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			C4: Data & A1 & A2 & A3 & A4 \\ \hline
-			A1 & $1$ & $3$ & $1/5$ & $1/3$ \\ \hline
-			A2 & $1/3$ & $1$ & $1/7$ & $1/5$ \\ \hline
-			A3 & $5$ & $7$ & $1$ & $2$ \\ \hline
-			A4 & $3$ & $5$ & $1/2$ & $1$ \\ \hline
+			\textbf{C4: Data} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} \\ \hline
+			\textbf{A1} & $1$ & $3$ & $1/5$ & $1/3$ \\ \hline
+			\textbf{A2} & $1/3$ & $1$ & $1/7$ & $1/5$ \\ \hline
+			\textbf{A3} & $5$ & $7$ & $1$ & $2$ \\ \hline
+			\textbf{A4} & $3$ & $5$ & $1/2$ & $1$ \\ \hline
 		\end{tabular}
 	\end{table}
 	
@@ -298,11 +326,11 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:perbandingan_c5}
 		\begin{tabular}{|l|c|c|c|c|}
 			\hline
-			C5: Kompleksitas & A1 & A2 & A3 & A4 \\ \hline
-			A1 & $1$ & $2$ & $1/7$ & $1/3$ \\ \hline
-			A2 & $1/2$ & $1$ & $1/8$ & $1/4$ \\ \hline
-			A3 & $1/7$ & $8$ & $1$ & $3$ \\ \hline
-			A4 & $3$ & $4$ & $1/3$ & $1$ \\ \hline
+			\textbf{C5: Kompleksitas} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} \\ \hline
+			\textbf{A1} & $1$ & $2$ & $1/7$ & $1/3$ \\ \hline
+			\textbf{A2} & $1/2$ & $1$ & $1/8$ & $1/4$ \\ \hline
+			\textbf{A3} & $7$ & $8$ & $1$ & $3$ \\ \hline
+			\textbf{A4} & $3$ & $4$ & $1/3$ & $1$ \\ \hline
 		\end{tabular}
 	\end{table}
 	
@@ -324,14 +352,15 @@ Tahapan AHP yang dilakukan adalah sebagai berikut:
 		\label{tab:hasil_perhitungan}
 		\begin{tabular}{|l|c|c|c|c|c|c|}
 			\hline
-			Alternatif & C1 & C2 & C3 & C4 & C5 & Hasil Akhir \\ \hline
-			Bobot Kriteria & 35,9\% & 35,9\% & 6,4\% & 15,3\% & 6,4\% & \\ \hline
-			A1 & 505 & 474 & 101 & 122 & 94 & 382,607 \\ \hline
-			A2 & 306 & 139 & 49 & 57 & 60 & 175,452 \\ \hline
-			A3 & 58 & 334 & 607 & 523 & 608 & 298,507 \\ \hline
-			A4 & 131 & 53 & 243 & 298 & 238 & 142,434 \\ \hline
+			\textbf{Alternatif} & \textbf{C1} & \textbf{C2} & \textbf{C3} & \textbf{C4} & \textbf{C5} & \textbf{Hasil Akhir} \\ \hline
+			\textbf{Bobot Kriteria} & 35,9\% & 35,9\% & 6,4\% & 15,3\% & 6,4\% & \\ \hline
+			\textbf{A1} & 505 & 474 & 101 & 122 & 94 & 382,607 \\ \hline
+			\textbf{A2} & 306 & 139 & 49 & 57 & 60 & 175,452 \\ \hline
+			\textbf{A3} & 58 & 334 & 607 & 523 & 608 & 298,507 \\ \hline
+			\textbf{A4} & 131 & 53 & 243 & 298 & 238 & 142,434 \\ \hline
 		\end{tabular}
 	\end{table}
+	
 	Perhitungan Rinci Skor Akhir:
 	\begin{enumerate}
 		\item A1 (CNN + Grad-CAM): $(0,359 \times 505) + (0,359 \times 474) + (0,064 \times 101) + (0,153 \times 122) + (0,064 \times 94) = 382,607$
