@@ -188,13 +188,21 @@ Evaluasi model \textit{deep learning} sangat krusial untuk menilai kemampuan nya
 
 \subsection{\textit{Deep Learning}}
 \label{sec:Deep Learning}
-Salah satu komponen penting dari \textit{deep learning} untuk melatih dan mengevaluasi model adalah \textit{performance metrics}. \textit{Performance metrics} menilai kemampuan model untuk membuat prediksi akurat pada data yang belum pernah dilihat. Berdasarkan \textcite{terven2025survey}, terdapat beberapa \textit{performance metrics} yang bisa digunakan dalam pendeteksian tumor, yaitu:
+Salah satu komponen penting dari \textit{deep learning} untuk melatih dan mengevaluasi model adalah \textit{performance metrics}. \textit{Performance metrics} menilai kemampuan model untuk membuat prediksi akurat pada data yang belum pernah dilihat. Berdasarkan \textcite{wozniak2023deep}, terdapat beberapa \textit{performance metrics} yang digunakan dalam pendeteksian tumor otak menggunakan \textit{deep learning}, yaitu:
 \begin{enumerate}
-	\item \textit{Precision}, \textit{Recall}, dan \textit{F1-Score} \\
-	\textit{Precision} mengukur akurasi prediksi positif, \textit{recall} mengukur seberapa banyak kasus tumor aktual yang berhasil ditemukan, dan \textit{F1-Score} memberikan skor keseimbangan antara keduanya.
-	\item \textit{Precision-Recall Curve} \\
-	Kurva yang memvisualisasikan \textit{trade-off} antara \textit{precision} dan \textit{recall} di berbagai ambang batas. \textit{Precision-recall curve} direkomendasikan untuk data yang tidak seimbang dengan kelas minoritas yang penting.
+	\item Akurasi (\textit{Accuracy}) \\
+	Mengukur rasio prediksi benar secara keseluruhan dengan membandingkan prediksi positif dan negatif yang benar (\textit{True Positives} dan \textit{True Negatives}) terhadap total seluruh data.
+	\item Presisi (\textit{Precision}) \\
+	Mengukur ketepatan prediksi positif yang dihasilkan oleh model, yaitu proporsi prediksi tumor yang benar-benar merupakan tumor dari keseluruhan prediksi positif yang dihasilkan model.
+	\item \textit{Recall} \\
+	Mengukur kemampuan model dalam menemukan semua sampel positif (kasus tumor) yang sebenarnya ada di dalam data, atau dikenal juga sebagai \textit{sensitivity}.
+	\item Spesifisitas (\textit{Specificity}) \\
+	Mengukur kemampuan model dalam mengidentifikasi hasil negatif (kasus non-tumor/sehat) dengan benar. \textcite{wozniak2023deep} menunjukkan bahwa metrik ini penting dalam konteks medis karena mencerminkan seberapa rendah kecenderungan model salah mengklasifikasikan pasien sehat sebagai penderita tumor, sehingga meningkatkan keandalan model saat diterapkan pada pemeriksaan klinis.
+	\item \textit{F1-Score} \\
+	Mengukur keseimbangan model menggunakan rata-rata harmonik dari \textit{Precision} dan \textit{Recall}, sehingga cocok digunakan ketika distribusi kelas data tidak seimbang.
 \end{enumerate}
+
+Kelima metrik tersebut digunakan secara bersamaan oleh \textcite{wozniak2021deep} untuk mengevaluasi model \textit{Correlation Learning Mechanism} (CLM) pada deteksi tumor otak berbasis citra CT scan.
 
 \subsection{\textit{Explainable Artificial Intelligence} (XAI)}
 Berdasarkan \textcite{kadir2023evaluation}, untuk melakukan evaluasi terhadap XAI, diperlukan metrik XAI yang bisa ditentukan oleh dua taksonomi, yaitu taksonomi berbasis aplikasi dan taksonomi berbasis metodologi evaluasi.

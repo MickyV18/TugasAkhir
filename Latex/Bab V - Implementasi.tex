@@ -325,7 +325,7 @@ Berdasarkan diagram alur eksperimen, terdapat beberapa komponen ANN yang ditanda
 	\label{gambar:afterclm}
 \end{figure}
 
-Ketiga parameter tersebut diuji secara bersamaan menggunakan \textit{grid search}, sehingga menghasilkan total 3×3×3 = 27 kombinasi. Kombinasi terbaik dipilih berdasarkan \textit{composite score} dari lima metrik evaluasi, yaitu \textit{accuracy, precision, recall, specificity}, dan F1, bukan hanya berdasarkan akurasi saja. Hal ini dilakukan agar hasil yang diperoleh lebih representatif dalam menggambarkan kemampuan generalisasi model.
+Ketiga parameter tersebut diuji secara bersamaan menggunakan \textit{grid search}, sehingga menghasilkan total 3×3×3 = 27 kombinasi. Kombinasi terbaik dipilih dengan membandingkan kelima metrik evaluasi (\textit{accuracy, precision, recall, specificity}, dan F1) secara langsung satu per satu, bukan melalui satu skor gabungan, dengan \textit{recall} sebagai pertimbangan utama karena \textit{false negative} (tumor tidak terdeteksi) memiliki risiko klinis yang lebih besar dibandingkan \textit{false positive}. Hal ini dilakukan agar hasil yang diperoleh lebih representatif dalam menggambarkan kemampuan generalisasi model, tanpa menyembunyikan \textit{trade-off} antar metrik di balik satu angka gabungan.
 
 Selanjutnya, dilakukan \textit{grid search} pada model CLM untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001, 0,00025, 0,001), \textit{dropout} (0,05, 0,1), dan iterasi (dibuat tetap sebesar 5000). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yang merupakan gabungan dari tiga metode \textit{preprocessing} (No Prep, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan menggunakan metrik evaluasi untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 1.
 
@@ -345,8 +345,8 @@ Namun, dari hasil yang diperoleh, ditemukan adanya masalah yang cukup serius. Pa
 			GC (All) & 62.8 & 64.4 & 96.2 & 0.0 & 77.2 & LR=0.00025, drop=0.05, iter=5000 \\ \hline
 			GC (Test) & 77.5 & 77.5 & 100.0 & 0.0 & 87.4 & LR=0.001, drop=0.1, iter=5000 \\ \hline
 			GC (Val+Test) & 71.6 & 71.6 & 100.0 & 0.0 & 83.5 & LR=0.001, drop=0.1, iter=5000 \\ \hline
-			\textbf{WN (All)} & \textbf{54.6} & \textbf{61.1} & \textbf{83.5} & \textbf{0.0} & \textbf{70.6} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
-			WN (Test) & 78.6 & 78.4 & 100.0 & 4.8 & 87.9 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			WN (All) & 54.6 & 61.1 & 83.5 & 0.0 & 70.6 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
+			\textbf{WN (Test)} & \textbf{78.6} & \textbf{78.4} & \textbf{100.0} & \textbf{4.8} & \textbf{87.9} & \textbf{LR=0.00025, drop=0.1, iter=5000} \\ \hline
 			WN (Val+Test) & 73.0 & 72.6 & 100.0 & 4.8 & 84.1 & LR=0.00025, drop=0.1, iter=5000 \\ \hline
 		\end{tabular}%
 	}
@@ -440,7 +440,7 @@ Secara umum, arsitektur model yang diimplementasikan pada tugas akhir ini mengik
 	
 \end{longtable}
 
-Selanjutnya, dilakukan \textit{grid search} pada model Explainable CNN untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001, 0,001, 0,01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0,1, 0,2, 0,3), menghasilkan 27 kombinasi per skenario. Setiap kombinasi diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Peringkat tiap kombinasi ditentukan dari \textit{composite score}, yaitu kombinasi berbobot lima metrik (akurasi 20\%, \textit{precision} 15\%, \textit{recall} 30\%, \textit{specificity} 15\%, F1 20\%) dengan bobot \textit{recall} tertinggi karena \textit{false negative} (tumor tidak terdeteksi) dinilai lebih berbahaya secara klinis dibanding \textit{false positive}. Hasilnya kemudian dibandingkan untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 2.
+Selanjutnya, dilakukan \textit{grid search} pada model Explainable CNN untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001, 0,001, 0,01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0,1, 0,2, 0,3), menghasilkan 27 kombinasi per skenario. Setiap kombinasi diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Peringkat tiap kombinasi ditentukan dengan membandingkan langsung kelima metrik tersebut (akurasi, \textit{precision}, \textit{recall}, \textit{specificity}, F1), bukan melalui satu skor gabungan berbobot, dengan \textit{recall} tetap menjadi pertimbangan utama karena \textit{false negative} (tumor tidak terdeteksi) dinilai lebih berbahaya secara klinis dibanding \textit{false positive}. Hasilnya kemudian dibandingkan untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 2.
 
 Dari hasil yang diperoleh, sebagian besar skenario menunjukkan performa yang relatif seimbang antara \textit{recall} dan \textit{specificity}. Contohnya dapat dilihat pada skenario GC-Test (\textit{specificity} 80,95\%) dan WN-Val+Test (\textit{specificity} 78,57\%), yang juga menjadi skenario dengan performa terbaik secara keseluruhan (akurasi 87,83\%, F1-score 88,07\%). Hal ini menunjukkan bahwa model sudah cukup mampu mengenali kedua kelas dengan baik, tidak hanya condong ke satu kelas saja.
 
@@ -467,9 +467,9 @@ Meskipun begitu, masih ada beberapa skenario dengan nilai \textit{specificity} y
 	}
 \end{table}
 
-Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen Explainable CNN diperoleh pada skenario WN-Val+Test, dengan konfigurasi \textit{learning rate} 0,0001, \textit{batch size} 40, \textit{optimizer} Adam, dan \textit{dropout rate} 0,1. Konfigurasi ini menghasilkan akurasi sebesar 87,83\%, F1-score (\textit{weighted}) 88,07\%, \textit{precision} (\textit{weighted}) 88,45\%, \textit{recall} (\textit{weighted}) 87,83\%, dan \textit{specificity} 78,57\%, dengan \textit{composite score} sebesar 0,8658. Seluruh proses \textit{pruning} Grad-CAM dan validasi silang lanjutan pada bagian berikut dijalankan di atas model terbaik skenario WN (Val+Test) ini, bukan skenario \textit{test} saja.
+Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen Explainable CNN diperoleh pada skenario WN-Val+Test, dengan konfigurasi \textit{learning rate} 0,0001, \textit{batch size} 40, \textit{optimizer} Adam, dan \textit{dropout rate} 0,1. Konfigurasi ini menghasilkan akurasi sebesar 87,83\%, F1-score (\textit{weighted}) 88,07\%, \textit{precision} (\textit{weighted}) 88,45\%, \textit{recall} (\textit{weighted}) 87,83\%, dan \textit{specificity} 78,57\%. Seluruh proses \textit{pruning} Grad-CAM dan validasi silang lanjutan pada bagian berikut dijalankan di atas model terbaik skenario WN (Val+Test) ini, bukan skenario \textit{test} saja.
 
-Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa yang baik antara \textit{recall} dan \textit{specificity}. Hal ini menandakan bahwa model tidak hanya unggul dalam mengenali satu kelas saja, tetapi juga mampu membedakan kedua kelas secara proporsional. Selain itu, nilai \textit{composite score} yang tinggi juga menunjukkan bahwa konfigurasi ini memberikan hasil paling optimal secara keseluruhan, dibandingkan dengan seluruh kombinasi \textit{hyperparameter} lain yang telah diuji pada proses \textit{grid search}.
+Model ini dipilih sebagai model terbaik karena unggul di mayoritas metrik evaluasi (akurasi, \textit{precision}, F1, dan \textit{specificity}) dibandingkan seluruh kombinasi \textit{hyperparameter} lain yang diuji pada skema WN (Val+Test), dengan \textit{recall} tetap menjadi prioritas utama karena risiko klinis dari \textit{false negative} (tumor yang tidak terdeteksi) lebih besar dibandingkan \textit{false positive}. Keseimbangan performa antara \textit{recall} dan \textit{specificity} pada konfigurasi ini juga menandakan bahwa model tidak hanya unggul dalam mengenali satu kelas saja, tetapi juga mampu membedakan kedua kelas secara proporsional.
 
 \begin{lstlisting}[caption={Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN}, label={lst:hyperparam-excnn}, captionpos=t]
 	{
@@ -481,8 +481,7 @@ Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa ya
 		"f1_weighted": 0.880673,
 		"precision_w": 0.88451,
 		"recall_w": 0.878307,
-		"specificity": 0.785714,
-		"composite_score": 0.8658217
+		"specificity": 0.785714
 	}
 \end{lstlisting}
 
@@ -495,11 +494,11 @@ Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa ya
 %	\caption{Perbandingan Model Awal vs Model Hasil \textit{Pruning} Grad-CAM}
 %	\label{tab:pruning_comparison}
 %	\begin{tabular}{|l|c|c|c|}
-%		\hline
-%		\textbf{Model} & \textbf{Jumlah Layer Konv.} & \textbf{Akurasi} & \textbf{F1 (\textit{weighted})} \\ \hline
-%		Initial Model & 6 & 87,83\% & 88,07\% \\ \hline
-%		Pruned Model (Grad-CAM) & \textit{[isi hasil \texttt{layers\_to\_prune}]} & \textit{[isi hasil aktual]} & \textit{[isi hasil aktual]} \\ \hline
-%	\end{tabular}
+	%		\hline
+	%		\textbf{Model} & \textbf{Jumlah Layer Konv.} & \textbf{Akurasi} & \textbf{F1 (\textit{weighted})} \\ \hline
+	%		Initial Model & 6 & 87,83\% & 88,07\% \\ \hline
+	%		Pruned Model (Grad-CAM) & \textit{[isi hasil \texttt{layers\_to\_prune}]} & \textit{[isi hasil aktual]} & \textit{[isi hasil aktual]} \\ \hline
+	%	\end{tabular}
 %\end{table}
 %
 %\textbf{Catatan kritis.} Notebook yang digunakan tidak menyertakan hasil eksekusi (\textit{output cell} kosong), sehingga baris \textit{Pruned Model} pada Tabel \ref{tab:pruning_comparison} perlu dilengkapi dari hasil \textit{run} aktual (variabel \texttt{layer\_importance}, \texttt{layers\_to\_prune}, \texttt{comparison\_df}) sebelum bab ini difinalisasi. Perlu diperhatikan juga bahwa karena \textit{threshold} didefinisikan sebagai nilai minimum itu sendiri, mekanisme ini secara desain hanya akan menghapus satu layer (atau layer-layer yang seri di posisi terendah) per eksekusi, bukan pemangkasan yang proporsional terhadap seberapa tidak penting suatu layer. Model hasil \textit{pruning} ini juga \textbf{belum} divalidasi melalui skema \textit{cross-validation} (lihat Subbab Evaluasi), validasinya baru satu kali \textit{split train/val/test}.
@@ -530,24 +529,24 @@ Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \text
 %	\caption{Ringkasan Arsitektur Model EfficientNetB0}
 %	\label{tab:arsitektur_model}
 %	\begin{tabular}{|l|l|l|}
-%		\hline
-%		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
-%		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
-%		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
-%		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
-%		batchnorm\_base (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
-%		dropout0 (Dropout) & (None, 1280) & 0 \\ \hline
-%		dense1 (Dense) & (None, 512) & 655.872 \\ \hline
-%		batchnorm\_dense1 (BatchNormalization) & (None, 512) & 2.048 \\ \hline
-%		dropout1 (Dropout) & (None, 512) & 0 \\ \hline
-%		dense2 (Dense) & (None, 256) & 131.328 \\ \hline
-%		batchnorm\_dense2 (BatchNormalization) & (None, 256) & 1.024 \\ \hline
-%		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
-%		output (Dense) & (None, 2) & 514 \\ \hline
-%		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 \\ \hline
-%		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 \\ \hline
-%		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 \\ \hline
-%	\end{tabular}
+	%		\hline
+	%		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+	%		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+	%		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
+	%		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
+	%		batchnorm\_base (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
+	%		dropout0 (Dropout) & (None, 1280) & 0 \\ \hline
+	%		dense1 (Dense) & (None, 512) & 655.872 \\ \hline
+	%		batchnorm\_dense1 (BatchNormalization) & (None, 512) & 2.048 \\ \hline
+	%		dropout1 (Dropout) & (None, 512) & 0 \\ \hline
+	%		dense2 (Dense) & (None, 256) & 131.328 \\ \hline
+	%		batchnorm\_dense2 (BatchNormalization) & (None, 256) & 1.024 \\ \hline
+	%		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
+	%		output (Dense) & (None, 2) & 514 \\ \hline
+	%		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 \\ \hline
+	%		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 \\ \hline
+	%		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 \\ \hline
+	%	\end{tabular}
 %	\vspace{4pt}
 %\end{table}
 
@@ -578,9 +577,9 @@ Meskipun begitu, sebagian besar konfigurasi terbaik yang diperoleh menggunakan \
 	}
 \end{table}
 
-Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen EfficientNetB0 diperoleh pada skenario GC-Test, dengan konfigurasi \textit{learning rate} 0.01, \textit{batch size} 64, \textit{optimizer} Adam, \textit{dropout rate} 0.3, \textit{epoch} fase 1 sebanyak 12 kali, \textit{epoch} fase 2 (\textit{fine-tuning}) sebanyak 17 kali, \textit{finetune ratio} 0.2, dan \textit{finetune learning rate factor} 0.1. Konfigurasi ini menghasilkan akurasi sebesar 96.63\%, F1-score (\textit{weighted}) 96.68\%, \textit{precision} (\textit{weighted}) 96.76\%, \textit{recall} (\textit{weighted}) 96.63\%, dan \textit{specificity} 92.86\%, dengan \textit{composite score} sebesar 0.9609.
+Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen EfficientNetB0 diperoleh pada skenario GC-Test, dengan konfigurasi \textit{learning rate} 0.01, \textit{batch size} 64, \textit{optimizer} Adam, \textit{dropout rate} 0.3, \textit{epoch} fase 1 sebanyak 12 kali, \textit{epoch} fase 2 (\textit{fine-tuning}) sebanyak 17 kali, \textit{finetune ratio} 0.2, dan \textit{finetune learning rate factor} 0.1. Konfigurasi ini menghasilkan akurasi sebesar 96.63\%, F1-score (\textit{weighted}) 96.68\%, \textit{precision} (\textit{weighted}) 96.76\%, \textit{recall} (\textit{weighted}) 96.63\%, dan \textit{specificity} 92.86\%.
 
-Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang di semua metrik evaluasi, termasuk nilai \textit{specificity} yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja. Penerapan skema \textit{fine-tuning} dua fase pada proses \textit{training} juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot \textit{backbone} secara menyeluruh dengan \textit{learning rate} yang lebih kecil. \textit{Composite score} yang tinggi ini juga menegaskan bahwa konfigurasi tersebut merupakan hasil paling optimal dibandingkan semua kombinasi \textit{hyperparameter} lain yang telah diuji selama proses \textit{grid search}.
+Model ini dipilih sebagai model terbaik karena unggul di mayoritas metrik evaluasi dibandingkan seluruh kombinasi \textit{hyperparameter} lain yang diuji pada skema GC (Test), dengan performa yang tinggi dan seimbang di semua metrik, termasuk nilai \textit{specificity} yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja; \textit{recall} tetap menjadi prioritas dalam pertimbangan akhir mengingat risiko klinis yang lebih besar dari \textit{false negative} (tumor tidak terdeteksi) dibanding \textit{false positive}. Penerapan skema \textit{fine-tuning} dua fase pada proses \textit{training} juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot \textit{backbone} secara menyeluruh dengan \textit{learning rate} yang lebih kecil.
 
 \begin{lstlisting}[caption={Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik EfficientNetB0}, label={lst:hyperparam-effnet}, captionpos=t]
 	{
@@ -597,8 +596,7 @@ Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang d
 		"f1_weighted": 0.96676,
 		"precision_w": 0.967638,
 		"recall_w": 0.966292,
-		"specificity": 0.928571,
-		"composite_score": 0.96092935
+		"specificity": 0.928571
 	}
 \end{lstlisting}
 

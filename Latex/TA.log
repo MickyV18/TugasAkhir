@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  13 JUL 2026 14:25
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  13 JUL 2026 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1452,7 +1452,7 @@ Package geometry Warning: `a4paper': not available in `\newgeometry'; skipped.
 
 
 ] (ta.toc
-Overfull \hbox (2.63689pt too wide) in paragraph at lines 229--229
+Overfull \hbox (2.63689pt too wide) in paragraph at lines 225--225
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 Explainable CNN for brain tumor detect
 ion and clas- 
  []
@@ -1460,25 +1460,25 @@ ion and clas-
 
 
 [11]
-Overfull \hbox (7.76979pt too wide) in paragraph at lines 240--240
+Overfull \hbox (7.76979pt too wide) in paragraph at lines 236--236
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 An XAI-Enhanced EfficientNetB0 Framewo
 rk for Pre- 
  []
 
 
-Overfull \hbox (3.05681pt too wide) in paragraph at lines 245--245
+Overfull \hbox (3.05681pt too wide) in paragraph at lines 241--241
  \TU/TimesNewRoman(0)/m/it/12 Classification through XAI Based Key Features Ide
 n- 
  []
 
 
-Overfull \hbox (4.98338pt too wide) in paragraph at lines 381--381
+Overfull \hbox (4.98338pt too wide) in paragraph at lines 377--377
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 PERANCANGAN MODEL PENDETEKSIAN TUMOR OT
 AK BER- 
  []
 
 
-Overfull \hbox (5.44041pt too wide) in paragraph at lines 474--474
+Overfull \hbox (5.44041pt too wide) in paragraph at lines 470--470
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 IMPLEMENTASI MODEL PENDETEKSIAN TUMOR O
 TAK BER- 
  []
@@ -1486,12 +1486,12 @@ TAK BER-
 
 
 [12]
-Overfull \hbox (1.26215pt too wide) detected at line 564
+Overfull \hbox (1.26215pt too wide) detected at line 560
 \TU/TimesNewRoman(0)/m/n/12 VI.2.7.1 
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 569
+Overfull \hbox (1.26215pt too wide) detected at line 565
 \TU/TimesNewRoman(0)/m/n/12 VI.2.7.2 
  []
 
@@ -1692,59 +1692,88 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 184.
 
 [18]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 204.
+LaTeX Warning: Citation 'wozniak2023deep' on page 19 undefined on input line 19
+1.
 
-File: images/TaksonomiXAI.png Graphic file (type bmp)
-<images/TaksonomiXAI.png>
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 210.
+LaTeX Warning: Citation '' on page 19 undefined on input line 191.
+
+
+LaTeX Warning: Citation 'wozniak2023deep' on page 19 undefined on input line 20
+0.
+
+
+LaTeX Warning: Citation '' on page 19 undefined on input line 200.
+
+
+Overfull \hbox (0.26744pt too wide) in paragraph at lines 199--201
+\TU/TimesNewRoman(0)/m/n/12 non-tumor/sehat) dengan benar. [][] menun-
+ []
 
 
 
 [19]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 215.
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 212.
+
+File: images/TaksonomiXAI.png Graphic file (type bmp)
+<images/TaksonomiXAI.png>
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 218.
 
 
-Overfull \hbox (5.6858pt too wide) in paragraph at lines 214--216
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 218.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 223.
+
+
+Overfull \hbox (5.6858pt too wide) in paragraph at lines 222--224
 \TU/TimesNewRoman(0)/m/n/12 Taksonomi berbasis metodologi evaluasi mengklasifik
 asikan teknik-teknik eva-
  []
 
-File: images/TaksonomiXAI2.png Graphic file (type bmp)
-<images/TaksonomiXAI2.png>
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 221.
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 221.
-
 
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 251--254
+File: images/TaksonomiXAI2.png Graphic file (type bmp)
+<images/TaksonomiXAI2.png>
 
- []
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 229.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 229.
 
 
 
 [21]
+Underfull \hbox (badness 10000) in paragraph at lines 259--262
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 271.
+ []
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 270.
 
 
 
 [22]
-Overfull \hbox (5.24149pt too wide) in paragraph at lines 282--282
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 279.
+
+
+
+[23]
+Overfull \hbox (5.24149pt too wide) in paragraph at lines 290--290
 \TU/TimesNewRoman(0)/b/it/12 gularization for Scalable Multi-Class Brain Tumor 
 Classification in MRI| 
  []
 
 
 
-[23]
-Overfull \hbox (3.4778pt too wide) in paragraph at lines 291--292
+[24]
+Overfull \hbox (3.4778pt too wide) in paragraph at lines 299--300
 [][][][][][]\TU/TimesNewRoman(0)/m/n/12 Mahesh dkk. ([][]2024[][])[] []menginte
 grasikan teknik \TU/TimesNewRoman(0)/m/it/12 Explainable AI \TU/TimesNewRoman(0
 )/m/n/12 (XAI) berupa \TU/TimesNewRoman(0)/m/it/12 Gradient-
@@ -1752,11 +1781,15 @@ grasikan teknik \TU/TimesNewRoman(0)/m/it/12 Explainable AI \TU/TimesNewRoman(0
 
 
 
-[24]
+[25]
 
-[25]) (Bab III - Analisis.tex
+[26]) (Bab III - Analisis.tex
 
-[26]
+[27]
+
+[28
+
+]
 Bab III.
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
@@ -1765,23 +1798,22 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 21.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 24.
-
-
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 27.
 
 
 
-[27
-
+[29
 
 ]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 30.
+
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 36.
 
 
 
-[28]
+[30]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 45.
 
@@ -1796,7 +1828,7 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 47.
 
 
 
-[29]
+[31]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 59.
 
@@ -1808,13 +1840,13 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 63.
 
 
 
-[30]
+[32]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 72.
 
 
 
-[31]
+[33]
 Overfull \hbox (1.38477pt too wide) in paragraph at lines 81--82
 []\TU/TimesNewRoman(0)/m/n/12 Dengan mempertimbangkan keempat permasalahan ters
 ebut, dapat disimpulkan bah-
@@ -1822,7 +1854,7 @@ ebut, dapat disimpulkan bah-
 
 
 
-[32]
+[34]
 Overfull \hbox (9.77548pt too wide) in paragraph at lines 115--122
  [][] 
  []
@@ -1832,13 +1864,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[33]
-
-[34]
-
 [35]
 
 [36]
+
+[37]
+
+[38]
 Overfull \hbox (3.38562pt too wide) in paragraph at lines 188--189
 []\TU/TimesNewRoman(0)/m/n/12 A2: \TU/TimesNewRoman(0)/m/it/12 Vision Transform
 er \TU/TimesNewRoman(0)/m/n/12 + \TU/TimesNewRoman(0)/m/it/12 Attention Map \TU
@@ -1848,9 +1880,9 @@ er \TU/TimesNewRoman(0)/m/n/12 + \TU/TimesNewRoman(0)/m/it/12 Attention Map \TU
 
 
 
-[37]
+[39]
 
-[38]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
@@ -1862,7 +1894,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
 
 
-[39]
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
@@ -1874,7 +1906,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--319
 
 
 
-[40]
+[42]
 Underfull \hbox (badness 10000) in paragraph at lines 342--343
 
  []
@@ -1884,15 +1916,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[41]) (Bab IV - Perancangan.tex
+[43]) (Bab IV - Perancangan.tex
 
-[42]
+[44]
 Bab IV.
 File: images/Flow Sistem.png Graphic file (type bmp)
 <images/Flow Sistem.png>
 
 
-[43
+[45
 
 
 ]
@@ -1904,17 +1936,17 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 35.
 
 
 
-[44]
+[46]
 File: images/normal brain radio.png Graphic file (type bmp)
 <images/normal brain radio.png>
 
 
-[45]
+[47]
 File: images/Flow preprocess.png Graphic file (type bmp)
 <images/Flow preprocess.png>
 
 
-[46]
+[48]
 Overfull \hbox (4.04498pt too wide) in paragraph at lines 102--103
 \TU/TimesNewRoman(0)/m/n/12 pada citra. Mengikuti pendekatan yang diterapkan ol
 eh [][][][][]Emmanuel dkk. ([][]2026[][])[][],
@@ -1922,27 +1954,31 @@ eh [][][][][]Emmanuel dkk. ([][]2026[][])[][],
 
 
 
-[47]
+[49]
 
-[48]
+[50]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 119.
 
 
 
-[49]
+[51]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 122.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 134.
 
-
-
-[50]
+[52]
 File: images/CLM1.png Graphic file (type bmp)
 <images/CLM1.png>
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 149.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1953,16 +1989,13 @@ File: images/CLM2.png Graphic file (type bmp)
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
 
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
-
-
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[51]
+[53]
 
-[52]
+[54]
 Overfull \hbox (2.23553pt too wide) in paragraph at lines 178--180
 \TU/TimesNewRoman(0)/m/n/12 menggunakan fungsi aktivasi sigmoid unipolar dan di
 latih menggunakan \TU/TimesNewRoman(0)/m/it/12 Back-
@@ -1975,7 +2008,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[53]
+[55]
 Overfull \hbox (8.0398pt too wide) in paragraph at lines 212--213
 []\TU/TimesNewRoman(0)/m/n/12 BatchNorm + Average Pooling: Normalisasi aktivasi
  diikuti dengan \TU/TimesNewRoman(0)/m/it/12 down-
@@ -1994,9 +2027,13 @@ ackward pass \TU/TimesNewRoman(0)/m/n/12 untuk meng-
 
 
 
-[54]
+[56]
 
-[55]
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 234.
+
+
+
+[57]
 File: images/before tl.png Graphic file (type bmp)
 <images/before tl.png>
 
@@ -2008,37 +2045,30 @@ n 8).
 
 
 
-[56]
-
-[57]
-
 [58]
 
-[59]) (Bab V - Implementasi.tex
+[59]
 
 [60]
+
+[61]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 311.
+
+) (Bab V - Implementasi.tex
+
+[62]
 Bab V.
 
 
-[61
+[63
 
 
 ]
 
-[62]
+[64]
 File: images/otakwithf.png Graphic file (type bmp)
 <images/otakwithf.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[63]
-
-[64]
-File: images/preprocess_image.png Graphic file (type bmp)
-<images/preprocess_image.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2048,23 +2078,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [65]
 
 [66]
+File: images/preprocess_image.png Graphic file (type bmp)
+<images/preprocess_image.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[67]
+
+[68]
 File: images/preprocess_eksperimen.png Graphic file (type bmp)
 <images/preprocess_eksperimen.png>
 
 
-[67]
+[69]
 File: images/jumlah metode.png Graphic file (type bmp)
 <images/jumlah metode.png>
 
 
-[68]
+[70]
 File: images/perbandingan augmentasi.png Graphic file (type bmp)
 <images/perbandingan augmentasi.png>
 
 
-[69]
+[71]
 
-[70]
+[72]
 File: images/after CLM.png Graphic file (type bmp)
 <images/after CLM.png>
 
@@ -2073,9 +2114,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[71]
+[73]
 
-[72]
+[74]
 File: images/after exp cnn.png Graphic file (type bmp)
 <images/after exp cnn.png>
 
@@ -2086,7 +2127,7 @@ spek, seperti ukuran input 224×224×3,
 
 
 
-[73]
+[75]
 Overfull \hbox (15.77359pt too wide) in alignment at lines 374--380
  [] [] [] 
  []
@@ -2116,14 +2157,14 @@ Overfull \hbox (15.77359pt too wide) in alignment at lines 393--441
  [] [] [] 
  []
 
-[74]
+[76]
 
-[75]
+[77]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 474.
 
 
-[76]
+[78]
 File: images/after tl.png Graphic file (type bmp)
 <images/after tl.png>
 
@@ -2132,19 +2173,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[77]
+[79]
 
-[78]
-Overfull \hbox (5.91016pt too wide) in paragraph at lines 556--557
+[80]
+Overfull \hbox (5.91016pt too wide) in paragraph at lines 555--556
 \TU/TimesNewRoman(0)/m/n/12 tinggi dan konsisten di hampir semua skenario, deng
 an akurasi berkisar antara 88.89%
  []
 
 
 
-[79]
+[81]
 
-[80]
+[82]
 File: images/compare_tl_heatmap.png Graphic file (type bmp)
 <images/compare_tl_heatmap.png>
 
@@ -2153,33 +2194,29 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[81]
-
-[82]) (Bab VI - Evaluasi.tex
-
 [83]
 
-[84
+[84]) (Bab VI - Evaluasi.tex
+
+[85]
+
+[86
 
 ]
 Bab VI.
 
 
-[85
+[87
 
 ]
 
-[86]
+[88]
 Overfull \hbox (12.1242pt too wide) in paragraph at lines 39--40
 \TU/TimesNewRoman(0)/m/n/12 ma dengan nilai tanpa preprocessing pada skema Test
  dan Val+Test (77,5%/100%/0,0%
  []
 
 
-
-[87]
-
-[88]
 
 [89]
 
@@ -2189,7 +2226,11 @@ Overfull \hbox (12.1242pt too wide) in paragraph at lines 39--40
 
 [92]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 86.
+[93]
+
+[94]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 91.
 
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 91.
@@ -2222,17 +2263,13 @@ Overfull \hbox (3.45671pt too wide) in paragraph at lines 93--105
 
 
 
-[93]
+[95]
 
-[94]
+[96]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 120.
 
 
-
-[95]
-
-[96]
 
 [97]
 
@@ -2241,6 +2278,10 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 120.
 [99]
 
 [100]
+
+[101]
+
+[102]
 Overfull \hbox (2.754pt too wide) in paragraph at lines 182--183
 []\TU/TimesNewRoman(0)/m/n/12 Secara umum, rendahnya skor XAlign yang didapat m
 enunjukkan bahwa Grad-CAM
@@ -2250,53 +2291,53 @@ File: images/xalign.png Graphic file (type bmp)
 <images/xalign.png>
 
 
-[101]
+[103]
 File: images/TN_effnet.png Graphic file (type bmp)
 <images/TN_effnet.png>
 File: images/TP_effnet_no.png Graphic file (type bmp)
 <images/TP_effnet_no.png>
 
 
-[102]
+[104]
 File: images/TP_effnet_mask.png Graphic file (type bmp)
 <images/TP_effnet_mask.png>
 
 
-[103]
+[105]
 File: images/FP_effnet.png Graphic file (type bmp)
 <images/FP_effnet.png>
 
 
-[104]
+[106]
 File: images/FN_effnet.png Graphic file (type bmp)
 <images/FN_effnet.png>
 
 
-[105]
-
-[106]
-
-[107]) (Bab VII - Penutup.tex
+[107]
 
 [108]
-Bab VII.
 
-
-[109
-
-
-])
+[109]) (Bab VII - Penutup.tex
 
 [110]
+Bab VII.
+
 
 [111
 
 
-]
+])
 
 [112]
 
-[113]
+[113
+
+
+]
+
+[114]
+
+[115]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 411--411
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
@@ -2316,7 +2357,7 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
 
 
 
-[114]
+[116]
 Overfull \hbox (33.26854pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
@@ -2325,7 +2366,7 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[115]
+[117]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
@@ -2339,7 +2380,7 @@ Overfull \hbox (1.24242pt too wide) in paragraph at lines 411--411
 
 
 
-[116]
+[118]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
@@ -2353,9 +2394,9 @@ iwek, dan Arkadiusz Gertych. 2024.
 
 
 
-[117] (Lampiran-A.tex) (Lampiran-B.tex)
+[119] (Lampiran-A.tex) (Lampiran-B.tex)
 
-[118]
+[120]
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 316.
 See the caption package documentation for explanation.
@@ -2365,19 +2406,28 @@ See the caption package documentation for explanation.
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `ta.out' has not changed.
 (rerunfilecheck)             Checksum: 849DFC73F407BA2D2232293AE9F706A3;18681.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                ta
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'ta.run.xml'.
 \openout1 = `ta.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35232 strings out of 403197
- 690266 string characters out of 5455938
- 2156462 words of memory out of 5000000
- 63258 multiletter control sequences out of 15000+600000
+ 35231 strings out of 403197
+ 690254 string characters out of 5455938
+ 2153493 words of memory out of 5000000
+ 63257 multiletter control sequences out of 15000+600000
  632950 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  73i,12n,100p,2345b,7045s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ta.pdf (146 pages).
+Output written on ta.pdf (148 pages).
