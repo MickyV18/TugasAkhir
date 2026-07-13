@@ -1,39 +1,36 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {III.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Fungsional Model}}{33}{table.caption.21}%
-\contentsline {table}{\numberline {III.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Non-Fungsional Model}}{34}{table.caption.22}%
-\contentsline {table}{\numberline {III.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan Kriteria}}{38}{table.caption.23}%
-\contentsline {table}{\numberline {III.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Vektor Prioritas Kriteria}}{38}{table.caption.24}%
-\contentsline {table}{\numberline {III.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C1 (Akurasi)}}{38}{table.caption.25}%
-\contentsline {table}{\numberline {III.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C2 (\textit {Interpretability})}}{39}{table.caption.26}%
-\contentsline {table}{\numberline {III.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C3 (Efisiensi Komputasi)}}{40}{table.caption.27}%
-\contentsline {table}{\numberline {III.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C4 (Kebutuhan Data)}}{40}{table.caption.28}%
-\contentsline {table}{\numberline {III.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C5 (Kompleksitas)}}{41}{table.caption.29}%
-\contentsline {table}{\numberline {III.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Hasil Perhitungan Perbandingan Berpasangan}}{42}{table.caption.30}%
+\contentsline {table}{\numberline {III.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Fungsional Model}}{33}{table.caption.19}%
+\contentsline {table}{\numberline {III.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Spesifikasi Kebutuhan Non-Fungsional Model}}{34}{table.caption.20}%
+\contentsline {table}{\numberline {III.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan Kriteria}}{38}{table.caption.21}%
+\contentsline {table}{\numberline {III.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Vektor Prioritas Kriteria}}{38}{table.caption.22}%
+\contentsline {table}{\numberline {III.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C1 (Akurasi)}}{38}{table.caption.23}%
+\contentsline {table}{\numberline {III.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C2 (\textit {Interpretability})}}{39}{table.caption.24}%
+\contentsline {table}{\numberline {III.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C3 (Efisiensi Komputasi)}}{40}{table.caption.25}%
+\contentsline {table}{\numberline {III.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C4 (Kebutuhan Data)}}{40}{table.caption.26}%
+\contentsline {table}{\numberline {III.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Matriks Perbandingan Berpasangan C5 (Kompleksitas)}}{41}{table.caption.27}%
+\contentsline {table}{\numberline {III.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Hasil Perhitungan Perbandingan Berpasangan}}{42}{table.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {V.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Radiopaedia}}{60}{table.caption.39}%
-\contentsline {table}{\numberline {V.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Mendeley}}{61}{table.caption.40}%
-\contentsline {table}{\numberline {V.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 1}}{62}{table.caption.42}%
-\contentsline {table}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 2}}{62}{table.caption.43}%
-\contentsline {table}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 3}}{63}{table.caption.44}%
-\contentsline {table}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Kondisi Dataset Sebelum dan Sesudah \textit {Preprocessing}}}{64}{table.caption.46}%
-\contentsline {table}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Statistik Dataset Sebelum dan Setelah ROI}}{65}{table.caption.47}%
-\contentsline {table}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Metrik Kualitas Citra antara GC dan WN}}{65}{table.caption.49}%
-\contentsline {table}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}}{66}{table.caption.50}%
-\contentsline {table}{\numberline {V.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model CLM}}{68}{table.caption.53}%
-\contentsline {table}{\numberline {V.11}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen CLM}}{70}{table.caption.55}%
-\contentsline {table}{\numberline {V.12}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model Explainable CNN}}{72}{table.caption.57}%
-\contentsline {table}{\numberline {V.13}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen Explainable CNN}}{73}{table.caption.58}%
-\contentsline {table}{\numberline {V.14}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model EfficientNetB0}}{75}{table.caption.60}%
-\contentsline {table}{\numberline {V.15}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen EfficientNetB0}}{76}{table.caption.61}%
+\contentsline {table}{\numberline {V.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Radiopaedia}}{62}{table.caption.37}%
+\contentsline {table}{\numberline {V.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Distribusi Jenis Tumor Berdasarkan Data Pasien Dataset Mendeley}}{63}{table.caption.38}%
+\contentsline {table}{\numberline {V.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 1}}{64}{table.caption.40}%
+\contentsline {table}{\numberline {V.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 2}}{65}{table.caption.41}%
+\contentsline {table}{\numberline {V.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Pembagian Data Skenario 3}}{65}{table.caption.42}%
+\contentsline {table}{\numberline {V.6}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Kondisi Dataset Sebelum dan Sesudah \textit {Preprocessing}}}{66}{table.caption.44}%
+\contentsline {table}{\numberline {V.7}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Statistik Dataset Sebelum dan Setelah ROI}}{67}{table.caption.45}%
+\contentsline {table}{\numberline {V.8}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Metrik Kualitas Citra antara GC dan WN}}{68}{table.caption.47}%
+\contentsline {table}{\numberline {V.9}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Entropi dan Kepadatan Tepi Sebelum, GC, dan WN}}{68}{table.caption.48}%
+\contentsline {table}{\numberline {V.10}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Ringkasan Arsitektur Model CLM}}{71}{table.caption.51}%
+\contentsline {table}{\numberline {V.11}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen CLM}}{73}{table.caption.53}%
+\contentsline {table}{\numberline {V.12}{\ignorespaces Ringkasan Arsitektur Model Explainable CNN}}{74}{table.5.12}%
+\contentsline {table}{\numberline {V.13}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen Explainable CNN}}{76}{table.caption.55}%
+\contentsline {table}{\numberline {V.14}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Best Model setiap Eksperimen EfficientNetB0}}{79}{table.caption.57}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {VI.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Penelitian Ini dengan \blx@tocontentsinit {0}\autocite {iftikhar2025explainable}}}{87}{table.caption.63}%
-\contentsline {table}{\numberline {VI.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Parameter Model}}{89}{table.caption.64}%
-\contentsline {table}{\numberline {VI.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Hasil evaluasi XAlign pada Grad-CAM model EfficientNetB0}}{92}{table.caption.65}%
-\contentsline {table}{\numberline {VI.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Statistik Jumlah Piksel Tumor}}{98}{table.caption.72}%
-\contentsline {table}{\numberline {VI.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Statistik Perbandingan \textit {Sharpness} Antar Kelas}}{98}{table.caption.73}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {VI.1}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Penelitian Ini dengan \blx@tocontentsinit {0}\autocite {iftikhar2025explainable}}}{94}{table.caption.59}%
+\contentsline {table}{\numberline {VI.2}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Perbandingan Parameter Model}}{96}{table.caption.60}%
+\contentsline {table}{\numberline {VI.3}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Hasil evaluasi XAlign pada Grad-CAM model EfficientNetB0}}{100}{table.caption.61}%
+\contentsline {table}{\numberline {VI.4}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Statistik Jumlah Piksel Tumor}}{106}{table.caption.68}%
+\contentsline {table}{\numberline {VI.5}{\ignorespaces \xpg@aux {variant=indonesian}{malay}\ignorespaces Statistik Perbandingan \textit {Sharpness} Antar Kelas}}{106}{table.caption.69}%
 \addvspace {10\p@ }

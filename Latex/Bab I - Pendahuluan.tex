@@ -5,7 +5,7 @@
 % ==========================================
 \chapter{PENDAHULUAN}
 \label{chap:pendahuluan}
-% --- Latar Belakang --- 
+% Latar Belakang
 \section{Latar Belakang}
 Berdasarkan data \textcite{owid2025causesofdeath} yang dapat dilihat pada Gambar \ref{gambar:causeofdeath}, kanker atau tumor ganas menempati urutan kedua sebagai penyebab kematian tertinggi di dunia setelah penyakit kardiovaskular, dengan perkiraan angka kematian mencapai 10,6 juta jiwa. Di dalam kelompok penyakit mematikan tersebut, tumor otak menjadi salah satu tantangan terbesar dalam dunia kesehatan global. Menurut \textcite{ferlay2024gco1}, terdapat 321.731 kasus baru tumor otak di seluruh dunia, dengan angka kematian mencapai 248.500 kasus. Hal ini menempatkan tumor otak pada peringkat ke-19 dalam jumlah kejadian dan peringkat ke-12 dalam jumlah kematian. Berdasarkan data tersebut, perbandingan antara peringkat jumlah kejadian dan peringkat jumlah kematian pada tumor selain otak tidak berbeda jauh dibandingkan dengan tumor otak. Perbedaan peringkat antara jumlah kejadian dengan jumlah kematian tumor otak ini menunjukkan urgensi diagnosis tumor otak lebih tinggi dibandingkan tumor yang lain.
 
@@ -32,7 +32,7 @@ Salah satu penelitian terkini yang berfokus pada optimalisasi deteksi tumor otak
 
 Pada AI yang digunakan untuk suplemen diagnostik tanpa transparansi terdapat permasalahan-permasalahan yang dapat terjadi. Berdasarkan \textcite{xu2023medical}, terdapat permasalahan AI yang bersifat \textit{black box} yang berarti dokter, pasien, atau pembuat AI tidak dapat memahami bagaimana AI menghasilkan kesimpulan atau rekomendasi medis. Hal ini dapat menyebabkan potensi kesalahan diagnosis, kehilangan pemahaman penuh terhadap informasi mengenai diagnosis, dan kesulitan dalam melacak identifikasi dan deteksi kesalahan medis. Salah satu solusi kecerdasan buatan yang saat ini sedang dikembangkan adalah penggunaan konsep \textit{Explainable AI} (XAI). Berdasarkan \textcite{asmita2025from}, XAI sangat penting untuk mengatasi ketidakpercayaan pada AI dengan cara meningkatkan transparansi dan interpretasi model \textit{deep learning}. XAI memungkinkan para ahli, seperti radiolog, untuk memahami bagaimana AI sampai pada suatu kesimpulan dengan menyoroti fitur-fitur data yang paling berpengaruh. Hal ini secara langsung membangun kepercayaan pada sistem otomatis, membantu kepatuhan terhadap regulasi, dan memperbaiki komunikasi hasil diagnosis kepada pasien.
 
-% --- Rumusan Masalah ---
+% Rumusan Masalah
 \section{Rumusan Masalah}
 Keterbatasan fasilitas MRI di Indonesia mendorong penggunaan citra \textit{CT Scan} sebagai alternatif diagnosis tumor otak. Namun, model \textit{deep learning} yang umum digunakan untuk membantu diagnosis bersifat \textit{black box}, sehingga landasan keputusannya sulit divalidasi secara klinis meski akurasinya tinggi. Selain itu, arsitektur \textit{deep learning} yang berbeda berpotensi menghasilkan performa dan kualitas penjelasan visual yang berbeda pula, sehingga perlu dibandingkan. Oleh karena itu, tugas akhir ini merumuskan masalah sebagai berikut:
 \begin{enumerate}
@@ -41,15 +41,15 @@ Keterbatasan fasilitas MRI di Indonesia mendorong penggunaan citra \textit{CT Sc
 \end{enumerate}
 
 
-% --- Tujuan ---
+% Tujuan
 \section{Tujuan}
-Tujuan tugas akhir ini adalah mengembangkan dan membandingkan beberapa arsitektur \textit{deep learning} untuk deteksi tumor otak pada citra \textit{CT Scan}, serta mengevaluasi sejauh mana model dengan performa terbaik dapat dijelaskan secara visual melalui XAI. Keberhasilan diukur melalui: (1) teridentifikasinya performa tiap arsitektur secara kuantitatif dan (2) teridentifikasinya sejauh mana visualisasi XAI relevan terhadap area tumor beserta faktor yang mempengaruhinya. Adapun tujuan pelaksanaannya:
+Tujuan tugas akhir ini adalah mengembangkan dan membandingkan beberapa arsitektur \textit{deep learning} untuk deteksi tumor otak pada citra \textit{CT Scan}, serta mengevaluasi sejauh mana model dengan performa terbaik dapat dijelaskan secara visual melalui XAI. Keberhasilan diukur melalui teridentifikasinya performa tiap arsitektur secara kuantitatif dan teridentifikasinya sejauh mana visualisasi XAI relevan terhadap area tumor beserta faktor yang mempengaruhinya. Adapun tujuan pelaksanaannya:
 \begin{enumerate}
 	\item Mengembangkan arsitektur CLM, \textit{Explainable} CNN, EfficientNetB0 untuk klasifikasi tumor otak pada citra \textit{CT Scan}.
 	\item Mengevaluasi relevansi visualisasi XAI pada model dengan performa klasifikasi terbaik terhadap area tumor secara kuantitatif maupun kualitatif.
 \end{enumerate}
 
-% --- Batasan Masalah ---
+% Batasan Masalah
 \section{Batasan Masalah}
 Batasan masalah yang dilakukan pada tugas akhir ini adalah:
 \begin{enumerate}
@@ -65,7 +65,7 @@ Batasan masalah yang dilakukan pada tugas akhir ini adalah:
 	
 \end{enumerate}
 
-% --- Metodologi Pengerjaan TA ---
+% Metodologi Pengerjaan TA
 \section{Metodologi}
 Metodologi tahapan pengerjaan tugas akhir ini akan mengadopsi kerangka kerja \textit{Cross-Industry Process for Data Mining} (CRISP-DM) seperti pada Gambar \ref{gambar:crispdm}.
 
@@ -111,7 +111,7 @@ Keseluruhan tahapan yang akan dilalui selama pelaksanaan tugas akhir, yang spesi
 	
 \end{enumerate}
 
-% --- Sistematika Penulisan ---
+% Sistematika Penulisan
 \section{Sistematika Penulisan}
 Tuliskan gambaran umum isi dari setiap bab yang ada dalam laporan tugas akhir. Sistematika penulisan ini memberikan panduan bagi pembaca tentang struktur dan alur pembahasan dalam laporan tugas akhir. Berikut adalah contoh sistematika penulisan yang dapat diikuti:
 \begin{enumerate}

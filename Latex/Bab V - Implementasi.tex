@@ -9,39 +9,44 @@
 \section{Lingkungan Implementasi}
 Bagian ini menjelaskan spesifikasi perangkat keras dan perangkat lunak yang digunakan dalam tahap implementasi penelitian. Implementasi dilakukan pada platform \textit{cloud-based notebook}, yaitu Kaggle Notebook dan Google Colaboratory (Google Colab), sehingga spesifikasi perangkat keras yang digunakan bersifat dinamis dan disediakan secara otomatis oleh masing-masing penyedia layanan.
 
-\subsection{Lingkungan Perangkat Keras}
-Spesifikasi sumber daya komputasi yang digunakan pada masing-masing platform selama penelitian ini berlangsung adalah sebagai berikut:
 \begin{enumerate}
-	\item Kaggle Notebook
+	\item \textbf{Lingkungan Perangkat Keras} \\
+	Spesifikasi sumber daya komputasi yang digunakan pada masing-masing platform selama penelitian ini berlangsung adalah sebagai berikut:
 	\begin{enumerate}
-		\item Prosesor: 4 \textit{vCPU}
-		\item Memori (RAM): hingga 29 GB
-		\item GPU: NVIDIA Tesla T4 x2 (2 x 16 GB VRAM)
+		\item Kaggle Notebook
+		\begin{enumerate}
+			\item Prosesor: 4 \textit{vCPU}
+			\item Memori (RAM): hingga 29 GB
+			\item GPU: NVIDIA Tesla T4 x2 (2 x 16 GB VRAM)
+		\end{enumerate}
+		\item Google Colaboratory
+		\begin{enumerate}
+			\item Prosesor: 2 \textit{vCPU}
+			\item Memori (RAM): 12-13 GB
+			\item GPU: NVIDIA Tesla T4 (16 GB VRAM), digunakan jika tersedia. Saat tidak tersedia, \textit{runtime} dijalankan menggunakan CPU.
+		\end{enumerate}
 	\end{enumerate}
-	\item Google Colaboratory
+	
+	\item \textbf{Lingkungan Perangkat Lunak} \\
+	Perangkat lunak yang digunakan untuk mendukung proses pengembangan adalah:
 	\begin{enumerate}
-		\item Prosesor: 2 \textit{vCPU}
-		\item Memori (RAM): 12-13 GB
-		\item GPU: NVIDIA Tesla T4 (16 GB VRAM), digunakan jika tersedia. Saat tidak tersedia, \textit{runtime} dijalankan menggunakan CPU.
+		\item Sistem Operasi: Linux (\textit{runtime environment} berbasis Ubuntu yang disediakan oleh Kaggle Notebook dan Google Colab)
+		\item Bahasa Pemrograman: Python 3.10+
+		\item \textit{Platform Notebook}: Kaggle Notebook dan Google Colaboratory (Google Colab)
+		\item \textit{Driver}: CUDA Toolkit dan cuDNN (terpasang otomatis pada \textit{runtime} GPU Kaggle/Colab)
 	\end{enumerate}
-\end{enumerate}
-
-\subsection{Lingkungan Perangkat Lunak}
-Perangkat lunak yang digunakan untuk mendukung proses pengembangan adalah:
-\begin{enumerate}
-	\item Sistem Operasi: Linux (\textit{runtime environment} berbasis Ubuntu yang disediakan oleh Kaggle Notebook dan Google Colab)
-	\item Bahasa Pemrograman: Python 3.10+ 
-	\item \textit{Platform Notebook}: Kaggle Notebook dan Google Colaboratory (Google Colab)
-	\item \textit{Driver}: CUDA Toolkit dan cuDNN (terpasang otomatis pada \textit{runtime} GPU Kaggle/Colab)
+	
+	\item \textbf{Ketersediaan Kode Program} \\
+	Seluruh kode program yang digunakan dalam tahap implementasi penelitian ini, mulai dari praproses data hingga pelatihan dan evaluasi model, tersedia secara terbuka dan dapat diakses melalui repositori GitHub berikut: \url{https://github.com/MickyV18/CodeTugasAkhir}
 \end{enumerate}
 
 \section{Pengumpulan Data}
 
-Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT scan} (\textit{Computed Tomography}) tumor otak yang dikumpulkan dari dua sumber berbeda, menghasilkan total 557 gambar yang terbagi ke dalam tiga kelas, yaitu \textit{no tumor} (otak normal), glioma, dan meningioma. Karakteristik pengumpulan dan pembagian data ini dijabarkan sebagai berikut:
+Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT scan} (\textit{Computed Tomography}) tumor otak yang dikumpulkan dari dua sumber berbeda, menghasilkan total 557 gambar yang terbagi ke dalam dua kelas, yaitu tumor dan \textit{no tumor} (otak normal). Meskipun proses pengumpulan data mencatat jenis diagnosis spesifik dari setiap kasus tumor (misalnya glioma, meningioma, dan beberapa subtipe tumor lainnya), seluruh kategori tumor tersebut digabungkan menjadi satu kelas \textit{tumor} untuk kebutuhan klasifikasi model, sehingga label akhir yang digunakan hanya dua kelas. Karakteristik pengumpulan dan pembagian data ini dijabarkan sebagai berikut:
 
 \begin{enumerate}
 	\item Sumber Pertama: Platform Radiopaedia (\textit{radiopaedia.org})\\
-	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan melalui teknik \textit{web scraping}, yakni pengambilan gambar secara otomatis dari halaman-halaman kasus \textit{CT scan} otak yang relevan. Citra yang dikumpulkan mencakup tiga kategori: gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Distribusi jumlah pasien untuk setiap kategori tersebut disajikan pada Tabel \ref{tab:jenis_tumor_kedua}.
+	Sebuah platform referensi radiologi kolaboratif berbasis komunitas yang memuat ribuan kasus pencitraan medis klinis yang dikontribusikan oleh para radiologis di seluruh dunia. Pengumpulan data dari sumber ini dilakukan secara manual dengan menelusuri satu per satu halaman kasus \textit{CT scan} otak yang relevan, dikarenakan Radiopaedia melarang penggunaan \textit{scrapper} otomatis untuk menjaga stabilitas \textit{website} mereka. Citra yang dikumpulkan mencakup tiga kategori diagnosis, yaitu gambar \textit{CT scan} dengan diagnosis glioma, gambar \textit{CT scan} dengan diagnosis meningioma, dan gambar \textit{CT scan} otak normal (\textit{no tumor}). Distribusi jumlah pasien untuk setiap kategori tersebut disajikan pada Tabel \ref{tab:jenis_tumor_kedua}.
 	
 	\begin{table}[h]
 		\centering
@@ -57,7 +62,7 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 	\end{table}
 	
 	\item Sumber Kedua: Dataset Publik Mendeley Data\\
-	Sumber kedua berasal dari dataset publik yang tersedia di platform Mendeley Data \cite{AlKadi2022Unpaired}. Dataset ini menyediakan 80 gambar citra \textit{CT scan} tumor otak beserta \textit{mask} segmentasi tumornya, yaitu citra biner yang menandai secara piksel wilayah tumor pada setiap gambar. Keberadaan \textit{mask} pada dataset ini memperkaya representasi visual kelas tumor dalam dataset keseluruhan, sekaligus memberikan informasi spasial lokasi tumor yang dapat dimanfaatkan untuk keperluan evaluasi XAI yang digunakan.
+	Sumber kedua berasal dari dataset publik yang tersedia di platform Mendeley Data \cite{AlKadi2022Unpaired}. Dataset ini menyediakan 89 gambar citra \textit{CT scan} tumor otak beserta \textit{mask} segmentasi tumornya, yaitu citra biner yang menandai secara piksel wilayah tumor pada setiap gambar. Keberadaan \textit{mask} pada dataset ini memperkaya representasi visual kelas tumor dalam dataset keseluruhan, sekaligus memberikan informasi spasial lokasi tumor yang dapat dimanfaatkan untuk keperluan evaluasi XAI yang digunakan. Seluruh citra pada dataset ini awalnya berformat DICOM sehingga dilakukan konversi ke format PNG agar format citra konsisten dengan data dari sumber pertama sebelum digabungkan.
 	
 	Berdasarkan Tabel \ref{tab:jenis_tumor}, pengumpulan data telah diimplementasikan dengan mengelompokkan 20 pasien ke dalam 11 kategori jenis tumor, dengan Meningioma sebagai kelompok terbanyak (7 pasien), diikuti Astrocytoma (3 pasien) dan Glioblastoma multiforme (2 pasien), sementara 8 kategori lainnya masing-masing terdiri dari 1 pasien. Pengelompokan ini mengacu pada hasil histopatologi maupun dugaan radiologis sebagaimana tercantum pada deskripsi lesi MR dan CT dataset.
 	
@@ -108,12 +113,12 @@ Dataset yang digunakan dalam penelitian ini merupakan dataset citra \textit{CT s
 	
 \end{enumerate}
 
-Gambar-gambar dari kedua sumber tersimpan dalam tiga format file berbeda, yaitu PNG (239 gambar, 42,9\%), JPG (221 gambar, 39,7\%), dan JPEG (97 gambar, 17,4\%), dengan resolusi yang bervariasi mulai dari $205 \times 255$ hingga $1.365 \times 1.365$ piksel. Setelah dilakukan penggabungan dari kedua sumber, dataset dibagi ke dalam tiga subset, yaitu data latih (\textit{train}) sebanyak 386 gambar (69,3\%), data uji (\textit{test}) sebanyak 99 gambar (17,8\%), dan data validasi (\textit{val}) sebanyak 72 gambar (12,9\%). Pembagian dataset ke dalam tiga subset tersebut dilakukan secara stratifikasi berdasarkan kelas, sehingga proporsi setiap kelas (\textit{no tumor}, glioma, dan meningioma) terjaga secara merata di seluruh subset \textit{train}, \textit{val}, dan \textit{test}.
+Gambar-gambar dari kedua sumber tersimpan dalam tiga format file berbeda, yaitu PNG (239 gambar, 42,9\%), JPG (221 gambar, 39,7\%), dan JPEG (97 gambar, 17,4\%), dengan resolusi yang bervariasi mulai dari $205 \times 255$ hingga $1.365 \times 1.365$ piksel. Format PNG pada sebagian citra ini turut mencakup hasil konversi dari format DICOM milik sumber kedua sebagaimana telah dijelaskan sebelumnya. Setelah dilakukan penggabungan dari kedua sumber, dataset dibagi ke dalam tiga subset, yaitu data latih (\textit{train}), data uji (\textit{test}), dan data validasi (\textit{val}), dengan proporsi pembagian yang disesuaikan pada masing-masing skenario \textit{splitting} yang dirancang (dijelaskan pada bagian berikut). Pembagian dataset ke dalam tiga subset tersebut dilakukan secara stratifikasi berdasarkan kelas, sehingga proporsi kelas tumor dan \textit{no tumor} terjaga secara merata di seluruh subset \textit{train}, \textit{val}, dan \textit{test}.
 
 Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik yang berbeda dibandingkan sumber pertama, penelitian ini merancang tiga skenario eksperimen \textit{splitting} data Mendeley Data untuk mengevaluasi dampaknya terhadap generalisasi model. Ketiga skenario tersebut adalah sebagai berikut:
 \begin{enumerate}
 	\item Uji \\
-	Data sumber kedua pada subset \textit{test} saja: Seluruh gambar dari sumber kedua ditempatkan pada subset \textit{test}. Skenario ini bertujuan untuk mengukur kemampuan generalisasi model yang dilatih sepenuhnya pada data sumber pertama ketika diuji pada distribusi data yang berbeda.
+	Data sumber kedua pada subset \textit{test} saja, yaitu seluruh gambar dari sumber kedua ditempatkan pada subset \textit{test}. Skenario ini bertujuan untuk mengukur kemampuan generalisasi model yang dilatih sepenuhnya pada data sumber pertama ketika diuji pada distribusi data yang berbeda.
 	\begin{table}[h]
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
@@ -124,14 +129,13 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			Validation (Validasi) & 75  & 49  & 124 & 22.26 \\ \hline
 			Test (Uji)          & 145 & 42  & 187 & 33.57 \\ \hline
 			Total               & 393 & 164 & 557 & 100 \\ \hline
-			\hline
 		\end{tabular}
 		\caption{Pembagian Data Skenario 1}
 		\label{tab:dataset_test}
 	\end{table}
 	
 	\item Validasi dan Uji \\
-	Data sumber kedua pada subset \textit{val} dan \textit{test}: Gambar dari sumber kedua didistribusikan ke dalam subset \textit{val} dan \textit{test}, sementara subset \textit{train} tetap hanya berisi data dari sumber pertama. Skenario ini memungkinkan proses validasi dan pengujian dilakukan pada distribusi yang lebih beragam, sekaligus menjaga proses pelatihan tetap bersih dari data sumber kedua.
+	Data sumber kedua pada subset \textit{val} dan \textit{test}, yaitu gambar dari sumber kedua didistribusikan ke dalam subset \textit{val} dan \textit{test}, sementara subset \textit{train} tetap hanya berisi data dari sumber pertama. Skenario ini memungkinkan proses validasi dan pengujian dilakukan pada distribusi yang lebih beragam, sekaligus menjaga proses pelatihan tetap bersih dari data sumber kedua.
 	\begin{table}[h]
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
@@ -142,14 +146,13 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			Validation (Validasi) & 114 & 49  & 163 & 29.26 \\ \hline
 			Test (Uji)          & 106 & 42  & 148 & 26.57 \\ \hline
 			Total               & 393 & 164 & 557 & 100 \\ \hline
-			\hline
 		\end{tabular}
 		\caption{Pembagian Data Skenario 2}
 		\label{tab:dataset_val_test}
 	\end{table}
 	
 	\item Validasi, Uji, dan Latih \\
-	Data sumber kedua pada seluruh subset (\textit{train}, \textit{val}, dan \textit{test}): Gambar dari sumber kedua didistribusikan secara proporsional ke seluruh subset \textit{train}, \textit{val}, dan \textit{test}. Skenario ini mencerminkan kondisi pelatihan yang memanfaatkan keseluruhan data yang tersedia dari kedua sumber secara terpadu.
+	Data sumber kedua pada seluruh subset (\textit{train}, \textit{val}, dan \textit{test}), yaitu gambar dari sumber kedua didistribusikan secara proporsional ke seluruh subset \textit{train}, \textit{val}, dan \textit{test}. Skenario ini mencerminkan kondisi pelatihan yang memanfaatkan keseluruhan data yang tersedia dari kedua sumber secara terpadu.
 	\begin{table}[h]
 		\centering
 		\begin{tabular}{|l|c|c|c|c|}
@@ -160,7 +163,6 @@ Mengingat gambar-gambar dari sumber kedua (Mendeley Data) memiliki karakteristik
 			Validation & 90  & 49  & 139 & 24.96 \\ \hline
 			Test       & 79  & 42  & 121 & 21.72 \\ \hline
 			Total      & 393 & 164 & 557 & 100 \\ \hline
-			\hline 
 		\end{tabular}
 		\caption{Pembagian Data Skenario 3}
 		\label{tab:dataset_all}
@@ -240,8 +242,8 @@ Berdasarkan Tabel \ref{tab:kualitas_gc_wn}, nilai PSNR dan SSIM pada GC terlihat
 	\begin{tabular}{|l|l|l|}
 		\hline
 		& \textbf{GC} & \textbf{WN} \\ \hline
-		PSNR & 249,532 & 163,969 \\ \hline
-		SSIM & 7,494 & 6,706 \\ \hline
+		PSNR & 24,9532 & 16,3969 \\ \hline
+		SSIM & 0,7494 & 0,6706 \\ \hline
 		AMBE & 5,3102 & 178,242 \\ \hline
 	\end{tabular}
 \end{table}
@@ -264,22 +266,17 @@ Namun, jika dilihat dari sisi \textit{edge density} (kepadatan tepi), WN justru 
 
 Dari hasil ini, dapat disimpulkan bahwa kedua metode \textit{preprocessing} sama-sama memiliki kelebihan masing-masing. GC lebih unggul dalam menjaga struktur citra tetap mirip dengan aslinya, menjaga kecerahan, dan menambah detail informasi pada citra. Sementara itu, WN lebih unggul dalam mempertahankan ketajaman garis tepi, meskipun kecerahan dan sebagian detail teksturnya berkurang.
 
-\section{Augmentasi}
+\section{ Implementasi Augmentasi}
 \label{subsec:augmentasi}
-
 Implementasi augmentasi dilakukan hanya pada data \textit{training}, dengan setiap gambar asli menghasilkan tepat satu salinan dari masing-masing metode (\textit{shearing}, rotasi, dan translasi-\textit{shearing}-rotasi), sehingga total data \textit{training} menjadi 4 kali lipat dari jumlah data asli.
-
-Setiap gambar asli diproses oleh ketiga metode secara bergiliran (\textit{round-robin}) dan bukan dipilih secara acak, sehingga jumlah hasil augmentasi per metode akan selalu sama dengan jumlah gambar asli pada kelas tersebut. Hal ini terlihat pada Gambar \ref{fig:jumlah-metode}, di mana ketiga metode augmentasi menghasilkan jumlah gambar yang sama persis pada tiap kelas, yaitu 73 gambar untuk kelas \textit{no\_tumor} dan 173 gambar untuk kelas \textit{tumor}.
-
+Ketiga metode augmentasi diterapkan secara menyeluruh pada setiap gambar asli, bukan dipilih secara bergiliran maupun acak per gambar, sehingga setiap gambar orisinal menghasilkan tepat satu salinan augmentasi dari masing-masing metode. Sebagai konsekuensi langsung dari mekanisme ini, jumlah hasil augmentasi per metode akan selalu sama persis dengan jumlah gambar asli pada kelas tersebut, tanpa memerlukan mekanisme penyeimbangan tambahan. Hal ini terlihat pada Gambar \ref{fig:jumlah-metode}, ketiga metode augmentasi menghasilkan jumlah gambar yang sama persis pada tiap kelas, yaitu 73 gambar untuk kelas \textit{no\_tumor} dan 173 gambar untuk kelas \textit{tumor}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/jumlah metode.png}
 	\caption{Distribusi Jumlah Gambar per Metode Augmentasi}
 	\label{fig:jumlah-metode}
 \end{figure}
-
 Total data \textit{training} setelah augmentasi, yaitu 292 gambar untuk kelas \textit{no\_tumor} (73 asli + 219 augmentasi) dan 692 gambar untuk kelas \textit{tumor} (173 asli + 519 augmentasi), dapat dilihat pada Gambar \ref{fig:perbandingan-augmentasi}. Kedua angka ini konsisten dengan rasio penggandaan 4x yang telah dirancang sebelumnya. Namun perlu dicatat bahwa proses augmentasi ini menggandakan kedua kelas dengan faktor yang sama, sehingga rasio ketimpangan antara kelas \textit{no\_tumor} dan \textit{tumor} (sekitar 1:2,4) tetap tidak berubah setelah augmentasi dilakukan.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/perbandingan augmentasi.png}
@@ -315,9 +312,9 @@ Arsitektur CLM yang digunakan pada tugas akhir ini mengacu pada topologi ANN dar
 Berdasarkan diagram alur eksperimen, terdapat beberapa komponen ANN yang ditandai warna biru karena nilainya disesuaikan melalui proses \textit{hyperparameter tuning}. Komponen tersebut meliputi:
 
 \begin{enumerate}
-	\item Dropout Rate: pada setiap \textit{hidden layer} ANN ditambahkan \textit{dropout} dengan nilai yang diuji sebesar 0,05; 0,10; dan 0,20. Tujuannya untuk mencegah \textit{overfitting} mengingat jumlah sampel CT Scan yang digunakan masih terbatas. Jika nilainya terlalu kecil, regularisasi jadi kurang efektif, sedangkan jika terlalu besar justru berisiko membuat model \textit{underfitting}.
+	\item Dropout Rate: pada setiap \textit{hidden layer} ANN ditambahkan \textit{dropout} dengan nilai yang diuji sebesar 0,05, 0,10, dan 0,20. Tujuannya untuk mencegah \textit{overfitting} mengingat jumlah sampel CT Scan yang digunakan masih terbatas. Jika nilainya terlalu kecil, regularisasi jadi kurang efektif, sedangkan jika terlalu besar justru berisiko membuat model \textit{underfitting}.
 	\item Jumlah Iterasi: total iterasi pelatihan BPTA diuji pada nilai 3.000, 5.000, dan 10.000. Iterasi yang terlalu sedikit membuat bobot model belum sempat konvergen, sedangkan iterasi yang terlalu banyak akan menambah waktu pelatihan dan berisiko menyebabkan \textit{overfitting}.
-	\item Learning Rate BPTA: laju pembelajaran pada \textit{gradient descent} klasik diuji pada nilai 0,0001; 0,001; dan 0,01. Nilai yang terlalu kecil membuat proses konvergensi berjalan lambat, sementara nilai yang terlalu besar berisiko menyebabkan \textit{overshooting}, karena BPTA tidak memiliki mekanisme adaptif seperti optimizer modern lainnya.
+	\item Learning Rate BPTA: laju pembelajaran pada \textit{gradient descent} klasik diuji pada nilai 0,0001, 0,001, dan 0,01. Nilai yang terlalu kecil membuat proses konvergensi berjalan lambat, sementara nilai yang terlalu besar berisiko menyebabkan \textit{overshooting}, karena BPTA tidak memiliki mekanisme adaptif seperti optimizer modern lainnya.
 \end{enumerate}
 
 \begin{figure}[h]
@@ -330,7 +327,7 @@ Berdasarkan diagram alur eksperimen, terdapat beberapa komponen ANN yang ditanda
 
 Ketiga parameter tersebut diuji secara bersamaan menggunakan \textit{grid search}, sehingga menghasilkan total 3×3×3 = 27 kombinasi. Kombinasi terbaik dipilih berdasarkan \textit{composite score} dari lima metrik evaluasi, yaitu \textit{accuracy, precision, recall, specificity}, dan F1, bukan hanya berdasarkan akurasi saja. Hal ini dilakukan agar hasil yang diperoleh lebih representatif dalam menggambarkan kemampuan generalisasi model.
 
-Selanjutnya, dilakukan \textit{grid search} pada model CLM untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001; 0,00025; 0,001), \textit{dropout} (0,05; 0,1), dan iterasi (dibuat tetap sebesar 5000). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yang merupakan gabungan dari tiga metode \textit{preprocessing} (No Prep, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan menggunakan metrik evaluasi untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 1.
+Selanjutnya, dilakukan \textit{grid search} pada model CLM untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001, 0,00025, 0,001), \textit{dropout} (0,05, 0,1), dan iterasi (dibuat tetap sebesar 5000). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yang merupakan gabungan dari tiga metode \textit{preprocessing} (No Prep, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan menggunakan metrik evaluasi untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 1.
 
 Namun, dari hasil yang diperoleh, ditemukan adanya masalah yang cukup serius. Pada hampir seluruh skenario, nilai \textit{specificity} berada di angka 0\% (atau mendekati 0\%), sedangkan \textit{recall} justru mencapai 100\%. Kondisi ini menandakan bahwa model sebenarnya tidak benar-benar belajar membedakan kedua kelas, melainkan hanya cenderung selalu memprediksi satu kelas saja (kemungkinan kelas mayoritas). Akibatnya, nilai akurasi dan F1-score yang terlihat tinggi sebenarnya menyesatkan (\textit{misleading}), karena hanya mencerminkan bias model terhadap distribusi data yang tidak seimbang (\textit{imbalanced dataset}), bukan menunjukkan kemampuan generalisasi model yang sesungguhnya. Selain itu, cakupan \textit{grid search} yang dilakukan juga masih terbatas, karena hanya memvariasikan \textit{learning rate} dan \textit{dropout} saja, sementara iterasi dibuat konstan. Oleh karena itu, ada kemungkinan konfigurasi optimal yang sebenarnya berada di luar rentang nilai yang diuji, sehingga belum sempat tereksplorasi pada penelitian ini.
 
@@ -374,40 +371,76 @@ Berdasarkan diagram alur eksperimen, terdapat beberapa komponen yang disesuaikan
 
 Secara umum, arsitektur model yang diimplementasikan pada tugas akhir ini mengikuti struktur \textit{backbone} CNN yang dijelaskan pada artikel acuan \textcite{iftikhar2025explainable} Kesesuaian tersebut dapat dilihat dari beberapa aspek, seperti ukuran input 224×224×3, penggunaan enam blok konvolusi dengan kernel 3×3 dan \textit{padding} "same", jumlah filter yang meningkat secara bertahap (8, 16, 32, 64, 128, 256), penggunaan \textit{layer} BatchNormalization dan AveragePooling setelah blok konvolusi terakhir, serta penggunaan dua \textit{dense layer} dengan 512 neuron yang sama persis seperti yang dijelaskan pada artikel acuan.
 
-\begin{table}[htbp]
-	\centering
+\begin{longtable}{@{\extracolsep{\fill}} p{5.5cm} p{4.5cm} p{3.5cm}}
 	\caption{Ringkasan Arsitektur Model Explainable CNN}
-	\label{tab:arsitektur_excnn}
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
-		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
-		conv1 (Conv2D) & (None, 224, 224, 8) & 224 \\ \hline
-		pool1 (MaxPooling2D) & (None, 112, 112, 8) & 0 \\ \hline
-		conv2 (Conv2D) & (None, 112, 112, 16) & 1.168 \\ \hline
-		pool2 (MaxPooling2D) & (None, 56, 56, 16) & 0 \\ \hline
-		conv3 (Conv2D) & (None, 56, 56, 32) & 4.640 \\ \hline
-		pool3 (MaxPooling2D) & (None, 28, 28, 32) & 0 \\ \hline
-		conv4 (Conv2D) & (None, 28, 28, 64) & 18.496 \\ \hline
-		pool4 (MaxPooling2D) & (None, 14, 14, 64) & 0 \\ \hline
-		conv5 (Conv2D) & (None, 14, 14, 128) & 73.856 \\ \hline
-		pool5 (MaxPooling2D) & (None, 7, 7, 128) & 0 \\ \hline
-		conv6 (Conv2D) & (None, 7, 7, 256) & 295.168 \\ \hline
-		batchnorm (BatchNormalization) & (None, 7, 7, 256) & 1.024 \\ \hline
-		avgpool (AveragePooling2D) & (None, 3, 3, 256) & 0 \\ \hline
-		flatten (Flatten) & (None, 2304) & 0 \\ \hline
-		dropout1 (Dropout) & (None, 2304) & 0 \\ \hline
-		dense1 (Dense) & (None, 512) & 1.180.160 \\ \hline
-		dropout2 (Dropout) & (None, 512) & 0 \\ \hline
-		dense2 (Dense) & (None, 512) & 262.656 \\ \hline
-		output (Dense) & (None, 2) & 1.026 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total params}} & 1.838.418 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 1.837.906 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 512 \\ \hline
-	\end{tabular}
-\end{table}
+	\label{tab:arsitektur_excnn} \\
+	\toprule
+	\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\
+	\midrule
+	\endfirsthead
+	
+	\caption[]{Ringkasan Arsitektur Model Explainable CNN (lanjutan)} \\
+	\toprule
+	\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\
+	\midrule
+	\endhead
+	
+	\midrule
+	\multicolumn{3}{@{}r}{\textit{Bersambung ke halaman berikutnya}} \\
+	\endfoot
+	
+	\bottomrule
+	\endlastfoot
+	
+	input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\
+	\midrule
+	conv1 (Conv2D) & (None, 224, 224, 8) & 224 \\
+	\midrule
+	pool1 (MaxPooling2D) & (None, 112, 112, 8) & 0 \\
+	\midrule
+	conv2 (Conv2D) & (None, 112, 112, 16) & 1.168 \\
+	\midrule
+	pool2 (MaxPooling2D) & (None, 56, 56, 16) & 0 \\
+	\midrule
+	conv3 (Conv2D) & (None, 56, 56, 32) & 4.640 \\
+	\midrule
+	pool3 (MaxPooling2D) & (None, 28, 28, 32) & 0 \\
+	\midrule
+	conv4 (Conv2D) & (None, 28, 28, 64) & 18.496 \\
+	\midrule
+	pool4 (MaxPooling2D) & (None, 14, 14, 64) & 0 \\
+	\midrule
+	conv5 (Conv2D) & (None, 14, 14, 128) & 73.856 \\
+	\midrule
+	pool5 (MaxPooling2D) & (None, 7, 7, 128) & 0 \\
+	\midrule
+	conv6 (Conv2D) & (None, 7, 7, 256) & 295.168 \\
+	\midrule
+	batchnorm (BatchNormalization) & (None, 7, 7, 256) & 1.024 \\
+	\midrule
+	avgpool (AveragePooling2D) & (None, 3, 3, 256) & 0 \\
+	\midrule
+	flatten (Flatten) & (None, 2304) & 0 \\
+	\midrule
+	dropout1 (Dropout) & (None, 2304) & 0 \\
+	\midrule
+	dense1 (Dense) & (None, 512) & 1.180.160 \\
+	\midrule
+	dropout2 (Dropout) & (None, 512) & 0 \\
+	\midrule
+	dense2 (Dense) & (None, 512) & 262.656 \\
+	\midrule
+	output (Dense) & (None, 2) & 1.026 \\
+	\midrule
+	\multicolumn{2}{l}{\textbf{Total params}} & 1.838.418 \\
+	\midrule
+	\multicolumn{2}{l}{\textbf{Trainable params}} & 1.837.906 \\
+	\midrule
+	\multicolumn{2}{l}{\textbf{Non-trainable params}} & 512 \\
+	
+\end{longtable}
 
-Selanjutnya, dilakukan \textit{grid search} pada model Explainable CNN untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001; 0,001; 0,01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0,1; 0,2; 0,3). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan berdasarkan metrik evaluasi untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 2.
+Selanjutnya, dilakukan \textit{grid search} pada model Explainable CNN untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0,0001, 0,001, 0,01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0,1, 0,2, 0,3), menghasilkan 27 kombinasi per skenario. Setiap kombinasi diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dengan tiga cakupan data (All, Test, Val+Test). Peringkat tiap kombinasi ditentukan dari \textit{composite score}, yaitu kombinasi berbobot lima metrik (akurasi 20\%, \textit{precision} 15\%, \textit{recall} 30\%, \textit{specificity} 15\%, F1 20\%) dengan bobot \textit{recall} tertinggi karena \textit{false negative} (tumor tidak terdeteksi) dinilai lebih berbahaya secara klinis dibanding \textit{false positive}. Hasilnya kemudian dibandingkan untuk menentukan konfigurasi terbaik seperti yang ditampilkan pada Tabel 2.
 
 Dari hasil yang diperoleh, sebagian besar skenario menunjukkan performa yang relatif seimbang antara \textit{recall} dan \textit{specificity}. Contohnya dapat dilihat pada skenario GC-Test (\textit{specificity} 80,95\%) dan WN-Val+Test (\textit{specificity} 78,57\%), yang juga menjadi skenario dengan performa terbaik secara keseluruhan (akurasi 87,83\%, F1-score 88,07\%). Hal ini menunjukkan bahwa model sudah cukup mampu mengenali kedua kelas dengan baik, tidak hanya condong ke satu kelas saja.
 
@@ -421,11 +454,11 @@ Meskipun begitu, masih ada beberapa skenario dengan nilai \textit{specificity} y
 		\begin{tabular}{|l|c|c|c|c|c|l|}
 			\hline
 			\textbf{Eksperimen} & \textbf{Acc (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Specificity (\%)} & \textbf{F1 (\%)} & \textbf{Config terbaik} \\ \hline
-			\textbf{all} & \textbf{70.37} & \textbf{69.64} & \textbf{70.37} & \textbf{47.62} & \textbf{69.94} & \textbf{lr=0.01, bs=64, dr=0.1} \\ \hline
+			all & 70.37 & 69.64 & 70.37 & 47.62 & 69.94 & lr=0.01, bs=64, dr=0.1 \\ \hline
 			test & 84.27 & 71.01 & 84.27 & 0.00 & 77.08 & lr=0.0001, bs=40, dr=0.1 \\ \hline
 			val+test & 80.95 & 79.94 & 80.95 & 21.43 & 76.54 & lr=0.01, bs=40, dr=0.1 \\ \hline
 			GC (All) & 79.26 & 79.89 & 79.26 & 71.43 & 79.50 & lr=0.001, bs=16, dr=0.1 \\ \hline
-			\textbf{GC (Test)} & \textbf{71.54} & \textbf{85.43} & \textbf{71.54} & \textbf{80.95} & \textbf{75.28} & \textbf{lr=0.01, bs=64, dr=0.2} \\ \hline
+			GC (Test) & 71.54 & 85.43 & 71.54 & 80.95 & 75.28 & lr=0.01, bs=64, dr=0.2 \\ \hline
 			GC (Val+Test) & 65.08 & 78.16 & 65.08 & 76.19 & 68.02 & lr=0.01, bs=64, dr=0.2 \\ \hline
 			WN (All) & 67.41 & 75.52 & 67.41 & 80.95 & 68.59 & lr=0.01, bs=40, dr=0.3 \\ \hline
 			WN  (Test) & 78.28 & 81.50 & 78.28 & 50.00 & 79.61 & lr=0.0001, bs=40, dr=0.1 \\ \hline
@@ -434,13 +467,11 @@ Meskipun begitu, masih ada beberapa skenario dengan nilai \textit{specificity} y
 	}
 \end{table}
 
-Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen Explainable CNN diperoleh pada skenario WN-Val+Test, dengan konfigurasi \textit{learning rate} 0,0001, \textit{batch size} 40, \textit{optimizer} Adam, dan \textit{dropout rate} 0,1. Konfigurasi ini menghasilkan akurasi sebesar 87,83\%, F1-score (\textit{weighted}) 88,07\%, \textit{precision} (\textit{weighted}) 88,45\%, \textit{recall} (\textit{weighted}) 87,83\%, dan \textit{specificity} 78,57\%, dengan \textit{composite score} sebesar 0,8658.
+Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang sudah dilakukan, model terbaik pada eksperimen Explainable CNN diperoleh pada skenario WN-Val+Test, dengan konfigurasi \textit{learning rate} 0,0001, \textit{batch size} 40, \textit{optimizer} Adam, dan \textit{dropout rate} 0,1. Konfigurasi ini menghasilkan akurasi sebesar 87,83\%, F1-score (\textit{weighted}) 88,07\%, \textit{precision} (\textit{weighted}) 88,45\%, \textit{recall} (\textit{weighted}) 87,83\%, dan \textit{specificity} 78,57\%, dengan \textit{composite score} sebesar 0,8658. Seluruh proses \textit{pruning} Grad-CAM dan validasi silang lanjutan pada bagian berikut dijalankan di atas model terbaik skenario WN (Val+Test) ini, bukan skenario \textit{test} saja.
 
 Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa yang baik antara \textit{recall} dan \textit{specificity}. Hal ini menandakan bahwa model tidak hanya unggul dalam mengenali satu kelas saja, tetapi juga mampu membedakan kedua kelas secara proporsional. Selain itu, nilai \textit{composite score} yang tinggi juga menunjukkan bahwa konfigurasi ini memberikan hasil paling optimal secara keseluruhan, dibandingkan dengan seluruh kombinasi \textit{hyperparameter} lain yang telah diuji pada proses \textit{grid search}.
 
-\begin{verbatim}
-	Konfigurasi Hyperparameter 
-	dan Hasil Evaluasi Model Terbaik Explainable CNN
+\begin{lstlisting}[caption={Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik Explainable CNN}, label={lst:hyperparam-excnn}, captionpos=t]
 	{
 		"learning_rate": 0.0001,
 		"batch_size": 40,
@@ -453,14 +484,32 @@ Model ini dipilih sebagai model terbaik karena memiliki keseimbangan performa ya
 		"specificity": 0.785714,
 		"composite_score": 0.8658217
 	}
-\end{verbatim}
+\end{lstlisting}
+
+%\subsubsection{Pruning Berbasis Grad-CAM pada Model Terbaik}
+%
+%Sesuai rancangan pada Subbab Perancangan, tahap \textit{pruning} dijalankan pada model terbaik di atas. Sebanyak 200 citra data \textit{training} (hasil augmentasi) diambil sebagai sampel untuk menghitung \textit{heatmap} Grad-CAM pada tiap layer konvolusi (dari \texttt{conv1} hingga \texttt{conv6}). Rata-rata nilai \textit{heatmap} dijadikan skor kepentingan tiap layer. Layer dengan skor kepentingan terendah (yang sekaligus menjadi nilai \textit{threshold}) dihapus, arsitektur dibangun ulang dengan kepala model (\textit{Flatten}, \textit{Dropout}, $2\times$ Dense 512, Output 2 kelas) tetap sama, lalu model hasil \textit{pruning} dilatih ulang menggunakan \textit{hyperparameter} yang sama dengan konfigurasi terbaik di atas, dan dievaluasi pada data \textit{test} yang sama.
+%
+%\begin{table}[htbp]
+%	\centering
+%	\caption{Perbandingan Model Awal vs Model Hasil \textit{Pruning} Grad-CAM}
+%	\label{tab:pruning_comparison}
+%	\begin{tabular}{|l|c|c|c|}
+%		\hline
+%		\textbf{Model} & \textbf{Jumlah Layer Konv.} & \textbf{Akurasi} & \textbf{F1 (\textit{weighted})} \\ \hline
+%		Initial Model & 6 & 87,83\% & 88,07\% \\ \hline
+%		Pruned Model (Grad-CAM) & \textit{[isi hasil \texttt{layers\_to\_prune}]} & \textit{[isi hasil aktual]} & \textit{[isi hasil aktual]} \\ \hline
+%	\end{tabular}
+%\end{table}
+%
+%\textbf{Catatan kritis.} Notebook yang digunakan tidak menyertakan hasil eksekusi (\textit{output cell} kosong), sehingga baris \textit{Pruned Model} pada Tabel \ref{tab:pruning_comparison} perlu dilengkapi dari hasil \textit{run} aktual (variabel \texttt{layer\_importance}, \texttt{layers\_to\_prune}, \texttt{comparison\_df}) sebelum bab ini difinalisasi. Perlu diperhatikan juga bahwa karena \textit{threshold} didefinisikan sebagai nilai minimum itu sendiri, mekanisme ini secara desain hanya akan menghapus satu layer (atau layer-layer yang seri di posisi terendah) per eksekusi, bukan pemangkasan yang proporsional terhadap seberapa tidak penting suatu layer. Model hasil \textit{pruning} ini juga \textbf{belum} divalidasi melalui skema \textit{cross-validation} (lihat Subbab Evaluasi), validasinya baru satu kali \textit{split train/val/test}.
 
 \section{Implementasi EfficientNetB0}
 
 Dari diagram alur eksperimen di atas, ada beberapa bagian yang disesuaikan untuk tugas akhir ini, yang ditandai dengan warna biru, yaitu:
 \begin{enumerate}
-	\item CT Scan Input: jenis citra medis yang digunakan diubah, dari yang awalnya MRI menjadi CT Scan. Perubahan ini dilakukan karena tujuan utama penelitian ini memang untuk membuat model yang bisa mendeteksi kondisi otak menggunakan citra CT Scan, bukan MRI.
-	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset \textcite{wojciuk2024improving} yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah \textit{overfitting}, terutama pada model \textit{deep learning} yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata.
+	\item CT Scan Input: jenis citra medis yang digunakan diubah, dari yang awalnya MRI menjadi CT Scan. Perubahan ini dilakukan karena tujuan utama penelitian ini memang untuk membuat model yang bisa mendeteksi kondisi otak menggunakan citra CT Scan, bukan MRI. Perubahan domain ini turut mengubah premis \textit{homogeneous transfer learning} yang dibangun pada tahap perancangan, yang sebelumnya dirumuskan khusus untuk pasangan ImageNet-MRI. Premis tersebut diasumsikan tetap berlaku untuk pasangan ImageNet-CT Scan karena MRI dan CT Scan sama-sama merupakan citra medis \textit{grayscale} yang merepresentasikan struktur anatomis otak, namun kesesuaian ini merupakan asumsi yang diwariskan dari argumen awal dan tidak divalidasi ulang secara empiris khusus untuk domain CT Scan pada penelitian ini.
+	\item Dropout Layer: ditambahkan lapisan \textit{Dropout} setelah lapisan \textit{BatchNormalization} yang pertama, tepatnya sebelum blok \textit{Dense}(512, ReLU, L2). Penambahan ini merujuk pada riset \textcite{wojciuk2024improving} yang menunjukkan bahwa \textit{dropout} cukup efektif untuk mencegah overfitting, terutama pada model \textit{deep learning} yang datasetnya (seperti data medis) jumlahnya terbatas atau distribusinya tidak merata. Referensi yang sama juga menjadi dasar penentuan rentang \textit{hyperparameter} yang diuji pada \textit{grid search} (dijelaskan lebih lanjut di bawah), yang diterapkan secara konsisten pada ketiga model transfer learning yang dibangun pada penelitian ini, bukan hanya EfficientNetB0.
 	\item Dense 2 Class: bagian output model diubah dari yang tadinya multi kelas (4 kelas) menjadi klasifikasi biner (2 kelas) saja. Perubahan pada \textit{Dense layer} dan output ini disesuaikan dengan tujuan penelitian ini, yaitu membedakan citra CT Scan otak yang normal dan tidak normal.
 \end{enumerate}
 
@@ -476,33 +525,33 @@ Secara umum, arsitektur model EfficientNetB0 yang digunakan pada tugas akhir ini
 
 Namun, ada satu hal yang perlu dikritisi, yaitu pelaporan jumlah parameter \textit{trainable} dan \textit{non-trainable} pada artikel acuan. Angka 792.324 \textit{trainable} dan 4.053.667 \textit{non-trainable} yang dilaporkan pada Bagian III-D artikel tersebut sebenarnya sama persis dengan kondisi model saat seluruh \textit{backbone}-nya masih dibekukan (Fase I), padahal strategi final yang dijelaskan pada Bagian III-B2 seharusnya sudah melewati proses \textit{unfreeze} 30 \textit{layer} terakhir. Dengan kata lain, artikel tersebut sebenarnya tidak pernah melaporkan jumlah parameter \textit{trainable} yang sesungguhnya dari model yang menghasilkan hasil akhir pada Bagian IV. Berbeda dengan itu, tabel pada tugas akhir ini melaporkan kondisi setelah \textit{fine-tuning} dengan benar, dengan jumlah \textit{trainable params} yang meningkat menjadi 3.080.850 karena sebagian bobot \textit{backbone} (sekitar 2,28 juta dari total 4.049.571) ikut menjadi dapat dilatih.
 
-\begin{table}[htbp]
-	\centering
-	\caption{Ringkasan Arsitektur Model EfficientNetB0}
-	\label{tab:arsitektur_model}
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
-		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
-		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
-		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
-		batchnorm\_base (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
-		dropout0 (Dropout) & (None, 1280) & 0 \\ \hline
-		dense1 (Dense) & (None, 512) & 655.872 \\ \hline
-		batchnorm\_dense1 (BatchNormalization) & (None, 512) & 2.048 \\ \hline
-		dropout1 (Dropout) & (None, 512) & 0 \\ \hline
-		dense2 (Dense) & (None, 256) & 131.328 \\ \hline
-		batchnorm\_dense2 (BatchNormalization) & (None, 256) & 1.024 \\ \hline
-		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
-		output (Dense) & (None, 2) & 514 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 \\ \hline
-		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 \\ \hline
-	\end{tabular}
-	\vspace{4pt}
-\end{table}
+%\begin{table}[htbp]
+%	\centering
+%	\caption{Ringkasan Arsitektur Model EfficientNetB0}
+%	\label{tab:arsitektur_model}
+%	\begin{tabular}{|l|l|l|}
+%		\hline
+%		\textbf{Layer (Type)} & \textbf{Output Shape} & \textbf{Param \#} \\ \hline
+%		input\_image (InputLayer) & (None, 224, 224, 3) & 0 \\ \hline
+%		efficientnetb0 (Functional) & (None, 7, 7, 1280) & 4.049.571 \\ \hline
+%		gap (GlobalAveragePooling2D) & (None, 1280) & 0 \\ \hline
+%		batchnorm\_base (BatchNormalization) & (None, 1280) & 5.120 \\ \hline
+%		dropout0 (Dropout) & (None, 1280) & 0 \\ \hline
+%		dense1 (Dense) & (None, 512) & 655.872 \\ \hline
+%		batchnorm\_dense1 (BatchNormalization) & (None, 512) & 2.048 \\ \hline
+%		dropout1 (Dropout) & (None, 512) & 0 \\ \hline
+%		dense2 (Dense) & (None, 256) & 131.328 \\ \hline
+%		batchnorm\_dense2 (BatchNormalization) & (None, 256) & 1.024 \\ \hline
+%		dropout2 (Dropout) & (None, 256) & 0 \\ \hline
+%		output (Dense) & (None, 2) & 514 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Total params}} & 4.845.477 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Trainable params}} & 3.080.850 \\ \hline
+%		\multicolumn{2}{|l|}{\textbf{Non-trainable params}} & 1.764.627 \\ \hline
+%	\end{tabular}
+%	\vspace{4pt}
+%\end{table}
 
-Selanjutnya, dilakukan \textit{grid search} pada model EfficientNetB0 untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0.0001, 0.01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0.1, 0.2, 0.3). Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan berdasarkan metrik evaluasi untuk menentukan konfigurasi terbaik, seperti yang ditampilkan pada Tabel 3.
+Selanjutnya, dilakukan \textit{grid search} pada model EfficientNetB0 untuk mencari konfigurasi \textit{hyperparameter} terbaik di setiap skema eksperimen. \textit{Hyperparameter} yang diuji meliputi \textit{learning rate} (0.0001, 0.01), \textit{batch size} (16, 40, 64), dan \textit{dropout rate} (0.1, 0.2, 0.3). Rentang nilai ini mengacu pada \textcite{wojciuk2024improving} sebagaimana disebutkan sebelumnya, dan diterapkan sama pada seluruh model transfer learning yang dibangun pada penelitian ini agar proses \textit{tuning} antar model tetap sebanding. Meski demikian, penggunaan satu referensi tunggal sebagai dasar penentuan rentang \textit{hyperparameter} ini berarti rentang tersebut tidak disesuaikan atau divalidasi secara khusus untuk karakteristik masing-masing arsitektur model. Setiap kombinasi nilai tersebut diujikan pada 9 skenario eksperimen, yaitu gabungan dari tiga metode \textit{preprocessing} (tanpa \textit{preprocessing}, GC, WN) dan tiga cakupan data (All, Test, Val+Test). Setelah itu, hasilnya dibandingkan berdasarkan metrik evaluasi untuk menentukan konfigurasi terbaik, seperti yang ditampilkan pada Tabel 3.
 
 Dari hasil yang diperoleh, secara keseluruhan model menunjukkan performa yang tinggi dan konsisten di hampir semua skenario, dengan akurasi berkisar antara 88.89\% sampai 96.63\%, serta nilai \textit{specificity} yang juga tinggi (di atas 88\%) di semua skenario. Ini menunjukkan bahwa model mampu mengenali kedua kelas dengan baik dan tidak condong ke salah satu kelas saja. Skenario dengan performa terbaik diperoleh pada GC-Test, dengan akurasi 96.63\% dan F1-score 96.68\%.
 
@@ -525,7 +574,7 @@ Meskipun begitu, sebagian besar konfigurasi terbaik yang diperoleh menggunakan \
 			WN (All) & 93.33 & 93.56 & 93.33 & 92.86 & 93.39 & lr=0.01, bs=16, dr=0.1 \\ \hline
 			WN (Test) & 93.63 & 94.43 & 93.63 & 90.48 & 93.88 & lr=0.01, bs=40, dr=0.1 \\ \hline
 			WN (Val+Test) & 90.48 & 92.89 & 90.48 & 97.62 & 90.96 & lr=0.01, bs=16, dr=0.2 \\ \hline
-		\end{tabular}
+		\end{tabular}%
 	}
 \end{table}
 
@@ -533,9 +582,7 @@ Berdasarkan hasil \textit{grid search} dan \textit{hyperparameter tuning} yang s
 
 Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang di semua metrik evaluasi, termasuk nilai \textit{specificity} yang tinggi, yang menunjukkan model mampu mengenali kedua kelas dengan baik tanpa condong ke salah satu kelas saja. Penerapan skema \textit{fine-tuning} dua fase pada proses \textit{training} juga ikut berkontribusi terhadap peningkatan performa ini, karena model bisa terlebih dahulu menyesuaikan lapisan akhirnya sebelum akhirnya menyesuaikan bobot \textit{backbone} secara menyeluruh dengan \textit{learning rate} yang lebih kecil. \textit{Composite score} yang tinggi ini juga menegaskan bahwa konfigurasi tersebut merupakan hasil paling optimal dibandingkan semua kombinasi \textit{hyperparameter} lain yang telah diuji selama proses \textit{grid search}.
 
-\begin{verbatim}
-	Konfigurasi Hyperparameter dan 
-	Hasil Evaluasi Model Terbaik EfficientNetB0
+\begin{lstlisting}[caption={Konfigurasi Hyperparameter dan Hasil Evaluasi Model Terbaik EfficientNetB0}, label={lst:hyperparam-effnet}, captionpos=t]
 	{
 		"backbone": "EfficientNetB0",
 		"learning_rate": 0.01,
@@ -553,11 +600,11 @@ Model ini dipilih sebagai model terbaik karena performanya tinggi dan seimbang d
 		"specificity": 0.928571,
 		"composite_score": 0.96092935
 	}
-\end{verbatim}
+\end{lstlisting}
 
 \section{\textit{Explainable AI} (Grad-CAM)}
 
-Seperti yang sudah dijelaskan pada subbab perancangan, penerapan XAI hanya dilakukan pada model EfficientNetB0 karena model ini terbukti memiliki performa klasifikasi paling baik dibandingkan Explainable CNN dan CLM. Implementasi diawali dengan memuat model terbaik hasil pelatihan beserta file konfigurasinya. Setelah itu, dilakukan pencarian otomatis terhadap \textit{backbone} EfficientNetB0 dan lapisan konvolusi terakhirnya. Pencarian ini dilakukan dengan menelusuri semua \textit{layer} yang ada di dalam \textit{backbone}, lalu mengambil \texttt{Conv2D} yang letaknya paling akhir. Cara otomatis ini dipakai supaya kode tetap bisa dipakai walau nanti struktur model berubah pada eksperimen selanjutnya.
+Seperti yang sudah dijelaskan pada subbab perancangan, penerapan XAI hanya dilakukan dan diuji secara langsung pada model EfficientNetB0, karena model ini terbukti memiliki performa klasifikasi paling baik dibandingkan Explainable CNN dan CLM, sehingga paling merepresentasikan model yang berpotensi digunakan lebih lanjut. Implementasi diawali dengan memuat model terbaik hasil pelatihan beserta file konfigurasinya. Setelah itu, dilakukan pencarian otomatis terhadap \textit{backbone} EfficientNetB0 dan lapisan konvolusi terakhirnya. Pencarian ini dilakukan dengan menelusuri semua \textit{layer} yang ada di dalam \textit{backbone}, lalu mengambil \texttt{Conv2D} yang letaknya paling akhir. Cara otomatis ini dipakai supaya kode tetap bisa dipakai walau nanti struktur model berubah pada eksperimen selanjutnya.
 
 Model kemudian dibentuk ulang menjadi model dengan dua keluaran (\textit{dual-output model}). Keluaran pertama berupa \textit{feature map} dari lapisan konvolusi terakhir, dan keluaran kedua berupa skor logit dari lapisan \textit{dense} terakhir, sebelum masuk ke fungsi aktivasi \textit{softmax}. Fungsi aktivasi pada lapisan akhir ini sengaja dimatikan sementara, supaya proses penurunan gradien dilakukan langsung terhadap nilai logit, bukan terhadap hasil \textit{softmax} yang sudah dinormalisasi. Dengan begitu, gradien yang didapat lebih menggambarkan kontribusi asli tiap bagian citra terhadap keputusan model.
 

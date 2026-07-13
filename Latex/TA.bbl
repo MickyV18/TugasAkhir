@@ -516,6 +516,57 @@
       \verb https://www.indonesianjournalofcancer.or.id/e-journal/index.php/ijoc/article/view/1100/0
       \endverb
     \endentry
+    \entry{emmanuel2026interpretable}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=3ee45e7642fe49fd416f17cb06d21327}{%
+           family={Emmanuel},
+           familyi={E\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=23f458b5016465c493675442088ce068}{%
+           family={Sunday},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi T.},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c76090dd200b00cdf16d01d9ba48409c}{%
+           family={Chukwuogo},
+           familyi={C\bibinitperiod},
+           given={Okwuchukwu\bibnamedelima Ejike},
+           giveni={O\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1350e584cd8601baaec87f24012f7dbb}{%
+           family={Sylvanus},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi K.},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{c72e75441b2c27c8aae55d4928a7fe6e}
+      \strng{fullhash}{132b175b9d17cbc0caa10c9b60905184}
+      \strng{fullhashraw}{132b175b9d17cbc0caa10c9b60905184}
+      \strng{bibnamehash}{132b175b9d17cbc0caa10c9b60905184}
+      \strng{authorbibnamehash}{132b175b9d17cbc0caa10c9b60905184}
+      \strng{authornamehash}{c72e75441b2c27c8aae55d4928a7fe6e}
+      \strng{authorfullhash}{132b175b9d17cbc0caa10c9b60905184}
+      \strng{authorfullhashraw}{132b175b9d17cbc0caa10c9b60905184}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{arXiv.org}
+      \field{title}{An Interpretable Vision Transformer Framework for Automated Brain Tumor Classification}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2604.21311
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2604.21311
+      \endverb
+    \endentry
     \entry{farber2025how}{misc}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=8f5a490c5c0dbb7fb17cf1ed1ae1684c}{%
@@ -2925,7 +2976,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{deepefnet}
   \missing{tan2019efficientnet}
 \endrefsection
 \endinput

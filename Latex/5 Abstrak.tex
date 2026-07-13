@@ -1,45 +1,22 @@
-% !TeX root = ta.tex
-\chapter*{ABSTRAK}
-\addcontentsline{toc}{chapter}{ABSTRAK}
-
 \begin{center}
-
-    \textbf{Integrasi Explainable AI (XAI) pada Model Convolutional Neural Network untuk Deteksi Tumor Otak Menggunakan Citra CT Scan} \\
-    \vspace{0.4cm}
-    oleh \\
-    \vspace{0.4cm}
-    John Doe\\
-    123456789\\
+	\textbf{ABSTRAK}
 \end{center}
 
+\begin{center}
+	Integrasi \textit{Explainable AI} (XAI) pada Model \textit{Convolutional Neural Network}\\
+	untuk Deteksi Tumor Otak Menggunakan Citra CT \textit{Scan}
+	
+	\vspace{0.3cm}
+	oleh
+	
+	\vspace{0.3cm}
+	Micky Valentino\\
+	18222093
+\end{center}
 
-\begin{spacing}{1.0}
-Proses manual dalam rantai pasok jeruk di tingkat lapak, yang mencakup sortir,
-timbang, dan catat, terbukti tidak efisien, memakan waktu, dan rentan terhadap
-kesalahan. Meskipun solusi berbasis Internet of Things (IoT) dapat mengatasi
-masalah ini, arsitektur terpusat konvensional berbasis cloud justru menimbulkan
-masalah baru berupa latensi tinggi yang menghambat alur kerja real-time.
-Penelitian ini bertujuan untuk merancang dan mengimplementasikan sebuah
-purwarupa sistem smart scale berbasis IoT dengan pendekatan desentralisasi (edge
-computing) untuk meminimalkan latensi dan meningkatkan efisiensi operasional.
-Metode yang digunakan adalah Model Purwarupa, yang diwujudkan dalam bentuk
-perangkat keras dengan arsitektur prosesor ganda (Raspberry Pi 5 dan ESP32) yang
-mampu mengintegrasikan fungsi timbang dan analisis kualitas citra secara
-simultan. Hasil evaluasi menunjukkan bahwa purwarupa dengan arsitektur edge
-computing yang diimplementasikan mampu memberikan respons 43,5\% lebih cepat
-(latensi rata-rata 18,05 detik) dibandingkan dengan simulasi arsitektur terpusat.
-Selain itu, sistem ini berhasil meningkatkan efisiensi waktu kerja secara
-keseluruhan sebesar 58,32\% jika dibandingkan dengan metode manual
-konvensional. Pengujian Penerimaan Pengguna (UAT) yang melibatkan 30
-partisipan juga menunjukkan penerimaan yang sangat positif, dengan skor rata-rata
-untuk kemudahan penggunaan (5,0/5,0), kejelasan antarmuka (4,87/5,0) dan
-persepsi kinerja (4,95/5,0). Kesimpulannya, implementasi sistem smart scale
-dengan arsitektur desentralisasi terbukti merupakan solusi yang valid dan efektif
-untuk menjawab permasalahan latensi dan inefisiensi di lapak. Sistem ini tidak
-hanya unggul secara teknis dalam hal performa, tetapi juga fungsional dan dapat
-diterima dengan baik oleh pengguna akhir, serta berpotensi besar untuk modernisasi
-rantai pasok agribisnis.
+\vspace{0.5cm}
 
-Kata kunci: Smart Scale, Internet of Things, Edge Computing, Rantai Pasok Jeruk.
-\end{spacing}
+Tumor otak memiliki urgensi diagnosis yang tinggi, namun ketersediaan \textit{Magnetic Resonance Imaging} (MRI) di Indonesia masih terbatas, sehingga citra \textit{Computed Tomography} (CT) \textit{Scan} menjadi modalitas alternatif utama. Model \textit{deep learning} untuk diagnosis umumnya bersifat \textit{black box}, dan belum jelas sejauh mana arsitektur \textit{Convolutional Neural Network} (CNN) yang berbeda memengaruhi kualitas penjelasan visual, bukan hanya akurasi klasifikasinya. Tugas akhir ini mengembangkan dan membandingkan tiga arsitektur, yaitu \textit{Correlation Learning Mechanism} (CLM), \textit{Explainable CNN}, dan EfficientNetB0, untuk mendeteksi tumor otak pada 557 citra CT \textit{Scan} (393 tumor, 164 tanpa tumor). Model dengan performa terbaik diintegrasikan dengan \textit{Grad-CAM}, yang kesesuaiannya terhadap \textit{mask} tumor dievaluasi menggunakan metrik XAlign. CLM dan \textit{Explainable CNN} berulang kali mengalami kolaps kelas akibat keterbatasan data. EfficientNetB0 mencatat akurasi tertinggi pada satu skema pengujian (96,63\%), tetapi turun menjadi 85,21\% $\pm$ 11,19\% saat divalidasi dengan \textit{10-fold cross-validation}, menandakan performa yang belum stabil. Skor XAlign pada \textit{Grad-CAM} model tersebut hanya 0,1749, menunjukkan \textit{heatmap} yang menyebar jauh melampaui batas tumor sebenarnya. Temuan ini mengindikasikan adanya \textit{trade-off} antara akurasi dan kualitas penjelasan, sehingga hasil deteksi belum dapat divalidasi secara klinis hanya berdasarkan \textit{Grad-CAM}.
 
+\vspace{0.5cm}
+\noindent\textbf{Kata kunci:} \textit{Convolutional Neural Network}, \textit{Explainable AI}, \textit{Grad-CAM}, Tumor Otak, CT \textit{Scan}.
