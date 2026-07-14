@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  13 JUL 2026 15:12
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.4) (preloaded format=xelatex 2026.3.4)  14 JUL 2026 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1307,15 +1307,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'ta.bbl' found.
-(ta.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                tan2019efficientnet
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+(ta.bbl)
 Package biblatex Info: Reference section=0 on input line 331.
 Package biblatex Info: Reference segment=0 on input line 331.
  (1 Halaman Judul.tex
@@ -1452,7 +1444,7 @@ Package geometry Warning: `a4paper': not available in `\newgeometry'; skipped.
 
 
 ] (ta.toc
-Overfull \hbox (2.63689pt too wide) in paragraph at lines 225--225
+Overfull \hbox (2.63689pt too wide) in paragraph at lines 239--239
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 Explainable CNN for brain tumor detect
 ion and clas- 
  []
@@ -1460,25 +1452,25 @@ ion and clas-
 
 
 [11]
-Overfull \hbox (7.76979pt too wide) in paragraph at lines 236--236
+Overfull \hbox (7.76979pt too wide) in paragraph at lines 250--250
  [][] [][][]\TU/TimesNewRoman(0)/m/it/12 An XAI-Enhanced EfficientNetB0 Framewo
 rk for Pre- 
  []
 
 
-Overfull \hbox (3.05681pt too wide) in paragraph at lines 241--241
+Overfull \hbox (3.05681pt too wide) in paragraph at lines 255--255
  \TU/TimesNewRoman(0)/m/it/12 Classification through XAI Based Key Features Ide
 n- 
  []
 
 
-Overfull \hbox (4.98338pt too wide) in paragraph at lines 377--377
+Overfull \hbox (4.98338pt too wide) in paragraph at lines 391--391
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 PERANCANGAN MODEL PENDETEKSIAN TUMOR OT
 AK BER- 
  []
 
 
-Overfull \hbox (5.44041pt too wide) in paragraph at lines 470--470
+Overfull \hbox (5.44041pt too wide) in paragraph at lines 489--489
  [][] [][][]\TU/TimesNewRoman(0)/b/n/12 IMPLEMENTASI MODEL PENDETEKSIAN TUMOR O
 TAK BER- 
  []
@@ -1486,12 +1478,12 @@ TAK BER-
 
 
 [12]
-Overfull \hbox (1.26215pt too wide) detected at line 560
+Overfull \hbox (1.26215pt too wide) detected at line 579
 \TU/TimesNewRoman(0)/m/n/12 VI.2.7.1 
  []
 
 
-Overfull \hbox (1.26215pt too wide) detected at line 565
+Overfull \hbox (1.26215pt too wide) detected at line 584
 \TU/TimesNewRoman(0)/m/n/12 VI.2.7.2 
  []
 
@@ -1520,25 +1512,24 @@ Overfull \hbox (0.91527pt too wide) in paragraph at lines 16--16
 
 ) (9 Daftar Tabel.tex
 
-[16] (ta.lot)
+[16] (ta.lot
+
+[17
+
+])
 \tf@lot=\write7
 \openout7 = `ta.lot'.
 
 ) (10 Daftar Persamaan.tex
 
-[17
-
-]
-
-[18
-
-] (ta.equ)
+[18] (ta.equ)
 \tf@equ=\write8
 \openout8 = `ta.equ'.
 
 ) (11 Daftar Algoritma.tex
 
 [19
+
 
 ]
 
@@ -1607,13 +1598,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5]
 
-[6]) (Bab II - Studi.tex
+[6]
 
-[7]
+[7]) (Bab II - Studi.tex
 
-[8
-
-]
+[8]
 Bab II.
 File: images/gambartumor.png Graphic file (type bmp)
 <images/gambartumor.png>
@@ -1623,6 +1612,7 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 
 
 [9
+
 
 ]
 
@@ -1650,10 +1640,6 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 88.
 [13]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 96.
-
-
-LaTeX Warning: Citation 'tan2019efficientnet' on page 14 undefined on input lin
-e 107.
 
 
 
@@ -1692,26 +1678,6 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 184.
 
 [18]
 
-LaTeX Warning: Citation 'wozniak2023deep' on page 19 undefined on input line 19
-1.
-
-
-LaTeX Warning: Citation '' on page 19 undefined on input line 191.
-
-
-LaTeX Warning: Citation 'wozniak2023deep' on page 19 undefined on input line 20
-0.
-
-
-LaTeX Warning: Citation '' on page 19 undefined on input line 200.
-
-
-Overfull \hbox (0.26744pt too wide) in paragraph at lines 199--201
-\TU/TimesNewRoman(0)/m/n/12 non-tumor/sehat) dengan benar. [][] menun-
- []
-
-
-
 [19]
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 212.
@@ -1733,27 +1699,22 @@ Overfull \hbox (5.6858pt too wide) in paragraph at lines 222--224
 asikan teknik-teknik eva-
  []
 
-
-
-[20]
 File: images/TaksonomiXAI2.png Graphic file (type bmp)
 <images/TaksonomiXAI2.png>
 
-
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 229.
 
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 229.
 
 
+
+[20]
 
 [21]
 Underfull \hbox (badness 10000) in paragraph at lines 259--262
 
  []
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 270.
 
 
 
@@ -1798,6 +1759,9 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 21.
 
 
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 24.
+
+
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 27.
 
 
@@ -1805,9 +1769,6 @@ Package biblatex-chicago Warning: Empty Ibidem citation on input line 27.
 [29
 
 ]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 30.
-
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 36.
 
@@ -1941,18 +1902,16 @@ File: images/normal brain radio.png Graphic file (type bmp)
 <images/normal brain radio.png>
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
 [47]
 File: images/Flow preprocess.png Graphic file (type bmp)
 <images/Flow preprocess.png>
 
 
 [48]
-Overfull \hbox (4.04498pt too wide) in paragraph at lines 102--103
-\TU/TimesNewRoman(0)/m/n/12 pada citra. Mengikuti pendekatan yang diterapkan ol
-eh [][][][][]Emmanuel dkk. ([][]2026[][])[][],
- []
-
-
 
 [49]
 
@@ -1972,21 +1931,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--132
  []
 
 
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 134.
+
+
 
 [52]
 File: images/CLM1.png Graphic file (type bmp)
 <images/CLM1.png>
-
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 149.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: images/CLM2.png Graphic file (type bmp)
-<images/CLM2.png>
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1994,6 +1945,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [53]
+File: images/CLM2.png Graphic file (type bmp)
+<images/CLM2.png>
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
+
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 159.
+
+
 
 [54]
 Overfull \hbox (2.23553pt too wide) in paragraph at lines 178--180
@@ -2001,72 +1962,64 @@ Overfull \hbox (2.23553pt too wide) in paragraph at lines 178--180
 latih menggunakan \TU/TimesNewRoman(0)/m/it/12 Back-
  []
 
-File: images/before exp cnn.png Graphic file (type bmp)
-<images/before exp cnn.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 
 [55]
-Overfull \hbox (8.0398pt too wide) in paragraph at lines 212--213
-[]\TU/TimesNewRoman(0)/m/n/12 BatchNorm + Average Pooling: Normalisasi aktivasi
- diikuti dengan \TU/TimesNewRoman(0)/m/it/12 down-
- []
-
+File: images/before exp cnn.png Graphic file (type bmp)
+<images/before exp cnn.png>
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (0.57104pt too wide) in paragraph at lines 223--224
-[]\TU/TimesNewRoman(0)/m/n/12 Gradien \TU/TimesNewRoman(0)/m/it/12 Feature Map 
-\TU/TimesNewRoman(0)/m/n/12 per Layer: Melakukan \TU/TimesNewRoman(0)/m/it/12 b
-ackward pass \TU/TimesNewRoman(0)/m/n/12 untuk meng-
- []
-
-
 
 [56]
 
+[57]
+
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 234.
 
-
-
-[57]
 File: images/before tl.png Graphic file (type bmp)
 <images/before tl.png>
-
-Overfull \hbox (4.70398pt too wide) in paragraph at lines 248--249
-\TU/TimesNewRoman(0)/m/n/12 latihan dan mengurangi \TU/TimesNewRoman(0)/m/it/12
- internal covariate shift \TU/TimesNewRoman(0)/m/n/12 (Persamaan 5 sampai denga
-n 8). 
- []
-
 
 
 [58]
 
 [59]
 
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 274.
+
+
+
 [60]
 
 [61]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 311.
+[62]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 314.
 
 ) (Bab V - Implementasi.tex
 
-[62]
+[63]
+
+[64
+
+]
 Bab V.
 
 
-[63
-
+[65
 
 ]
 
-[64]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[66]
+
+[67]
 File: images/otakwithf.png Graphic file (type bmp)
 <images/otakwithf.png>
 
@@ -2075,37 +2028,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[65]
-
-[66]
+[68]
 File: images/preprocess_image.png Graphic file (type bmp)
 <images/preprocess_image.png>
+
+
+[69]
+
+[70]
+File: images/preprocess_eksperimen.png Graphic file (type bmp)
+<images/preprocess_eksperimen.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[67]
+[71]
 
-[68]
-File: images/preprocess_eksperimen.png Graphic file (type bmp)
-<images/preprocess_eksperimen.png>
-
-
-[69]
+[72]
 File: images/jumlah metode.png Graphic file (type bmp)
 <images/jumlah metode.png>
-
-
-[70]
 File: images/perbandingan augmentasi.png Graphic file (type bmp)
 <images/perbandingan augmentasi.png>
 
 
-[71]
+[73]
 
-[72]
+[74]
 File: images/after CLM.png Graphic file (type bmp)
 <images/after CLM.png>
 
@@ -2114,9 +2064,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[73]
+[75]
 
-[74]
+[76]
 File: images/after exp cnn.png Graphic file (type bmp)
 <images/after exp cnn.png>
 
@@ -2127,7 +2077,7 @@ spek, seperti ukuran input 224×224×3,
 
 
 
-[75]
+[77]
 Overfull \hbox (15.77359pt too wide) in alignment at lines 374--380
  [] [] [] 
  []
@@ -2157,14 +2107,21 @@ Overfull \hbox (15.77359pt too wide) in alignment at lines 393--441
  [] [] [] 
  []
 
-[76]
+[78]
 
-[77]
+[79]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 474.
 
 
-[78]
+[80]
+Overfull \hbox (2.19269pt too wide) in paragraph at lines 494--500
+ [][] 
+ []
+
+
+
+[81]
 File: images/after tl.png Graphic file (type bmp)
 <images/after tl.png>
 
@@ -2173,19 +2130,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[79]
-
-[80]
-Overfull \hbox (5.91016pt too wide) in paragraph at lines 555--556
+[82]
+Overfull \hbox (5.91016pt too wide) in paragraph at lines 565--566
 \TU/TimesNewRoman(0)/m/n/12 tinggi dan konsisten di hampir semua skenario, deng
 an akurasi berkisar antara 88.89%
  []
 
 
 
-[81]
+[83]
 
-[82]
+[84]
+
+[85]
 File: images/compare_tl_heatmap.png Graphic file (type bmp)
 <images/compare_tl_heatmap.png>
 
@@ -2194,33 +2151,29 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[83]
+[86]
 
-[84]) (Bab VI - Evaluasi.tex
-
-[85]
-
-[86
-
-]
-Bab VI.
-
-
-[87
-
-]
+[87]) (Bab VI - Evaluasi.tex
 
 [88]
+Bab VI.
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 17.
+
+
+
+[89
+
+
+]
+
+[90]
 Overfull \hbox (12.1242pt too wide) in paragraph at lines 39--40
 \TU/TimesNewRoman(0)/m/n/12 ma dengan nilai tanpa preprocessing pada skema Test
  dan Val+Test (77,5%/100%/0,0%
  []
 
 
-
-[89]
-
-[90]
 
 [91]
 
@@ -2230,7 +2183,11 @@ Overfull \hbox (12.1242pt too wide) in paragraph at lines 39--40
 
 [94]
 
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 91.
+[95]
+
+[96]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 86.
 
 
 Package biblatex-chicago Warning: Empty Ibidem citation on input line 91.
@@ -2263,26 +2220,41 @@ Overfull \hbox (3.45671pt too wide) in paragraph at lines 93--105
 
 
 
-[95]
-
-[96]
-
-Package biblatex-chicago Warning: Empty Ibidem citation on input line 120.
-
-
-
 [97]
 
 [98]
+Overfull \hbox (2.25009pt too wide) in paragraph at lines 120--121
+[]\TU/TimesNewRoman(0)/m/n/12 Salah satu \TU/TimesNewRoman(0)/m/it/12 fold \TU/
+TimesNewRoman(0)/m/n/12 (\TU/TimesNewRoman(0)/m/it/12 fold \TU/TimesNewRoman(0)
+/m/n/12 3) tercatat sebagai \TU/TimesNewRoman(0)/m/it/12 outlier\TU/TimesNewRom
+an(0)/m/n/12 , dengan \TU/TimesNewRoman(0)/m/it/12 validation loss \TU/TimesNew
+Roman(0)/m/n/12 sebesar 1,4351,
+ []
+
+
 
 [99]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 124.
+
+
 
 [100]
 
 [101]
 
 [102]
-Overfull \hbox (2.754pt too wide) in paragraph at lines 182--183
+
+[103]
+
+[104]
+
+Package biblatex-chicago Warning: Empty Ibidem citation on input line 177.
+
+
+
+[105]
+Overfull \hbox (2.754pt too wide) in paragraph at lines 189--190
 []\TU/TimesNewRoman(0)/m/n/12 Secara umum, rendahnya skor XAlign yang didapat m
 enunjukkan bahwa Grad-CAM
  []
@@ -2291,59 +2263,64 @@ File: images/xalign.png Graphic file (type bmp)
 <images/xalign.png>
 
 
-[103]
+[106]
 File: images/TN_effnet.png Graphic file (type bmp)
 <images/TN_effnet.png>
+
+
+[107]
 File: images/TP_effnet_no.png Graphic file (type bmp)
 <images/TP_effnet_no.png>
 
 
-[104]
+[108]
 File: images/TP_effnet_mask.png Graphic file (type bmp)
 <images/TP_effnet_mask.png>
-
-
-[105]
 File: images/FP_effnet.png Graphic file (type bmp)
 <images/FP_effnet.png>
 
 
-[106]
+[109]
 File: images/FN_effnet.png Graphic file (type bmp)
 <images/FN_effnet.png>
 
 
-[107]
-
-[108]
-
-[109]) (Bab VII - Penutup.tex
-
 [110]
+
+[111]
+
+[112]) (Bab VII - Penutup.tex
+
+[113]
+
+[114
+
+]
 Bab VII.
 
 
-[111
-
+[115
 
 ])
 
-[112]
+[116]
 
-[113
+[117
 
 
 ]
 
-[114]
+[118]
 
-[115]
+[119]
 Overfull \hbox (10.90576pt too wide) in paragraph at lines 411--411
 [][][]\TU/TimesNewRoman(0)/m/n/12 . 2025b. “  Explainable CNN for brain tumor d
 etection and classification through
  []
 
 
+
+[120]
 Overfull \hbox (13.76628pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Al-Kadi, Omar, Israa Almallahi, Alaa Abu-Srhan,
  Mohammad Abushariah, dan Waleed
@@ -2356,8 +2333,6 @@ d MR-CT Brain Dataset for Unsupervised Image Trans-
  []
 
 
-
-[116]
 Overfull \hbox (33.26854pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/n/12 brain tumor detection in MRI imaging.” \TU/TimesNew
 Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
@@ -2366,21 +2341,21 @@ Roman(0)/m/it/12 Journal of Neuroscience Methods \TU/TimesNewRoman(0)/m/n/12 41
 
 
 
-[117]
+[121]
 Overfull \hbox (3.25732pt too wide) in paragraph at lines 411--411
 \TU/TimesNewRoman(0)/m/it/12 tuk Pelayanan Kesehatan Yang Berkualitas. \TU/Time
 sNewRoman(0)/m/n/12 KOMPASIANA. Kompasiana.com,
  []
 
 
+
+[122]
 Overfull \hbox (1.24242pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Republik Indonesia, Kementerian Kesehatan. 2025
 . \TU/TimesNewRoman(0)/m/it/12 Update Tatalaksana Tumor Otak
  []
 
 
-
-[118]
 Overfull \hbox (3.6216pt too wide) in paragraph at lines 411--411
 [][]\TU/TimesNewRoman(0)/m/n/12 Terven, Juan, Diana-Margarita Cordova-Esparza, 
 Julio-Alejandro Romero-González,
@@ -2394,9 +2369,9 @@ iwek, dan Arkadiusz Gertych. 2024.
 
 
 
-[119] (Lampiran-A.tex) (Lampiran-B.tex)
+[123] (Lampiran-A.tex) (Lampiran-B.tex)
 
-[120]
+[124]
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 316.
 See the caption package documentation for explanation.
@@ -2406,28 +2381,19 @@ See the caption package documentation for explanation.
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `ta.out' has not changed.
-(rerunfilecheck)             Checksum: 849DFC73F407BA2D2232293AE9F706A3;18681.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                ta
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: 0958915DAED4B8A10C127D3DA28DB5D5;18826.
 Package logreq Info: Writing requests to 'ta.run.xml'.
 \openout1 = `ta.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35231 strings out of 403197
- 690254 string characters out of 5455938
- 2153493 words of memory out of 5000000
- 63257 multiletter control sequences out of 15000+600000
+ 35247 strings out of 403197
+ 690721 string characters out of 5455938
+ 2154017 words of memory out of 5000000
+ 63273 multiletter control sequences out of 15000+600000
  632950 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 73i,12n,100p,2345b,7045s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 73i,12n,100p,2392b,7045s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ta.pdf (148 pages).
+Output written on ta.pdf (152 pages).

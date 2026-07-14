@@ -259,6 +259,59 @@
       \verb https://link.springer.com/article/10.1007/s44163-025-00247-3
       \endverb
     \endentry
+    \entry{bradshaw2023guide}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=0305b27d175bd7accc79286da15076ab}{%
+           family={Bradshaw},
+           familyi={B\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=861a8765c60a2b074e073ef2aeb260e9}{%
+           family={Huemann},
+           familyi={H\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=30c3519915a07c272d6fd946f3eaa35a}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0c507167873c4b80bde04a2e690bb2b7}{%
+           family={Rahmim},
+           familyi={R\bibinitperiod},
+           given={Arman},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2cffb3cc5592e194c4c29a390208e18e}
+      \strng{fullhash}{8b0771cb78f39569c22e8e278d063e7f}
+      \strng{fullhashraw}{8b0771cb78f39569c22e8e278d063e7f}
+      \strng{bibnamehash}{8b0771cb78f39569c22e8e278d063e7f}
+      \strng{authorbibnamehash}{8b0771cb78f39569c22e8e278d063e7f}
+      \strng{authornamehash}{2cffb3cc5592e194c4c29a390208e18e}
+      \strng{authorfullhash}{8b0771cb78f39569c22e8e278d063e7f}
+      \strng{authorfullhashraw}{8b0771cb78f39569c22e8e278d063e7f}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{Radiology}
+      \field{number}{4}
+      \field{title}{A Guide to Cross-Validation for Artificial Intelligence in Medical Imaging}
+      \field{volume}{5}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://doi.org/10.1148/ryai.220232
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1148/ryai.220232
+      \endverb
+    \endentry
     \entry{budiman2024effectiveness}{article}{}{}
       \name{author}{4}{}{%
         {{un=0,uniquepart=base,hash=ada60c2f0798f36cf19288d9d58bfa7a}{%
@@ -2520,6 +2573,45 @@
       \verb https://doi.org/10.1016/j.imu.2023.101414
       \endverb
     \endentry
+    \entry{tan2019efficientnet}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=0d966dd0f87e37d91ab9b126344e0df0}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc4e66397f700c1cd162b9d995c614e3}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Q.\bibnamedelimi V.},
+           giveni={Q\bibinitperiod\bibinitdelim V\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{13884063f26e0c7f7007324460c613b6}
+      \strng{fullhash}{13884063f26e0c7f7007324460c613b6}
+      \strng{fullhashraw}{13884063f26e0c7f7007324460c613b6}
+      \strng{bibnamehash}{13884063f26e0c7f7007324460c613b6}
+      \strng{authorbibnamehash}{13884063f26e0c7f7007324460c613b6}
+      \strng{authornamehash}{13884063f26e0c7f7007324460c613b6}
+      \strng{authorfullhash}{13884063f26e0c7f7007324460c613b6}
+      \strng{authorfullhashraw}{13884063f26e0c7f7007324460c613b6}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{author}
+      \field{journaltitle}{arXiv.org}
+      \field{title}{EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1905.11946
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1905.11946
+      \endverb
+    \endentry
     \entry{terven2025survey}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=93e141b5d802e4e01a6e89c21fe987f0}{%
@@ -2976,7 +3068,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{tan2019efficientnet}
 \endrefsection
 \endinput
 

@@ -22,10 +22,10 @@ Berdasarkan \textcite{radiologykey2015brain}, terdapat tiga bidang dalam pencitr
 \begin{enumerate}
 	
 	\item Bidang Aksial\\
-	Bidang aksial (atau \textit{transverse}) adalah bidang horizontal yang membagi tubuh menjadi bagian atas dan bawah, tegak lurus terhadap sumbu panjang tubuh. Dalam pencitraan medis seperti \textit{CT Scan}, bidang ini menampilkan irisan tubuh yang dilihat dari arah kaki menuju kepala atau sebaliknya.
+	Bidang aksial adalah bidang horizontal yang membagi tubuh menjadi bagian atas dan bawah, tegak lurus terhadap sumbu panjang tubuh. Dalam pencitraan medis seperti \textit{CT Scan}, bidang ini menampilkan irisan tubuh yang dilihat dari arah kaki menuju kepala atau sebaliknya.
 	
 	\item Bidang Koronal\\
-	Bidang koronal (atau \textit{frontal}) adalah bidang vertikal yang membagi tubuh menjadi bagian depan dan belakang. Penamaannya merujuk pada \textit{coronal suture} tengkorak, yakni garis sambungan tulang yang melintang dari telinga kiri ke kanan, menyerupai letak mahkota atau bando.
+	Bidang koronal adalah bidang vertikal yang membagi tubuh menjadi bagian depan dan belakang. Penamaannya merujuk pada \textit{coronal suture} tengkorak, yakni garis sambungan tulang yang melintang dari telinga kiri ke kanan, menyerupai letak mahkota atau bando.
 	
 	\item Bidang Sagital\\
 	Bidang sagital adalah bidang vertikal yang membagi tubuh menjadi sisi kanan dan kiri. Penamaannya merujuk pada \textit{sagittal suture} tengkorak yang posisinya menyerupai arah anak panah jika dilihat dari depan.
@@ -61,7 +61,7 @@ Dalam konteks transparansi dan kemampuan interpretasi keputusan medis, model-mod
 
 \begin{enumerate}
 	\item \textit{White-Box Models} \\
-	Model ini dirancang dengan logika dasar dan proses yang jelas, sehingga mekanisme pengambilan keputusannya secara dapat ditafsirkan (\textit{interpretable}) oleh manusia. Pengguna dapat memahami bagaimana model bekerja dengan memeriksa struktur internalnya secara langsung, seperti melihat bobot fitur atau aturan keputusan. Contoh algoritma yang termasuk dalam kategori ini adalah \textit{Decision Trees} dan regresi linier.
+	Model ini dirancang dengan logika dasar dan proses yang jelas, sehingga mekanisme pengambilan keputusannya secara dapat ditafsirkan oleh manusia. Pengguna dapat memahami bagaimana model bekerja dengan memeriksa struktur internalnya secara langsung, seperti melihat bobot fitur atau aturan keputusan. Contoh algoritma yang termasuk dalam kategori ini adalah \textit{Decision Trees} dan regresi linier.
 	
 	\item \textit{Black-Box Models} \\
 	Model ini memiliki mekanisme internal yang sangat kompleks sehingga sulit atau tidak mungkin bagi pengguna manusia untuk memahami bagaimana prediksi atau hasil spesifik dihasilkan. Karena kompleksitasnya, hubungan antara \textit{input} dan \textit{output} sering dianggap sebagai misteri yang tidak dapat diperiksa secara manual. \textit{Deep Neural Networks} dan model \textit{ensemble} yang rumit merupakan representasi utama dari kategori ini.
@@ -96,17 +96,17 @@ Berdasarkan kesesuaian ruang fitur dan ruang label antara domain sumber dan doma
 Menurut \cite{zhuang2020comprehensive}, pendekatan-pendekatan \textit{transfer learning} yang telah dikembangkan secara garis besar dapat dikelompokkan menjadi dua sudut pandang, yaitu:
 \begin{enumerate}
 	\item Pendekatan berbasis data (\textit{data-based}), yang berfokus pada penyesuaian data itu sendiri, misalnya dengan memberi bobot pada data domain sumber agar distribusinya menyerupai domain target, atau dengan mentransformasikan fitur ke representasi baru yang lebih mirip antardomain (contohnya TCA, JDA, dan CORAL).
-	\item Pendekatan berbasis model (\textit{model-based}), yang berfokus pada pengaturan model atau parameternya, misalnya dengan berbagi sebagian parameter model dari domain sumber ke domain target, menggabungkan beberapa model (\textit{ensemble}), atau memanfaatkan arsitektur \textit{deep learning} seperti DAN dan DANN yang mengadaptasi fitur pada lapisan-lapisan jaringan sarafnya.
+	\item Pendekatan berbasis model (\textit{model-based}), yang berfokus pada pengaturan model atau parameternya, misalnya dengan berbagi sebagian parameter model dari domain sumber ke domain target, menggabungkan beberapa model, atau memanfaatkan arsitektur \textit{deep learning} seperti DAN dan DANN yang mengadaptasi fitur pada lapisan-lapisan jaringan sarafnya.
 \end{enumerate}
 
 Dari penjelasan tersebut, dapat disimpulkan bahwa pemilihan metode \textit{transfer learning} yang tepat perlu mempertimbangkan beberapa hal, di antaranya kesesuaian ruang fitur antardomain, ketersediaan label pada domain target, jenis pergeseran distribusi yang terjadi, jumlah domain sumber yang tersedia, serta kompleksitas komputasi yang dibutuhkan oleh masing-masing metode.
 
 \subsubsection{EfficientNet}
-Salah satu bentuk penerapan \textit{transfer learning} yang banyak digunakan khususnya untuk klasifikasi gambar adalah dengan memanfaatkan arsitektur \textit{Convolutional Neural Network} (CNN) yang telah dilatih sebelumnya (\textit{pre-trained}) pada \textit{dataset} besar, salah satunya adalah EfficientNet.
+Salah satu bentuk penerapan \textit{transfer learning} yang banyak digunakan khususnya untuk klasifikasi gambar adalah dengan memanfaatkan arsitektur \textit{Convolutional Neural Network} (CNN) yang telah dilatih sebelumnya pada \textit{dataset} besar, salah satunya adalah EfficientNet.
 
 EfficientNet merupakan salah satu keluarga arsitektur CNN yang diperkenalkan oleh Tan dan Le \cite{tan2019efficientnet}. Arsitektur ini dirancang agar dapat memperoleh akurasi klasifikasi gambar yang setara dengan model-model besar lainnya, namun dengan jumlah parameter dan kebutuhan komputasi yang jauh lebih sedikit. Terdapat delapan varian dari EfficientNet, yaitu EfficientNet-B0 hingga EfficientNet-B7, semakin besar nomor variannya maka semakin besar pula ukuran model serta resolusi gambar masukan yang digunakan. Sebagai contoh, EfficientNet-B0 menggunakan ukuran gambar masukan sebesar $224 \times 224$ piksel \cite{keras2020efficientnet}.
 
-Keunggulan utama EfficientNet dibandingkan pendekatan sebelumnya terletak pada cara model ini diperbesar (\textit{scaling}). Sebuah jaringan CNN sebenarnya dapat diperbesar melalui tiga cara, yaitu menambah kedalaman jaringan (\textit{depth}, yaitu jumlah lapisan), menambah lebar jaringan (\textit{width}, yaitu jumlah kanal/filter pada tiap lapisan), atau memperbesar resolusi gambar masukan (\textit{resolution}). Pada penelitian-penelitian sebelumnya, ketiga hal tersebut biasanya diperbesar secara terpisah dan agak sembarangan. Tan dan Le \cite{alshaari2025deepefnet} kemudian mengusulkan metode \textit{compound scaling}, yaitu memperbesar ketiga dimensi tersebut secara bersamaan dan seimbang menggunakan satu koefisien saja, dituliskan sebagai berikut:
+Keunggulan utama EfficientNet dibandingkan pendekatan sebelumnya terletak pada cara model ini diperbesar. Sebuah jaringan CNN sebenarnya dapat diperbesar melalui tiga cara, yaitu menambah kedalaman jaringan, menambah lebar jaringan, atau memperbesar resolusi gambar masukan. Pada penelitian-penelitian sebelumnya, ketiga hal tersebut biasanya diperbesar secara terpisah dan agak sembarangan. Tan dan Le \cite{alshaari2025deepefnet} kemudian mengusulkan metode \textit{compound scaling}, yaitu memperbesar ketiga dimensi tersebut secara bersamaan dan seimbang menggunakan satu koefisien saja, dituliskan sebagai berikut:
 \begin{equation}
 	d = \alpha^{\phi}, \quad w = \beta^{\phi}, \quad r = \gamma^{\phi}, \qquad \text{dengan } \alpha \cdot \beta^{2} \cdot \gamma^{2} \approx 2
 	\label{eq:compound_scaling}
@@ -117,8 +117,8 @@ $d$, $w$, dan $r$ berturut-turut mewakili besarnya perubahan pada kedalaman, leb
 Dalam praktiknya, EfficientNet yang sudah dilatih pada \textit{dataset} ImageNet dapat digunakan kembali sebagai \textit{feature extractor} untuk permasalahan klasifikasi gambar yang lain melalui \textit{transfer learning}. Berdasarkan tutorial resmi dari Keras \cite{keras2020efficientnet}, tahapannya secara umum adalah sebagai berikut:
 \begin{enumerate}
 	\item Model EfficientNet dimuat beserta bobot hasil pelatihan pada ImageNet, namun lapisan klasifikasi paling atas yang semula digunakan untuk memprediksi 1000 kelas ImageNet dihilangkan, kemudian digantikan dengan lapisan klasifikasi baru yang jumlah keluarannya disesuaikan dengan jumlah kelas pada \textit{dataset} target.
-	\item Pada tahap awal pelatihan, seluruh lapisan dasar EfficientNet dibekukan (\textit{frozen}) terlebih dahulu, sehingga hanya lapisan klasifikasi baru saja yang dilatih menggunakan \textit{learning rate} yang relatif besar. Tahap ini bertujuan agar lapisan baru tersebut dapat menyesuaikan diri dengan fitur yang telah dihasilkan oleh EfficientNet tanpa merusak bobot yang sudah dilatih sebelumnya.
-	\item Setelah lapisan klasifikasi baru cukup stabil, sebagian atau seluruh lapisan EfficientNet yang tadinya dibekukan kemudian dibuka kembali (\textit{unfreeze}) dan dilatih ulang bersama-sama menggunakan \textit{learning rate} yang jauh lebih kecil. Proses ini disebut \textit{fine-tuning}, yang bertujuan untuk menyesuaikan sedikit bobot EfficientNet agar lebih cocok dengan karakteristik \textit{dataset} target. Perlu diperhatikan bahwa lapisan \textit{Batch Normalization} sebaiknya tetap dibekukan meskipun lapisan lain di sekitarnya sudah dibuka, karena jika ikut dilatih dapat menyebabkan penurunan akurasi secara signifikan \cite{keras2020efficientnet}.
+	\item Pada tahap awal pelatihan, seluruh lapisan dasar EfficientNet dibekukan terlebih dahulu, sehingga hanya lapisan klasifikasi baru saja yang dilatih menggunakan \textit{learning rate} yang relatif besar. Tahap ini bertujuan agar lapisan baru tersebut dapat menyesuaikan diri dengan fitur yang telah dihasilkan oleh EfficientNet tanpa merusak bobot yang sudah dilatih sebelumnya.
+	\item Setelah lapisan klasifikasi baru cukup stabil, sebagian atau seluruh lapisan EfficientNet yang tadinya dibekukan kemudian dibuka kembali dan dilatih ulang bersama-sama menggunakan \textit{learning rate} yang jauh lebih kecil. Proses ini disebut \textit{fine-tuning}, yang bertujuan untuk menyesuaikan sedikit bobot EfficientNet agar lebih cocok dengan karakteristik \textit{dataset} target. Perlu diperhatikan bahwa lapisan \textit{Batch Normalization} sebaiknya tetap dibekukan meskipun lapisan lain di sekitarnya sudah dibuka, karena jika ikut dilatih dapat menyebabkan penurunan akurasi secara signifikan \cite{keras2020efficientnet}.
 \end{enumerate}
 Dengan tahapan tersebut, penggunaan EfficientNet sebagai model dasar diharapkan dapat mempercepat proses pelatihan sekaligus meningkatkan akurasi klasifikasi, khususnya pada kondisi ketika data latih pada domain target tersedia dalam jumlah yang terbatas.
 
@@ -188,7 +188,7 @@ Evaluasi model \textit{deep learning} sangat krusial untuk menilai kemampuan nya
 
 \subsection{\textit{Deep Learning}}
 \label{sec:Deep Learning}
-Salah satu komponen penting dari \textit{deep learning} untuk melatih dan mengevaluasi model adalah \textit{performance metrics}. \textit{Performance metrics} menilai kemampuan model untuk membuat prediksi akurat pada data yang belum pernah dilihat. Berdasarkan \textcite{wozniak2023deep}, terdapat beberapa \textit{performance metrics} yang digunakan dalam pendeteksian tumor otak menggunakan \textit{deep learning}, yaitu:
+Salah satu komponen penting dari \textit{deep learning} untuk melatih dan mengevaluasi model adalah \textit{performance metrics}. \textit{Performance metrics} menilai kemampuan model untuk membuat prediksi akurat pada data yang belum pernah dilihat. Berdasarkan \textcite{wozniak2021deep}, terdapat beberapa \textit{performance metrics} yang digunakan dalam pendeteksian tumor otak menggunakan \textit{deep learning}, yaitu:
 \begin{enumerate}
 	\item Akurasi (\textit{Accuracy}) \\
 	Mengukur rasio prediksi benar secara keseluruhan dengan membandingkan prediksi positif dan negatif yang benar (\textit{True Positives} dan \textit{True Negatives}) terhadap total seluruh data.
@@ -197,7 +197,7 @@ Salah satu komponen penting dari \textit{deep learning} untuk melatih dan mengev
 	\item \textit{Recall} \\
 	Mengukur kemampuan model dalam menemukan semua sampel positif (kasus tumor) yang sebenarnya ada di dalam data, atau dikenal juga sebagai \textit{sensitivity}.
 	\item Spesifisitas (\textit{Specificity}) \\
-	Mengukur kemampuan model dalam mengidentifikasi hasil negatif (kasus non-tumor/sehat) dengan benar. \textcite{wozniak2023deep} menunjukkan bahwa metrik ini penting dalam konteks medis karena mencerminkan seberapa rendah kecenderungan model salah mengklasifikasikan pasien sehat sebagai penderita tumor, sehingga meningkatkan keandalan model saat diterapkan pada pemeriksaan klinis.
+	Mengukur kemampuan model dalam mengidentifikasi hasil negatif (kasus non-tumor/sehat) dengan benar. \textcite{wozniak2021deep} menunjukkan bahwa metrik ini penting dalam konteks medis karena mencerminkan seberapa rendah kecenderungan model salah mengklasifikasikan pasien sehat sebagai penderita tumor, sehingga meningkatkan keandalan model saat diterapkan pada pemeriksaan klinis.
 	\item \textit{F1-Score} \\
 	Mengukur keseimbangan model menggunakan rata-rata harmonik dari \textit{Precision} dan \textit{Recall}, sehingga cocok digunakan ketika distribusi kelas data tidak seimbang.
 \end{enumerate}
